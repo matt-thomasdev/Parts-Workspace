@@ -1,0 +1,158 @@
+table MT_COREFINACTIVITY
+	lineageTag: 990d59f5-592b-43bc-9fb8-e631805214f2
+
+	column StatementDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 14daa95f-73e1-4394-91bc-3d47aaebb87f
+		summarizeBy: none
+		sourceColumn: StatementDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PartNumber
+		dataType: string
+		lineageTag: 9b3e1ffc-7657-44ce-b16d-00a4202a2cf7
+		summarizeBy: none
+		sourceColumn: PartNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column CorePartDesc
+		dataType: string
+		lineageTag: d170c04b-3fbf-492f-826e-389f93e6e06f
+		summarizeBy: none
+		sourceColumn: CorePartDesc
+
+		annotation SummarizationSetBy = Automatic
+
+	column Activity
+		dataType: string
+		lineageTag: 24a52c10-b4a1-409b-a9e9-125044a6092f
+		summarizeBy: none
+		sourceColumn: Activity
+
+		annotation SummarizationSetBy = Automatic
+
+	column ActivityDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 5fed2600-8577-4a4d-875a-ae3939fa5985
+		summarizeBy: none
+		sourceColumn: ActivityDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column NavRefNo
+		dataType: string
+		lineageTag: 21b20adf-9fb4-4c7c-84c2-e70e5f95d0c5
+		summarizeBy: none
+		sourceColumn: NavRefNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column DealerRefNo
+		dataType: string
+		lineageTag: f8a8461a-cf0c-4dfd-9249-3771a5c0c593
+		summarizeBy: none
+		sourceColumn: DealerRefNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column MatchedCoreId
+		dataType: string
+		lineageTag: fd44756b-c764-454e-a003-d4242dd91811
+		summarizeBy: none
+		sourceColumn: MatchedCoreId
+
+		annotation SummarizationSetBy = Automatic
+
+	column MatchedInvNo
+		dataType: string
+		lineageTag: df1eea96-c49e-443c-b602-6fd240b2408d
+		summarizeBy: none
+		sourceColumn: MatchedInvNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qty
+		dataType: int64
+		formatString: 0
+		lineageTag: 77a4ebc9-2691-44c7-85b8-353901938ed2
+		summarizeBy: sum
+		sourceColumn: Qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column MatchQty
+		dataType: int64
+		formatString: 0
+		lineageTag: db3fb9a4-7b01-4d32-84b3-0c5bbaa6e1fc
+		summarizeBy: sum
+		sourceColumn: MatchQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column CoreBank
+		dataType: int64
+		formatString: 0
+		lineageTag: 17889655-8dc5-4c82-9df0-df9d984fb099
+		summarizeBy: sum
+		sourceColumn: CoreBank
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtDebitCredit
+		dataType: double
+		lineageTag: ead275b8-be3c-4c0f-b786-2a7647f89c47
+		summarizeBy: sum
+		sourceColumn: AmtDebitCredit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PenaltyDebitCredit
+		dataType: double
+		lineageTag: fcfdbf35-f46b-41ca-b898-603d1173a7d5
+		summarizeBy: sum
+		sourceColumn: PenaltyDebitCredit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NetDebitCredit
+		dataType: double
+		lineageTag: 9322569b-82c2-4929-b5c8-20d6754601f9
+		summarizeBy: sum
+		sourceColumn: NetDebitCredit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Division
+		dataType: string
+		lineageTag: 7e33fe40-7222-41fb-aed5-afe93f73e24a
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MT_COREFINACTIVITY = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_MT_COREFINACTIVITY = EXCEDE{[Schema="dbo",Item="MT_COREFINACTIVITY"]}[Data]
+				in
+				    dbo_MT_COREFINACTIVITY
+
+	annotation PBI_ResultType = Table
+

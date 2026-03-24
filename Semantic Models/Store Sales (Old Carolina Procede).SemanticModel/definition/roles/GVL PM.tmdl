@@ -1,0 +1,7 @@
+role 'GVL PM'
+	modelPermission: read
+
+	tablePermission 'Parts_Service Sales' = [BrnId] == "106" || [BrnId] == "506"
+
+	annotation PBI_Id = 4fc20e176a754bb49fafe68af1ed082f
+

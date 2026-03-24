@@ -1,0 +1,7 @@
+role 'Miami PM'
+	modelPermission: read
+
+	tablePermission 'Parts_Service Sales' = [BrnId] == "201"
+
+	annotation PBI_Id = a69c7a90681341b78ba0559cd78c9661
+

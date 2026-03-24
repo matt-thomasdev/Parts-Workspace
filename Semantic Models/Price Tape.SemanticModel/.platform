@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Price Tape"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0fe5e612-9865-aa4e-4d68-468901e18b1b"
+  }
+}

@@ -1,0 +1,153 @@
+table 'dbo.Sales'
+	lineageTag: a0fbbbac-1a87-418e-9d12-654908537207
+	sourceLineageTag: [dbo].[dbo.Sales]
+
+	column Sale_Key
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9147008e-920e-4a59-ac80-8ca6e792a4a6
+		sourceLineageTag: Sale_Key
+		summarizeBy: none
+		sourceColumn: Sale_Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column City_Key
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fefbb5c9-d8fe-42a5-a9a7-13b11302a5e1
+		sourceLineageTag: City_Key
+		summarizeBy: none
+		sourceColumn: City_Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customer_Key
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ab036197-de96-4df5-b61a-c738bce49599
+		sourceLineageTag: Customer_Key
+		summarizeBy: none
+		sourceColumn: Customer_Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Stock_Item_Key
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e06d3abc-69d7-4218-9406-eac04382a218
+		sourceLineageTag: Stock_Item_Key
+		summarizeBy: none
+		sourceColumn: Stock_Item_Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_Date_Key
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1a5cb6cf-f89b-456b-83d2-f5ea0160473c
+		sourceLineageTag: Invoice_Date_Key
+		summarizeBy: none
+		sourceColumn: Invoice_Date_Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Delivery_Date_Key
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 76134367-14f3-4b8f-bbc0-561d87c60024
+		sourceLineageTag: Delivery_Date_Key
+		summarizeBy: none
+		sourceColumn: Delivery_Date_Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salesperson_Key
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a650bb03-28f0-465e-86db-ede57e6c2c1b
+		sourceLineageTag: Salesperson_Key
+		summarizeBy: none
+		sourceColumn: Salesperson_Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column WWI_Invoice_ID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 774aad83-a232-4804-828f-fa28398f3b30
+		sourceLineageTag: WWI_Invoice_ID
+		summarizeBy: none
+		sourceColumn: WWI_Invoice_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c2ce2e65-94e3-49fb-82a0-01d78c45f846
+		sourceLineageTag: Quantity
+		summarizeBy: none
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit_Price
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e60a9f75-db06-4c73-85f8-2b662c74cb3b
+		sourceLineageTag: Unit_Price
+		summarizeBy: none
+		sourceColumn: Unit_Price
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Excluding_Tax
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 72da74a6-2799-48a7-9118-efa1c40f19ab
+		sourceLineageTag: Total_Excluding_Tax
+		summarizeBy: none
+		sourceColumn: Total_Excluding_Tax
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tax_Amount
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 97949fe5-1acf-491f-9238-fe1c9c6cb98d
+		sourceLineageTag: Tax_Amount
+		summarizeBy: none
+		sourceColumn: Tax_Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2e2d3885-a5e6-4d00-b3d7-f32c9af20226
+		sourceLineageTag: Region
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit_Cost
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c3a4fcf8-14a2-415f-b4a8-e5c1fc273b2d
+		sourceLineageTag: Unit_Cost
+		summarizeBy: none
+		sourceColumn: Unit_Cost
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'dbo.Sales' = entity
+		mode: directLake
+		source
+			entityName: dbo.Sales
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

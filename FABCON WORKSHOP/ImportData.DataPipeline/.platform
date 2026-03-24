@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "ImportData",
+    "description": ""
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "57645975-7b74-b3a6-424a-1d1eba1dc0c7"
+  }
+}

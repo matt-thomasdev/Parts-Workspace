@@ -1,0 +1,412 @@
+table 'Parts_Service Sales'
+	lineageTag: 4835d02a-5142-4de0-93ff-877332c07f86
+
+	column BrnId
+		dataType: string
+		lineageTag: 2fc4eca0-9a0f-455f-8cc5-cbb23356b26c
+		summarizeBy: none
+		sourceColumn: BrnId
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateInvoice
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 8ca4dd53-6f68-4ac0-888d-79495f278361
+		summarizeBy: none
+		sourceColumn: DateInvoice
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClaId
+		dataType: string
+		lineageTag: 685109f5-ed3a-4fa7-bb97-661a3da4530a
+		summarizeBy: none
+		sourceColumn: ClaId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SrcId
+		dataType: string
+		lineageTag: e4894cd1-85b3-497c-be56-86232aac1695
+		summarizeBy: none
+		sourceColumn: SrcId
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtPrice
+		dataType: double
+		lineageTag: 7b51ac8a-1f6b-4470-938e-fab40937a48c
+		summarizeBy: sum
+		sourceColumn: AmtPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtCost
+		dataType: double
+		lineageTag: 563c5ba8-1d06-4425-8853-d5132976fe34
+		summarizeBy: sum
+		sourceColumn: AmtCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyShip
+		dataType: double
+		formatString: #,0
+		lineageTag: 0cf3321e-f4b1-4472-9879-11826d3fed16
+		summarizeBy: sum
+		sourceColumn: QtyShip
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column SlsId
+		dataType: string
+		lineageTag: 42d732d3-1dfc-4586-8eb6-1fa08916377a
+		summarizeBy: none
+		sourceColumn: SlsId
+
+		annotation SummarizationSetBy = Automatic
+
+	column CusId
+		dataType: string
+		lineageTag: dfa42d8c-8ac3-4046-a892-53c796a888e6
+		summarizeBy: none
+		sourceColumn: CusId
+
+		annotation SummarizationSetBy = Automatic
+
+	column CusName
+		dataType: string
+		lineageTag: 4b0a7219-c60b-42b1-aaeb-3a55ae39c367
+		summarizeBy: none
+		sourceColumn: CusName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Des
+		dataType: string
+		lineageTag: 68146b52-b948-42fc-8f56-3139a179152e
+		summarizeBy: none
+		sourceColumn: Des
+
+		annotation SummarizationSetBy = Automatic
+
+	column BillCusId
+		dataType: string
+		lineageTag: ee88582d-64eb-4a9a-bc2c-170984dcbfd3
+		summarizeBy: none
+		sourceColumn: BillCusId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BillCusName
+		dataType: string
+		lineageTag: 17a6f229-52e1-4335-8cba-cb8db1e0116a
+		summarizeBy: none
+		sourceColumn: BillCusName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItmTyp
+		dataType: int64
+		formatString: 0
+		lineageTag: fdda7592-0050-4c4c-98e5-55d388e8230f
+		summarizeBy: sum
+		sourceColumn: ItmTyp
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmpId
+		dataType: string
+		lineageTag: c87160ee-895e-41fa-8442-541954356d2b
+		summarizeBy: none
+		sourceColumn: EmpId
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateCreate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 95def932-d6a2-413d-80a8-f2408ba5f1fc
+		summarizeBy: none
+		sourceColumn: DateCreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column SlsTypId
+		dataType: string
+		lineageTag: c114c208-02ed-42b2-961a-1cbeb80516ec
+		summarizeBy: none
+		sourceColumn: SlsTypId
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtPriceSuggest
+		dataType: double
+		lineageTag: ec380512-b8c4-4069-a51c-1ad5974fbe1b
+		summarizeBy: sum
+		sourceColumn: AmtPriceSuggest
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EstimateSlsId
+		dataType: string
+		lineageTag: 267e3d49-1e0a-4c06-b16e-254081f219ec
+		summarizeBy: none
+		sourceColumn: EstimateSlsId
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvoiceSlsId
+		dataType: string
+		lineageTag: 5727b65a-ce55-4edc-b72c-f9a8dd835e55
+		summarizeBy: none
+		sourceColumn: InvoiceSlsId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location =
+			
+			SWITCH (
+			    VALUE('Parts_Service Sales'[BrnId]),  -- Convert text to integer using VALUE function
+			    101, "Columbia",
+			    102, "Greer",
+			    103, "Charelston",
+			    104, "Florence",
+			    106, "Greenville",
+			    107, "Conway",
+			    501, "Lease - Columbia",
+			    503, "Lease - Charleston",
+			    504, "Lease - Florence",
+			    506, "Lease - Greenville",
+			    "Other"  -- Handle any other cases not explicitly defined
+			)
+		lineageTag: ddcff7fd-f21a-4524-82dc-8d31e3e58b31
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: faa9eabb-472a-4784-b383-a63d4b4e57da
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Origin
+		dataType: string
+		lineageTag: f6471c69-1864-4e50-81df-73059898928c
+		summarizeBy: none
+		sourceColumn: Origin
+
+		annotation SummarizationSetBy = Automatic
+
+	column PtItm
+		dataType: string
+		lineageTag: 70909107-7b10-4c81-9491-6a1da7f2d2f0
+		summarizeBy: none
+		sourceColumn: PtItm
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItmDes
+		dataType: string
+		lineageTag: 24532401-b746-4a57-abf6-78da3828302f
+		summarizeBy: none
+		sourceColumn: ItmDes
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtRebate
+		dataType: double
+		lineageTag: 7e6e7875-24bf-4bf2-9510-9b757cf1dc83
+		summarizeBy: sum
+		sourceColumn: AmtRebate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Status
+		dataType: int64
+		formatString: 0
+		lineageTag: e0dac98a-df53-4282-8076-1d1cf489e83e
+		summarizeBy: sum
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Extended Sales'
+		dataType: double
+		lineageTag: 919ba19c-ad93-42fa-b26d-ece8faea1497
+		summarizeBy: sum
+		sourceColumn: Extended Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Extended Cost'
+		dataType: double
+		lineageTag: 9f581259-c887-47a6-b93a-ccf865921f07
+		summarizeBy: sum
+		sourceColumn: Extended Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 7adbd2ac-dad9-44df-9bab-c473f070da88
+		summarizeBy: sum
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days Open' = DATEDIFF('Parts_Service Sales'[DateCreate],TODAY(),day)
+		formatString: 0
+		lineageTag: 45ac0685-c83e-4b74-8f06-757135219df9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Division =
+			
+			SWITCH (
+			    VALUE('Parts_Service Sales'[BrnId]),  -- Convert text to integer using VALUE function
+			    201, "Florida",
+			    202, "Florida",
+			    203, "Florida",
+			    204, "Florida",
+			    205, "Florida",
+			    101, "South Carolina",
+			    102, "South Carolina",
+			    103, "South Carolina",
+			    104, "South Carolina",
+			    105, "South Carolina",
+			    106, "South Carolina",
+			    501, "South Carolina",
+			    502, "South Carolina",
+			    503, "South Carolina",
+			    506, "South Carolina",
+			    601, "Florida",
+			    602, "Florida",
+			    603, "Florida",
+			    604, "Florida",
+			    605, "Florida",
+			    "Other"  -- Handle any other cases not explicitly defined
+			)
+		lineageTag: fc041069-ac02-496e-ae99-b1f706ff57a6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column AgeBucket = ```
+			
+			VAR CurrentDate = TODAY()
+			VAR DaysDifference = DATEDIFF('Parts_Service Sales'[DateCreate], CurrentDate, DAY)
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        DaysDifference <= 29, "1-29 days",
+			        DaysDifference <= 60, "30-60 days",
+			        DaysDifference <= 90, "61-90 days",
+			        DaysDifference <= 120, "91-120 days",
+			        "Over 120 days"
+			    )
+			
+			```
+		lineageTag: 8b21a6a2-abab-44b2-a3c4-a09aa5421fa5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 76b11a4c-8d23-4a60-ac24-4f436ca282d0
+		summarizeBy: none
+		sourceColumn: DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reason
+		dataType: string
+		lineageTag: 87b877dd-6b42-4493-8421-0c5b7528df4d
+		summarizeBy: none
+		sourceColumn: Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc5
+		dataType: string
+		lineageTag: 21d8e84c-6174-4d4c-abfa-cd8844abf41b
+		summarizeBy: none
+		sourceColumn: PrtMisc5
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyOH
+		dataType: double
+		lineageTag: f17fa57c-db17-487a-8efd-9323f3382690
+		summarizeBy: sum
+		sourceColumn: QtyOH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyOO
+		dataType: double
+		lineageTag: 24f06ce2-cec9-470a-8cdd-3c2c558c657c
+		summarizeBy: sum
+		sourceColumn: QtyOO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Core
+		dataType: string
+		lineageTag: 652c60e3-2e01-4959-9642-3ace47f10405
+		summarizeBy: none
+		sourceColumn: Core
+
+		annotation SummarizationSetBy = Automatic
+
+	column VenPrtId
+		dataType: string
+		lineageTag: 5164cf33-9690-468a-a977-9a7b7c5eeaba
+		summarizeBy: none
+		sourceColumn: VenPrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Parts_Service Sales' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="CAROLINA_SOURCE"]}[Data],
+				    dbo_USER_PARTS_SERVICE_SALES_VIEW = EXCEDE{[Schema="dbo",Item="USER_PARTS_SERVICE_SALES_VIEW"]}[Data],
+				    #"Duplicated Column" = Table.DuplicateColumn(dbo_USER_PARTS_SERVICE_SALES_VIEW, "DateInvoice", "DateInvoice - Copy"),
+				    #"Extracted Month" = Table.TransformColumns(#"Duplicated Column",{{"DateInvoice - Copy", Date.Month, Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Extracted Month",{{"DateInvoice - Copy", "Month"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

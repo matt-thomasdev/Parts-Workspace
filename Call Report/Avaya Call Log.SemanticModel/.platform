@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Avaya Call Log"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "64403125-fb7a-949c-458c-f4883510f163"
+  }
+}

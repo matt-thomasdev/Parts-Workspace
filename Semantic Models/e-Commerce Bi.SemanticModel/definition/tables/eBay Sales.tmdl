@@ -1,0 +1,698 @@
+table 'eBay Sales'
+	lineageTag: a6e37627-cf77-40fd-8e83-02171d51aeb2
+
+	column 'Sales Record Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 98e4f449-0399-4a0a-b289-8e649b3e4f3a
+		summarizeBy: sum
+		sourceColumn: Sales Record Number
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Number'
+		dataType: string
+		lineageTag: 4dcfdbd7-2227-452b-9c79-d6e9f55ee4f0
+		summarizeBy: none
+		sourceColumn: Order Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Buyer Username'
+		dataType: string
+		lineageTag: cacc9019-6445-4020-beb7-20de1ca0d4e3
+		summarizeBy: none
+		sourceColumn: Buyer Username
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Buyer Name'
+		dataType: string
+		lineageTag: 68bc678e-be72-460f-8b2e-60f2bc76df88
+		summarizeBy: none
+		sourceColumn: Buyer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Buyer Email'
+		dataType: string
+		lineageTag: cf19f384-4c29-41c3-8f66-8d4e3ddcf4cd
+		summarizeBy: none
+		sourceColumn: Buyer Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Buyer Note'
+		dataType: string
+		lineageTag: d3eaa002-315c-421c-a0cb-693af10b975b
+		summarizeBy: none
+		sourceColumn: Buyer Note
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Buyer Address 1'
+		dataType: string
+		lineageTag: 1bcf22e1-107f-4cbc-b1e2-470146e44d7f
+		summarizeBy: none
+		sourceColumn: Buyer Address 1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Buyer Address 2'
+		dataType: string
+		lineageTag: f5ee2997-416f-4abd-807b-2d12368f3a02
+		summarizeBy: none
+		sourceColumn: Buyer Address 2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Buyer City'
+		dataType: string
+		lineageTag: 24b9e457-267a-4ce7-9ec7-0f7b9004e075
+		summarizeBy: none
+		sourceColumn: Buyer City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Buyer State'
+		dataType: string
+		lineageTag: 71f11d7d-c4cb-496b-859c-0e79cc203172
+		summarizeBy: none
+		sourceColumn: Buyer State
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Buyer Zip'
+		dataType: string
+		lineageTag: 82282ee3-a629-4643-8434-28fec1b71922
+		summarizeBy: none
+		sourceColumn: Buyer Zip
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Buyer Country'
+		dataType: string
+		lineageTag: 123f2bed-ea8b-4ce6-b607-d5f0fd911849
+		summarizeBy: none
+		sourceColumn: Buyer Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Buyer Tax Identifier Name'
+		dataType: string
+		lineageTag: 88425aa1-0f3e-4f39-a063-88f9ceab8bc2
+		summarizeBy: none
+		sourceColumn: Buyer Tax Identifier Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Buyer Tax Identifier Value'
+		dataType: string
+		lineageTag: b4a4b24a-b59e-481f-9fb9-edebfbf85b41
+		summarizeBy: none
+		sourceColumn: Buyer Tax Identifier Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ship To Name'
+		dataType: string
+		lineageTag: 125a9994-d4a3-434f-857b-70f117f250a7
+		summarizeBy: none
+		sourceColumn: Ship To Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ship To Phone'
+		dataType: string
+		lineageTag: 249087ed-693f-47fc-be94-1a93931714e5
+		summarizeBy: none
+		sourceColumn: Ship To Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ship To Address 2'
+		dataType: string
+		lineageTag: 9b20d67c-bad4-4ee5-8d47-9a18b565dcee
+		summarizeBy: none
+		sourceColumn: Ship To Address 2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Complete Address'
+		dataType: string
+		lineageTag: 7d9a4e1f-7516-41e7-8935-d6edcc8bf53e
+		summarizeBy: none
+		sourceColumn: Complete Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ship To Country'
+		dataType: string
+		lineageTag: 45074dc1-26a1-4f7f-b32e-9e49b17f2019
+		summarizeBy: none
+		sourceColumn: Ship To Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5b23860f-ff08-4280-9a2f-745a4ebacf97
+		summarizeBy: sum
+		sourceColumn: Item Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Title'
+		dataType: string
+		lineageTag: 11f78b7a-fe70-49cd-968a-196d751469c0
+		summarizeBy: none
+		sourceColumn: Item Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Custom Label'
+		dataType: string
+		lineageTag: f3228ae0-63fe-408a-bea1-153bfeb711f0
+		summarizeBy: none
+		sourceColumn: Custom Label
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sold Via Promoted Listings'
+		dataType: string
+		lineageTag: cd40d770-4fd1-4a19-ab9b-e68b2f4e0ecf
+		summarizeBy: none
+		sourceColumn: Sold Via Promoted Listings
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: bd553552-7b96-415e-a77d-de82d175bba8
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sold For'
+		dataType: double
+		lineageTag: ffe7b489-8bee-481f-ad2f-a8343a3030e9
+		summarizeBy: sum
+		sourceColumn: Sold For
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Shipping And Handling'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5c7874e0-b272-49b3-b136-660fc4e5f037
+		summarizeBy: sum
+		sourceColumn: Shipping And Handling
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Location'
+		dataType: string
+		lineageTag: 83928d32-8cee-40ea-897d-8d49d95a445f
+		summarizeBy: none
+		sourceColumn: Item Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Zip Code'
+		dataType: int64
+		formatString: 0
+		lineageTag: c4fc5b5c-8381-46b8-af0d-96df7fe5d493
+		summarizeBy: count
+		sourceColumn: Item Zip Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Country'
+		dataType: string
+		lineageTag: b37e4a85-1cb2-4f76-9c54-0582da9cc72a
+		summarizeBy: none
+		sourceColumn: Item Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'eBay Collect And Remit Tax Rate'
+		dataType: double
+		lineageTag: 68fd21d0-dbeb-43d5-befe-f8f93950c508
+		summarizeBy: sum
+		sourceColumn: eBay Collect And Remit Tax Rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'eBay Collect And Remit Tax Type'
+		dataType: string
+		lineageTag: 7b7539ef-f1b7-45f0-b619-5d8d38df1fef
+		summarizeBy: none
+		sourceColumn: eBay Collect And Remit Tax Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'eBay Reference Name'
+		dataType: string
+		lineageTag: 3e2dc458-88d4-4f43-af79-c53a5c0272a7
+		summarizeBy: none
+		sourceColumn: eBay Reference Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'eBay Reference Value'
+		dataType: string
+		lineageTag: a19df9e9-78e4-4c5d-b53f-6cb90ea46dcf
+		summarizeBy: none
+		sourceColumn: eBay Reference Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tax Status'
+		dataType: string
+		lineageTag: de6377ec-2e8a-4a81-a8e8-9389e3032ca4
+		summarizeBy: none
+		sourceColumn: Tax Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Seller Collected Tax'
+		dataType: int64
+		formatString: 0
+		lineageTag: 414bdf58-0944-4b67-903f-989e9584c1f4
+		summarizeBy: sum
+		sourceColumn: Seller Collected Tax
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'eBay Collected Tax'
+		dataType: double
+		lineageTag: 45a42322-a034-413e-80f1-421a0ebcdb3b
+		summarizeBy: sum
+		sourceColumn: eBay Collected Tax
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Electronic Waste Recycling Fee'
+		dataType: int64
+		formatString: 0
+		lineageTag: 86cb1fbd-05cb-465a-b51e-cb0ceb724019
+		summarizeBy: sum
+		sourceColumn: Electronic Waste Recycling Fee
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mattress Recycling Fee'
+		dataType: int64
+		formatString: 0
+		lineageTag: 26f1d983-713a-4469-a96b-e772e0ca02db
+		summarizeBy: sum
+		sourceColumn: Mattress Recycling Fee
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Battery Recycling Fee'
+		dataType: int64
+		formatString: 0
+		lineageTag: fae783a4-0f0c-424d-91f8-7a0e910178ca
+		summarizeBy: sum
+		sourceColumn: Battery Recycling Fee
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'White Goods Disposal Tax'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c0c10c0-df27-49fb-86a3-f28b01c8c6d6
+		summarizeBy: sum
+		sourceColumn: White Goods Disposal Tax
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tire Recycling Fee'
+		dataType: int64
+		formatString: 0
+		lineageTag: 80a953c3-cb4d-4248-bc03-77801786c5de
+		summarizeBy: sum
+		sourceColumn: Tire Recycling Fee
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Additional Fee'
+		dataType: int64
+		formatString: 0
+		lineageTag: ba807c33-c5a8-405b-b40d-abbae6d14b25
+		summarizeBy: sum
+		sourceColumn: Additional Fee
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lumber Fee'
+		dataType: int64
+		formatString: 0
+		lineageTag: f12735f9-ff02-4a48-bcdc-ccc0fbd141ba
+		summarizeBy: sum
+		sourceColumn: Lumber Fee
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prepaid Wireless Fee'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1e30eabe-ed3e-43e6-9a84-00f3667c14a1
+		summarizeBy: sum
+		sourceColumn: Prepaid Wireless Fee
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Road Improvement And Food Delivery Fee'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a6ea6a7-0efa-41a7-bac6-aec0ac1006b3
+		summarizeBy: sum
+		sourceColumn: Road Improvement And Food Delivery Fee
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'eBay Collected Charges'
+		dataType: int64
+		formatString: 0
+		lineageTag: dab326be-2501-477d-a05a-42bced36d333
+		summarizeBy: sum
+		sourceColumn: eBay Collected Charges
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Price'
+		dataType: double
+		lineageTag: f27916d6-6d12-4c87-90df-2e75ebc6ecbf
+		summarizeBy: sum
+		sourceColumn: Total Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'eBay Collected Tax and Fees Included in Total'
+		dataType: string
+		lineageTag: 5e3b6b36-f315-4d21-a2f1-17ffe12bb536
+		summarizeBy: none
+		sourceColumn: eBay Collected Tax and Fees Included in Total
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Method'
+		dataType: string
+		lineageTag: 81facda8-7e0b-43a7-b476-c2993df99736
+		summarizeBy: none
+		sourceColumn: Payment Method
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sale Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1121b0fe-c13f-4e08-81cb-9c3515110081
+		summarizeBy: none
+		sourceColumn: Sale Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Paid On Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 517fbd9e-a285-41d2-bed2-1b59e1ff2c8f
+		summarizeBy: none
+		sourceColumn: Paid On Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Ship By Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 998c6c55-5f16-477f-8eb1-5d7dd522bdf2
+		summarizeBy: none
+		sourceColumn: Ship By Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Minimum Estimated Delivery Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c79d1755-b464-447f-bcbd-3449d784b74c
+		summarizeBy: none
+		sourceColumn: Minimum Estimated Delivery Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Maximum Estimated Delivery Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3da9a47b-bf40-4858-a3bb-fb351acbb6f0
+		summarizeBy: none
+		sourceColumn: Maximum Estimated Delivery Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Shipped On Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 31739132-e395-4185-acb5-513170b47c31
+		summarizeBy: none
+		sourceColumn: Shipped On Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Feedback Left'
+		dataType: string
+		lineageTag: cb7cf388-eb68-4fad-80d0-aa4cb7a6b4c3
+		summarizeBy: none
+		sourceColumn: Feedback Left
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Feedback Received'
+		dataType: string
+		lineageTag: 09ff55a0-12e4-484d-82ec-9ec8de691ac6
+		summarizeBy: none
+		sourceColumn: Feedback Received
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'My Item Note'
+		dataType: string
+		lineageTag: 738625a8-c5fc-4b9e-be58-82704fdb88aa
+		summarizeBy: none
+		sourceColumn: My Item Note
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PayPal Transaction ID'
+		dataType: string
+		lineageTag: 643db07b-5924-4878-89e8-20e0d502e789
+		summarizeBy: none
+		sourceColumn: PayPal Transaction ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shipping Service'
+		dataType: string
+		lineageTag: 9c6266fb-788b-4f95-9ce9-54aa5b9adbbf
+		summarizeBy: none
+		sourceColumn: Shipping Service
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tracking Number'
+		dataType: string
+		lineageTag: beab9657-8783-4b21-9a28-6207487c136d
+		summarizeBy: none
+		sourceColumn: Tracking Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Transaction ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9345ddb4-710e-4cd0-8be4-66d745530570
+		summarizeBy: count
+		sourceColumn: Transaction ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Variation Details'
+		dataType: string
+		lineageTag: 18b720e7-7537-4ab9-abfd-ddcbef5cbcc3
+		summarizeBy: none
+		sourceColumn: Variation Details
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Global Shipping Program'
+		dataType: string
+		lineageTag: ad595c88-e292-4464-b2f4-406e4a973fe5
+		summarizeBy: none
+		sourceColumn: Global Shipping Program
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Global Shipping Reference ID'
+		dataType: string
+		lineageTag: 85f4f851-126a-4ca3-b42c-abc84983b930
+		summarizeBy: none
+		sourceColumn: Global Shipping Reference ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Click And Collect'
+		dataType: string
+		lineageTag: 3f97c9e3-c76d-4476-b570-59d6a5feff4a
+		summarizeBy: none
+		sourceColumn: Click And Collect
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Click And Collect Reference Number'
+		dataType: string
+		lineageTag: e55fbf83-25aa-4446-9f30-52ac64b9f136
+		summarizeBy: none
+		sourceColumn: Click And Collect Reference Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'eBay Plus'
+		dataType: string
+		lineageTag: aa9caab7-2e7f-46c0-bfbb-1931513311dd
+		summarizeBy: none
+		sourceColumn: eBay Plus
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Authenticity Verification Program'
+		dataType: string
+		lineageTag: 7dcf9055-ab0e-46a4-9913-a88a8f82a690
+		summarizeBy: none
+		sourceColumn: Authenticity Verification Program
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Authenticity Verification Status'
+		dataType: string
+		lineageTag: 2fd87a1b-9a87-4d76-aa62-74f41af4c181
+		summarizeBy: none
+		sourceColumn: Authenticity Verification Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Authenticity Verification Outcome Reason'
+		dataType: string
+		lineageTag: 127ac09c-bed7-44c3-82d3-3226210ce533
+		summarizeBy: none
+		sourceColumn: Authenticity Verification Outcome Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PSA Vault Program'
+		dataType: string
+		lineageTag: aa4b48c4-dff1-427f-9da0-73c95fece67f
+		summarizeBy: none
+		sourceColumn: PSA Vault Program
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Vault Fulfillment Type'
+		dataType: string
+		lineageTag: 2f73f7f9-e74e-45af-b47e-625d399214c6
+		summarizeBy: none
+		sourceColumn: Vault Fulfillment Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'eBay Fulfillment Program'
+		dataType: string
+		lineageTag: d5c908ff-28c7-4022-985c-6206d0651e54
+		summarizeBy: none
+		sourceColumn: eBay Fulfillment Program
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tax City'
+		dataType: string
+		lineageTag: f83ff1f8-2d85-46b2-a121-c5770d2653ad
+		summarizeBy: none
+		sourceColumn: Tax City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tax State'
+		dataType: string
+		lineageTag: a211cf77-8b06-4e8f-8774-06e5fafc4e7e
+		summarizeBy: none
+		sourceColumn: Tax State
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tax Zip'
+		dataType: string
+		lineageTag: 87b6c4c4-2116-45ba-821d-4e2cad73b8f3
+		summarizeBy: none
+		sourceColumn: Tax Zip
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tax Country'
+		dataType: string
+		lineageTag: 8ad0af5e-7f56-40ff-8301-68591eb0bed9
+		summarizeBy: none
+		sourceColumn: Tax Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'eBay International Shipping'
+		dataType: string
+		lineageTag: a8a59a96-87c5-43ec-8989-e29973ea8152
+		summarizeBy: none
+		sourceColumn: eBay International Shipping
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'eBay Sales' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(Web.Contents("https://bepensa.sharepoint.com/sites/BM-UR-ANALYTICS/Documentos%20compartidos/e-Commerce%20Bi/eBay%20Sales.xlsx"), null, true),
+				    #"eBay Sales_Sheet" = Source{[Item="eBay Sales",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"eBay Sales_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Sales Record Number", type date}, {"Order Number", type text}, {"Buyer Username", type text}, {"Buyer Name", type text}, {"Buyer Email", type text}, {"Buyer Note", type any}, {"Buyer Address 1", type text}, {"Buyer Address 2", type text}, {"Buyer City", type text}, {"Buyer State", type text}, {"Buyer Zip", type text}, {"Buyer Country", type text}, {"Buyer Tax Identifier Name", type any}, {"Buyer Tax Identifier Value", type any}, {"Ship To Name", type text}, {"Ship To Phone", type text}, {"Ship To Address 1", type text}, {"Ship To Address 2", type text}, {"Ship To City", type text}, {"Ship To State", type text}, {"Ship To Zip", type text}, {"Ship To Country", type text}, {"Item Number", Int64.Type}, {"Item Title", type text}, {"Custom Label", type any}, {"Sold Via Promoted Listings", type text}, {"Quantity", Int64.Type}, {"Sold For", type number}, {"Shipping And Handling", Int64.Type}, {"Item Location", type text}, {"Item Zip Code", Int64.Type}, {"Item Country", type text}, {"eBay Collect And Remit Tax Rate", type number}, {"eBay Collect And Remit Tax Type", type text}, {"eBay Reference Name", type any}, {"eBay Reference Value", type any}, {"Tax Status", type any}, {"Seller Collected Tax", Int64.Type}, {"eBay Collected Tax", type number}, {"Electronic Waste Recycling Fee", Int64.Type}, {"Mattress Recycling Fee", Int64.Type}, {"Battery Recycling Fee", Int64.Type}, {"White Goods Disposal Tax", Int64.Type}, {"Tire Recycling Fee", Int64.Type}, {"Additional Fee", Int64.Type}, {"Lumber Fee", Int64.Type}, {"Prepaid Wireless Fee", Int64.Type}, {"Road Improvement And Food Delivery Fee", Int64.Type}, {"eBay Collected Charges", Int64.Type}, {"Total Price", type number}, {"eBay Collected Tax and Fees Included in Total", type text}, {"Payment Method", type any}, {"Sale Date", type date}, {"Paid On Date", type date}, {"Ship By Date", type date}, {"Minimum Estimated Delivery Date", type date}, {"Maximum Estimated Delivery Date", type date}, {"Shipped On Date", type date}, {"Feedback Left", type text}, {"Feedback Received", type text}, {"My Item Note", type any}, {"PayPal Transaction ID", type text}, {"Shipping Service", type text}, {"Tracking Number", type any}, {"Transaction ID", Int64.Type}, {"Variation Details", type any}, {"Global Shipping Program", type text}, {"Global Shipping Reference ID", type any}, {"Click And Collect", type text}, {"Click And Collect Reference Number", type any}, {"eBay Plus", type text}, {"Authenticity Verification Program", type text}, {"Authenticity Verification Status", type any}, {"Authenticity Verification Outcome Reason", type any}, {"PSA Vault Program", type text}, {"Vault Fulfillment Type", type any}, {"eBay Fulfillment Program", type text}, {"Tax City", type text}, {"Tax State", type text}, {"Tax Zip", type text}, {"Tax Country", type text}, {"eBay International Shipping", type text}}),
+				    #"Filled Down" = Table.FillDown(#"Changed Type",{"Buyer Name", "Buyer Address 1", "Buyer City", "Buyer State", "Buyer Zip", "Buyer Country", "Ship To Name", "Ship To Phone", "Ship To Address 1", "Ship To City", "Ship To State", "Ship To Zip", "Ship To Country"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Filled Down", each ([Item Title] <> null)),
+				    #"Merged Columns" = Table.CombineColumns(#"Filtered Rows",{"Ship To Address 1", "Ship To City", "Ship To State", "Ship To Zip"},Combiner.CombineTextByDelimiter(" ", QuoteStyle.None),"Complete Address")
+				in
+				    #"Merged Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

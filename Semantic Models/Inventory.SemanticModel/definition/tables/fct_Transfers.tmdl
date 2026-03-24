@@ -1,0 +1,46 @@
+table fct_Transfers
+	lineageTag: bb3ff421-096e-4a24-8cd8-e4e3e3700143
+
+	column PTTRFITM_QtySent
+		dataType: double
+		lineageTag: 37afc3d6-ffea-4f3d-8ac7-852ca23e3db3
+		summarizeBy: sum
+		sourceColumn: PTTRFITM_QtySent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTTRFITM_AmtCost
+		dataType: double
+		lineageTag: 45f57fd9-9b0a-4c80-ac4d-accb820567ea
+		summarizeBy: sum
+		sourceColumn: PTTRFITM_AmtCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTTRFITM_StatusDes
+		dataType: string
+		lineageTag: 35a58ab5-5cf3-4221-9809-7a80d9fc699f
+		summarizeBy: none
+		sourceColumn: PTTRFITM_StatusDes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_Transfers = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_fct_Transfers = EXCEDE{[Schema="dbo",Item="MT_TRANSFERS"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_fct_Transfers,{"PTTRFITM_QtySent", "PTTRFITM_AmtCost", "PTTRFITM_StatusDes"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

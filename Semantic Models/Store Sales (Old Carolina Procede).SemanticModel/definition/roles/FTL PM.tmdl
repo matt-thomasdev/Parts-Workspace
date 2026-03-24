@@ -1,0 +1,7 @@
+role 'FTL PM'
+	modelPermission: read
+
+	tablePermission 'Parts_Service Sales' = [BrnId] == "202"
+
+	annotation PBI_Id = 10395c4456af439db212b10519fd12d4
+

@@ -1,0 +1,53 @@
+table COEMP
+	lineageTag: 334b85da-921c-4c9f-b625-b63c5a8b6404
+
+	column EmpId
+		dataType: string
+		lineageTag: 645be3c1-0b5a-4b6d-9251-1d134fac7727
+		summarizeBy: none
+		sourceColumn: EmpId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 6d6eef6a-1ba6-40bf-ab84-d7a5d99550f5
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inactive
+		dataType: int64
+		formatString: 0
+		lineageTag: e15d54c2-b2dd-4bcc-9cd6-a0341941e52a
+		summarizeBy: none
+		sourceColumn: Inactive
+
+		annotation SummarizationSetBy = Automatic
+
+	column BrnId
+		dataType: string
+		lineageTag: ba63c8ef-eb54-4efc-8977-7c2ac8ea1a00
+		summarizeBy: none
+		sourceColumn: BrnId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition COEMP = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_COEMP = EXCEDE{[Schema="dbo",Item="COEMP"]}[Data],
+				    #"Capitalized Each Word" = Table.TransformColumns(dbo_COEMP,{{"Name", Text.Proper, type text}, {"NameFirst", Text.Proper, type text}, {"NameLast", Text.Proper, type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Capitalized Each Word",{"NameNick", "Addr1", "Addr2", "City", "County", "State", "Post", "Country", "Phone1", "Phone2", "Ssn", "TelId", "Hierarchy", "Password", "IncShopFloor", "AmtCostHrsShopReg", "AmtCostHrsShopOvr", "AmtCostHrsShopDbl", "AmtCostHrsRoadReg", "AmtCostHrsRoadOvr", "AmtCostHrsRoadDbl", "DsbTypId", "MemTypId", "RecTypId", "EmpMisc2", "EmpMisc3", "EmpMisc4", "EmpMisc5"}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Removed Columns", {"EmpId", "Name", "BrnId", "Inactive"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

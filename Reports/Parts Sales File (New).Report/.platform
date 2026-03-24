@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Parts Sales File (New)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "08759137-ccf4-892b-4dd2-56349507b633"
+  }
+}

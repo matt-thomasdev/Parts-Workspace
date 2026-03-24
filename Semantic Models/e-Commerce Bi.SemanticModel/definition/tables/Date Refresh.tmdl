@@ -1,0 +1,31 @@
+table 'Date Refresh'
+	lineageTag: 5f053fe2-d935-4169-94c7-c99bc7e57874
+
+	column 'Date Refresh'
+		dataType: string
+		lineageTag: 431c917f-ed8e-4b16-87a7-cc5d1baca5e3
+		summarizeBy: none
+		sourceColumn: Date Refresh
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DataRefresh AdjustedDateTime' = "Last Refresh - " & FORMAT('Date Refresh'[Date Refresh] - TIME(4, 0, 0), "General Date")
+		lineageTag: 8e88e04f-9821-4cd9-b9ec-8d270ff8cff8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Date Refresh' = m
+		mode: import
+		source =
+				let
+				    Source = DateTime.LocalNow(),
+				    Custom1 = #table(1, {{Source}}),
+				    #"Renamed Columns" = Table.RenameColumns(Custom1,{{"Column1", "Date Refresh"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

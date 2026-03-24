@@ -1,0 +1,22 @@
+relationship 77538246-5347-4e12-be1d-24c4bc6e10d6
+	fromColumn: 'Parts_Service Sales'.ClaId
+	toColumn: PTCLA.ClaId
+
+relationship 615c9de3-1fd0-c83e-568c-6a3c5babc59a
+	fromColumn: 'Parts_Service Sales'.DateInvoice
+	toColumn: Date.Date
+
+relationship 392ea076-523a-9e38-8acd-2311a7d3713b
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Date.Date
+	toColumn: 'Working Days'.Date
+
+relationship AutoDetected_e0afe64f-51b9-48ce-a7f8-e4837a81f545
+	fromColumn: 'Parts_Service Sales'.CusId
+	toColumn: dim_COCUS_CusId.CusId
+
+relationship 5361ebbd-50a1-f08b-69cd-d3e70e9ee256
+	fromColumn: 'Parts_Service Sales'.BillCusId
+	toColumn: dim_COCUS_BillCusId.BillCusId
+

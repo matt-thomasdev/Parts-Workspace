@@ -1,0 +1,7 @@
+role 'FLO/CON PM'
+	modelPermission: read
+
+	tablePermission 'Parts_Service Sales' = [BrnId] == "103" || [BrnId] == "104" || [BrnId] == "503"
+
+	annotation PBI_Id = 671e16c0012f4ebba591b19fa929b9ee
+

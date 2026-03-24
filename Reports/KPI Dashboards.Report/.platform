@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "KPI Dashboards"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1287abb3-2f79-b39f-4cbd-874c3e6e4eef"
+  }
+}

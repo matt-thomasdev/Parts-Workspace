@@ -1,0 +1,59 @@
+table MT_ACMCA
+	lineageTag: 51b4c8b7-8c3c-4ff6-a7b1-76112291c474
+
+	column McaId
+		dataType: string
+		lineageTag: 01376b7b-e2f1-40f6-a56c-4646364b0e8c
+		summarizeBy: none
+		sourceColumn: McaId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Des
+		dataType: string
+		lineageTag: e0908551-8faf-40b7-9217-694bad0e9828
+		summarizeBy: none
+		sourceColumn: Des
+
+		annotation SummarizationSetBy = Automatic
+
+	column BrnId
+		dataType: string
+		lineageTag: 0d4d2b19-64dd-484e-824f-a35a1babe7a8
+		summarizeBy: none
+		sourceColumn: BrnId
+
+		annotation SummarizationSetBy = Automatic
+
+	column MiniCategory
+		dataType: string
+		lineageTag: f797f496-8c37-4c12-8267-65236d810585
+		summarizeBy: none
+		sourceColumn: MiniCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column Division
+		dataType: string
+		lineageTag: 4ee3a888-15e0-4d20-b81d-47bda8119626
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MT_ACMCA = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_MT_ACMCA = EXCEDE{[Schema="dbo",Item="MT_ACMCA"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(dbo_MT_ACMCA, each ([Profit] = "PARTS DEPARTMENT")),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows",{"McaId", "Des", "BrnId", "MiniCategory", "Division"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

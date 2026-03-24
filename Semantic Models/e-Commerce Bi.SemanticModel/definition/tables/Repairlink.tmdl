@@ -1,0 +1,643 @@
+table Repairlink
+	lineageTag: 7b3d4392-ac61-4334-a823-33c2dd9cc90d
+
+	column 'Order Complete Date - Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3a03b28b-b0bc-4a9c-8747-40b51a1dabbb
+		summarizeBy: sum
+		sourceColumn: Order Complete Date - Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Complete Date - Month'
+		dataType: string
+		lineageTag: aefb2390-79f2-4b22-8fb2-8af5cc058cad
+		summarizeBy: none
+		sourceColumn: Order Complete Date - Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column transactionid
+		dataType: string
+		lineageTag: fdc0cedd-a430-45a9-9626-099b8c60c353
+		summarizeBy: none
+		sourceColumn: transactionid
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Actual Sales'
+		dataType: double
+		lineageTag: 46fe890a-1bc6-4f60-b887-13c473ee73e9
+		summarizeBy: sum
+		sourceColumn: Actual Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column invoicenumber
+		dataType: string
+		lineageTag: b5c62ecc-b8ac-443f-9309-4b98e91cbc7e
+		summarizeBy: none
+		sourceColumn: invoicenumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column oem
+		dataType: string
+		lineageTag: a9f1a16c-89e0-47cc-9264-7acf13675042
+		summarizeBy: none
+		sourceColumn: oem
+
+		annotation SummarizationSetBy = Automatic
+
+	column dealercode
+		dataType: string
+		lineageTag: f2d594dd-cb4f-47d6-95ff-2a94e933276f
+		summarizeBy: none
+		sourceColumn: dealercode
+
+		annotation SummarizationSetBy = Automatic
+
+	column dealeroecid
+		dataType: string
+		lineageTag: 08060e3d-0763-47f1-91c9-b725b6ac37f2
+		summarizeBy: none
+		sourceColumn: dealeroecid
+
+		annotation SummarizationSetBy = Automatic
+
+	column dealername
+		dataType: string
+		lineageTag: 33cab0ac-54bc-4556-b8ca-28e971e8e7b8
+		summarizeBy: none
+		sourceColumn: dealername
+
+		annotation SummarizationSetBy = Automatic
+
+	column dealerstate
+		dataType: string
+		lineageTag: 6de9528e-2598-42ee-adf5-13a3f193bc0a
+		summarizeBy: none
+		sourceColumn: dealerstate
+
+		annotation SummarizationSetBy = Automatic
+
+	column dealercountry
+		dataType: string
+		lineageTag: 34657145-c33a-4d62-82bb-6cbbbacd0f6d
+		summarizeBy: none
+		sourceColumn: dealercountry
+
+		annotation SummarizationSetBy = Automatic
+
+	column shopoecid
+		dataType: string
+		lineageTag: 7045f90f-34ad-4db4-b0e8-5e35d15a18ee
+		summarizeBy: none
+		sourceColumn: shopoecid
+
+		annotation SummarizationSetBy = Automatic
+
+	column shopname
+		dataType: string
+		lineageTag: 71049874-d664-4552-a522-c0cebdc85dab
+		summarizeBy: none
+		sourceColumn: shopname
+
+		annotation SummarizationSetBy = Automatic
+
+	column shopaddress
+		dataType: string
+		lineageTag: c06df2ac-c088-4b93-ae73-f1dbf800373f
+		summarizeBy: none
+		sourceColumn: shopaddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column shopzipcode
+		dataType: string
+		lineageTag: b0b49ede-0e35-4562-909e-0c621a07ca65
+		summarizeBy: none
+		sourceColumn: shopzipcode
+
+		annotation SummarizationSetBy = Automatic
+
+	column storeid
+		dataType: string
+		lineageTag: 4f0ee403-5fb1-426a-a571-d4fb366b9e83
+		summarizeBy: none
+		sourceColumn: storeid
+
+		annotation SummarizationSetBy = Automatic
+
+	column groupname
+		dataType: string
+		lineageTag: 74a3011f-145a-4912-83de-3ac593461a8b
+		summarizeBy: none
+		sourceColumn: groupname
+
+		annotation SummarizationSetBy = Automatic
+
+	column partnumber
+		dataType: string
+		lineageTag: fbd44c13-0d88-4952-b89c-480a967891be
+		summarizeBy: none
+		sourceColumn: partnumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column partdescription
+		dataType: string
+		lineageTag: 468b3282-112e-4de3-b220-585545a2ce27
+		summarizeBy: none
+		sourceColumn: partdescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column partcategory
+		dataType: string
+		lineageTag: a952f7a3-3af0-48de-9af0-298ca4a7e605
+		summarizeBy: none
+		sourceColumn: partcategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column partsubcategory
+		dataType: string
+		lineageTag: 82f0f3eb-430e-41c1-a665-975ffcd64f82
+		summarizeBy: none
+		sourceColumn: partsubcategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column orderresponsedate
+		dataType: string
+		lineageTag: 6129af6c-6abf-4257-aba9-bb14ef04cab3
+		summarizeBy: none
+		sourceColumn: orderresponsedate
+
+		annotation SummarizationSetBy = Automatic
+
+	column ordercompletedate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8f79c46c-8b04-4703-87c5-c07fecbf9672
+		summarizeBy: none
+		sourceColumn: ordercompletedate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ordersubmitdate1
+		dataType: string
+		lineageTag: 6049eb30-57e0-4bb2-9fa5-d0cc405e9c9f
+		summarizeBy: none
+		sourceColumn: ordersubmitdate1
+
+		annotation SummarizationSetBy = Automatic
+
+	column programname
+		dataType: string
+		lineageTag: 13a99bbc-ea16-43c7-b94f-dfedfb4eb78f
+		summarizeBy: none
+		sourceColumn: programname
+
+		annotation SummarizationSetBy = Automatic
+
+	column dealername__oec_trans_prod_
+		dataType: string
+		lineageTag: 97a4820c-cdbb-47e9-a940-749451243b0f
+		summarizeBy: none
+		sourceColumn: dealername__oec_trans_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column dealerstate__oec_trans_prod_
+		dataType: string
+		lineageTag: d322f7af-70c5-4563-8913-0320bf668ab6
+		summarizeBy: none
+		sourceColumn: dealerstate__oec_trans_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column dealercountry__oec_trans_prod_
+		dataType: string
+		lineageTag: 22eed7e9-27e2-4691-be7e-92025921da80
+		summarizeBy: none
+		sourceColumn: dealercountry__oec_trans_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column dealeroecid__oec_trans_prod_
+		dataType: string
+		lineageTag: 33677a8d-2c5e-453d-813f-34f5be754d5f
+		summarizeBy: none
+		sourceColumn: dealeroecid__oec_trans_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column dealer_code
+		dataType: string
+		lineageTag: a8d60712-cc97-41e1-835d-4d3c6cb74660
+		summarizeBy: none
+		sourceColumn: dealer_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column oem__oec_trans_prod_
+		dataType: string
+		lineageTag: 3a36875d-51ba-4012-8bb7-3400becf2be1
+		summarizeBy: none
+		sourceColumn: oem__oec_trans_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column shopname__oec_trans_prod_
+		dataType: string
+		lineageTag: 25b9719f-97bc-4f33-837b-a90fa4b53f0a
+		summarizeBy: none
+		sourceColumn: shopname__oec_trans_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column shopoecid__oec_trans_prod_
+		dataType: string
+		lineageTag: deecd497-3c99-4f1e-a592-7a4acb7372a9
+		summarizeBy: none
+		sourceColumn: shopoecid__oec_trans_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column shopstate
+		dataType: string
+		lineageTag: 1a195d79-29ba-4318-a898-4c435fb22676
+		summarizeBy: none
+		sourceColumn: shopstate
+
+		annotation SummarizationSetBy = Automatic
+
+	column shopzipcode__oec_trans_prod_
+		dataType: string
+		lineageTag: f2c0bc66-8e53-42fe-acb2-4c32aa14ce5d
+		summarizeBy: none
+		sourceColumn: shopzipcode__oec_trans_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column shopcountry
+		dataType: string
+		lineageTag: 3660322d-8a20-4cab-a32d-f303ff3690e6
+		summarizeBy: none
+		sourceColumn: shopcountry
+
+		annotation SummarizationSetBy = Automatic
+
+	column storeid__oec_trans_prod_
+		dataType: string
+		lineageTag: 1b9fcdb8-c743-4420-9548-db15cdd98128
+		summarizeBy: none
+		sourceColumn: storeid__oec_trans_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column groupname__oec_trans_prod_
+		dataType: string
+		lineageTag: 435c19dd-031b-45a3-8b1e-54d431a5978e
+		summarizeBy: none
+		sourceColumn: groupname__oec_trans_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column transactionid__oec_trans_prod_
+		dataType: string
+		lineageTag: 5eb4b8c1-6821-439c-afe6-8cf26e623a49
+		summarizeBy: none
+		sourceColumn: transactionid__oec_trans_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column transactionsource
+		dataType: string
+		lineageTag: faf9cc54-9e07-4ceb-8f56-74d9ceace80e
+		summarizeBy: none
+		sourceColumn: transactionsource
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Transaction Status'
+		dataType: string
+		lineageTag: ab28bbbd-2fae-4972-9066-e01f593b1ae8
+		summarizeBy: none
+		sourceColumn: Transaction Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column orderreceivedate__oec_trans_prod_
+		dataType: string
+		lineageTag: 4123b8fb-76f1-4662-ad2d-68ffe61e1e62
+		summarizeBy: none
+		sourceColumn: orderreceivedate__oec_trans_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column dateofresponsetobuyer
+		dataType: string
+		lineageTag: 203ae1f0-6a66-4163-ae80-4abf0f10f4af
+		summarizeBy: none
+		sourceColumn: dateofresponsetobuyer
+
+		annotation SummarizationSetBy = Automatic
+
+	column ordercompleteddate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4263ab32-d487-4a9e-a7d2-6994ac4a01d5
+		summarizeBy: none
+		sourceColumn: ordercompleteddate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ordersubmitteddate
+		dataType: string
+		lineageTag: aee8db43-fa74-4b0d-b3c6-b16bb05c9d93
+		summarizeBy: none
+		sourceColumn: ordersubmitteddate
+
+		annotation SummarizationSetBy = Automatic
+
+	column orderreturneddate
+		dataType: string
+		lineageTag: b7f3d5f6-2a42-42b0-afb7-d0756431169c
+		summarizeBy: none
+		sourceColumn: orderreturneddate
+
+		annotation SummarizationSetBy = Automatic
+
+	column vin
+		dataType: string
+		lineageTag: 2aa28040-2621-480f-bc5d-2011e436d125
+		summarizeBy: none
+		sourceColumn: vin
+
+		annotation SummarizationSetBy = Automatic
+
+	column vehicleyear
+		dataType: string
+		lineageTag: 1572c1b3-feb1-4d61-a726-af95298fcdb8
+		summarizeBy: none
+		sourceColumn: vehicleyear
+
+		annotation SummarizationSetBy = Automatic
+
+	column make
+		dataType: string
+		lineageTag: 41f5d865-2d44-48f9-8933-7aa093631d8d
+		summarizeBy: none
+		sourceColumn: make
+
+		annotation SummarizationSetBy = Automatic
+
+	column model
+		dataType: string
+		lineageTag: adb9cc20-4a6b-443b-b502-ba40d99cc914
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = Automatic
+
+	column dealershopprofilestatus
+		dataType: string
+		lineageTag: 3afd1289-f6e4-4bd9-9d1b-732c2eb83115
+		summarizeBy: none
+		sourceColumn: dealershopprofilestatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column credit_card_processor
+		dataType: string
+		lineageTag: 5ac99045-9915-4784-90e4-8ffe1a54acc3
+		summarizeBy: none
+		sourceColumn: credit_card_processor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Director
+		dataType: string
+		lineageTag: 5b13ba65-ab81-47c4-aa69-e79cdafda957
+		summarizeBy: none
+		sourceColumn: Director
+
+		annotation SummarizationSetBy = Automatic
+
+	column PSM
+		dataType: string
+		lineageTag: 4ebcd8d8-11a4-4179-921c-fdd721ffbdf3
+		summarizeBy: none
+		sourceColumn: PSM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Group Code'
+		dataType: string
+		lineageTag: 4fe53ec4-c158-4454-86be-8abc475c202a
+		summarizeBy: none
+		sourceColumn: Group Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column partcustlocno
+		dataType: string
+		lineageTag: a975c523-26d1-4584-a39b-16843d921f1a
+		summarizeBy: none
+		sourceColumn: partcustlocno
+
+		annotation SummarizationSetBy = Automatic
+
+	column account_no
+		dataType: string
+		lineageTag: 7d1a05d3-d736-4544-8d0e-2e65d965c8c8
+		summarizeBy: none
+		sourceColumn: account_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column accountname
+		dataType: string
+		lineageTag: 5188114c-2bd6-44a0-a9fc-25f077798660
+		summarizeBy: none
+		sourceColumn: accountname
+
+		annotation SummarizationSetBy = Automatic
+
+	column shiptoname
+		dataType: string
+		lineageTag: dd0c4144-3f21-48c9-b628-5d29f19917a9
+		summarizeBy: none
+		sourceColumn: shiptoname
+
+		annotation SummarizationSetBy = Automatic
+
+	column dealercode__oec_dealer_prod_
+		dataType: string
+		lineageTag: 44b0a1a8-7b69-411f-a462-c219362a0424
+		summarizeBy: none
+		sourceColumn: dealercode__oec_dealer_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column oeccompanyid
+		dataType: string
+		lineageTag: ddb51e8c-8925-44b4-93e3-4586ae51ac42
+		summarizeBy: none
+		sourceColumn: oeccompanyid
+
+		annotation SummarizationSetBy = Automatic
+
+	column oemoecid
+		dataType: string
+		lineageTag: a769ccde-0b95-4928-bad7-bd6a5bee5304
+		summarizeBy: none
+		sourceColumn: oemoecid
+
+		annotation SummarizationSetBy = Automatic
+
+	column dealername__oec_dealer_prod_
+		dataType: string
+		lineageTag: df571e20-6389-48c9-ae0d-6561d19d8464
+		summarizeBy: none
+		sourceColumn: dealername__oec_dealer_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column dealerstate__oec_dealer_prod_
+		dataType: string
+		lineageTag: 35e2579d-dfd5-4ebf-8343-b4050d0d015c
+		summarizeBy: none
+		sourceColumn: dealerstate__oec_dealer_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column dealercountry__oec_dealer_prod_
+		dataType: string
+		lineageTag: a9119bca-e4d9-4533-9c3f-e86c55632f19
+		summarizeBy: none
+		sourceColumn: dealercountry__oec_dealer_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column oem__oec_dealer_prod_
+		dataType: string
+		lineageTag: d0a44e6e-deb0-4b64-806d-b4c8cac87b89
+		summarizeBy: none
+		sourceColumn: oem__oec_dealer_prod_
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'New TIDs'
+		dataType: string
+		lineageTag: 0aadb13e-5625-467f-b7c1-22421385ce67
+		summarizeBy: none
+		sourceColumn: New TIDs
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opened TIDs'
+		dataType: string
+		lineageTag: 53a14e57-f032-4f31-bafb-f7f8c4038366
+		summarizeBy: none
+		sourceColumn: Opened TIDs
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Avg Dealer Response Time'
+		dataType: string
+		lineageTag: 3faed710-0ab3-49d1-b228-8c2942201b9f
+		summarizeBy: none
+		sourceColumn: Avg Dealer Response Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Working on TIDs'
+		dataType: string
+		lineageTag: f9075c93-2404-45f7-ad42-e702124e53ea
+		summarizeBy: none
+		sourceColumn: Working on TIDs
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Responded to Buyer TIDs'
+		dataType: string
+		lineageTag: 26604b82-90a2-4390-8ace-c47440f9c325
+		summarizeBy: none
+		sourceColumn: Responded to Buyer TIDs
+
+		annotation SummarizationSetBy = Automatic
+
+	column fleetchargeacctnbr
+		dataType: string
+		lineageTag: 6a64f6f3-86ec-4725-8265-27b2db51f524
+		summarizeBy: none
+		sourceColumn: fleetchargeacctnbr
+
+		annotation SummarizationSetBy = Automatic
+
+	column dmsacctnbr
+		dataType: string
+		lineageTag: c0a19db7-1b90-4922-9a02-fb85562f9b00
+		summarizeBy: none
+		sourceColumn: dmsacctnbr
+
+		annotation SummarizationSetBy = Automatic
+
+	column shopcontactname
+		dataType: string
+		lineageTag: af7850fb-d430-4674-8ea0-7a7717712cb8
+		summarizeBy: none
+		sourceColumn: shopcontactname
+
+		annotation SummarizationSetBy = Automatic
+
+	column backordered
+		dataType: string
+		lineageTag: a1cfffca-71ca-491b-b1bd-ce75539b93ac
+		summarizeBy: none
+		sourceColumn: backordered
+
+		annotation SummarizationSetBy = Automatic
+
+	column po_oec_part
+		dataType: string
+		lineageTag: b99ced67-8288-44f4-8db2-be868da9d675
+		summarizeBy: none
+		sourceColumn: po_oec_part
+
+		annotation SummarizationSetBy = Automatic
+
+	column po_oec_trans
+		dataType: string
+		lineageTag: cddfcb5e-82d3-4efe-891c-0fb1c78d1fe2
+		summarizeBy: none
+		sourceColumn: po_oec_trans
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Repairlink = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(Web.Contents("https://bepensa.sharepoint.com/sites/BM-UR-ANALYTICS/Documentos%20compartidos/e-Commerce%20Bi/Repairlink%20Sales.xlsx"), null, true),
+				    Repairlink_Sheet = Source{[Item="Repairlink",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Repairlink_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers", {{"Order Complete Date - Year", Int64.Type}, {"Order Complete Date - Month", type text}, {"Actual Sales", type number}, {"ordercompleteddate", type date}, {"ordercompletedate", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,54 @@
+table OPS
+	lineageTag: 60cda784-3e46-4859-8540-be8d797d6f9a
+
+	column OPS
+		lineageTag: 8cbacb1b-97f3-47f6-a7fd-09032abb241d
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'OPS Order'
+
+		relatedColumnDetails
+			groupByColumn: 'OPS Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'OPS Fields'
+		isHidden
+		lineageTag: 486a5c71-8913-44a7-8bc6-3137cf950923
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'OPS Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'OPS Order'
+		isHidden
+		formatString: 0
+		lineageTag: 765f16f9-9ec6-4f2d-ae2d-de4ac750f193
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition OPS = calculated
+		mode: import
+		source =
+				{
+				    ("AssignedName", NAMEOF(MT_COCUSCRM[COCUS_Name]), 0),
+				    ("AssignedID", NAMEOF(MT_COCUSCRM[CusId]), 1),
+				    ("Class ID Des", NAMEOF('PTCLA'[Des]), 2),
+				    ("Source", NAMEOF('Parts_Service Sales'[SrcId]), 3),
+				    ("Part Number", NAMEOF('Parts_Service Sales'[PtItm]), 4),
+				    ("Origin", NAMEOF('Parts_Service Sales'[Origin]), 5),
+				    ("CusName", NAMEOF(dim_COCUS_CusId[Name]), 6),
+				    ("CusId", NAMEOF(dim_COCUS_CusId[CusId]), 7)
+				}
+
+	annotation PBI_Id = 5e8b2ef9e47749e9bba4cd9eccfdf961
+

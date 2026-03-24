@@ -1,0 +1,1313 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "53823533e885774c6827",
+  "position": {
+    "x": 0,
+    "y": 227.43160511254661,
+    "z": 0,
+    "height": 773.03177696285275,
+    "width": 2376.8370337409665,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_Inventory"
+                    }
+                  },
+                  "Property": "SrcId"
+                }
+              },
+              "queryRef": "fct_Inventory.SrcId",
+              "nativeQueryRef": "SrcId"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_Inventory"
+                    }
+                  },
+                  "Property": "ClaId"
+                }
+              },
+              "queryRef": "fct_Inventory.ClaId",
+              "nativeQueryRef": "ClaId"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_Inventory"
+                    }
+                  },
+                  "Property": "VenPrtId"
+                }
+              },
+              "queryRef": "fct_Inventory.VenPrtId",
+              "nativeQueryRef": "Part Number",
+              "displayName": "Part Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_Inventory"
+                    }
+                  },
+                  "Property": "Des"
+                }
+              },
+              "queryRef": "fct_Inventory.Des",
+              "nativeQueryRef": "Des"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_Inventory"
+                    }
+                  },
+                  "Property": "BinId1"
+                }
+              },
+              "queryRef": "fct_Inventory.BinId1",
+              "nativeQueryRef": "BinId1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_Inventory"
+                    }
+                  },
+                  "Property": "AmtCostAvg"
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.AmtCostAvg)",
+              "nativeQueryRef": "AmtCostAvg",
+              "displayName": "CostAvg"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_Inventory"
+                    }
+                  },
+                  "Property": "AmtCostSrc"
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.AmtCostSrc)",
+              "nativeQueryRef": "AmtCostSrc",
+              "displayName": "CostSrc"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_Inventory"
+                    }
+                  },
+                  "Property": "QtyOH"
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.QtyOH)",
+              "nativeQueryRef": "QtyOH1",
+              "displayName": "QtyOH"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "msr_Measures"
+                    }
+                  },
+                  "Property": "Total Avg Cost"
+                }
+              },
+              "queryRef": "msr_Measures.Total Avg Cost",
+              "nativeQueryRef": "Total Avg Cost"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "YTD_Sales_Current_YR"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.YTD_Sales_Current_YR)",
+              "nativeQueryRef": "YTD",
+              "displayName": "YTD"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "LTM_Sales"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.LTM_Sales)",
+              "nativeQueryRef": "YRSL",
+              "displayName": "YRSL"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_Inventory"
+                    }
+                  },
+                  "Property": "QtyOO"
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.QtyOO)",
+              "nativeQueryRef": "QtyOO1",
+              "displayName": "QtyOO"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_Inventory"
+                    }
+                  },
+                  "Property": "QtyOT"
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.QtyOT)",
+              "nativeQueryRef": "QtyOT1",
+              "displayName": "QtyOT"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "AmtPrice4"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.AmtPrice4)",
+              "nativeQueryRef": "Natioanl Fleet",
+              "displayName": "Natioanl Fleet"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_Inventory"
+                    }
+                  },
+                  "Property": "Months No Receipt"
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.Months No Receipt)",
+              "nativeQueryRef": "Months No Receipt",
+              "displayName": "MNR"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_Inventory"
+                    }
+                  },
+                  "Property": "Months No Sale"
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.Months No Sale)",
+              "nativeQueryRef": "Months No Sale",
+              "displayName": "MNS"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "OrderPkgMul"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.OrderPkgMul)",
+              "nativeQueryRef": "Pkg Qty",
+              "displayName": "Pkg Qty"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_Location"
+                    }
+                  },
+                  "Property": "Locaiton"
+                }
+              },
+              "queryRef": "dim_Location.Locaiton",
+              "nativeQueryRef": "Locaiton"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "msr_Measures"
+                    }
+                  },
+                  "Property": "Month Supply"
+                }
+              },
+              "queryRef": "msr_Measures.Month Supply",
+              "nativeQueryRef": "Month Supply"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "Jan_Sales_Current_YR"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.Jan_Sales_Current_YR)",
+              "nativeQueryRef": "Jan",
+              "displayName": "Jan"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "Feb_Sales_Current_YR"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.Feb_Sales_Current_YR)",
+              "nativeQueryRef": "Feb",
+              "displayName": "Feb"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "Mar_Sales_Current_YR"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.Mar_Sales_Current_YR)",
+              "nativeQueryRef": "Mar",
+              "displayName": "Mar"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "Apr_Sales_Current_YR"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.Apr_Sales_Current_YR)",
+              "nativeQueryRef": "Apr",
+              "displayName": "Apr"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "May_Sales_Current_YR"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.May_Sales_Current_YR)",
+              "nativeQueryRef": "May",
+              "displayName": "May"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "Jun_Sales_Current_YR"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.Jun_Sales_Current_YR)",
+              "nativeQueryRef": "Jun",
+              "displayName": "Jun"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "Jul_Sales_Current_YR"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.Jul_Sales_Current_YR)",
+              "nativeQueryRef": "Jul",
+              "displayName": "Jul"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "Aug_Sales_Current_YR"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.Aug_Sales_Current_YR)",
+              "nativeQueryRef": "Aug",
+              "displayName": "Aug"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "Sep_Sales_Current_YR"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.Sep_Sales_Current_YR)",
+              "nativeQueryRef": "Sep",
+              "displayName": "Sep"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "Oct_Sales_Current_YR"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.Oct_Sales_Current_YR)",
+              "nativeQueryRef": "Oct",
+              "displayName": "Oct"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "Nov_Sales_Current_YR"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.Nov_Sales_Current_YR)",
+              "nativeQueryRef": "Nov",
+              "displayName": "Nov"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "Dec_Sales_Current_YR"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.Dec_Sales_Current_YR)",
+              "nativeQueryRef": "Dec",
+              "displayName": "Dec"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#666666'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E66C37'"
+                    }
+                  }
+                }
+              }
+            },
+            "gridHorizontal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "116.5294545322139D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Actual New ACMCA"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "112.15543010959729D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.AmtBud New"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "106.85150042258786D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.YTD Actual ACMCA"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "107.06033065785378D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.YTD Budget"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "99.9607756726949D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.PY Actual"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "91.30393459577282D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.YTD PY Actual"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "179.72723016252405D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MT_ACJEITM_TRUCK.Xref"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "100.99999520487103D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "total": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MT_ACJEITM"
+                        }
+                      },
+                      "Property": "Age Bucket Warranty"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "102.81817658713203D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Warranty"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'1-29 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "99.0909090909091D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Warranty"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'30-60 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "99.54545454545455D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Warranty"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'61-90 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "100.27271803511024D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Warranty"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'91-120 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "123.18181818181819D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Warranty"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Over 120 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "100D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Xref"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'1-29 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "139D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Xref"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'30-60 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "118D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Xref"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'61-90 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "128D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Xref"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'91-120 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "122D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Xref"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Over 120 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "148D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "total": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MT_ACJEITM"
+                        }
+                      },
+                      "Property": "Age Bucket Xref"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "72.37500627535897D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.AmtDb-AmtCr"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "section": {
+              "expr": {
+                "Literal": {
+                  "Value": "'43b836019090e5c734c3'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Sparse'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

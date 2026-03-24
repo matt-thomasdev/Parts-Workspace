@@ -1,0 +1,1373 @@
+table Measure
+	lineageTag: 064ba9a4-cf18-43e6-9551-8cc9e4241415
+
+	measure 'Total Cost (Inv)' = SUMX(USER_INVENTORYSNAPSHOT,(USER_INVENTORYSNAPSHOT[AmtCostAvg]*USER_INVENTORYSNAPSHOT[QtyOH])+(USER_INVENTORYSNAPSHOT[CleanCoreCost]*USER_INVENTORYSNAPSHOT[CleanCoreQty]))
+		lineageTag: 873d8d65-c7f1-4737-a217-92442ddf4d45
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Qty (Inv)' = SUMX(USER_INVENTORYSNAPSHOT,USER_INVENTORYSNAPSHOT[QtyOH])
+		lineageTag: 1d2ad076-c9f8-49e5-88b6-8507c9f76503
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YTD Total Cost (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Inv)],
+			        DATESYTD ( 'Date'[Date] )
+			    )
+			)
+		displayFolder: Time intelligence\To-date total\Total Cost (SnapShot)
+		lineageTag: 8f2539b2-957a-495d-8cd1-355930130890
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTD Total Cost (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Inv)],
+			        DATESQTD ( 'Date'[Date] )
+			    )
+			)
+		displayFolder: Time intelligence\To-date total\Total Cost (SnapShot)
+		lineageTag: f15ee2b9-8c10-4d4b-bfd5-0b85eb0328b3
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTD Total Cost (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Inv)],
+			        DATESMTD ( 'Date'[Date] )
+			    )
+			)
+		displayFolder: Time intelligence\To-date total\Total Cost (SnapShot)
+		lineageTag: 4c19bfa0-f76c-41b3-b194-1e9f48e9c940
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PY Total Cost (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Inv)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\Growth\Total Cost (SnapShot)
+		lineageTag: 873486d5-b80f-486a-822f-a2f19414cb6d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY Total Cost (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [Total Cost (Inv)]
+			VAR __ValuePreviousPeriod = [PY Total Cost (SnapShot)]
+			VAR __Result =
+			    IF (
+			        ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        0 - __ValuePreviousPeriod,  // Lost customers (negative change)
+			        IF (
+			            NOT ISBLANK ( __ValueCurrentPeriod ) && ISBLANK ( __ValuePreviousPeriod ),
+			            __ValueCurrentPeriod,  // New customers (positive change)
+			            IF (
+			                NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			                __ValueCurrentPeriod - __ValuePreviousPeriod,  // Both periods (difference)
+			                BLANK()  // Both blank
+			            )
+			        )
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth\Total Cost (SnapShot)
+		lineageTag: 47ad2eda-7a9f-40e3-ac38-dee699adbd71
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YOY % Total Cost (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [YOY Total Cost (SnapShot)],
+			    [PY Total Cost (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth\Total Cost (SnapShot)
+		lineageTag: ba76e40c-75a5-43da-995f-7f60bb948f8c
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQ Total Cost (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Inv)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\Growth\Total Cost (SnapShot)
+		lineageTag: 02116304-409e-40b7-adf5-a771db96f041
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ Total Cost (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [Total Cost (Inv)]
+			VAR __ValuePreviousPeriod = [PQ Total Cost (SnapShot)]
+			VAR __Result =
+			    IF (
+			        ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        0 - __ValuePreviousPeriod,  // Lost customers (negative change)
+			        IF (
+			            NOT ISBLANK ( __ValueCurrentPeriod ) && ISBLANK ( __ValuePreviousPeriod ),
+			            __ValueCurrentPeriod,  // New customers (positive change)
+			            IF (
+			                NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			                __ValueCurrentPeriod - __ValuePreviousPeriod,  // Both periods (difference)
+			                BLANK()  // Both blank
+			            )
+			        )
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth\Total Cost (SnapShot)
+		lineageTag: 2f7cab4b-9f66-4304-8c63-c57454d54c4c
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'QOQ % Total Cost (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [QOQ Total Cost (SnapShot)],
+			    [PQ Total Cost (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth\Total Cost (SnapShot)
+		lineageTag: 4a5cde24-053e-412b-be97-c0010213090f
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PM Total Cost (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Inv)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\Growth\Total Cost (SnapShot)
+		lineageTag: 43d89afd-b68c-484a-afb2-592048a25da4
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM Total Cost (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [Total Cost (Inv)]
+			VAR __ValuePreviousPeriod = [PM Total Cost (SnapShot)]
+			VAR __Result =
+			    IF (
+			        ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        0 - __ValuePreviousPeriod,  // Lost customers (negative change)
+			        IF (
+			            NOT ISBLANK ( __ValueCurrentPeriod ) && ISBLANK ( __ValuePreviousPeriod ),
+			            __ValueCurrentPeriod,  // New customers (positive change)
+			            IF (
+			                NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			                __ValueCurrentPeriod - __ValuePreviousPeriod,  // Both periods (difference)
+			                BLANK()  // Both blank
+			            )
+			        )
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth\Total Cost (SnapShot)
+		lineageTag: 7c96b378-68d0-49f4-a7b9-3b09f9b8164e
+
+		formatStringDefinition = "#,##0.00;(#,##0.00)"
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM % Total Cost (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [MOM Total Cost (SnapShot)],
+			    [PM Total Cost (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth\Total Cost (SnapShot)
+		lineageTag: 29aca881-dbea-4b4e-96ca-d30d61d9f493
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYTD Total Cost (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [YTD Total Cost (SnapShot)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\To-date growth\Total Cost (SnapShot)
+		lineageTag: 429fdfd5-eb1b-4328-a490-9973db9fc71f
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD Total Cost (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [YTD Total Cost (SnapShot)]
+			VAR __ValuePreviousPeriod = [PYTD Total Cost (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\To-date growth\Total Cost (SnapShot)
+		lineageTag: a6112367-5f7a-455e-82fa-37214d0e2a9d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD % Total Cost (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [YOYTD Total Cost (SnapShot)],
+			    [PYTD Total Cost (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\To-date growth\Total Cost (SnapShot)
+		lineageTag: aa1398d3-1fe3-466d-8d87-3ae94ee47a98
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQTD Total Cost (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [QTD Total Cost (SnapShot)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\To-date growth\Total Cost (SnapShot)
+		lineageTag: 76aa38e1-824a-409b-9b04-81e2c7893e21
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD Total Cost (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [QTD Total Cost (SnapShot)]
+			VAR __ValuePreviousPeriod = [PQTD Total Cost (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\To-date growth\Total Cost (SnapShot)
+		lineageTag: 474fda61-c134-4b48-a4c0-ddff7c2da84c
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD % Total Cost (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [QOQTD Total Cost (SnapShot)],
+			    [PQTD Total Cost (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\To-date growth\Total Cost (SnapShot)
+		lineageTag: 9d9d413e-1f7a-499e-a03c-36daf1adb8b0
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMTD Total Cost (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MTD Total Cost (SnapShot)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\To-date growth\Total Cost (SnapShot)
+		lineageTag: 9291a4e4-589a-48ae-b86f-0a2259615d1e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD Total Cost (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [MTD Total Cost (SnapShot)]
+			VAR __ValuePreviousPeriod = [PMTD Total Cost (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\To-date growth\Total Cost (SnapShot)
+		lineageTag: 674924cf-62d5-4293-970d-9be7f4e295c8
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD % Total Cost (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [MOMTD Total Cost (SnapShot)],
+			    [PMTD Total Cost (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\To-date growth\Total Cost (SnapShot)
+		lineageTag: 77dff0d9-2b8d-4556-a478-4fdd61f69da7
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYC Total Cost (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Inv)],
+			        PARALLELPERIOD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		displayFolder: Time intelligence\Growth over full period\Total Cost (SnapShot)
+		lineageTag: dce7d938-d2cc-4b60-9510-e544485378bb
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTDOPY Total Cost (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [YTD Total Cost (SnapShot)]
+			VAR __ValuePreviousPeriod = [PYC Total Cost (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth over full period\Total Cost (SnapShot)
+		lineageTag: b995b257-be83-4977-86eb-08dea30a0a1e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YDTOPY % Total Cost (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [YTDOPY Total Cost (SnapShot)],
+			    [PYC Total Cost (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth over full period\Total Cost (SnapShot)
+		lineageTag: f16d6f42-e939-4194-9a17-603f096b52ee
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQC Total Cost (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Inv)],
+			        PARALLELPERIOD ( 'Date'[Date], -1, QUARTER )
+			    )
+			)
+		displayFolder: Time intelligence\Growth over full period\Total Cost (SnapShot)
+		lineageTag: 1753388a-c39b-44c8-8ad7-e551860ebbff
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTDOPQ Total Cost (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [QTD Total Cost (SnapShot)]
+			VAR __ValuePreviousPeriod = [PQC Total Cost (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth over full period\Total Cost (SnapShot)
+		lineageTag: 106f5296-dab1-4328-9998-0672ac32bc47
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QDTOPQ % Total Cost (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [QTDOPQ Total Cost (SnapShot)],
+			    [PQC Total Cost (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth over full period\Total Cost (SnapShot)
+		lineageTag: bba6d242-fb0e-4631-a175-0d5dacfd584c
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMC Total Cost (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Inv)],
+			        PARALLELPERIOD ( 'Date'[Date], -1, MONTH )
+			    )
+			)
+		displayFolder: Time intelligence\Growth over full period\Total Cost (SnapShot)
+		lineageTag: d9f5e2e2-2537-4b37-b727-433cefc6f9a9
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM Total Cost (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [MTD Total Cost (SnapShot)]
+			VAR __ValuePreviousPeriod = [PMC Total Cost (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth over full period\Total Cost (SnapShot)
+		lineageTag: cfbbd97f-7167-44c5-af10-ea156b2abe4e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM % Total Cost (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [MTDOPM Total Cost (SnapShot)],
+			    [PMC Total Cost (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth over full period\Total Cost (SnapShot)
+		lineageTag: ab66f6f9-7569-44fb-8397-ce2690ef6452
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MAT Total Cost (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Inv)],
+			        DATESINPERIOD (
+			            'Date'[Date],
+			            MAX ( 'Date'[Date] ),
+			            -1,
+			            YEAR
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\Moving annual growth\Total Cost (SnapShot)
+		lineageTag: ba806579-9812-4010-a82d-74ac94b339ca
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYMAT Total Cost (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MAT Total Cost (SnapShot)],
+			        DATEADD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		displayFolder: Time intelligence\Moving annual growth\Total Cost (SnapShot)
+		lineageTag: 7f49dd74-f4c8-47bc-9b5f-01e76ed5eb3f
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG Total Cost (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [MAT Total Cost (SnapShot)]
+			VAR __ValuePreviousPeriod = [PYMAT Total Cost (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Moving annual growth\Total Cost (SnapShot)
+		lineageTag: 49dd5a82-01db-4197-b73f-3fb75ebb8c65
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG % Total Cost (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [MATG Total Cost (SnapShot)],
+			    [PYMAT Total Cost (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Moving annual growth\Total Cost (SnapShot)
+		lineageTag: 9d14a6d2-2e53-4de8-8340-c7088cb6c225
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTD Total Qty (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Qty (Inv)],
+			        DATESYTD ( 'Date'[Date] )
+			    )
+			)
+		displayFolder: Time intelligence\To-date total\Total Qty (SnapShot)
+		lineageTag: 10007f55-c0bd-4ff0-b39b-28ffa1c9b32d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTD Total Qty (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Qty (Inv)],
+			        DATESQTD ( 'Date'[Date] )
+			    )
+			)
+		displayFolder: Time intelligence\To-date total\Total Qty (SnapShot)
+		lineageTag: 5303efa4-524f-4328-93d9-211c1ab377ed
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTD Total Qty (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Qty (Inv)],
+			        DATESMTD ( 'Date'[Date] )
+			    )
+			)
+		displayFolder: Time intelligence\To-date total\Total Qty (SnapShot)
+		lineageTag: 5d4dbeee-1f33-4572-8976-212c61c12388
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PY Total Qty (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Qty (Inv)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\Growth\Total Qty (SnapShot)
+		lineageTag: 224f1d56-8ffc-4696-ac1d-cbcb3f483dd5
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY Total Qty (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [Total Qty (Inv)]
+			VAR __ValuePreviousPeriod = [PY Total Qty (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth\Total Qty (SnapShot)
+		lineageTag: 2f58ab54-9634-4e2a-957a-313e91f3a435
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY % Total Qty (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [YOY Total Qty (SnapShot)],
+			    [PY Total Qty (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth\Total Qty (SnapShot)
+		lineageTag: 6e68e678-a36e-46d8-8564-70771c7dce13
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQ Total Qty (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Qty (Inv)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\Growth\Total Qty (SnapShot)
+		lineageTag: 5bd95b3d-f079-4b9f-82d1-8ca8ec9098c8
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ Total Qty (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [Total Qty (Inv)]
+			VAR __ValuePreviousPeriod = [PQ Total Qty (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth\Total Qty (SnapShot)
+		lineageTag: a0fe436a-2bdf-459e-8020-fe78c301150a
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ % Total Qty (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [QOQ Total Qty (SnapShot)],
+			    [PQ Total Qty (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth\Total Qty (SnapShot)
+		lineageTag: ce07811c-1e4d-41b4-8c3a-bad97c0c3168
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PM Total Qty (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Qty (Inv)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\Growth\Total Qty (SnapShot)
+		lineageTag: b7895a1a-d8c4-4f22-8ea3-324be0a07747
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM Total Qty (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [Total Qty (Inv)]
+			VAR __ValuePreviousPeriod = [PM Total Qty (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth\Total Qty (SnapShot)
+		lineageTag: bcb5a9d5-ab3c-4153-9463-9aaf83c45224
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM % Total Qty (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [MOM Total Qty (SnapShot)],
+			    [PM Total Qty (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth\Total Qty (SnapShot)
+		lineageTag: 06c148de-381d-41b9-bffd-435ff7c5947f
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYTD Total Qty (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [YTD Total Qty (SnapShot)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\To-date growth\Total Qty (SnapShot)
+		lineageTag: 2aee2f61-e6f9-4da0-9d2d-d4b06583d94e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD Total Qty (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [YTD Total Qty (SnapShot)]
+			VAR __ValuePreviousPeriod = [PYTD Total Qty (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\To-date growth\Total Qty (SnapShot)
+		lineageTag: 705a62b1-d2c4-4294-ac7f-e4b7209dfea7
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD % Total Qty (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [YOYTD Total Qty (SnapShot)],
+			    [PYTD Total Qty (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\To-date growth\Total Qty (SnapShot)
+		lineageTag: 82ca9241-d725-4073-84e8-0ffd9d398b44
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQTD Total Qty (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [QTD Total Qty (SnapShot)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\To-date growth\Total Qty (SnapShot)
+		lineageTag: 3a11e9cd-4689-4754-a3c3-a85d0e2a01db
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD Total Qty (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [QTD Total Qty (SnapShot)]
+			VAR __ValuePreviousPeriod = [PQTD Total Qty (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\To-date growth\Total Qty (SnapShot)
+		lineageTag: b81e5395-05d0-4ee7-b148-8d3120102b0d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD % Total Qty (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [QOQTD Total Qty (SnapShot)],
+			    [PQTD Total Qty (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\To-date growth\Total Qty (SnapShot)
+		lineageTag: ae65bd63-7fb6-40ba-8f76-eab1977ca619
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMTD Total Qty (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MTD Total Qty (SnapShot)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\To-date growth\Total Qty (SnapShot)
+		lineageTag: d442c57f-a499-40da-8a8b-a7e3247bdeb7
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD Total Qty (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [MTD Total Qty (SnapShot)]
+			VAR __ValuePreviousPeriod = [PMTD Total Qty (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\To-date growth\Total Qty (SnapShot)
+		lineageTag: 26b894e7-21d8-4b74-9ba6-bd42306f8288
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD % Total Qty (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [MOMTD Total Qty (SnapShot)],
+			    [PMTD Total Qty (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\To-date growth\Total Qty (SnapShot)
+		lineageTag: bfc95cbb-684c-4746-96aa-022ae7b451d4
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYC Total Qty (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Qty (Inv)],
+			        PARALLELPERIOD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		displayFolder: Time intelligence\Growth over full period\Total Qty (SnapShot)
+		lineageTag: e3de5079-fc78-40c0-ae4c-eab3edf82029
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTDOPY Total Qty (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [YTD Total Qty (SnapShot)]
+			VAR __ValuePreviousPeriod = [PYC Total Qty (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth over full period\Total Qty (SnapShot)
+		lineageTag: a066f1bf-1fca-48c3-8f6b-d1fedea04822
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YDTOPY % Total Qty (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [YTDOPY Total Qty (SnapShot)],
+			    [PYC Total Qty (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth over full period\Total Qty (SnapShot)
+		lineageTag: 16b4eeb3-b41b-4543-81cc-aca56dbf6e10
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQC Total Qty (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Qty (Inv)],
+			        PARALLELPERIOD ( 'Date'[Date], -1, QUARTER )
+			    )
+			)
+		displayFolder: Time intelligence\Growth over full period\Total Qty (SnapShot)
+		lineageTag: b5fe419e-fa74-482b-9e9c-9163f32c85a0
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTDOPQ Total Qty (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [QTD Total Qty (SnapShot)]
+			VAR __ValuePreviousPeriod = [PQC Total Qty (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth over full period\Total Qty (SnapShot)
+		lineageTag: 29b96f7a-9d99-479e-9035-594b31d68e1d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QDTOPQ % Total Qty (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [QTDOPQ Total Qty (SnapShot)],
+			    [PQC Total Qty (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth over full period\Total Qty (SnapShot)
+		lineageTag: 6096277b-12b6-42b9-be8a-8c06ea1ab1fa
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMC Total Qty (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Qty (Inv)],
+			        PARALLELPERIOD ( 'Date'[Date], -1, MONTH )
+			    )
+			)
+		displayFolder: Time intelligence\Growth over full period\Total Qty (SnapShot)
+		lineageTag: cb3ba91c-4721-4abe-a67d-24a57a3c5100
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM Total Qty (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [MTD Total Qty (SnapShot)]
+			VAR __ValuePreviousPeriod = [PMC Total Qty (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth over full period\Total Qty (SnapShot)
+		lineageTag: 726ef592-b7c7-4d4a-8913-fbb7cff0d063
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM % Total Qty (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [MTDOPM Total Qty (SnapShot)],
+			    [PMC Total Qty (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth over full period\Total Qty (SnapShot)
+		lineageTag: 916a652c-5590-4f01-bf56-4ed7d41a8294
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MAT Total Qty (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Qty (Inv)],
+			        DATESINPERIOD (
+			            'Date'[Date],
+			            MAX ( 'Date'[Date] ),
+			            -1,
+			            YEAR
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\Moving annual growth\Total Qty (SnapShot)
+		lineageTag: 6c6aafa4-456e-41b1-ac10-d73b001f8042
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYMAT Total Qty (SnapShot)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MAT Total Qty (SnapShot)],
+			        DATEADD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		displayFolder: Time intelligence\Moving annual growth\Total Qty (SnapShot)
+		lineageTag: b87c5c96-01b4-4524-9364-96fa17517460
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG Total Qty (SnapShot)' =
+			
+			VAR __ValueCurrentPeriod = [MAT Total Qty (SnapShot)]
+			VAR __ValuePreviousPeriod = [PYMAT Total Qty (SnapShot)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Moving annual growth\Total Qty (SnapShot)
+		lineageTag: b7473319-be58-420e-83bc-8ce05b36e629
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG % Total Qty (SnapShot)' = ```
+			
+			DIVIDE ( 
+			    [MATG Total Qty (SnapShot)],
+			    [PYMAT Total Qty (SnapShot)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Moving annual growth\Total Qty (SnapShot)
+		lineageTag: a25f3fad-a849-4ac3-b0dc-6475cef10d5d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'Total Cost (Con)' = SUMX(USER_CONSIGNMENTSNAPSHOT,USER_CONSIGNMENTSNAPSHOT[QtyOC]*USER_CONSIGNMENTSNAPSHOT[AmtCostAvg])
+		lineageTag: f6d0765f-5801-4919-b6da-07f708b78f8f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Cost (WIP)' = SUMX(USER_PARTSWIPSNAPSHOT,USER_PARTSWIPSNAPSHOT[QtyShip]*USER_PARTSWIPSNAPSHOT[AmtCost])
+		lineageTag: ec07e82b-e3e0-4995-a42c-702581f114e8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Cost (Transfer)' = SUMX(USER_TRANSFERSNAPSHOT,USER_TRANSFERSNAPSHOT[PTTRFITM_QtySent]*USER_TRANSFERSNAPSHOT[PTTRFITM_AmtCost])
+		lineageTag: dddb9a62-1900-4227-a85b-f3431db15009
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Inventory' = [Total Cost (Con)]+[Total Cost (Inv)]+[Total Cost (Transfer)]+[Total Cost (WIP)]
+		lineageTag: bb5099fc-05c3-460a-b723-0dbbf7ef202c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column
+		formatString: 0
+		lineageTag: c026c590-592e-4b75-9a77-94058d9a9dd1
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Measure = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = f89b2a22b17a4793b78428aa01b7d573
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

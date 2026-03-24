@@ -1,0 +1,94 @@
+table MT_FC_STATEMENT
+	lineageTag: 58f62a03-44f2-4306-99b2-d36bf9efa102
+
+	column FleetChargeCardNumber
+		dataType: string
+		lineageTag: 9a436310-e86d-4d55-b524-1cc655613de6
+		summarizeBy: none
+		sourceColumn: FleetChargeCardNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Relationship
+		dataType: string
+		lineageTag: 1715d2c5-ed65-41f7-b4b3-15016d9c4d0a
+		summarizeBy: none
+		sourceColumn: Relationship
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatementDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 6a8c9a0c-abce-4bf8-a651-7eadc07e75ab
+		summarizeBy: none
+		sourceColumn: StatementDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 418f2e99-7e79-46ad-892d-649df25751b6
+		summarizeBy: none
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column CA
+		dataType: double
+		lineageTag: e725601e-89b1-4deb-a66a-bf554c62a7bb
+		summarizeBy: none
+		sourceColumn: CA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SPLAdj
+		dataType: double
+		lineageTag: 70652c9e-b37c-43b5-bb6c-249eb5322b1b
+		summarizeBy: none
+		sourceColumn: SPLAdj
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Unit CA' = DIVIDE(MT_FC_STATEMENT[CA],MT_FC_STATEMENT[Quantity],0)
+		lineageTag: bf5b30a9-7209-4ae5-ad87-93cc40e43d35
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Unit SPL Adjustment' =
+			
+			DIVIDE(MT_FC_STATEMENT[SPLAdj],MT_FC_STATEMENT[Quantity],0)
+		lineageTag: e218791b-1930-40b8-8834-ba31a62ef443
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition MT_FC_STATEMENT = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_MT_FC_STATEMENT = EXCEDE{[Schema="dbo",Item="MT_FC_STATEMENT"]}[Data],
+				    #"Replaced Value" = Table.ReplaceValue(dbo_MT_FC_STATEMENT,"-","",Replacer.ReplaceText,{"Relationship"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Replaced Value", {"Relationship"}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Removed Duplicates",{"FleetChargeCardNumber", "Relationship", "StatementDate", "Quantity", "CA", "SPLAdj"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

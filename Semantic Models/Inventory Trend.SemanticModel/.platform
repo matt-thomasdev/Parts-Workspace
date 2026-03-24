@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Inventory Trend"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a42267b4-9e7b-b266-4534-8c52debe85c3"
+  }
+}

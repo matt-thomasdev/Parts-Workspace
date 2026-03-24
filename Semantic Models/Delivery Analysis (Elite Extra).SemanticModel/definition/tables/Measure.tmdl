@@ -1,0 +1,3216 @@
+table Measure
+	lineageTag: 30a12af4-f5a2-42bb-b118-fb0abb2fa74b
+
+	measure 'Average Time Between Deliveries' = AVERAGE('Elite Extra'[Time Between Delivery])
+		lineageTag: 50f673df-1624-48f3-81dd-5904fdbf266c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Deliveries per Hour' = ```
+			
+			    CALCULATE(
+			        COUNTROWS('Elite Extra'),
+			        ALLEXCEPT('Elite Extra', 'Elite Extra'[Delivery Time]),
+			        HOUR('Elite Extra'[Delivery Time]) = HOUR(MAX('Elite Extra'[Delivery Time]))
+			    )
+			
+			
+			
+			```
+		formatString: 0
+		lineageTag: 6ce0e97c-0e31-4389-a1aa-da48648ba6fc
+
+	measure 'Driver Name Display' = ```
+			
+			    IF(
+			        ISFILTERED('Elite Extra'[Driver Name]),
+			        SELECTEDVALUE('Elite Extra'[Driver Name]),
+			        BLANK()
+			    )
+			```
+		lineageTag: 381428d7-1b5b-4cfa-8fe2-a37c59dc4cfa
+
+	measure 'MAT Average Time Between Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Average Time Between Deliveries],
+			        DATESINPERIOD (
+			            'Date'[Date],
+			            MAX ( 'Date'[Date] ),
+			            -1,
+			            YEAR
+			        )
+			    )
+			)
+		lineageTag: 3f239a1b-8fbe-4842-9886-b4a7512f9aa4
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MAT Deliveries per Hour' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Deliveries per Hour],
+			        DATESINPERIOD (
+			            'Date'[Date],
+			            MAX ( 'Date'[Date] ),
+			            -1,
+			            YEAR
+			        )
+			    )
+			)
+		formatString: 0
+		lineageTag: a0b69513-1fb7-4bca-8534-967a1c1a357d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MAT Driver Name Display' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Driver Name Display],
+			        DATESINPERIOD (
+			            'Date'[Date],
+			            MAX ( 'Date'[Date] ),
+			            -1,
+			            YEAR
+			        )
+			    )
+			)
+		lineageTag: 545d42c3-c448-437e-875e-75310aa8bd6d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MAT Total Amount' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Amount],
+			        DATESINPERIOD (
+			            'Date'[Date],
+			            MAX ( 'Date'[Date] ),
+			            -1,
+			            YEAR
+			        )
+			    )
+			)
+		lineageTag: 2d35e768-93de-40ca-abf8-5e1112d8be93
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MAT Total Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Deliveries],
+			        DATESINPERIOD (
+			            'Date'[Date],
+			            MAX ( 'Date'[Date] ),
+			            -1,
+			            YEAR
+			        )
+			    )
+			)
+		formatString: #,0
+		lineageTag: a911ff7c-f907-4998-b86d-726589633ba5
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG % Average Time Between Deliveries' = ```
+			
+			DIVIDE ( 
+			    [MATG Average Time Between Deliveries],
+			    [PYMAT Average Time Between Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 0a913683-8b6f-42f0-b0ff-60de175c0611
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG % Deliveries per Hour' = ```
+			
+			DIVIDE ( 
+			    [MATG Deliveries per Hour],
+			    [PYMAT Deliveries per Hour]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 895710aa-c59f-425c-be84-e96a4aa89281
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG % Driver Name Display' = ```
+			
+			DIVIDE ( 
+			    [MATG Driver Name Display],
+			    [PYMAT Driver Name Display]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 7300ecad-3209-4fce-a6aa-41eb68358290
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG % Total Amount' = ```
+			
+			DIVIDE ( 
+			    [MATG Total Amount],
+			    [PYMAT Total Amount]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: d9335c93-d4d5-48f1-bba0-7419b9c1340b
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG % Total Deliveries' = ```
+			
+			DIVIDE ( 
+			    [MATG Total Deliveries],
+			    [PYMAT Total Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: f7d63159-83c5-4bd4-b369-fd194967e5f7
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG Average Time Between Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [MAT Average Time Between Deliveries]
+			VAR __ValuePreviousPeriod = [PYMAT Average Time Between Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: e1b8f13f-1c06-476c-8b0d-c91408cb03d1
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG Deliveries per Hour' =
+			
+			VAR __ValueCurrentPeriod = [MAT Deliveries per Hour]
+			VAR __ValuePreviousPeriod = [PYMAT Deliveries per Hour]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: 0
+		lineageTag: ee33a342-b9b3-4fea-8643-250fef38beda
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG Driver Name Display' =
+			
+			VAR __ValueCurrentPeriod = [MAT Driver Name Display]
+			VAR __ValuePreviousPeriod = [PYMAT Driver Name Display]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: 43e7e6cd-f0bf-407f-850c-b5d307c03ff1
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG Total Amount' =
+			
+			VAR __ValueCurrentPeriod = [MAT Total Amount]
+			VAR __ValuePreviousPeriod = [PYMAT Total Amount]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: 46092a9b-ed7c-4bad-83c8-98e227b42970
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG Total Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [MAT Total Deliveries]
+			VAR __ValuePreviousPeriod = [PYMAT Total Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0
+		lineageTag: 8d1138ea-7a38-42a8-adbd-8a797d653a06
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM % Average Time Between Deliveries' = ```
+			
+			DIVIDE ( 
+			    [MOM Average Time Between Deliveries],
+			    [PM Average Time Between Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: ab122ade-6d67-4da7-b0d3-8f7e9afc6a58
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM % Deliveries per Hour' = ```
+			
+			DIVIDE ( 
+			    [MOM Deliveries per Hour],
+			    [PM Deliveries per Hour]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 97f2b64c-ce06-448c-b490-65b90017942f
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM % Driver Name Display' = ```
+			
+			DIVIDE ( 
+			    [MOM Driver Name Display],
+			    [PM Driver Name Display]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: c89733ac-e8dc-47b0-b3ac-e16780575e99
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM % Total Amount' = ```
+			
+			DIVIDE ( 
+			    [MOM Total Amount],
+			    [PM Total Amount]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 509ddd22-bc05-4da8-a2e4-fae7c30d9ac9
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM % Total Deliveries' = ```
+			
+			DIVIDE ( 
+			    [MOM Total Deliveries],
+			    [PM Total Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: e38c0160-eb93-4cbe-a66c-2b97e5b30439
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM Average Time Between Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [Average Time Between Deliveries]
+			VAR __ValuePreviousPeriod = [PM Average Time Between Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: 6351d527-c024-4b66-9555-cabb0835eeff
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM Deliveries per Hour' =
+			
+			VAR __ValueCurrentPeriod = [Deliveries per Hour]
+			VAR __ValuePreviousPeriod = [PM Deliveries per Hour]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: 0
+		lineageTag: 1103b00d-0ce2-4109-bed8-e0f68415832c
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM Driver Name Display' =
+			
+			VAR __ValueCurrentPeriod = [Driver Name Display]
+			VAR __ValuePreviousPeriod = [PM Driver Name Display]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: c18a2032-50f8-46da-a62e-bfdc7af900a8
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM Total Amount' =
+			
+			VAR __ValueCurrentPeriod = [Total Amount]
+			VAR __ValuePreviousPeriod = [PM Total Amount]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: f718b242-c98d-46f1-94b6-22d902bee079
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM Total Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [Total Deliveries]
+			VAR __ValuePreviousPeriod = [PM Total Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0
+		lineageTag: 2b11a001-32e3-4b88-aca8-bb9a3feeaf6c
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD % Average Time Between Deliveries' = ```
+			
+			DIVIDE ( 
+			    [MOMTD Average Time Between Deliveries],
+			    [PMTD Average Time Between Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 32764f30-76d2-42f0-bc1e-8abe514cd0cf
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD % Deliveries per Hour' = ```
+			
+			DIVIDE ( 
+			    [MOMTD Deliveries per Hour],
+			    [PMTD Deliveries per Hour]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 18a6a317-d367-483a-b331-a5147aa63060
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD % Driver Name Display' = ```
+			
+			DIVIDE ( 
+			    [MOMTD Driver Name Display],
+			    [PMTD Driver Name Display]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 05c33a7e-fe15-4104-9675-6eb42e2473bd
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD % Total Amount' = ```
+			
+			DIVIDE ( 
+			    [MOMTD Total Amount],
+			    [PMTD Total Amount]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: f405b449-dfad-4631-8906-a9078bb48d65
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD % Total Deliveries' = ```
+			
+			DIVIDE ( 
+			    [MOMTD Total Deliveries],
+			    [PMTD Total Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 0b8c2afc-7ffc-4b37-8b8a-157e63a8fbee
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD Average Time Between Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [MTD Average Time Between Deliveries]
+			VAR __ValuePreviousPeriod = [PMTD Average Time Between Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: a33f4bc1-56ba-4d3c-8a69-41a11509222d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD Deliveries per Hour' =
+			
+			VAR __ValueCurrentPeriod = [MTD Deliveries per Hour]
+			VAR __ValuePreviousPeriod = [PMTD Deliveries per Hour]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: 0
+		lineageTag: 60cf7147-423a-4b7b-8338-7777a1d2cfa6
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD Driver Name Display' =
+			
+			VAR __ValueCurrentPeriod = [MTD Driver Name Display]
+			VAR __ValuePreviousPeriod = [PMTD Driver Name Display]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: 8839dd53-917b-4bef-bf27-691873f5ff8b
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD Total Amount' =
+			
+			VAR __ValueCurrentPeriod = [MTD Total Amount]
+			VAR __ValuePreviousPeriod = [PMTD Total Amount]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: a34a203d-2826-4530-8ce2-90b034e84f2a
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD Total Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [MTD Total Deliveries]
+			VAR __ValuePreviousPeriod = [PMTD Total Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0
+		lineageTag: 37a5ccb0-006e-44af-a518-e6142534dfa5
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTD Average Time Between Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Average Time Between Deliveries],
+			        DATESMTD ( 'Date'[Date] )
+			    )
+			)
+		lineageTag: 7e401c7c-c254-4bc2-be10-2de07f883914
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTD Deliveries per Hour' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Deliveries per Hour],
+			        DATESMTD ( 'Date'[Date] )
+			    )
+			)
+		formatString: 0
+		lineageTag: 3c033a8e-7c2e-4e9c-9f96-8851b292fa7a
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTD Driver Name Display' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Driver Name Display],
+			        DATESMTD ( 'Date'[Date] )
+			    )
+			)
+		lineageTag: 705c205a-1e82-4f5f-9acc-7b0c3d1674f0
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTD Total Amount' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Amount],
+			        DATESMTD ( 'Date'[Date] )
+			    )
+			)
+		lineageTag: b86f2887-f8a2-4176-9da3-36863beb4cef
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTD Total Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Deliveries],
+			        DATESMTD ( 'Date'[Date] )
+			    )
+			)
+		formatString: #,0
+		lineageTag: 30d90ca6-a520-4516-8c3f-092920b14d0e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM % Average Time Between Deliveries' = ```
+			
+			DIVIDE ( 
+			    [MTDOPM Average Time Between Deliveries],
+			    [PMC Average Time Between Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: fb376fba-decc-400d-84e5-68ed4782c60a
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM % Deliveries per Hour' = ```
+			
+			DIVIDE ( 
+			    [MTDOPM Deliveries per Hour],
+			    [PMC Deliveries per Hour]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 141eb86e-332b-4e89-952d-196bcfc11cf8
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM % Driver Name Display' = ```
+			
+			DIVIDE ( 
+			    [MTDOPM Driver Name Display],
+			    [PMC Driver Name Display]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 931014c9-0fc8-4409-8c55-df64f1be18c0
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM % Total Amount' = ```
+			
+			DIVIDE ( 
+			    [MTDOPM Total Amount],
+			    [PMC Total Amount]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: ad472579-8476-4784-a962-20a6305d94fc
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM % Total Deliveries' = ```
+			
+			DIVIDE ( 
+			    [MTDOPM Total Deliveries],
+			    [PMC Total Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 9839c641-4efa-4c3f-b36a-fd39e53d3fc0
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM Average Time Between Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [MTD Average Time Between Deliveries]
+			VAR __ValuePreviousPeriod = [PMC Average Time Between Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: b509e049-8673-4a9a-bfe8-8b1e593c4b18
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM Deliveries per Hour' =
+			
+			VAR __ValueCurrentPeriod = [MTD Deliveries per Hour]
+			VAR __ValuePreviousPeriod = [PMC Deliveries per Hour]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: 0
+		lineageTag: 5b50fe81-be0d-49da-8f7b-cb78c595d97d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM Driver Name Display' =
+			
+			VAR __ValueCurrentPeriod = [MTD Driver Name Display]
+			VAR __ValuePreviousPeriod = [PMC Driver Name Display]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: 5c21a5ff-05e2-4426-ac31-87ed5d9d3812
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM Total Amount' =
+			
+			VAR __ValueCurrentPeriod = [MTD Total Amount]
+			VAR __ValuePreviousPeriod = [PMC Total Amount]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: efaa1aa6-1cd5-4f1f-be46-39f59c525bb0
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM Total Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [MTD Total Deliveries]
+			VAR __ValuePreviousPeriod = [PMC Total Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0
+		lineageTag: 72c8872a-a84c-4df7-9cb9-7a3578fd8b41
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PM Average Time Between Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Average Time Between Deliveries],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: ea6219d6-66d3-4a69-a062-2260b1d3fb29
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PM Deliveries per Hour' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Deliveries per Hour],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: 0
+		lineageTag: 07496aa2-84d7-4f51-bc10-651604b68b8a
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PM Driver Name Display' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Driver Name Display],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: 8e074f94-8255-4807-b45a-0a50d7c3377e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PM Total Amount' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Amount],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: 6bfe7c7b-ba62-42b2-8f2c-ed15742b77fa
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PM Total Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Deliveries],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0
+		lineageTag: 1aa5136c-656c-4068-bbc7-6f5a0936f5a8
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMC Average Time Between Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Average Time Between Deliveries],
+			        PARALLELPERIOD ( 'Date'[Date], -1, MONTH )
+			    )
+			)
+		lineageTag: 56d6fc25-349b-4bf5-b446-a1469c4380c0
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMC Deliveries per Hour' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Deliveries per Hour],
+			        PARALLELPERIOD ( 'Date'[Date], -1, MONTH )
+			    )
+			)
+		formatString: 0
+		lineageTag: b2682bd0-1d7f-43a7-a07c-8161b089f8e9
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMC Driver Name Display' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Driver Name Display],
+			        PARALLELPERIOD ( 'Date'[Date], -1, MONTH )
+			    )
+			)
+		lineageTag: e1712da1-7cd8-47cc-9701-9a3ffa01f77e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMC Total Amount' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Amount],
+			        PARALLELPERIOD ( 'Date'[Date], -1, MONTH )
+			    )
+			)
+		lineageTag: 41f0799c-4d6a-45d5-833f-4b17bf17edad
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMC Total Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Deliveries],
+			        PARALLELPERIOD ( 'Date'[Date], -1, MONTH )
+			    )
+			)
+		formatString: #,0
+		lineageTag: e7d58b70-2285-4582-ae53-ddf22c637231
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMTD Average Time Between Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MTD Average Time Between Deliveries],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: 971303da-de2b-460a-b0be-f57e33f0ba72
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMTD Deliveries per Hour' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MTD Deliveries per Hour],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: 0
+		lineageTag: 3d386ffe-ea53-4455-a36e-8f57de8d1c52
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMTD Driver Name Display' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MTD Driver Name Display],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: 3bca03d8-bd79-4fbf-b4a1-a5f7d2c418ad
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMTD Total Amount' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MTD Total Amount],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: 3bb61142-8e7b-4893-aebc-35604a4c0c8b
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMTD Total Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MTD Total Deliveries],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0
+		lineageTag: 691b167e-f2ad-4250-b625-fa6dc6468971
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQ Average Time Between Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Average Time Between Deliveries],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: 84214cdc-bea5-4298-8960-64a08b308ab6
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQ Deliveries per Hour' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Deliveries per Hour],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: 0
+		lineageTag: 2375e3d0-986a-456e-b760-492b3dc81459
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQ Driver Name Display' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Driver Name Display],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: 087ef0ab-751b-490d-9edf-50a727fdc386
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQ Total Amount' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Amount],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: d585bb9a-ed50-4a96-ac2a-dc67b11c8351
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQ Total Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Deliveries],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0
+		lineageTag: f8e226b2-09ec-44c5-94dc-245b9b3156df
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQC Average Time Between Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Average Time Between Deliveries],
+			        PARALLELPERIOD ( 'Date'[Date], -1, QUARTER )
+			    )
+			)
+		lineageTag: 6e336451-4157-4e8f-a9a8-2a7ecbec972e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQC Deliveries per Hour' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Deliveries per Hour],
+			        PARALLELPERIOD ( 'Date'[Date], -1, QUARTER )
+			    )
+			)
+		formatString: 0
+		lineageTag: 329d8020-f350-40b2-bd33-0ac2d00bb2ce
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQC Driver Name Display' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Driver Name Display],
+			        PARALLELPERIOD ( 'Date'[Date], -1, QUARTER )
+			    )
+			)
+		lineageTag: a73c7984-4022-4866-9030-4c433891378e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQC Total Amount' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Amount],
+			        PARALLELPERIOD ( 'Date'[Date], -1, QUARTER )
+			    )
+			)
+		lineageTag: 6e876dd2-7158-4194-bf4a-0eb5a5b8f687
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQC Total Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Deliveries],
+			        PARALLELPERIOD ( 'Date'[Date], -1, QUARTER )
+			    )
+			)
+		formatString: #,0
+		lineageTag: d8d80958-6d6b-4931-be6e-cc1e9c1cf33b
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQTD Average Time Between Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [QTD Average Time Between Deliveries],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: a4021ab3-e9d9-4bf7-9fe3-745d9b772363
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQTD Deliveries per Hour' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [QTD Deliveries per Hour],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: 0
+		lineageTag: 4d65b3b7-7eaa-4bff-8431-24635565672d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQTD Driver Name Display' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [QTD Driver Name Display],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: 001de9d4-aecc-42b6-86b0-93d4c0be94d7
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQTD Total Amount' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [QTD Total Amount],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: 678f8067-c617-48de-975e-faf7ab6c7db7
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQTD Total Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [QTD Total Deliveries],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0
+		lineageTag: 9e25bfc4-e558-4955-9596-f5e6b6967e96
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PY Average Time Between Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Average Time Between Deliveries],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: 6d7352bc-f369-4229-8880-8cde99d21507
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PY Deliveries per Hour' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Deliveries per Hour],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: 0
+		lineageTag: 8be002ad-922e-46b5-ace8-cc24d5afd6c7
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PY Driver Name Display' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Driver Name Display],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: e1d90c55-295f-4d92-b8bd-1f63a459b9c0
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PY Total Amount' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Amount],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: e813284c-251e-4822-988f-3348ad5fbffb
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PY Total Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Deliveries],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0
+		lineageTag: 068b1c2d-0bb7-424f-85a5-392c38aced4e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYC Average Time Between Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Average Time Between Deliveries],
+			        PARALLELPERIOD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		lineageTag: a47742a6-9384-4382-b257-014819816823
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYC Deliveries per Hour' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Deliveries per Hour],
+			        PARALLELPERIOD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		formatString: 0
+		lineageTag: 988cb101-b543-4d50-941a-ad3badd6a74c
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYC Driver Name Display' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Driver Name Display],
+			        PARALLELPERIOD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		lineageTag: caf77623-b429-415b-98dd-558a1b737487
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYC Total Amount' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Amount],
+			        PARALLELPERIOD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		lineageTag: cc0a1402-c571-4fb8-9204-560104ba3870
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYC Total Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Deliveries],
+			        PARALLELPERIOD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		formatString: #,0
+		lineageTag: 234d14f9-fcae-4103-957c-0bfd4e6c46be
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYMAT Average Time Between Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MAT Average Time Between Deliveries],
+			        DATEADD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		lineageTag: d5b9e69d-950d-4098-ab05-bb96d5af7e99
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYMAT Deliveries per Hour' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MAT Deliveries per Hour],
+			        DATEADD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		formatString: 0
+		lineageTag: e67fb2c8-f242-459c-9279-922ad0daf7a6
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYMAT Driver Name Display' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MAT Driver Name Display],
+			        DATEADD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		lineageTag: 0810e677-d3d4-4f67-b1c1-a6b3d6ccf422
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYMAT Total Amount' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MAT Total Amount],
+			        DATEADD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		lineageTag: 5ffc6f92-0dc9-44ad-bf2d-41a363dcf012
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYMAT Total Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MAT Total Deliveries],
+			        DATEADD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		formatString: #,0
+		lineageTag: e7ab159b-0ed5-4980-b6c3-6a6fe4285891
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYTD Average Time Between Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [YTD Average Time Between Deliveries],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: c4cd4241-3f75-4bda-bf8c-a407b2c0d7d1
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYTD Deliveries per Hour' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [YTD Deliveries per Hour],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: 0
+		lineageTag: 96686c6b-671a-428a-9dec-add06adffa37
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYTD Driver Name Display' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [YTD Driver Name Display],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: f6657829-122f-4197-b9e6-b0889ae256ef
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYTD Total Amount' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [YTD Total Amount],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: 5df56a81-f308-4af6-bc3e-3b41278858eb
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYTD Total Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [YTD Total Deliveries],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0
+		lineageTag: 2718b664-fbe5-4fde-a5be-f3ce4d7ffef0
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QDTOPQ % Average Time Between Deliveries' = ```
+			
+			DIVIDE ( 
+			    [QTDOPQ Average Time Between Deliveries],
+			    [PQC Average Time Between Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: fadc0949-272d-49e9-8860-4593ea172708
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QDTOPQ % Deliveries per Hour' = ```
+			
+			DIVIDE ( 
+			    [QTDOPQ Deliveries per Hour],
+			    [PQC Deliveries per Hour]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: e4d5e30e-3f19-4959-9e36-fdc853214d48
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QDTOPQ % Driver Name Display' = ```
+			
+			DIVIDE ( 
+			    [QTDOPQ Driver Name Display],
+			    [PQC Driver Name Display]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: eaea8442-2cf2-4cf4-ac22-6a9a852fe967
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QDTOPQ % Total Amount' = ```
+			
+			DIVIDE ( 
+			    [QTDOPQ Total Amount],
+			    [PQC Total Amount]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 0b0d4ae6-46b6-4798-9969-0f94941f0a51
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QDTOPQ % Total Deliveries' = ```
+			
+			DIVIDE ( 
+			    [QTDOPQ Total Deliveries],
+			    [PQC Total Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 1068be37-91ad-4cb2-b098-3132d574834d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ % Average Time Between Deliveries' = ```
+			
+			DIVIDE ( 
+			    [QOQ Average Time Between Deliveries],
+			    [PQ Average Time Between Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 7a2d7b5b-b60a-40d9-973a-35d4dcd859f4
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ % Deliveries per Hour' = ```
+			
+			DIVIDE ( 
+			    [QOQ Deliveries per Hour],
+			    [PQ Deliveries per Hour]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 5ddd01aa-b5fe-4a70-9416-1562c7c6cb42
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ % Driver Name Display' = ```
+			
+			DIVIDE ( 
+			    [QOQ Driver Name Display],
+			    [PQ Driver Name Display]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 8622a350-24e9-400e-ae7c-9ec516ca71c1
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ % Total Amount' = ```
+			
+			DIVIDE ( 
+			    [QOQ Total Amount],
+			    [PQ Total Amount]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: fde92a37-a78b-4839-874a-9bd76efc4263
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ % Total Deliveries' = ```
+			
+			DIVIDE ( 
+			    [QOQ Total Deliveries],
+			    [PQ Total Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: a14267c2-f0ea-421a-9b9e-1ad058ea9230
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ Average Time Between Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [Average Time Between Deliveries]
+			VAR __ValuePreviousPeriod = [PQ Average Time Between Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: b21367c5-59ab-45ab-8a96-25059854a7ca
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ Deliveries per Hour' =
+			
+			VAR __ValueCurrentPeriod = [Deliveries per Hour]
+			VAR __ValuePreviousPeriod = [PQ Deliveries per Hour]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: 0
+		lineageTag: 680d019f-cc30-4806-9364-06bb188376ce
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ Driver Name Display' =
+			
+			VAR __ValueCurrentPeriod = [Driver Name Display]
+			VAR __ValuePreviousPeriod = [PQ Driver Name Display]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: 27e0b045-1e1b-411c-84ea-38d8389e105c
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ Total Amount' =
+			
+			VAR __ValueCurrentPeriod = [Total Amount]
+			VAR __ValuePreviousPeriod = [PQ Total Amount]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: 50cd1fb2-68d6-4e6b-9d5f-1c68d1dbc5ce
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ Total Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [Total Deliveries]
+			VAR __ValuePreviousPeriod = [PQ Total Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0
+		lineageTag: c3e669b1-e40d-476b-a7f5-24c2a718634a
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD % Average Time Between Deliveries' = ```
+			
+			DIVIDE ( 
+			    [QOQTD Average Time Between Deliveries],
+			    [PQTD Average Time Between Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: fe281484-69f7-49e3-a0e3-182c7a994f9d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD % Deliveries per Hour' = ```
+			
+			DIVIDE ( 
+			    [QOQTD Deliveries per Hour],
+			    [PQTD Deliveries per Hour]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 181616e0-73e6-47fc-ae57-3be6b4b33a39
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD % Driver Name Display' = ```
+			
+			DIVIDE ( 
+			    [QOQTD Driver Name Display],
+			    [PQTD Driver Name Display]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: aede3c38-702b-4305-8131-3e961aef5b7f
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD % Total Amount' = ```
+			
+			DIVIDE ( 
+			    [QOQTD Total Amount],
+			    [PQTD Total Amount]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 017dbf8c-f196-4bbc-bdc1-0fe9b9367e49
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD % Total Deliveries' = ```
+			
+			DIVIDE ( 
+			    [QOQTD Total Deliveries],
+			    [PQTD Total Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 43f6b30f-1821-491d-b336-04305bd8a9d1
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD Average Time Between Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [QTD Average Time Between Deliveries]
+			VAR __ValuePreviousPeriod = [PQTD Average Time Between Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: c8f4ac88-17f7-4a36-aa80-a5147ac12c2c
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD Deliveries per Hour' =
+			
+			VAR __ValueCurrentPeriod = [QTD Deliveries per Hour]
+			VAR __ValuePreviousPeriod = [PQTD Deliveries per Hour]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: 0
+		lineageTag: d717c71e-fcb8-4572-94ea-8f332440df66
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD Driver Name Display' =
+			
+			VAR __ValueCurrentPeriod = [QTD Driver Name Display]
+			VAR __ValuePreviousPeriod = [PQTD Driver Name Display]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: b43e4ecd-2197-4748-9812-793da59ac046
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD Total Amount' =
+			
+			VAR __ValueCurrentPeriod = [QTD Total Amount]
+			VAR __ValuePreviousPeriod = [PQTD Total Amount]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: c1e1109a-cc1c-4720-8ab1-6e6119a6611e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD Total Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [QTD Total Deliveries]
+			VAR __ValuePreviousPeriod = [PQTD Total Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0
+		lineageTag: 773c2edd-f1d0-436b-a79b-d7dfbb679c78
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTD Average Time Between Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Average Time Between Deliveries],
+			        DATESQTD ( 'Date'[Date] )
+			    )
+			)
+		lineageTag: 25717d48-4c7f-4e92-99e6-7978bc6237f0
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTD Deliveries per Hour' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Deliveries per Hour],
+			        DATESQTD ( 'Date'[Date] )
+			    )
+			)
+		formatString: 0
+		lineageTag: be06fa03-d31a-4e63-a97e-8a75ac6bb89a
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTD Driver Name Display' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Driver Name Display],
+			        DATESQTD ( 'Date'[Date] )
+			    )
+			)
+		lineageTag: b122a06b-2695-4d68-a3fc-e27f924d2b55
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTD Total Amount' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Amount],
+			        DATESQTD ( 'Date'[Date] )
+			    )
+			)
+		lineageTag: 55bf66b8-68db-485f-aafe-ffbe96274dfe
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTD Total Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Deliveries],
+			        DATESQTD ( 'Date'[Date] )
+			    )
+			)
+		formatString: #,0
+		lineageTag: 9f2f12b4-a0f9-4c1d-984a-73f44039d570
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTDOPQ Average Time Between Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [QTD Average Time Between Deliveries]
+			VAR __ValuePreviousPeriod = [PQC Average Time Between Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: d6d8a159-ff62-4039-864a-bcefbcc8fa8a
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTDOPQ Deliveries per Hour' =
+			
+			VAR __ValueCurrentPeriod = [QTD Deliveries per Hour]
+			VAR __ValuePreviousPeriod = [PQC Deliveries per Hour]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: 0
+		lineageTag: 73e41490-0066-4daf-9714-167fb7db3dcc
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTDOPQ Driver Name Display' =
+			
+			VAR __ValueCurrentPeriod = [QTD Driver Name Display]
+			VAR __ValuePreviousPeriod = [PQC Driver Name Display]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: 262e7fd1-9431-48a2-887d-cca9be3f1fb4
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTDOPQ Total Amount' =
+			
+			VAR __ValueCurrentPeriod = [QTD Total Amount]
+			VAR __ValuePreviousPeriod = [PQC Total Amount]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: d39a949a-808e-4837-a181-e5fcd3935491
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTDOPQ Total Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [QTD Total Deliveries]
+			VAR __ValuePreviousPeriod = [PQC Total Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0
+		lineageTag: 5a03370a-e64b-4f56-a9cf-6473d8d9fbfa
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'Total Amount' = SUMX('Elite Extra','Elite Extra'[Amount])
+		lineageTag: fd12b33e-315d-4291-a4ab-4b98b0d9081a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Deliveries' = COUNTROWS('Elite Extra')
+		formatString: #,0
+		lineageTag: 433f71b2-d14d-42d0-828d-1883a2778cd0
+
+	measure 'YDTOPY % Average Time Between Deliveries' = ```
+			
+			DIVIDE ( 
+			    [YTDOPY Average Time Between Deliveries],
+			    [PYC Average Time Between Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 9417ff57-da77-4b1b-bc3e-b7837496cdb6
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YDTOPY % Deliveries per Hour' = ```
+			
+			DIVIDE ( 
+			    [YTDOPY Deliveries per Hour],
+			    [PYC Deliveries per Hour]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: c1e09b21-24af-46b0-b313-697daa060c48
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YDTOPY % Driver Name Display' = ```
+			
+			DIVIDE ( 
+			    [YTDOPY Driver Name Display],
+			    [PYC Driver Name Display]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 47598747-2057-4832-95ec-90442a589aef
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YDTOPY % Total Amount' = ```
+			
+			DIVIDE ( 
+			    [YTDOPY Total Amount],
+			    [PYC Total Amount]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: bd68b3a9-9ef7-436f-90f6-b1f53a2e92fc
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YDTOPY % Total Deliveries' = ```
+			
+			DIVIDE ( 
+			    [YTDOPY Total Deliveries],
+			    [PYC Total Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 6bfd0f1d-2d51-410d-a4dd-7f44d06230c3
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY % Average Time Between Deliveries' = ```
+			
+			DIVIDE ( 
+			    [YOY Average Time Between Deliveries],
+			    [PY Average Time Between Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 1d3368cb-4c8a-4857-9e0a-cba710b12a38
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY % Deliveries per Hour' = ```
+			
+			DIVIDE ( 
+			    [YOY Deliveries per Hour],
+			    [PY Deliveries per Hour]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 2a6444cb-15a1-4edf-80f1-de650c718a67
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY % Driver Name Display' = ```
+			
+			DIVIDE ( 
+			    [YOY Driver Name Display],
+			    [PY Driver Name Display]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 922d4c8a-6b46-4e64-aca4-1b9831c898e7
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY % Total Amount' = ```
+			
+			DIVIDE ( 
+			    [YOY Total Amount],
+			    [PY Total Amount]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: be97d9f5-f6a7-4f29-8491-26f36ac418e9
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY % Total Deliveries' = ```
+			
+			DIVIDE ( 
+			    [YOY Total Deliveries],
+			    [PY Total Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 8286d4cf-65fa-48e5-8b7c-302f2b3f367e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY Average Time Between Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [Average Time Between Deliveries]
+			VAR __ValuePreviousPeriod = [PY Average Time Between Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: 81a77376-e31c-4c0d-8155-e6be6dd54c9e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY Deliveries per Hour' =
+			
+			VAR __ValueCurrentPeriod = [Deliveries per Hour]
+			VAR __ValuePreviousPeriod = [PY Deliveries per Hour]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: 0
+		lineageTag: e30bc919-6075-43fa-b0af-8cb2821b8f58
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY Driver Name Display' =
+			
+			VAR __ValueCurrentPeriod = [Driver Name Display]
+			VAR __ValuePreviousPeriod = [PY Driver Name Display]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: 5d026693-9d9f-4512-bad0-dd079a0195a6
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY Total Amount' =
+			
+			VAR __ValueCurrentPeriod = [Total Amount]
+			VAR __ValuePreviousPeriod = [PY Total Amount]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: b12b4b02-4b8d-4bc0-a10d-a8bd2469dbea
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY Total Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [Total Deliveries]
+			VAR __ValuePreviousPeriod = [PY Total Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0
+		lineageTag: 9411aa24-ffe2-46b4-9402-11fcb4d8b3ac
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD % Average Time Between Deliveries' = ```
+			
+			DIVIDE ( 
+			    [YOYTD Average Time Between Deliveries],
+			    [PYTD Average Time Between Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: ecdcb375-4234-44e7-9fbb-15fac0833a35
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD % Deliveries per Hour' = ```
+			
+			DIVIDE ( 
+			    [YOYTD Deliveries per Hour],
+			    [PYTD Deliveries per Hour]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 3bed39ad-bc97-4e43-b32f-75d0cc00964f
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD % Driver Name Display' = ```
+			
+			DIVIDE ( 
+			    [YOYTD Driver Name Display],
+			    [PYTD Driver Name Display]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 42a413b0-dcf3-4c16-a8b3-925244e8d8c8
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD % Total Amount' = ```
+			
+			DIVIDE ( 
+			    [YOYTD Total Amount],
+			    [PYTD Total Amount]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: a727d550-fbbd-4bf9-bd93-5bc370733359
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD % Total Deliveries' = ```
+			
+			DIVIDE ( 
+			    [YOYTD Total Deliveries],
+			    [PYTD Total Deliveries]
+			)
+			```
+		formatString: 0.00%
+		lineageTag: 0a2e2f30-5523-4bf9-9346-f58f96ba9d19
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD Average Time Between Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [YTD Average Time Between Deliveries]
+			VAR __ValuePreviousPeriod = [PYTD Average Time Between Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: 7286a049-a327-4747-8ea2-8bab13818288
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD Deliveries per Hour' =
+			
+			VAR __ValueCurrentPeriod = [YTD Deliveries per Hour]
+			VAR __ValuePreviousPeriod = [PYTD Deliveries per Hour]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: 0
+		lineageTag: ea30df8c-6eb9-49df-a7df-c26d563e0e3a
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD Driver Name Display' =
+			
+			VAR __ValueCurrentPeriod = [YTD Driver Name Display]
+			VAR __ValuePreviousPeriod = [PYTD Driver Name Display]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: 7e5a6231-8bab-4b4b-893e-81c9299f6a5e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD Total Amount' =
+			
+			VAR __ValueCurrentPeriod = [YTD Total Amount]
+			VAR __ValuePreviousPeriod = [PYTD Total Amount]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: b4081084-c3a3-4109-9a0d-f71a4baa659b
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD Total Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [YTD Total Deliveries]
+			VAR __ValuePreviousPeriod = [PYTD Total Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0
+		lineageTag: 661a77ab-50db-4cc2-a315-cb21a46fb551
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTD Average Time Between Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Average Time Between Deliveries],
+			        DATESYTD ( 'Date'[Date] )
+			    )
+			)
+		lineageTag: 24f98de1-2a4a-4aa6-b7f4-14f422fa6d1d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTD Deliveries per Hour' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Deliveries per Hour],
+			        DATESYTD ( 'Date'[Date] )
+			    )
+			)
+		formatString: 0
+		lineageTag: 0f10a980-5606-48fe-87b6-48d080bd15bd
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTD Driver Name Display' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Driver Name Display],
+			        DATESYTD ( 'Date'[Date] )
+			    )
+			)
+		lineageTag: 4fb7ef8d-8ed3-44ed-a738-279d63aef68e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTD Total Amount' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Amount],
+			        DATESYTD ( 'Date'[Date] )
+			    )
+			)
+		lineageTag: e83ea3fa-8fe4-40a6-b0ec-640f3f9bf954
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTD Total Deliveries' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Deliveries],
+			        DATESYTD ( 'Date'[Date] )
+			    )
+			)
+		formatString: #,0
+		lineageTag: d98ae2a9-5e6c-463e-8072-50395e7d7492
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTDOPY Average Time Between Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [YTD Average Time Between Deliveries]
+			VAR __ValuePreviousPeriod = [PYC Average Time Between Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: 70765d76-71fb-4c7a-998a-70c79ea04b00
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTDOPY Deliveries per Hour' =
+			
+			VAR __ValueCurrentPeriod = [YTD Deliveries per Hour]
+			VAR __ValuePreviousPeriod = [PYC Deliveries per Hour]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: 0
+		lineageTag: 2c188b3e-d944-4b55-9505-53c6d3af8823
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTDOPY Driver Name Display' =
+			
+			VAR __ValueCurrentPeriod = [YTD Driver Name Display]
+			VAR __ValuePreviousPeriod = [PYC Driver Name Display]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: d0f5b79a-6aeb-4eb8-9b02-eea24a875936
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTDOPY Total Amount' =
+			
+			VAR __ValueCurrentPeriod = [YTD Total Amount]
+			VAR __ValuePreviousPeriod = [PYC Total Amount]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		lineageTag: 72fad746-8830-4bc6-b094-88c9d458678c
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTDOPY Total Deliveries' =
+			
+			VAR __ValueCurrentPeriod = [YTD Total Deliveries]
+			VAR __ValuePreviousPeriod = [PYC Total Deliveries]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0
+		lineageTag: 3fc08036-7ea2-4042-bc8c-f300cd98dbdd
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'Variance Totals' = [Total Amount] - [PM Total Amount]
+		lineageTag: 0baadf38-fb13-44e7-b97c-cdbce19ada47
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Variance Totals %' = DIVIDE([Variance Totals], [PM Total Amount])
+		lineageTag: e79a037d-5b39-455e-a20f-9332b7c254ed
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Variance Total % Difference' =
+			
+			var _uparrow = UNICHAR(129129)
+			var _downarrow = UNICHAR(129131)
+			var _varpercentage = [Variance Totals %]
+			var _varnumber = [Variance Totals]
+			var _blank = ISBLANK([Total Amount])
+			RETURN
+			IF(_blank, BLANK(),
+			IF(_varnumber > 0,
+			    ROUND(_varpercentage,2)*100 & "%" & _uparrow,
+			    ROUND(_varpercentage,2)*100 & "%" & _downarrow)
+			)
+		lineageTag: 2008978f-0c40-4472-b143-479bcd0d1dd6
+
+	measure 'Variance Delivery' = [Total Deliveries] - [PM Total Deliveries]
+		formatString: 0
+		lineageTag: 028917f7-6256-43c7-8738-4e91f10374db
+
+	measure 'Variance Delivery %' = DIVIDE([Variance Delivery],[PM Total Deliveries])
+		lineageTag: b5bc940a-c7d4-4a02-86d1-34fd55b1587b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Variance Delivery Difference' = ```
+			
+			VAR _uparrow = UNICHAR(129129)
+			VAR _downarrow = UNICHAR(129131)
+			VAR _varpercentage = [Variance Delivery %]
+			VAR _varnumber = [Variance Delivery]
+			VAR _blank = ISBLANK([Total Deliveries])
+			RETURN
+			IF(
+			    _blank, 
+			    BLANK(),
+			    IF(
+			        _varnumber > 0,
+			        ROUND(_varpercentage, 2) * 100 & "%" & _uparrow,
+			        ROUND(_varpercentage, 2) * 100 & "%" & _downarrow
+			    )
+			)
+			
+			```
+		lineageTag: c76be287-e218-4ae2-b6da-f9c62b843f1c
+
+	column Column
+		formatString: 0
+		lineageTag: 77085e99-91f0-484c-a2fc-cbf544b1c161
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Measure = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 2440f31fd16249209f7cddcf5a7d4e0d
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

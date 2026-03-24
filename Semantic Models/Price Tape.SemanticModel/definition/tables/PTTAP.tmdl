@@ -1,0 +1,279 @@
+table PTTAP
+	lineageTag: 741a01c0-86d2-41f3-a312-fe6be59305b5
+
+	column VenPrtId
+		dataType: string
+		lineageTag: 7de5a6f6-02e2-4ff4-bedc-6d9c0b41a2c2
+		summarizeBy: none
+		sourceColumn: VenPrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SrcId
+		dataType: string
+		lineageTag: ba3ab1be-e190-4acf-8e0f-600fbbf478fe
+		summarizeBy: none
+		sourceColumn: SrcId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Des
+		dataType: string
+		lineageTag: 18a998b9-9e48-459d-aebb-651794d6986f
+		summarizeBy: none
+		sourceColumn: Des
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClaId
+		dataType: string
+		lineageTag: db808888-95b2-46fe-9807-aa9137008f2e
+		summarizeBy: none
+		sourceColumn: ClaId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Typ
+		dataType: int64
+		formatString: 0
+		lineageTag: c045bc9f-11aa-4401-bf92-2833d89c7a37
+		summarizeBy: none
+		sourceColumn: Typ
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sequence
+		dataType: int64
+		formatString: 0
+		lineageTag: b8da25b6-0e37-4b9f-87e4-1ab05b808d4b
+		summarizeBy: none
+		sourceColumn: Sequence
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderPkg
+		dataType: int64
+		formatString: 0
+		lineageTag: f43850f9-3f90-4abd-852e-42dd05e7fa11
+		summarizeBy: none
+		sourceColumn: OrderPkg
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtCost
+		dataType: double
+		lineageTag: ceabbbe4-fdf1-4c0f-bd13-ba04273038f9
+		summarizeBy: none
+		sourceColumn: AmtCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtCost2
+		dataType: double
+		lineageTag: 809fbbd5-1408-4a4a-a8ae-ae7e27201482
+		summarizeBy: none
+		sourceColumn: AmtCost2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice1
+		dataType: double
+		lineageTag: 79090306-b2ac-4398-b3d4-24686db9b417
+		summarizeBy: none
+		sourceColumn: AmtPrice1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice2
+		dataType: double
+		lineageTag: 35594e80-79f5-4e59-a130-5ed129fe91a4
+		summarizeBy: none
+		sourceColumn: AmtPrice2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice3
+		dataType: double
+		lineageTag: d7415944-f439-4b0d-8933-c4ab2269e780
+		summarizeBy: none
+		sourceColumn: AmtPrice3
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice4
+		dataType: double
+		lineageTag: b0abd1d9-a7af-4923-8228-d4abf68f1e44
+		summarizeBy: none
+		sourceColumn: AmtPrice4
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice5
+		dataType: double
+		lineageTag: 70c825ed-ed3d-47f8-9b50-abafafdc7709
+		summarizeBy: none
+		sourceColumn: AmtPrice5
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice6
+		dataType: double
+		lineageTag: 35a94076-fb53-485d-b288-d6458bfbe494
+		summarizeBy: none
+		sourceColumn: AmtPrice6
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice7
+		dataType: double
+		lineageTag: 9997e9b3-b837-4a26-83e5-085d15c79da5
+		summarizeBy: none
+		sourceColumn: AmtPrice7
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice8
+		dataType: double
+		lineageTag: fd46e984-0a23-4643-a712-c23c739ae101
+		summarizeBy: none
+		sourceColumn: AmtPrice8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CoreVenPrtId
+		dataType: string
+		lineageTag: d04c556b-d715-4426-a179-af60a312ea88
+		summarizeBy: none
+		sourceColumn: CoreVenPrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateCreate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2d7df473-7bbb-4919-b160-1fb44d1caf12
+		summarizeBy: none
+		sourceColumn: DateCreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f9f16149-5373-43f7-bd9e-f92bba7a8fe8
+		summarizeBy: none
+		sourceColumn: DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderPkgTyp
+		dataType: int64
+		formatString: 0
+		lineageTag: ee5ee9be-81ba-4d78-b215-e4594dd4dd1e
+		summarizeBy: none
+		sourceColumn: OrderPkgTyp
+
+		annotation SummarizationSetBy = Automatic
+
+	column PriceCheckStatus = ```
+			
+			IF (
+			    (PTTAP[AmtPrice1] <> 0 && PTTAP[AmtPrice1] <= PTTAP[AmtCost]) ||
+			    (PTTAP[AmtPrice2] <> 0 && PTTAP[AmtPrice2] <= PTTAP[AmtCost]) ||
+			    (PTTAP[AmtPrice3] <> 0 && PTTAP[AmtPrice3] <= PTTAP[AmtCost]) ||
+			    (PTTAP[AmtPrice4] <> 0 && PTTAP[AmtPrice4] <= PTTAP[AmtCost]) ||
+			    (PTTAP[AmtPrice5] <> 0 && PTTAP[AmtPrice5] <= PTTAP[AmtCost]) ||
+			    (PTTAP[AmtPrice6] <> 0 && PTTAP[AmtPrice6] <= PTTAP[AmtCost]) ||
+			    (PTTAP[AmtPrice7] <> 0 && PTTAP[AmtPrice7] <= PTTAP[AmtCost]) ||
+			    (PTTAP[AmtPrice8] <> 0 && PTTAP[AmtPrice8] <= PTTAP[AmtCost]),
+			    "Check",
+			    "Not Good"
+			)
+			
+			```
+		lineageTag: 6562b223-5523-4371-b77f-c47d0dcdb14c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Relationship
+		dataType: string
+		lineageTag: 555b8880-0822-43b3-8ca9-600f404005c5
+		summarizeBy: none
+		sourceColumn: Relationship
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Margin% Per Part' = ```
+			
+			VAR Sale = PTTAP[AmtPrice2]
+			VAR Margin = PTTAP[AmtPrice2]-PTTAP[AmtCost] -- Assuming this is a column or can be calculated row-wise
+			RETURN DIVIDE(Margin, Sale, 0)
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 81ad959c-3841-4b5c-a5db-133b7101a64d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Margin% Bucket' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    [Margin% Per Part] < 0.1, "0-10%",
+			    [Margin% Per Part] >= 0.1 && [Margin% Per Part] <= 0.2, "10-20%",
+			    [Margin% Per Part] > 0.2 && [Margin% Per Part] <= 0.25, "21-25%",
+			    [Margin% Per Part] > 0.25 && [Margin% Per Part] <= 0.3, "26-30%",
+			    [Margin% Per Part] > 0.3 && [Margin% Per Part] <= 0.4, "30-40%",
+			    [Margin% Per Part] > 0.4 && [Margin% Per Part] <= 0.5, "40-50%",
+			    [Margin% Per Part] > 0.5, "50%+",
+			    "Other"
+			)
+			
+			```
+		lineageTag: 0e89fe21-60bf-4d65-a31c-267c91561d61
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PTTAP = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_PTTAP = EXCEDE{[Schema="dbo",Item="PTTAP"]}[Data],
+				    #"Capitalized Each Word" = Table.TransformColumns(dbo_PTTAP,{{"Des", Text.Proper, type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Capitalized Each Word",{"VenPrtId", "SrcId", "Des", "ClaId", "Typ", "Sequence", "OrderPkg", "AmtCost", "AmtCost2", "AmtPrice1", "AmtPrice2", "AmtPrice3", "AmtPrice4", "AmtPrice5", "AmtPrice6", "AmtPrice7", "AmtPrice8", "CoreVenPrtId", "DateCreate", "DateUpdate", "OrderPkgTyp"}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Removed Other Columns", "VenPrtId", "VenPrtId - Copy"),
+				    #"Duplicated Column1" = Table.DuplicateColumn(#"Duplicated Column", "SrcId", "SrcId - Copy"),
+				    #"Merged Columns" = Table.CombineColumns(#"Duplicated Column1",{"SrcId - Copy", "VenPrtId - Copy"},Combiner.CombineTextByDelimiter("-", QuoteStyle.None),"Merged"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Merged Columns",{{"Merged", "Relationship"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

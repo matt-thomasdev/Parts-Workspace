@@ -1,0 +1,90 @@
+table MT_COCUSCRM
+	lineageTag: 0d7d8381-cc09-422e-b333-037a8624d7aa
+
+	column EmpId
+		dataType: string
+		lineageTag: 0cfeac91-9057-4a67-86fe-5d36482e5857
+		summarizeBy: none
+		sourceColumn: EmpId
+
+		annotation SummarizationSetBy = Automatic
+
+	column CusId
+		dataType: string
+		lineageTag: a042dd17-1dc9-468d-95ea-c1554bc12e29
+		summarizeBy: none
+		sourceColumn: CusId
+
+		annotation SummarizationSetBy = Automatic
+
+	column COEMP_Name
+		dataType: string
+		lineageTag: a9c9895f-5bdc-422e-bcc5-7f0c62e1e306
+		summarizeBy: none
+		sourceColumn: COEMP_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column COCUS_Name
+		dataType: string
+		lineageTag: df4b0d6f-4c3b-44aa-8a49-27c72bf2e1b5
+		summarizeBy: none
+		sourceColumn: COCUS_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column BrnId = LOOKUPVALUE(COEMP[BrnId],COEMP[EmpId],MT_COCUSCRM[EmpId])
+		lineageTag: 89ec1f91-f467-424f-95af-26f97b91789d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Division =
+			
+			SWITCH (
+			    LEFT ( MT_COCUSCRM[BrnId], 2 ),
+			    "10", "South Carolina",
+			    "20", "Florida",
+			    "Lease"
+			)
+		lineageTag: 90783cd4-7e4f-4262-a756-81fc7e888821
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location =
+			
+			SWITCH (
+			    MT_COCUSCRM[BrnId],
+			    "101", "Columbia",
+			    "102", "Charleston",
+			    "103", "Florence",
+			    "104", "Conway",
+			    "105", "Greer",
+			    "106", "Greenville",
+			    "201", "Miami",
+			    "202", "Ft Lauderdale",
+			    "203", "Riviera Beach",
+			    "204", "Ft Pierce",
+			    "205", "Ft Myers",
+			    "Lease"
+			)
+		lineageTag: dd12840e-8eab-4956-b2d8-ee956ca29840
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MT_COCUSCRM = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_MT_COCUSCRM = EXCEDE{[Schema="dbo",Item="MT_COCUSCRM"]}[Data]
+				in
+				    dbo_MT_COCUSCRM
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

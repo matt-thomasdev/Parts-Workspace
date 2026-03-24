@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Return Po Cost Difference"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e56143d0-7dc7-9d06-4645-a0fdf1ca336f"
+  }
+}

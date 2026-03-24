@@ -1,0 +1,13 @@
+role 'FTP PM'
+	modelPermission: read
+
+	tablePermission MT_ACMCA = [BrnId] == "204"
+
+	tablePermission MT_COCUSCRM = [EmpId] == "103"
+
+	tablePermission MT_PARTS_PURCHASES = [PTPUR_Location] == "Fort Pierce"
+
+	tablePermission 'Parts_Service Sales' = [BrnId] == "204"
+
+	annotation PBI_Id = 597aebc7003742d4b18b98b295946635
+

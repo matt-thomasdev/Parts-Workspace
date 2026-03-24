@@ -1,0 +1,48 @@
+table 'City | Customer'
+	lineageTag: bec82cca-4764-4888-8006-214fb06956a3
+
+	column 'City | Customer'
+		lineageTag: 59d523e0-8947-45dc-821d-45cceb360527
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'City | Customer Order'
+
+		relatedColumnDetails
+			groupByColumn: 'City | Customer Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'City | Customer Fields'
+		isHidden
+		lineageTag: 8388ad0c-dedf-4601-a116-22b89c5a815d
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'City | Customer Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'City | Customer Order'
+		isHidden
+		formatString: 0
+		lineageTag: 0945acdd-40d2-4d03-b261-51b6d404fa81
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'City | Customer' = calculated
+		mode: import
+		source =
+				{
+				    ("Dest. City", NAMEOF('Elite Extra'[Dest. City]), 0),
+				    ("Destination", NAMEOF('Elite Extra'[Destination]), 1)
+				}
+
+	annotation PBI_Id = 7307290da69544afa867e5394da78361
+

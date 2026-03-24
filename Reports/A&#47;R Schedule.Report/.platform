@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "A/R Schedule"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5e812e38-b569-a992-42cd-3eb0cfab7230"
+  }
+}

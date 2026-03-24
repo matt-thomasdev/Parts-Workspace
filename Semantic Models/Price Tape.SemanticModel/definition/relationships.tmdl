@@ -1,0 +1,12 @@
+relationship AutoDetected_e58f6b48-eac9-4782-a321-535d67ddd718
+	fromColumn: 'Parts_Service Sales'.Relationship
+	toColumn: PTTAP.Relationship
+
+relationship a00a60cf-169a-561c-60ca-542f17fc195c
+	fromColumn: 'Parts_Service Sales'.DateInvoice
+	toColumn: Date.Date
+
+relationship AutoDetected_30da7760-ad79-414a-9b5c-bfaa95d4ccc7
+	fromColumn: 'Parts_Service Sales'.CusId
+	toColumn: COCUS.CusId
+

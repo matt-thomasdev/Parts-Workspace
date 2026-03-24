@@ -1,0 +1,83 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+extendedProperty SQLBI_BRAVO_ManageDatesConfiguration =
+		{
+		  "templateUri": "file:///C:/Users/matt.thomas/AppData/Local/Bravo/.temp/ManageDates/Templates/Config-01.template.json",
+		  "isCurrent": false,
+		  "isCustom": false,
+		  "name": "Config-01",
+		  "description": "Standard gregorian calendar",
+		  "autoScan": 1,
+		  "onlyTablesColumns": [
+		    "'Parts_Service Sales'[DateInvoice]"
+		  ],
+		  "exceptTablesColumns": [],
+		  "isoCountry": "US",
+		  "autoNaming": 1,
+		  "targetMeasures": [
+		    "Total Sale (Parts Table)",
+		    "Total Margin",
+		    "Total Cost (Parts Table)"
+		  ],
+		  "defaults": {
+		    "firstDayOfWeek": 1
+		  },
+		  "dateAvailable": true,
+		  "dateEnabled": true,
+		  "dateTableName": "Date",
+		  "dateTableValidation": 1,
+		  "dateReferenceTableName": "DateAutoTemplate",
+		  "dateReferenceTableValidation": 2,
+		  "holidaysAvailable": true,
+		  "holidaysEnabled": false,
+		  "holidaysTableName": "Holidays",
+		  "holidaysTableValidation": 0,
+		  "holidaysDefinitionTableName": "HolidaysDefinition",
+		  "holidaysDefinitionTableValidation": 0,
+		  "timeIntelligenceAvailable": true,
+		  "timeIntelligenceEnabled": true
+		}
+
+annotation PBI_QueryOrder = ["Parts_Service Sales","PTCLA","Working Days","Data Refresh","dim_COCUS_CusId","dim_COCUS_BillCusId"]
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.141.1451.0 (25.03)+5007b75f0f7edbed506e31fcb76584cd6d711788
+
+annotation __PBIService_Versioning_SaveVersion = 2024-11-19T17:23:18.0270204Z
+
+annotation PBI_ProTooling = ["WebModelingEdit"]
+
+annotation PBI_RemovedChildren = [{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"1dc99384-c069-4afd-a9b1-5ae9d8c3e924","fromColumnLocalLineageTag":"f2f1ff33-f397-4161-bc81-abdea2b17d68","toTableLocalLineageTag":"c43729af-12e9-42f9-abd6-63027f6db6a6","toColumnLocalLineageTag":"a2f68906-33e7-4365-acf3-3c78b90616ad"}},"objectType":"Relationship"}]
+
+ref table 'Parts_Service Sales'
+ref table PTCLA
+ref table 'Location | Employee | Customer | ClaID'
+ref table 'Working Days'
+ref table 'Data Refresh'
+ref table DateAutoTemplate
+ref table Measure
+ref table Date
+ref table dim_COCUS_CusId
+ref table dim_COCUS_BillCusId
+
+ref role 'Miami PM'
+ref role 'Full Access'
+ref role 'FTL PM'
+ref role 'RB PM'
+ref role 'FTP PM'
+ref role 'FTM PM'
+ref role 'COL PM'
+ref role 'CHA PM'
+ref role 'FLO/CON PM'
+ref role 'GRE PM'
+ref role 'GVL PM'
+
+ref cultureInfo en-US
+

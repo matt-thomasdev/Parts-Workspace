@@ -1,0 +1,296 @@
+table MT_TRANSFERS
+	lineageTag: 5b1b7eda-9f36-4346-be1d-c23148ff2537
+
+	column PTTRFITM_TrfId
+		dataType: string
+		lineageTag: 1c2526e3-d1fc-4916-8078-9a5f1cd966ba
+		summarizeBy: none
+		sourceColumn: PTTRFITM_TrfId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_AmtCost
+		dataType: double
+		lineageTag: 8a0462f0-d1c8-4cd4-8aca-80e668ac5310
+		summarizeBy: sum
+		sourceColumn: PTTRFITM_AmtCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTTRFITM_AmtFreight
+		dataType: double
+		lineageTag: e89dbd93-9f2a-4bbb-be69-184694edffed
+		summarizeBy: sum
+		sourceColumn: PTTRFITM_AmtFreight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTTRFITM_DateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ddda9cd1-9cb8-4d82-9d66-a6adf1bf22fd
+		summarizeBy: none
+		sourceColumn: PTTRFITM_DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_DateSent
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 61f45c9d-8da3-4219-8c7e-5b8668d8490d
+		summarizeBy: none
+		sourceColumn: PTTRF_DateSent
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_LocationSent
+		dataType: string
+		lineageTag: 95eb5734-04a0-4d1e-ab13-31b611650aeb
+		summarizeBy: none
+		sourceColumn: PTTRF_LocationSent
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_LocationAccept
+		dataType: string
+		lineageTag: 9e0ea9dc-93fe-4da1-9cd6-40848b275681
+		summarizeBy: none
+		sourceColumn: PTTRF_LocationAccept
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_DateAccept
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 16f1b938-20f8-4f49-b3ea-a7cc2dd1f83f
+		summarizeBy: none
+		sourceColumn: PTTRF_DateAccept
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_StatusDes
+		dataType: string
+		lineageTag: 3f2f0c11-cd4c-4e09-9a6b-c4f5dcb0c487
+		summarizeBy: none
+		sourceColumn: PTTRFITM_StatusDes
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_DateCreate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1f5abfae-3007-45fc-ab6b-f26446adc1e9
+		summarizeBy: none
+		sourceColumn: PTTRF_DateCreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_DaysCreate
+		dataType: int64
+		formatString: 0
+		lineageTag: 189ab900-92e2-4185-bdca-76043070c4e3
+		summarizeBy: sum
+		sourceColumn: PTTRF_DaysCreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column COEMP_NameSent
+		dataType: string
+		lineageTag: 53333618-066a-4174-a872-e3050355d10f
+		summarizeBy: none
+		sourceColumn: COEMP_NameSent
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_Des
+		dataType: string
+		lineageTag: 9d741022-e389-4443-ae5f-148cae421e83
+		summarizeBy: none
+		sourceColumn: PTTRF_Des
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_DateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fc53cf23-c02b-4f6b-9e1c-45af949fc102
+		summarizeBy: none
+		sourceColumn: PTTRF_DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_DaysSent
+		dataType: int64
+		formatString: 0
+		lineageTag: bd6e670d-c8f0-4c0a-9004-86d2ae73c905
+		summarizeBy: sum
+		sourceColumn: PTTRF_DaysSent
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_Status
+		dataType: int64
+		formatString: 0
+		lineageTag: ec5b42ef-8b31-4ff1-8b7c-a12b386834b7
+		summarizeBy: sum
+		sourceColumn: PTTRF_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_StatusDes
+		dataType: string
+		lineageTag: 5595c3b5-bad5-4989-9622-ddf2b5ebe706
+		summarizeBy: none
+		sourceColumn: PTTRF_StatusDes
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_ASItmId
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e6444d8-a4ab-4583-98c4-f5e63b7d0441
+		summarizeBy: count
+		sourceColumn: PTTRFITM_ASItmId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_ItmTyp
+		dataType: int64
+		formatString: 0
+		lineageTag: ddf50352-c6a8-4d39-90eb-ca3a71ede4a4
+		summarizeBy: sum
+		sourceColumn: PTTRFITM_ItmTyp
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_PtItmSent
+		dataType: string
+		lineageTag: 54910a11-7409-4821-bdb4-8eceb88187cd
+		summarizeBy: none
+		sourceColumn: PTTRFITM_PtItmSent
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_PtItmAccept
+		dataType: string
+		lineageTag: bc09fec4-8f63-4cc6-aab6-0975342a2b75
+		summarizeBy: none
+		sourceColumn: PTTRFITM_PtItmAccept
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_QtyRequest
+		dataType: double
+		lineageTag: 8b364094-e5cf-48e5-bc55-fbf014bf9d63
+		summarizeBy: sum
+		sourceColumn: PTTRFITM_QtyRequest
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTTRFITM_QtySent
+		dataType: double
+		lineageTag: e4b11631-b55a-47b5-b3c1-e2c8bf240b06
+		summarizeBy: sum
+		sourceColumn: PTTRFITM_QtySent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTTRFITM_QtyAccept
+		dataType: double
+		lineageTag: dc03226c-1788-4c85-9459-3d6404d3092a
+		summarizeBy: sum
+		sourceColumn: PTTRFITM_QtyAccept
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTTRFITM_Reason
+		dataType: string
+		lineageTag: 40f58ac1-6059-4d5a-8c97-7f01fff47331
+		summarizeBy: none
+		sourceColumn: PTTRFITM_Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_Status
+		dataType: int64
+		formatString: 0
+		lineageTag: 3238f445-d8b1-4ad1-9386-a102e04a7885
+		summarizeBy: sum
+		sourceColumn: PTTRFITM_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_EmpId
+		dataType: string
+		lineageTag: e3fa6f30-d794-4f72-9cb8-81b1634c2b80
+		summarizeBy: none
+		sourceColumn: PTTRFITM_EmpId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_EmpIdReq
+		dataType: string
+		lineageTag: 593f8a57-30e5-42a7-a6da-551434a71c22
+		summarizeBy: none
+		sourceColumn: PTTRFITM_EmpIdReq
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_DateCreate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 16b0435d-38c4-4fd5-bcf0-dda997827024
+		summarizeBy: none
+		sourceColumn: PTTRFITM_DateCreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_BrnIdAccept
+		dataType: string
+		lineageTag: 36c63bb2-e878-4843-86ae-bbb473d11f26
+		summarizeBy: none
+		sourceColumn: PTTRF_BrnIdAccept
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_BrnIdSent
+		dataType: string
+		lineageTag: 268e83bf-7a5c-471d-b964-e93dc53cfeb9
+		summarizeBy: none
+		sourceColumn: PTTRF_BrnIdSent
+
+		annotation SummarizationSetBy = Automatic
+
+	column COEMP_NameAccept
+		dataType: string
+		lineageTag: 582ec54c-1e2c-4c84-b530-0a221d687b0f
+		summarizeBy: none
+		sourceColumn: COEMP_NameAccept
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MT_TRANSFERS = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_MT_TRANSFERS = EXCEDE{[Schema="dbo",Item="MT_TRANSFERS"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_MT_TRANSFERS,{"PTTRFITM_ASItmId", "PTTRFITM_TrfId", "PTTRFITM_ItmTyp", "PTTRFITM_PtItmSent", "PTTRFITM_PtItmAccept", "PTTRFITM_QtyRequest", "PTTRFITM_QtySent", "PTTRFITM_QtyAccept", "PTTRFITM_AmtCost", "PTTRFITM_AmtFreight", "PTTRFITM_Reason", "PTTRFITM_Status", "PTTRFITM_EmpId", "PTTRFITM_EmpIdReq", "PTTRFITM_DateCreate", "PTTRFITM_DateUpdate", "PTTRFITM_StatusDes", "PTTRF_BrnIdAccept", "PTTRF_BrnIdSent", "PTTRF_DateSent", "PTTRF_DateAccept", "PTTRF_DateCreate", "PTTRF_Des", "PTTRF_DateUpdate", "PTTRF_DaysCreate", "PTTRF_DaysSent", "PTTRF_Status", "PTTRF_StatusDes", "PTTRF_LocationSent", "PTTRF_LocationAccept", "COEMP_NameSent", "COEMP_NameAccept"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

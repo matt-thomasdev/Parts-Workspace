@@ -1,0 +1,40 @@
+relationship AutoDetected_93f9a2b6-df7e-4b23-ba6b-0957f66f607d
+	fromColumn: USER_INVENTORYSNAPSHOT.PrtId
+	toColumn: MT_INVENTORY.PrtId
+
+relationship cabfba08-235d-6c70-ed3c-628a7cdd973f
+	fromColumn: USER_INVENTORYSNAPSHOT.Date
+	toColumn: Date.Date
+
+relationship 925f5159-8af0-ceda-c2b1-e8bcac5665d9
+	fromColumn: USER_INVENTORYSNAPSHOT.Claid
+	toColumn: PTCLA.ClaId
+
+relationship 50d03c1c-6e3a-194c-6cd9-7bb83f3752f7
+	fromColumn: USER_PARTSWIPSNAPSHOT.Date
+	toColumn: Date.Date
+
+relationship 53d4c49a-614f-b610-0c0a-a44a343a3c32
+	fromColumn: USER_TRANSFERSNAPSHOT.Date
+	toColumn: Date.Date
+
+relationship 0a1a2d9c-c8c9-e13b-2310-14a4063e6d44
+	fromColumn: USER_CONSIGNMENTSNAPSHOT.Date
+	toColumn: Date.Date
+
+relationship 1a0b4a1b-fcd3-3c6c-e5be-35a9fb8e62f0
+	fromColumn: USER_INVENTORYSNAPSHOT.BrnId
+	toColumn: Dim_Location.BrnId
+
+relationship c936895d-236e-01b2-97af-b78a96ff6fa6
+	fromColumn: USER_TRANSFERSNAPSHOT.PTTRF_BrnIdSent
+	toColumn: Dim_Location.BrnId
+
+relationship 49d4dcd9-8dc0-7f85-5f2b-37f9ebf01684
+	fromColumn: USER_CONSIGNMENTSNAPSHOT.Locaiton
+	toColumn: Dim_Location.Location
+
+relationship 9dc50949-96fa-bda0-2915-28f0fc315a4f
+	fromColumn: USER_PARTSWIPSNAPSHOT.BrnId
+	toColumn: Dim_Location.BrnId
+

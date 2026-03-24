@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "OPS Sales"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "011742b3-8417-958a-4ff0-da08d9a304b1"
+  }
+}

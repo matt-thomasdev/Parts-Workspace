@@ -1,0 +1,124 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "EndOfMonthCheck",
+        "type": "SqlServerStoredProcedure",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "storedProcedureName": "[dbo].[CheckIfEndOfMonth]"
+        },
+        "linkedService": {
+          "name": "Inventory Warehouse",
+          "properties": {
+            "annotations": [],
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
+              "artifactId": "3cba7156-cc47-488a-9533-f5df8f819705",
+              "workspaceId": "7985a237-e120-49b0-af7d-e2bf580ec433"
+            }
+          }
+        }
+      },
+      {
+        "name": "SetEndOfMonthResult",
+        "type": "SetVariable",
+        "dependsOn": [
+          {
+            "activity": "EndOfMonthCheck",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "variableName": "EndOfMonthResult",
+          "value": {
+            "value": "@string(activity('EndOfMonthCheck').output)",
+            "type": "Expression"
+          }
+        }
+      },
+      {
+        "name": "If Condition1",
+        "type": "IfCondition",
+        "dependsOn": [
+          {
+            "activity": "SetEndOfMonthResult",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "typeProperties": {
+          "expression": {
+            "value": "@if(equals(variables('EndOfMonthResult'), 1), true, false)",
+            "type": "Expression"
+          },
+          "ifFalseActivities": [
+            {
+              "name": "False",
+              "type": "Wait",
+              "dependsOn": [],
+              "typeProperties": {
+                "waitTimeInSeconds": 1
+              }
+            }
+          ],
+          "ifTrueActivities": [
+            {
+              "name": "True",
+              "type": "Wait",
+              "dependsOn": [],
+              "typeProperties": {
+                "waitTimeInSeconds": 1
+              }
+            },
+            {
+              "name": "COEMP_Snapshot",
+              "type": "RefreshDataflow",
+              "dependsOn": [
+                {
+                  "activity": "True",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ],
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureOutput": false,
+                "secureInput": false
+              },
+              "typeProperties": {
+                "dataflowId": "684297b9-471e-4453-89ea-2ffd6eb8c01a",
+                "workspaceId": "7985a237-e120-49b0-af7d-e2bf580ec433",
+                "notifyOption": "NoNotification",
+                "dataflowType": "Dataflow-Gen2"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "variables": {
+      "EndOfMonthResult": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+table fct_CleanCore
+	lineageTag: 4b7939b7-141f-496d-ad81-9595063c1cad
+
+	column PrtId
+		dataType: string
+		lineageTag: 5d6a3d94-156d-4785-ac30-0dd6f982f7ff
+		summarizeBy: none
+		sourceColumn: PrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtCostAvg
+		dataType: double
+		lineageTag: a6a66f1c-67d8-4b7d-81cd-f8a9f4aacae9
+		summarizeBy: sum
+		sourceColumn: AmtCostAvg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyOH
+		dataType: double
+		lineageTag: d0f63e01-4e39-474c-8116-53f2f560f438
+		summarizeBy: sum
+		sourceColumn: QtyOH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7dfb47f4-a9fd-4149-8ef7-f10586451c83
+		summarizeBy: none
+		sourceColumn: DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTCOR_PrtId
+		dataType: string
+		lineageTag: 5ee094b8-ae4a-4c9d-937d-caf974b0a392
+		summarizeBy: none
+		sourceColumn: PTCOR_PrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column MNR = LOOKUPVALUE(fct_Inventory[Months No Receipt],fct_Inventory[PrtId],fct_CleanCore[PTCOR_PrtId])
+		formatString: 0
+		lineageTag: 96aceae3-1604-457e-aaf3-56abe01b4529
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column MNS = LOOKUPVALUE(fct_Inventory[Months No Sale],fct_Inventory[PrtId],fct_CleanCore[PTCOR_PrtId])
+		formatString: 0
+		lineageTag: 12727eca-eddd-42a9-99d8-c4995c506ef6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_CleanCore = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_fct_CleanCore = EXCEDE{[Schema="dbo",Item="MT_CLEANCORE"]}[Data]
+				in
+				    dbo_fct_CleanCore
+

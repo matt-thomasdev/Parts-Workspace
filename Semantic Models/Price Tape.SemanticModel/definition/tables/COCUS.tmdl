@@ -1,0 +1,100 @@
+table COCUS
+	lineageTag: 2ae4ff5d-ee06-4aae-8e2c-37d70f05f173
+
+	column CusId
+		dataType: string
+		lineageTag: 4a9abfcf-e7cc-4d81-8d67-47731b393be5
+		summarizeBy: none
+		sourceColumn: CusId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 6fb04748-4ab6-4485-be2f-5639b97d0b32
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column BillCusId
+		dataType: string
+		lineageTag: d38b5d4f-1315-42c1-b887-4795d5d71b4c
+		summarizeBy: none
+		sourceColumn: BillCusId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Typ
+		dataType: string
+		lineageTag: 7d254dc2-cb8f-4f1d-a241-54d8a44a9ee6
+		summarizeBy: none
+		sourceColumn: Typ
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShpId
+		dataType: string
+		lineageTag: cb89aa80-6419-48d4-af39-53a96f05c731
+		summarizeBy: none
+		sourceColumn: ShpId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PtSlsTypId
+		dataType: string
+		lineageTag: cf81bd3f-519e-4684-ad7e-983235ca2f68
+		summarizeBy: none
+		sourceColumn: PtSlsTypId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SvSlsTypId
+		dataType: string
+		lineageTag: 6bd75eb3-c714-48c7-b986-85b5d4ced528
+		summarizeBy: none
+		sourceColumn: SvSlsTypId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PriIdOride
+		dataType: string
+		lineageTag: 10aa7304-360d-453e-9e2c-e8c7325c9568
+		summarizeBy: none
+		sourceColumn: PriIdOride
+
+		annotation SummarizationSetBy = Automatic
+
+	column PriIdBase
+		dataType: string
+		lineageTag: 27407d9d-ef9c-4816-8623-9621f3949fde
+		summarizeBy: none
+		sourceColumn: PriIdBase
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inactive
+		dataType: int64
+		formatString: 0
+		lineageTag: 86cfe60e-fd92-4ede-819c-b9595c0db1d3
+		summarizeBy: none
+		sourceColumn: Inactive
+
+		annotation SummarizationSetBy = Automatic
+
+	partition COCUS = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_COCUS = EXCEDE{[Schema="dbo",Item="COCUS"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_COCUS,{"CusId", "Name", "BillCusId", "Typ", "ShpId", "PtSlsTypId", "SvSlsTypId", "PriIdOride", "PriIdBase", "Inactive"}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Removed Other Columns",{{"Name", Text.Proper, type text}})
+				in
+				    #"Capitalized Each Word"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

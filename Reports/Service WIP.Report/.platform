@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Service WIP"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1c7f8791-7c76-ab23-401c-4a80f713e996"
+  }
+}

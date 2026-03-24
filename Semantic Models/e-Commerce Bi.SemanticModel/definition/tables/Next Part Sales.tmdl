@@ -1,0 +1,132 @@
+table 'Next Part Sales'
+	lineageTag: 47b65e87-985a-441e-b190-66fdad707f72
+
+	column Customer
+		dataType: string
+		lineageTag: bfde7c2e-7d25-413f-93d4-80378cea7841
+		summarizeBy: none
+		sourceColumn: Customer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 546d16e3-c6f3-4133-afa9-62cf67deae55
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Account
+		dataType: string
+		lineageTag: aee2d64e-d715-477f-87e6-b0ab5cfc49b2
+		summarizeBy: none
+		sourceColumn: Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column Branch
+		dataType: int64
+		formatString: 0
+		lineageTag: 62957a75-b235-4bfd-b350-f2c0a00ed860
+		summarizeBy: sum
+		sourceColumn: Branch
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total
+		dataType: double
+		lineageTag: cb168b2c-7c3a-445f-8e9f-dc05e572b43c
+		summarizeBy: sum
+		sourceColumn: Total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column '# Orders'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0d797de4-2bcf-4342-bc9b-331de42713a5
+		summarizeBy: sum
+		sourceColumn: # Orders
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column '# Lines'
+		dataType: int64
+		formatString: 0
+		lineageTag: 133580a7-d174-4d1f-adad-cb01cea15b75
+		summarizeBy: sum
+		sourceColumn: # Lines
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ACES Catalog Stockchecks'
+		dataType: int64
+		formatString: 0
+		lineageTag: f0d49a5a-692b-4ce2-b3ad-ed48b1cbf3b0
+		summarizeBy: sum
+		sourceColumn: ACES Catalog Stockchecks
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Classic Catalog Stockchecks'
+		dataType: int64
+		formatString: 0
+		lineageTag: 09d4f801-5bde-44a8-aa44-eabb5c5c9ff4
+		summarizeBy: sum
+		sourceColumn: Classic Catalog Stockchecks
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'P/N Stockchecks'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8f3d9c65-3cda-4a60-916a-081ba654e8b2
+		summarizeBy: sum
+		sourceColumn: P/N Stockchecks
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Stockchecks'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a13893e-19d5-497e-84a5-b9e8e84db3f6
+		summarizeBy: sum
+		sourceColumn: Total Stockchecks
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'My Items SC'
+		dataType: int64
+		formatString: 0
+		lineageTag: bc5656aa-4f54-4268-87d9-909aa6c080af
+		summarizeBy: sum
+		sourceColumn: My Items SC
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Next Part Sales' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(Web.Contents("https://bepensa.sharepoint.com/sites/BM-UR-ANALYTICS/Documentos%20compartidos/e-Commerce%20Bi/Next%20Part%20Data.xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Customer", type text}, {"Date", type date}, {"Account", type any}, {"Branch", Int64.Type}, {"Total", type number}, {"# Orders", Int64.Type}, {"# Lines", Int64.Type}, {"ACES Catalog Stockchecks", Int64.Type}, {"Classic Catalog Stockchecks", Int64.Type}, {"P/N Stockchecks", Int64.Type}, {"Total Stockchecks", Int64.Type}, {"My Items SC", Int64.Type}}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Changed Type",{{"Customer", Text.Proper, type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Capitalized Each Word", each not Text.Contains([Customer], "ebay"))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

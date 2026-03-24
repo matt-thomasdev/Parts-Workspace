@@ -1,0 +1,36 @@
+table PTCLA
+	lineageTag: c6a6ce51-e824-49c7-abcf-134acc001be4
+
+	column ClaId
+		dataType: string
+		lineageTag: 6d4fb7f6-f652-4908-a1ed-6b68a963222a
+		summarizeBy: none
+		sourceColumn: ClaId
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Class Des'
+		dataType: string
+		lineageTag: 4cd2d449-707f-4216-9d2f-3c34ede13718
+		summarizeBy: none
+		sourceColumn: Class Des
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PTCLA = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_PTCLA = EXCEDE{[Schema="dbo",Item="PTCLA"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(dbo_PTCLA,{"DateCreate", "DateUpdate", "TS", "PTPRT"}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Removed Columns",{{"Des", Text.Proper, type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Capitalized Each Word",{{"Des", "Class Des"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

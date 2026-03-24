@@ -1,0 +1,49 @@
+table fct_PartSales
+	lineageTag: 508f484f-6fcd-42f9-9e40-ec950ef88452
+
+	column BrnId
+		dataType: string
+		lineageTag: 16196306-f689-4755-b27d-2d999c0f049f
+		summarizeBy: none
+		sourceColumn: BrnId
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtCost
+		dataType: double
+		lineageTag: 7a8e741f-c230-4d6a-b2ef-2b5285f97a6f
+		summarizeBy: sum
+		sourceColumn: AmtCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyShip
+		dataType: double
+		lineageTag: 3480e9e3-c7ca-419f-a8e8-dee747b3ef23
+		summarizeBy: sum
+		sourceColumn: QtyShip
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fct_PartSales = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_fct_PartSales = EXCEDE{[Schema="dbo",Item="USER_PARTS_SERVICE_SALES_VIEW"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(dbo_fct_PartSales, each [Posted] = 0),
+				    #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each not Text.StartsWith([SlsId], "E")),
+				    #"Filtered Rows2" = Table.SelectRows(#"Filtered Rows1", each [ItmTyp] <> 531 and [ItmTyp] <> 598),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows2",{"BrnId", "AmtCost", "QtyShip"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,51 @@
+table prm_Parameter
+	lineageTag: 534346ab-5523-440d-8ebe-26a64adecc65
+
+	column 'Lost Sales Parameter'
+		lineageTag: 1ec12477-fbb0-4d96-9062-f223001dc3b6
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: d29408ec-1ac1-4e41-82ac-b0008959340e
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 11b6dc35-ea37-4ab8-a4aa-9b08c5418b45
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition prm_Parameter = calculated
+		mode: import
+		source =
+				{
+				    ("Locaiton", NAMEOF(fct_PtLost[Location PTLOST]), 0),
+				    ("VenPrtId", NAMEOF(fct_PtLost[VenPrtId]), 1),
+				    ("PtItmId", NAMEOF('fct_PtLost'[PtItm]), 2),
+				    ("Class Des", NAMEOF('fct_Inventory'[PTCLA_ClaIdDes]), 3),
+				    ("Emp Name", NAMEOF(fct_PtLost[EmpName]), 4)
+				}
+
+	annotation PBI_Id = 67e75240c0f7447aa8d8df6031a93b00
+

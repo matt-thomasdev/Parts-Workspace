@@ -1,0 +1,75 @@
+table dim_COCUS_BillCusId
+	lineageTag: c43729af-12e9-42f9-abd6-63027f6db6a6
+
+	column Name
+		dataType: string
+		lineageTag: f2229914-a889-4567-9e46-790d9c929dc8
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column CusId
+		dataType: string
+		lineageTag: 8dc4f68c-0639-4c47-a0a5-2c38fcd30ade
+		summarizeBy: none
+		sourceColumn: CusId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Addr1
+		dataType: string
+		lineageTag: 442c6de7-3e2b-4b2d-81cc-bf1c76ae60bf
+		summarizeBy: none
+		sourceColumn: Addr1
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: a2aa1edc-2d57-47a1-9ab6-d5fe059c0794
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: 9e0af4e0-9817-46cf-90de-c3be8dfd4be4
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column Post
+		dataType: string
+		lineageTag: 23676690-5bd4-4bc9-a217-cfe986b424a1
+		summarizeBy: none
+		sourceColumn: Post
+
+		annotation SummarizationSetBy = Automatic
+
+	column PtSlsTypId
+		dataType: string
+		lineageTag: 20de1698-7e4d-4063-9e6b-b37d59f8f572
+		summarizeBy: none
+		sourceColumn: PtSlsTypId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_COCUS_BillCusId = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_COCUS = EXCEDE{[Schema="dbo",Item="COCUS"]}[Data],
+				    #"Capitalized Each Word" = Table.TransformColumns(dbo_COCUS,{{"Name", Text.Proper, type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Capitalized Each Word", {"CusId", "Name", "Addr1", "City", "State", "Post", "PtSlsTypId"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

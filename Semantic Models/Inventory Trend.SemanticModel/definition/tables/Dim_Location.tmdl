@@ -1,0 +1,31 @@
+table Dim_Location
+	lineageTag: 72531b9e-f435-4769-be8a-423a24f07386
+
+	column BrnId
+		dataType: int64
+		formatString: 0
+		lineageTag: ddc86f56-3d3d-4a32-b27c-78ad7709af8c
+		summarizeBy: none
+		sourceColumn: BrnId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: f78735d2-9025-4979-a461-76d89ac2556a
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Location = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("Pc1NCoMwEAXgq0jWLqrVHsCC3VQo3UoW0zjgQExg/CnevomduHzfzOP1vSouhcrV3dt1+hAonUcqI43AFufFO8FrwNZ6RmdQqDqq7gu7QB3gwYgs+SbZbWTtv1Uegx3BRJLjWut5yZ6wDsgDnJ9x8k0bIUPWIJhRvEqNVziZ9F0n7XbkWWn9Aw==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [BrnId = _t, Location = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"BrnId", Int64.Type}, {"Location", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

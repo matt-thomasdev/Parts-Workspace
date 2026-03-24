@@ -1,0 +1,109 @@
+table Measure
+	lineageTag: b876da73-c0b4-4661-813a-9db35f9d546e
+
+	measure 'Margin Price 2' =
+			
+			SUMX(PTTAP,PTTAP[AmtPrice2]-PTTAP[AmtCost])
+		displayFolder: 01. PTTAP
+		lineageTag: f6bd22c2-6e15-48a4-83dd-1e9dc1e41ad8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Margin =
+			
+			VAR Sales = SUMX('Parts_Service Sales','Parts_Service Sales'[AmtPrice]*'Parts_Service Sales'[QtyShip])
+			Var Cost = SUMX('Parts_Service Sales','Parts_Service Sales'[AmtCost]*'Parts_Service Sales'[QtyShip])
+			RETURN
+			Sales-Cost
+		displayFolder: 02. Sales
+		lineageTag: a4d32899-5db7-4ca1-889c-a317b7ac1a3d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Margin Price 3' =
+			
+			SUMX(PTTAP,PTTAP[AmtPrice3]-PTTAP[AmtCost])
+		displayFolder: 01. PTTAP
+		lineageTag: 2e29cd3e-21e9-46c7-8f4b-546a6fbeb19a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Margin% Price 2' =
+			
+			VAR Sale = SUMX(PTTAP,PTTAP[AmtPrice2])
+			VAR Margin = [Margin Price 2]
+			RETURN
+			DIVIDE(Margin,Sale,0)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 01. PTTAP
+		lineageTag: 7a233849-c03b-4e53-9996-c3f9cc9020ce
+
+	measure 'Margin% Price 3' =
+			
+			VAR Sale = SUMX(PTTAP,PTTAP[AmtPrice3])
+			VAR Margin = [Margin Price 3]
+			RETURN
+			DIVIDE(Margin,Sale,0)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 01. PTTAP
+		lineageTag: e7920aab-a651-4eb8-aa49-e971cb040094
+
+	measure Margin% =
+			
+			VAR Sales = SUMX('Parts_Service Sales','Parts_Service Sales'[AmtPrice]*'Parts_Service Sales'[QtyShip])
+			Var Cost = SUMX('Parts_Service Sales','Parts_Service Sales'[AmtCost]*'Parts_Service Sales'[QtyShip])
+			VAR Margin = Sales-Cost
+			RETURN
+			DIVIDE(Margin,Sales,0)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 02. Sales
+		lineageTag: d6353391-3dc6-47a3-9a19-43fb8b357c87
+
+	measure 'Count Of Numbers' = COUNTX(PTTAP,PTTAP[VenPrtId])
+		formatString: 0
+		lineageTag: ad8bece1-554f-4a1c-9185-bf72b104e074
+
+	measure Sales =
+			
+			SUMX('Parts_Service Sales','Parts_Service Sales'[QtyShip]*'Parts_Service Sales'[AmtPrice])
+		displayFolder: 02. Sales
+		lineageTag: 1f0a0ff8-9f28-4a3b-996f-6e5c3ab99959
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Margin Price 1' =
+			
+			SUMX(PTTAP,PTTAP[AmtPrice1]-PTTAP[AmtCost])
+		displayFolder: 01. PTTAP
+		lineageTag: 5896b4bc-a392-457b-89c4-edb3a079cc8c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Margin% Price 1' =
+			
+			VAR Sale = SUMX(PTTAP,PTTAP[AmtPrice1])
+			VAR Margin = [Margin Price 1]
+			RETURN
+			DIVIDE(Margin,Sale,0)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 01. PTTAP
+		lineageTag: 9077790f-563f-46ac-9b4a-11cfe3cb995f
+
+	column Column
+		isHidden
+		formatString: 0
+		lineageTag: 204c3f94-af2f-46d5-affd-7d2895998050
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Measure = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 8f201151f85b445aaaa896571c25676b
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

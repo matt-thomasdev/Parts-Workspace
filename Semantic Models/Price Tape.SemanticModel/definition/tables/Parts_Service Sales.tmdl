@@ -1,0 +1,352 @@
+table 'Parts_Service Sales'
+	lineageTag: 18a43295-f922-43df-aa48-3e3a8edf5ea9
+
+	column DateInvoice
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 63851bb2-e604-4d31-b039-63e56298b747
+		summarizeBy: none
+		sourceColumn: DateInvoice
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateCreate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 585654a6-64a5-4212-a75f-47bf0bab4986
+		summarizeBy: none
+		sourceColumn: DateCreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9ee24527-a4ea-42db-8342-a7d7804542a8
+		summarizeBy: none
+		sourceColumn: DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmpId
+		dataType: string
+		lineageTag: ff22c608-c015-4683-b571-94761074da3d
+		summarizeBy: none
+		sourceColumn: EmpId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: f7c8c0c7-8d0a-4dde-9986-558c74e93252
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column SlsId
+		dataType: string
+		lineageTag: 6f1bc688-3af8-4654-9af3-ae2329808bfa
+		summarizeBy: none
+		sourceColumn: SlsId
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstimateSlsId
+		dataType: string
+		lineageTag: 862f8335-682a-40f0-8e74-8b61c658329b
+		summarizeBy: none
+		sourceColumn: EstimateSlsId
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvoiceSlsId
+		dataType: string
+		lineageTag: 41128584-9b49-4e27-82e9-4ad1dea6cb89
+		summarizeBy: none
+		sourceColumn: InvoiceSlsId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Origin
+		dataType: string
+		lineageTag: 8c81752d-7129-4c79-b5bf-9f0ba746fe0f
+		summarizeBy: none
+		sourceColumn: Origin
+
+		annotation SummarizationSetBy = Automatic
+
+	column PtItm
+		dataType: string
+		lineageTag: 4dfa612e-aa6f-4187-a28a-eec777ef410d
+		summarizeBy: none
+		sourceColumn: PtItm
+
+		annotation SummarizationSetBy = Automatic
+
+	column Des
+		dataType: string
+		lineageTag: 6fddb7ac-c826-46ce-9667-e8c7a2ac6065
+		summarizeBy: none
+		sourceColumn: Des
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClaId
+		dataType: string
+		lineageTag: 1b256079-3b70-40e9-8231-300208778429
+		summarizeBy: none
+		sourceColumn: ClaId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SrcId
+		dataType: string
+		lineageTag: 7d308956-f3d2-429f-aabe-6e654550062c
+		summarizeBy: none
+		sourceColumn: SrcId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItmTyp
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b43cdd7-94b9-4cf4-bb60-ef388ea94cc5
+		summarizeBy: sum
+		sourceColumn: ItmTyp
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItmDes
+		dataType: string
+		lineageTag: 258acbe6-fe67-4b03-89ee-a59d5d04d621
+		summarizeBy: none
+		sourceColumn: ItmDes
+
+		annotation SummarizationSetBy = Automatic
+
+	column BrnId
+		dataType: string
+		lineageTag: 61b1493e-8b6d-4147-bcb4-b7b0fbe96478
+		summarizeBy: none
+		sourceColumn: BrnId
+
+		annotation SummarizationSetBy = Automatic
+
+	column CusId
+		dataType: string
+		lineageTag: 7f8d62b6-ee33-47e7-a4aa-d8486e07e1f6
+		summarizeBy: none
+		sourceColumn: CusId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BillCusId
+		dataType: string
+		lineageTag: 060cade8-7c5a-438d-b1d2-cc6f10bb20dc
+		summarizeBy: none
+		sourceColumn: BillCusId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SlsTypId
+		dataType: string
+		lineageTag: ced33116-2451-4f12-be05-9fa27e6c6b88
+		summarizeBy: none
+		sourceColumn: SlsTypId
+
+		annotation SummarizationSetBy = Automatic
+
+	column CusName
+		dataType: string
+		lineageTag: c66dfe96-1f91-437b-b050-caee55a57ba5
+		summarizeBy: none
+		sourceColumn: CusName
+
+		annotation SummarizationSetBy = Automatic
+
+	column BillCusName
+		dataType: string
+		lineageTag: 95468e3a-9660-4a0f-a978-ee66f077c78a
+		summarizeBy: none
+		sourceColumn: BillCusName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtCost
+		dataType: double
+		lineageTag: 5b27a95c-cdb9-4c6e-9f73-f82a905baf42
+		summarizeBy: sum
+		sourceColumn: AmtCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice
+		dataType: double
+		lineageTag: 73b95628-9232-4ec8-9180-e73bc94277c9
+		summarizeBy: sum
+		sourceColumn: AmtPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPriceSuggest
+		dataType: double
+		lineageTag: f464d4fb-19b8-45be-a348-3e06300d0d64
+		summarizeBy: sum
+		sourceColumn: AmtPriceSuggest
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtRebate
+		dataType: double
+		lineageTag: 52e62447-bd5e-42b2-a1b9-984f6881177d
+		summarizeBy: sum
+		sourceColumn: AmtRebate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyShip
+		dataType: double
+		lineageTag: 281bcb63-4c61-40c3-b88c-10563e99aa25
+		summarizeBy: sum
+		sourceColumn: QtyShip
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Status
+		dataType: int64
+		formatString: 0
+		lineageTag: 58e9af72-cb57-4dd1-ba38-51b981cb1808
+		summarizeBy: sum
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Extended Sales'
+		dataType: double
+		lineageTag: 142ded83-d56d-41d5-91a1-4ee1b525afd0
+		summarizeBy: sum
+		sourceColumn: Extended Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Extended Cost'
+		dataType: double
+		lineageTag: b71f639b-2c01-46b6-90d2-0b0f99742964
+		summarizeBy: sum
+		sourceColumn: Extended Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Reason
+		dataType: string
+		lineageTag: 7364344b-f151-4fa5-99f1-0299aac42583
+		summarizeBy: none
+		sourceColumn: Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc5
+		dataType: string
+		lineageTag: 82bd1262-5d3e-4be4-b1c7-6835d6da0e13
+		summarizeBy: none
+		sourceColumn: PrtMisc5
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyOH
+		dataType: double
+		lineageTag: ed3777fd-f495-405e-a375-d4aae56d4ca1
+		summarizeBy: sum
+		sourceColumn: QtyOH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyOO
+		dataType: double
+		lineageTag: 61c61ea1-29fb-45f9-bac0-9d62b63be3dc
+		summarizeBy: sum
+		sourceColumn: QtyOO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Core
+		dataType: string
+		lineageTag: 5eb84ece-01e0-460f-835f-3bf951c7c08f
+		summarizeBy: none
+		sourceColumn: Core
+
+		annotation SummarizationSetBy = Automatic
+
+	column VenPrtId
+		dataType: string
+		lineageTag: 79629e07-025b-44a4-8a24-f965d0c2dc1d
+		summarizeBy: none
+		sourceColumn: VenPrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Posted
+		dataType: int64
+		formatString: 0
+		lineageTag: f5cf9030-cc3a-48bf-85fa-1844d7f4b42e
+		summarizeBy: sum
+		sourceColumn: Posted
+
+		annotation SummarizationSetBy = Automatic
+
+	column CaPrtId
+		dataType: string
+		lineageTag: 2be22e2c-4613-42cc-9f9c-9cf552d8a86f
+		summarizeBy: none
+		sourceColumn: CaPrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Relationship
+		dataType: string
+		lineageTag: ab49d96b-0be7-4dca-b760-b05a352bb5de
+		summarizeBy: none
+		sourceColumn: Relationship
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Parts_Service Sales' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_USER_PARTS_SERVICE_SALES_VIEW = EXCEDE{[Schema="dbo",Item="USER_PARTS_SERVICE_SALES_VIEW"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(dbo_USER_PARTS_SERVICE_SALES_VIEW, each ([DateInvoice] <> null)),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Filtered Rows", "SrcId", "SrcId - Copy"),
+				    #"Duplicated Column1" = Table.DuplicateColumn(#"Duplicated Column", "VenPrtId", "VenPrtId - Copy"),
+				    #"Filtered Rows1" = Table.SelectRows(#"Duplicated Column1", each ([ItmDes] = "Stk Part")),
+				    #"Merged Columns" = Table.CombineColumns(#"Filtered Rows1",{"SrcId - Copy", "VenPrtId - Copy"},Combiner.CombineTextByDelimiter("-", QuoteStyle.None),"Relationship")
+				in
+				    #"Merged Columns"
+
+	changedProperty = Name
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

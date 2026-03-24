@@ -1,0 +1,1821 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "4.1.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "cocusapv": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COCUSAPV"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cocusapv": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "cocusapv.itm_id": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COCUSAPV",
+			          "ConceptualProperty": "ItmId"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "itm id": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ItmId": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "itm identification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "itm identity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "itm identifier": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "itm credential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "cocusapv.cus_id": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COCUSAPV",
+			          "ConceptualProperty": "CusId"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "cus id": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "CU id": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "CusId": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "cus": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "CU": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.7566
+			          }
+			        },
+			        {
+			          "CU identification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "CU identity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "CU identifier": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "CU credential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "cocusapv.trm_id": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COCUSAPV",
+			          "ConceptualProperty": "TrmId"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trm id": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "TrmId": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "trm identification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "trm identity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "trm identifier": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "trm credential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "cocusapv.sls_id": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COCUSAPV",
+			          "ConceptualProperty": "SlsId"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "sls id": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "sl id": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "SlsId": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "sls": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "sl": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.7566
+			          }
+			        },
+			        {
+			          "sl identification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "sl identity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "sl identifier": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "sl credential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "cocusapv.origin": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COCUSAPV",
+			          "ConceptualProperty": "Origin"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "origin": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "derivation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "basis": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "source": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "cause": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "beginning": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "foundation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "cocusapv.emp_id": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COCUSAPV",
+			          "ConceptualProperty": "EmpId"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "emp id": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "EmpId": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "emp identification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "emp identity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "emp identifier": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "emp credential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "cocusapv.card_nbr": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COCUSAPV",
+			          "ConceptualProperty": "CardNbr"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "card nbr": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "CardNbr": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "cocusapv.date_auth": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COCUSAPV",
+			          "ConceptualProperty": "DateAuth"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "date auth": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "DateAuth": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "moment auth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period auth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "cocusapv.amt_auth": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COCUSAPV",
+			          "ConceptualProperty": "AmtAuth"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "amt auth": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "AmtAuth": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "cocusapv.auth_nbr": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COCUSAPV",
+			          "ConceptualProperty": "AuthNbr"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "auth nbr": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "AuthNbr": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "coemp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COEMP"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "coemp": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "coemp.emp_id": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COEMP",
+			          "ConceptualProperty": "EmpId"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "emp id": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "EmpId": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "emp identification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "emp identity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "emp identifier": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "emp credential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "coemp.name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COEMP",
+			          "ConceptualProperty": "Name"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "name": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "title": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "label": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ],
+			      "NameType": "Name"
+			    },
+			    "cocus": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COCUS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cocus": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "cocus.cus_id": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COCUS",
+			          "ConceptualProperty": "CusId"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cus id": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "CU id": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "CusId": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "cus": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "CU": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.7566
+			          }
+			        },
+			        {
+			          "CU identification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "CU identity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "CU identifier": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "CU credential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "cocus.name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "COCUS",
+			          "ConceptualProperty": "Name"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "name": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "title": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "label": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ],
+			      "NameType": "Name"
+			    },
+			    "measure.lease_unit_other_cost": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit Other Cost"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Other Cost": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_interest_expense": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit Interest Expense"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Interest Expense": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_maintenance": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit Maintenance"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Maintenance": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_value": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit Value"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Revenue Equipment": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_accum_deprec": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit Accum Deprec"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Accum Deprec": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_book_value": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit Book Value"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Book Value": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_vehicle_license": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit Vehicle License"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Vehicle License": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_direct_cost_w__vehcile_licenses": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit Direct Cost W/ Vehcile Licenses"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Direct Cost": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_gross_profit_ottawa": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit Gross Profit (Ottawa)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Gross Profit": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_billback_sales": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit BillBack Sales"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Bill Back - Repairs": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_billback_cost": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit BillBack Cost"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cost of BB Repairs": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_billback_delivery_cost": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit Billback Delivery Cost"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cost of BB Delivery": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_billback_delivery_sales": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit Billback Delivery Sales"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Billl Back - Delivery": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_fixed_revenue": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit Fixed Revenue"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fixed Revenue": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_variable_revenue": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit Variable Revenue"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Variable Revenue": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_total_revenue": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit Total Revenue"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Total Revenue": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_depreciation": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit Depreciation"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Depreciation": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.lease_unit_tires": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Lease Unit Tires"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Tires": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "measure.ottawa_lease_unit_direct_cost_after_bb": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measure",
+			          "ConceptualProperty": "Ottawa Lease Unit Direct Cost After BB"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Gross Margin After BB": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "mt_acjeitm.vhvin_vin": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "MT_ACJEITM",
+			          "ConceptualProperty": "VHVIN_Vin"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Vin": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "mt_acjeitm.vhvin_fleetuntid": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "MT_ACJEITM",
+			          "ConceptualProperty": "VHVIN_FleetUntId"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fleet Unit Id": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
+			    "coemp_is_named_name": {
+			      "Binding": {
+			        "ConceptualEntity": "COEMP"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "coemp": {
+			          "Target": {
+			            "Entity": "coemp"
+			          }
+			        },
+			        "coemp.name": {
+			          "Target": {
+			            "Entity": "coemp.name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Name": {
+			            "Subject": {
+			              "Role": "coemp"
+			            },
+			            "Name": {
+			              "Role": "coemp.name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "names_are_names_IDs_of_coemps"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "coemp"
+			            },
+			            "Object": {
+			              "Role": "coemp.name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "coemps_have_names"
+			        }
+			      ]
+			    },
+			    "cocus_is_named_name": {
+			      "Binding": {
+			        "ConceptualEntity": "COCUS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cocus": {
+			          "Target": {
+			            "Entity": "cocus"
+			          }
+			        },
+			        "cocus.name": {
+			          "Target": {
+			            "Entity": "cocus.name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Name": {
+			            "Subject": {
+			              "Role": "cocus"
+			            },
+			            "Name": {
+			              "Role": "cocus.name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "names_are_names_IDs_of_cocuses"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cocus"
+			            },
+			            "Object": {
+			              "Role": "cocus.name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cocuses_have_names"
+			        }
+			      ]
+			    },
+			    "cocusapv_has_itm_id": {
+			      "Binding": {
+			        "ConceptualEntity": "COCUSAPV"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cocusapv": {
+			          "Target": {
+			            "Entity": "cocusapv"
+			          }
+			        },
+			        "cocusapv.itm_id": {
+			          "Target": {
+			            "Entity": "cocusapv.itm_id"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cocusapv"
+			            },
+			            "Object": {
+			              "Role": "cocusapv.itm_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cocusapvs_have_itm_ids"
+			        }
+			      ]
+			    },
+			    "cocusapv_has_trm_id": {
+			      "Binding": {
+			        "ConceptualEntity": "COCUSAPV"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cocusapv": {
+			          "Target": {
+			            "Entity": "cocusapv"
+			          }
+			        },
+			        "cocusapv.trm_id": {
+			          "Target": {
+			            "Entity": "cocusapv.trm_id"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cocusapv"
+			            },
+			            "Object": {
+			              "Role": "cocusapv.trm_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cocusapvs_have_trm_ids"
+			        }
+			      ]
+			    },
+			    "cocusapv_has_sls_id": {
+			      "Binding": {
+			        "ConceptualEntity": "COCUSAPV"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cocusapv": {
+			          "Target": {
+			            "Entity": "cocusapv"
+			          }
+			        },
+			        "cocusapv.sls_id": {
+			          "Target": {
+			            "Entity": "cocusapv.sls_id"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cocusapv"
+			            },
+			            "Object": {
+			              "Role": "cocusapv.sls_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cocusapvs_have_sls_ids"
+			        }
+			      ]
+			    },
+			    "cocusapv_has_origin": {
+			      "Binding": {
+			        "ConceptualEntity": "COCUSAPV"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cocusapv": {
+			          "Target": {
+			            "Entity": "cocusapv"
+			          }
+			        },
+			        "cocusapv.origin": {
+			          "Target": {
+			            "Entity": "cocusapv.origin"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cocusapv"
+			            },
+			            "Object": {
+			              "Role": "cocusapv.origin"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cocusapvs_have_origins"
+			        }
+			      ]
+			    },
+			    "cocusapv_has_card_nbr": {
+			      "Binding": {
+			        "ConceptualEntity": "COCUSAPV"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cocusapv": {
+			          "Target": {
+			            "Entity": "cocusapv"
+			          }
+			        },
+			        "cocusapv.card_nbr": {
+			          "Target": {
+			            "Entity": "cocusapv.card_nbr"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cocusapv"
+			            },
+			            "Object": {
+			              "Role": "cocusapv.card_nbr"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cocusapvs_have_card_nbrs"
+			        }
+			      ]
+			    },
+			    "cocusapv_has_date_auth": {
+			      "Binding": {
+			        "ConceptualEntity": "COCUSAPV"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cocusapv": {
+			          "Target": {
+			            "Entity": "cocusapv"
+			          }
+			        },
+			        "cocusapv.date_auth": {
+			          "Target": {
+			            "Entity": "cocusapv.date_auth"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cocusapv"
+			            },
+			            "Object": {
+			              "Role": "cocusapv.date_auth"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cocusapvs_have_date_auths"
+			        }
+			      ]
+			    },
+			    "cocusapv_has_amt_auth": {
+			      "Binding": {
+			        "ConceptualEntity": "COCUSAPV"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cocusapv": {
+			          "Target": {
+			            "Entity": "cocusapv"
+			          }
+			        },
+			        "cocusapv.amt_auth": {
+			          "Target": {
+			            "Entity": "cocusapv.amt_auth"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cocusapv"
+			            },
+			            "Object": {
+			              "Role": "cocusapv.amt_auth"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cocusapvs_have_amt_auths"
+			        }
+			      ]
+			    },
+			    "cocusapv_has_auth_nbr": {
+			      "Binding": {
+			        "ConceptualEntity": "COCUSAPV"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cocusapv": {
+			          "Target": {
+			            "Entity": "cocusapv"
+			          }
+			        },
+			        "cocusapv.auth_nbr": {
+			          "Target": {
+			            "Entity": "cocusapv.auth_nbr"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cocusapv"
+			            },
+			            "Object": {
+			              "Role": "cocusapv.auth_nbr"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cocusapvs_have_auth_nbrs"
+			        }
+			      ]
+			    },
+			    "coemp_has_emp_id": {
+			      "Binding": {
+			        "ConceptualEntity": "COEMP"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "coemp": {
+			          "Target": {
+			            "Entity": "coemp"
+			          }
+			        },
+			        "coemp.emp_id": {
+			          "Target": {
+			            "Entity": "coemp.emp_id"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "coemp"
+			            },
+			            "Object": {
+			              "Role": "coemp.emp_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "coemps_have_emp_ids"
+			        }
+			      ]
+			    },
+			    "cocus_has_cus_id": {
+			      "Binding": {
+			        "ConceptualEntity": "COCUS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cocus": {
+			          "Target": {
+			            "Entity": "cocus"
+			          }
+			        },
+			        "cocus.cus_id": {
+			          "Target": {
+			            "Entity": "cocus.cus_id"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cocus"
+			            },
+			            "Object": {
+			              "Role": "cocus.cus_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cocuses_have_cus_ids"
+			        }
+			      ]
+			    },
+			    "cocusapv_has_cocus": {
+			      "Binding": {
+			        "ConceptualEntity": "COCUSAPV"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cocusapv": {
+			          "Target": {
+			            "Entity": "cocusapv"
+			          }
+			        },
+			        "cocus": {
+			          "Target": {
+			            "Entity": "cocus"
+			          },
+			          "Nouns": [
+			            {
+			              "cus": {
+			                "State": "Generated"
+			              }
+			            }
+			          ]
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cocusapv"
+			            },
+			            "Object": {
+			              "Role": "cocus"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cocusapvs_have_cocuses"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cocus"
+			            },
+			            "Object": {
+			              "Role": "cocusapv"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cocuses_have_cocusapvs"
+			        }
+			      ]
+			    },
+			    "cocusapv_has_coemp": {
+			      "Binding": {
+			        "ConceptualEntity": "COCUSAPV"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cocusapv": {
+			          "Target": {
+			            "Entity": "cocusapv"
+			          }
+			        },
+			        "coemp": {
+			          "Target": {
+			            "Entity": "coemp"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cocusapv"
+			            },
+			            "Object": {
+			              "Role": "coemp"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cocusapvs_have_coemps"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "coemp"
+			            },
+			            "Object": {
+			              "Role": "cocusapv"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "coemps_have_cocusapvs"
+			        }
+			      ]
+			    }
+			  },
+			  "Agents": {
+			    "Internal": {
+			      "Version": "1.0.0"
+			    }
+			  }
+			}
+		contentType: json
+

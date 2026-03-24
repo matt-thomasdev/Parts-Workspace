@@ -1,0 +1,72 @@
+table ACMCAPRD
+	lineageTag: 09f4d9a4-3643-40aa-a86a-2f8aff7fd946
+
+	measure 'Budget (ABS)' = ABS(SUMX(ACMCAPRD,ACMCAPRD[AmtBud]))
+		displayFolder: 01. Accounting
+		lineageTag: dbfe8c62-eda3-4224-8f20-76a27a8e4e56
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column McaId
+		dataType: string
+		lineageTag: 5ab4d691-2910-4b88-aa04-71527eac5912
+		summarizeBy: none
+		sourceColumn: McaId
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateEnd
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8bb6abac-d6ea-4fe9-b604-dd9120f077dc
+		summarizeBy: none
+		sourceColumn: DateEnd
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtDb
+		dataType: double
+		lineageTag: 9b6bb50c-f71c-4a90-82d3-f83b6b0fb285
+		summarizeBy: sum
+		sourceColumn: AmtDb
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtCr
+		dataType: double
+		lineageTag: 245868b0-5ae2-4f02-97c3-165a6912cd94
+		summarizeBy: sum
+		sourceColumn: AmtCr
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtBud
+		dataType: double
+		lineageTag: 58463ec3-833d-4e69-851b-5d4b7085c037
+		summarizeBy: sum
+		sourceColumn: AmtBud
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition ACMCAPRD = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_ACMCAPRD = EXCEDE{[Schema="dbo",Item="ACMCAPRD"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(dbo_ACMCAPRD, each Text.EndsWith([McaId], "30") or Text.EndsWith([McaId], "F0")),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows",{"McaId", "DateEnd", "AmtDb", "AmtCr", "AmtBud"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

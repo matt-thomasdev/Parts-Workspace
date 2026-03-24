@@ -1,0 +1,50 @@
+table PTCLA
+	lineageTag: 477467d9-922d-40e9-827f-6b0393514bf4
+
+	column ClaId
+		dataType: string
+		lineageTag: c5a22e08-969e-4371-955a-0b42448bdb5b
+		summarizeBy: none
+		sourceColumn: ClaId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Des
+		dataType: string
+		lineageTag: b1a3d5f0-b8c4-4a75-8096-1a91032f91e6
+		summarizeBy: none
+		sourceColumn: Des
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateCreate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 66156d11-077a-4f7c-8050-3bf2a2718ea2
+		summarizeBy: none
+		sourceColumn: DateCreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9aba36e0-259f-4c85-9ab8-1e467afb6895
+		summarizeBy: none
+		sourceColumn: DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PTCLA = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="CAROLINA_SOURCE"]}[Data],
+				    dbo_PTCLA = EXCEDE{[Schema="dbo",Item="PTCLA"]}[Data],
+				    #"Capitalized Each Word" = Table.TransformColumns(dbo_PTCLA,{{"Des", Text.Proper, type text}})
+				in
+				    #"Capitalized Each Word"
+
+	annotation PBI_ResultType = Table
+

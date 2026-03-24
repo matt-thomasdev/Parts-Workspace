@@ -1,0 +1,34 @@
+table COCUS
+	lineageTag: ac3c8439-331f-4ac3-9909-67b47712ef67
+
+	column CusId
+		dataType: string
+		lineageTag: d0006d9c-f6dc-4925-b6d0-8250cbd43b25
+		summarizeBy: none
+		sourceColumn: CusId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 12f93c8c-c977-4920-aef0-46376db6abcd
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition COCUS = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_COCUS = EXCEDE{[Schema="dbo",Item="COCUS"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_COCUS,{"CusId", "Name"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

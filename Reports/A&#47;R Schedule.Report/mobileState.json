@@ -1,0 +1,5 @@
+{
+  "explorationState": "{\"version\":\"1.8\",\"activeSection\":\"\",\"sections\":{\"2eeef86cd4915b53ad6b\":{\"visualContainers\":{\"dc29c3b5855296f00533\":{\"singleVisual\":{\"visualType\":\"FlowVisual_C29F1DCC_81F5_4973_94AD_0517D44CC06A\",\"mobileObjects\":{\"flowInfo\":[{\"properties\":{\"ManagementUri\":{\"expr\":{\"Literal\":{\"Value\":\"'https://us.api.flow.microsoft.com/providers/Microsoft.ProcessSimple'\"}}},\"EnvironmentId\":{\"expr\":{\"Literal\":{\"Value\":\"'Default-333ae493-9538-477b-83e6-f1a223342f73'\"}}},\"EnvironmentLocation\":{\"expr\":{\"Literal\":{\"Value\":\"'unitedstates'\"}}},\"EnvironmentRegion\":{\"expr\":{\"Literal\":{\"Value\":\"'westus'\"}}}}}],\"buttonText\":[],\"buttonFill\":[]}}}}},\"89f0a4bfc2fb8578af70\":{\"visualContainers\":{\"e4a2ceeef4d949a2d80f\":{\"singleVisual\":{\"visualType\":\"bookmarkNavigator\",\"mobileObjects\":{\"bookmarks\":[{\"properties\":{\"selectedBookmark\":{\"expr\":{\"Literal\":{\"Value\":\"'131ce2130ae30b697c5d'\"}}}}}],\"shape\":[],\"glow\":[],\"accentBar\":[]}}}}}}}",
+  "objectId": "",
+  "type": 4
+}

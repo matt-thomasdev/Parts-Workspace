@@ -1,0 +1,52 @@
+table PTPRT_Parameter
+	lineageTag: 376e0245-5c0b-4944-813c-fe78897e9ed8
+
+	column SnapShotParameter
+		lineageTag: add8d7ad-27c2-4406-8fbb-6d5cc4010cb7
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'SnapShotParameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'SnapShotParameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SnapShotParameter Fields'
+		isHidden
+		lineageTag: c7bdc48d-1e93-45c1-abfe-aca2c5c89ef7
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'SnapShotParameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SnapShotParameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: b3bad150-65de-4f73-b863-460ab6ea7d88
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PTPRT_Parameter = calculated
+		mode: import
+		source =
+				{
+				    ("Division", NAMEOF('USER_INVENTORYSNAPSHOT'[Division]), 0),
+				    ("Location", NAMEOF('USER_INVENTORYSNAPSHOT'[Location]), 1),
+				    ("PrtId", NAMEOF('USER_INVENTORYSNAPSHOT'[PrtId]), 2),
+				    ("VenPrtId", NAMEOF('USER_INVENTORYSNAPSHOT'[VenPrtId]), 3),
+				    ("SrcId", NAMEOF('USER_INVENTORYSNAPSHOT'[SrcId]), 4),
+				    ("Class Des", NAMEOF('PTCLA'[Class Des]), 5)
+				}
+
+	annotation PBI_Id = 248a42c0af084703879e6b86ddca73f8
+

@@ -1,0 +1,82 @@
+table MT_ACJEITM
+	lineageTag: 9163a980-115c-4175-9357-2d5e5e2939bd
+
+	column McaId
+		dataType: string
+		lineageTag: d37ccc74-f6d0-4415-9e96-52dccb141fa1
+		summarizeBy: none
+		sourceColumn: McaId
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtDb
+		dataType: double
+		lineageTag: ddb52148-dd53-4297-b8f9-b2ba9ebe58a6
+		summarizeBy: sum
+		sourceColumn: AmtDb
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtCr
+		dataType: double
+		lineageTag: 639c2495-9cbd-41ce-9a70-ec0067b58ac0
+		summarizeBy: sum
+		sourceColumn: AmtCr
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ACJE_DatePost
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 3bd8de9b-066f-432d-aced-fb5a9aca8860
+		summarizeBy: none
+		sourceColumn: ACJE_DatePost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'ACJE_DateUpdate  Date Only'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f3ffc8f9-b631-43a4-bb07-407976abfd28
+		summarizeBy: none
+		sourceColumn: ACJE_DateUpdate  Date Only
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ACJE_OriginDes
+		dataType: string
+		lineageTag: 9bc5ad54-c3db-45e8-9fd0-b6a3588b7405
+		summarizeBy: none
+		sourceColumn: ACJE_OriginDes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MT_ACJEITM = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_MT_ACJEITM_TRUCK = EXCEDE{[Schema="dbo",Item="MT_ACJEITM_TRUCK"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(dbo_MT_ACJEITM_TRUCK,{"DaysOpenCtrl", "VHVIN_UntId", "VHVIN_Vin", "VHVIN_Make", "VHVIN_Model", "VHVIN_ModelYear", "VHVIN_CusName", "VHVIN_Odom", "VHVIN_DateInService", "VHVIN_Condition", "VHVIN_TypId", "VHVIN_Status", "VHVIN_AmtMfrPrice", "VHVIN_AmtMfrCost", "VHVIN_AmtAdjPrice", "VHVIN_AmtMfrAdjCost", "VHVIN_AmtOurPrice", "VHVIN_AmtOurCost", "VHVIN_AmtHoldBack", "VHVIN_AmtRebate", "VHVIN_BrnId", "VHVIN_LocId", "VHVIN_DateRecieve", "VHVIN_UnitMisc1", "VHVIN_UnitMisc2", "VHVIN_UnitMisc3", "VHVIN_UnitMisc4", "VHVIN_GVWR", "VHVIN_Class", "VHVIN_ConditionDesc", "VHVIN_StatusDesc"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Columns", each Text.EndsWith([McaId], "30") or Text.EndsWith([McaId], "F0")),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Filtered Rows",{{"ACJE_DatePost", type date}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Changed Type", "ACJE_DateUpdate", "ACJE_DateUpdate - Copy"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Duplicated Column",{{"ACJE_DateUpdate - Copy", "ACJE_DateUpdate  Date Only"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns",{{"ACJE_DateUpdate  Date Only", type date}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type1",{"McaId", "AmtDb", "AmtCr", "ACJE_DatePost", "ACJE_OriginDes", "ACJE_DateUpdate  Date Only"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

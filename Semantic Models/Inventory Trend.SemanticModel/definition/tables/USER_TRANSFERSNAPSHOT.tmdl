@@ -1,0 +1,321 @@
+table USER_TRANSFERSNAPSHOT
+	lineageTag: 81350392-3578-4d31-ba24-a57ddec5ddf8
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: b7fd3453-a11e-4eaa-9419-cbec203f6937
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PTTRFITM_ASItmId
+		dataType: string
+		lineageTag: b18cc7ad-51a4-4a69-959c-f002f99a59be
+		summarizeBy: none
+		sourceColumn: PTTRFITM_ASItmId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_TrfId
+		dataType: string
+		lineageTag: 77150dee-f5cd-4fb8-9d26-75421011ed60
+		summarizeBy: none
+		sourceColumn: PTTRFITM_TrfId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_ItmTyp
+		dataType: string
+		lineageTag: ce49e81c-1994-4555-9010-f34dd7533c40
+		summarizeBy: none
+		sourceColumn: PTTRFITM_ItmTyp
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_PtItmSent
+		dataType: string
+		lineageTag: 4f3f06c0-0ea9-4783-a350-a162f65f3ab5
+		summarizeBy: none
+		sourceColumn: PTTRFITM_PtItmSent
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_PtItmAccept
+		dataType: string
+		lineageTag: 4c373227-b098-4c5b-a7aa-f25d74b3a57f
+		summarizeBy: none
+		sourceColumn: PTTRFITM_PtItmAccept
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_QtyRequest
+		dataType: double
+		lineageTag: 2c107b4f-0ca1-42e0-8c54-e41bb5d8a93a
+		summarizeBy: sum
+		sourceColumn: PTTRFITM_QtyRequest
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTTRFITM_QtySent
+		dataType: double
+		lineageTag: 1bba86db-f2b0-404d-aa97-f75780483771
+		summarizeBy: sum
+		sourceColumn: PTTRFITM_QtySent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTTRFITM_QtyAccept
+		dataType: double
+		lineageTag: 50ba8ac9-c873-4aeb-8e4d-5aa7359b25fc
+		summarizeBy: sum
+		sourceColumn: PTTRFITM_QtyAccept
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTTRFITM_AmtCost
+		dataType: double
+		lineageTag: 588cd9e1-6a71-432b-83b9-05cbf1015222
+		summarizeBy: sum
+		sourceColumn: PTTRFITM_AmtCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTTRFITM_AmtFreight
+		dataType: double
+		lineageTag: 1e510835-e0b9-45e4-b755-dd05d564051d
+		summarizeBy: sum
+		sourceColumn: PTTRFITM_AmtFreight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTTRFITM_Reason
+		dataType: string
+		lineageTag: 8e568bdd-dd45-4db2-a1a8-f4c203601462
+		summarizeBy: none
+		sourceColumn: PTTRFITM_Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_Status
+		dataType: string
+		lineageTag: bd830365-f5d8-4a66-8187-6fb3fb722ca5
+		summarizeBy: none
+		sourceColumn: PTTRFITM_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_EmpId
+		dataType: string
+		lineageTag: afb13233-9127-4f13-8c6e-f8676eb21962
+		summarizeBy: none
+		sourceColumn: PTTRFITM_EmpId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_EmpIdReq
+		dataType: string
+		lineageTag: fa3ac2f6-8eb9-406c-b65c-b7b966094833
+		summarizeBy: none
+		sourceColumn: PTTRFITM_EmpIdReq
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_DateCreate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 372e6b05-03ba-484e-9a61-c1489fbc2982
+		summarizeBy: none
+		sourceColumn: PTTRFITM_DateCreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_DateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: cc2a8855-2871-41d0-b03e-06f13a6e65c4
+		summarizeBy: none
+		sourceColumn: PTTRFITM_DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRFITM_StatusDes
+		dataType: string
+		lineageTag: a55c89ba-eb8b-4923-9043-27b3760ecbd0
+		summarizeBy: none
+		sourceColumn: PTTRFITM_StatusDes
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_BrnIdAccept
+		dataType: string
+		lineageTag: c27c26a5-282a-4bfd-a493-68b2a5cf872b
+		summarizeBy: none
+		sourceColumn: PTTRF_BrnIdAccept
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_BrnIdSent
+		dataType: string
+		lineageTag: baff0c44-92f6-40e7-ae42-55be782d6d7a
+		summarizeBy: none
+		sourceColumn: PTTRF_BrnIdSent
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_DateSent
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8a4a4569-afaf-40ff-9945-46f91886ef4f
+		summarizeBy: none
+		sourceColumn: PTTRF_DateSent
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_DateAccept
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0464fff7-a5d9-4ae4-943a-c1591afbfb1c
+		summarizeBy: none
+		sourceColumn: PTTRF_DateAccept
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_DateCreate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 14229d24-e731-4fc2-8d13-69f1ab62eaeb
+		summarizeBy: none
+		sourceColumn: PTTRF_DateCreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_Des
+		dataType: string
+		lineageTag: 0bd83181-b90c-4379-a669-2bee6ab2bb5c
+		summarizeBy: none
+		sourceColumn: PTTRF_Des
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_DateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b5275d25-a31c-4889-bade-2d80da550a60
+		summarizeBy: none
+		sourceColumn: PTTRF_DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_DaysCreate
+		dataType: double
+		lineageTag: 7c4ca8c4-2c71-4783-811b-75dd59f6681d
+		summarizeBy: sum
+		sourceColumn: PTTRF_DaysCreate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTTRF_DaysSent
+		dataType: double
+		lineageTag: 4a27a086-3af3-4106-a244-fe4ecb4ce879
+		summarizeBy: sum
+		sourceColumn: PTTRF_DaysSent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTTRF_Status
+		dataType: string
+		lineageTag: 3ff0b85f-816f-4dbc-b8a9-260d4f749d7f
+		summarizeBy: none
+		sourceColumn: PTTRF_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_StatusDes
+		dataType: string
+		lineageTag: e8780ac7-f9fe-434d-afbe-0312ea3649ef
+		summarizeBy: none
+		sourceColumn: PTTRF_StatusDes
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_LocationSent
+		dataType: string
+		lineageTag: ecff1927-3547-4c50-b8b1-1f72f2c55ef5
+		summarizeBy: none
+		sourceColumn: PTTRF_LocationSent
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTTRF_LocationAccept
+		dataType: string
+		lineageTag: 5f4ccf67-e88c-442b-aaba-334db76d8b10
+		summarizeBy: none
+		sourceColumn: PTTRF_LocationAccept
+
+		annotation SummarizationSetBy = Automatic
+
+	column COEMP_NameSent
+		dataType: string
+		lineageTag: 2f8da0c4-7f2e-4f01-b8b3-79896bf1a15f
+		summarizeBy: none
+		sourceColumn: COEMP_NameSent
+
+		annotation SummarizationSetBy = Automatic
+
+	column COEMP_NameAccept
+		dataType: string
+		lineageTag: 9ee8d826-0f8a-4cb9-b5dc-11342a1b3256
+		summarizeBy: none
+		sourceColumn: COEMP_NameAccept
+
+		annotation SummarizationSetBy = Automatic
+
+	column Division =
+			
+			IF(
+			    OR(LEFT([PTTRF_BrnIdSent], 1) = "1", LEFT([PTTRF_BrnIdSent], 1) = "5"),
+			    "South Carolina",
+			    IF(
+			        OR(LEFT([PTTRF_BrnIdSent], 1) = "2", LEFT([PTTRF_BrnIdSent], 1) = "6"),
+			        "Florida",
+			        BLANK()
+			    )
+			)
+		lineageTag: b39d1066-6d9b-45a3-9a15-fbdc9f442303
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition USER_TRANSFERSNAPSHOT = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_USER_TRANSFERSNAPSHOT = EXCEDE{[Schema="dbo",Item="USER_TRANSFERSNAPSHOT"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(dbo_USER_TRANSFERSNAPSHOT, each Text.StartsWith([PTTRF_BrnIdSent], "1") or Text.StartsWith([PTTRF_BrnIdSent], "2"))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

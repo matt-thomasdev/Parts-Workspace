@@ -1,0 +1,13 @@
+role 'GRE 949'
+	modelPermission: read
+
+	tablePermission MT_ACMCA = [BrnId] == "105"
+
+	tablePermission MT_COCUSCRM = [EmpId] == "949"
+
+	tablePermission MT_PARTS_PURCHASES = [PTPUR_Location] == "Greer"
+
+	tablePermission 'Parts_Service Sales' = [BrnId] == "105"
+
+	annotation PBI_Id = 90e637987120423bba4714a0ba82ce43
+

@@ -1,0 +1,39 @@
+table dim_Location
+	lineageTag: 0531da6a-eafe-435a-a767-c15c26453d45
+
+	column BrnId
+		dataType: string
+		lineageTag: c4728e7a-5b7b-4516-afcb-a9cadd1dd50e
+		summarizeBy: none
+		sourceColumn: BrnId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Locaiton
+		dataType: string
+		lineageTag: 9f1cccd9-0b2d-48cb-8409-fe5d0bc364d6
+		summarizeBy: none
+		sourceColumn: Locaiton
+
+		annotation SummarizationSetBy = Automatic
+
+	column Division
+		dataType: string
+		lineageTag: 26088991-15c3-4d27-bfbc-753a0e4f68e6
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_Location-9c690e79-30c7-4b45-8b50-525af9998ee8 = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("hZHBCoMwDIZfRTx72NT2BYTtoiDssMPYIZsBC7WFqBu+/TROKNO6U0v/r8kXcruF8eEYRmGhoFHjedKWVAXhPZqSeHqx1AU59BVSBRpXTDK+XLHtghJ0s0rTpUKpkJ7r32LJiwGp/Yklq+UILQZbgpIF53xfU7LmTPpkJcs61TaVJSs71Jb4kcUzq/vmoWC8Xmzf1UEGZLUyCzPJZzWQHoWs8VHJtzYadtlkUu5m3jD4iEn6TIjkA+QXMC+ltaeRcPaxP5xwNvNvROHsZn9QwZYzuet6/wA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [BrnId = _t, Locaiton = _t, Division = _t])
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

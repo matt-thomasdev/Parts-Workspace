@@ -1,0 +1,7 @@
+role 'Riviera Beach'
+	modelPermission: read
+
+	tablePermission 'Elite Extra' = [Ordered By] == "Riviera Beach"
+
+	annotation PBI_Id = 26e8b52a307b49dd911d273f9c023c47
+

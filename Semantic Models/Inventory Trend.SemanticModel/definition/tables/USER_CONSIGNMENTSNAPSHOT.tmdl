@@ -1,0 +1,144 @@
+table USER_CONSIGNMENTSNAPSHOT
+	lineageTag: 23625845-a328-4acb-9800-c572298e4e38
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 4e87d0a2-c542-4fca-88bb-c77b408036f9
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ItmId
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c23880b-6959-4737-b7b0-ec9692151e7b
+		summarizeBy: count
+		sourceColumn: ItmId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PtConId
+		dataType: int64
+		formatString: 0
+		lineageTag: 1814d1e5-00c8-408b-beb1-52e69618315b
+		summarizeBy: count
+		sourceColumn: PtConId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItmTyp
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e7eaf1e-f1ee-4f15-a7b0-0ab2840f7cce
+		summarizeBy: sum
+		sourceColumn: ItmTyp
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtId
+		dataType: string
+		lineageTag: 674afe2c-dd69-409b-b427-ca77062385e8
+		summarizeBy: none
+		sourceColumn: PrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyOC
+		dataType: double
+		lineageTag: 46c08dc4-ddd4-4718-bea6-8e5710756df2
+		summarizeBy: sum
+		sourceColumn: QtyOC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyReq
+		dataType: double
+		lineageTag: 3cd152c6-a7b4-4175-9e31-df725b0884bc
+		summarizeBy: sum
+		sourceColumn: QtyReq
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtCostAvg
+		dataType: double
+		lineageTag: 71ee955f-7a64-4161-bb30-f13b0be22e76
+		summarizeBy: sum
+		sourceColumn: AmtCostAvg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EmpID
+		dataType: string
+		lineageTag: a94a2d87-357d-4b0d-b9c2-2a0c426b7d7e
+		summarizeBy: none
+		sourceColumn: EmpID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateCreate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 43f3dd7b-a672-4823-9dd3-8b48d7b89722
+		summarizeBy: none
+		sourceColumn: DateCreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fa687525-b736-4835-b5f6-e949cea8f43b
+		summarizeBy: none
+		sourceColumn: DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 8db014d9-e380-4f87-9282-66ae17c67322
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Division
+		dataType: string
+		lineageTag: 5620e5c2-a729-4994-8bc0-4ed0ca6ff705
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	column Locaiton
+		dataType: string
+		lineageTag: c9380219-1391-4866-bcb2-94202fc9a537
+		summarizeBy: none
+		sourceColumn: Locaiton
+
+		annotation SummarizationSetBy = Automatic
+
+	partition USER_CONSIGNMENTSNAPSHOT = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_USER_CONSIGNMENTSNAPSHOT = EXCEDE{[Schema="dbo",Item="USER_CONSIGNMENTSNAPSHOT"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(dbo_USER_CONSIGNMENTSNAPSHOT,{{"Date", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

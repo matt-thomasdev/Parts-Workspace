@@ -1,0 +1,166 @@
+table Date
+	lineageTag: da108ea2-853f-4c68-97bf-06042b612786
+	dataCategory: Time
+
+	measure _ShowValueForDates =
+			
+			VAR __LastDateWithData =
+			    CALCULATE (
+			        MAXX ( { MAX ( 'USER_INVENTORYSNAPSHOT'[Date] ), MAX ( 'USER_INVENTORYSNAPSHOT'[DateSale] ), MAX ( 'USER_INVENTORYSNAPSHOT'[DateOrder] ), MAX ( 'MT_INVENTORY'[DateSale] ), MAX ( 'MT_INVENTORY'[DateOrder] ), MAX ( 'MT_INVENTORY'[DateCount] ), MAX ( 'MT_INVENTORY'[DateLevel] ), MAX ( 'MT_INVENTORY'[DateTape] ), MAX ( 'MT_INVENTORY'[DateCreate] ), MAX ( 'MT_INVENTORY'[DateUpdate] ) }, ''[Value] ),
+			        REMOVEFILTERS ()
+			    )
+			VAR __FirstDateVisible =
+			    MIN ( 'Date'[Date] )
+			VAR __Result =
+			    __FirstDateVisible <= __LastDateWithData
+			RETURN
+			    __Result
+		isHidden
+		displayFolder: Hidden Time Intelligence
+		lineageTag: 07e4effa-9d67-4d69-953e-925caa2768ab
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	column Date
+		isKey
+		formatString: m/d/yyyy
+		lineageTag: 5b2004a1-1c2f-4981-a8ef-5a11d82bb7bc
+		dataCategory: PaddedDateTableDates
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DateAutoTemplate[Date]
+
+		annotation SQLBI_AttributeTypes = Date
+
+	column Year
+		lineageTag: 2ed3f008-5878-483e-8216-0f887d2e6824
+		dataCategory: Years
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: DateAutoTemplate[Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Quarter Number'
+		isHidden
+		lineageTag: 4137a646-6412-4d50-b99d-6796610eeb6d
+		dataCategory: Quarters
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: DateAutoTemplate[Year Quarter Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Quarter'
+		lineageTag: f8411a37-db5d-4cb4-bd93-27d922aa2d56
+		dataCategory: Quarters
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DateAutoTemplate[Year Quarter]
+		sortByColumn: 'Year Quarter Number'
+
+	column Quarter
+		lineageTag: fa9159be-2cff-474c-b7bb-e3bde6d0ec13
+		dataCategory: QuarterOfYear
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DateAutoTemplate[Quarter]
+
+	column 'Year Month'
+		lineageTag: 0fa96e22-d41c-47b6-94fc-a53d1ce4c981
+		dataCategory: Months
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DateAutoTemplate[Year Month]
+		sortByColumn: 'Year Month Number'
+
+	column 'Year Month Number'
+		isHidden
+		lineageTag: ffff0e6e-d6be-491a-bc1f-5cb2504503cc
+		dataCategory: Months
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: DateAutoTemplate[Year Month Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: 3e324e98-728c-43aa-8057-9a406b4f3e68
+		dataCategory: MonthOfYear
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DateAutoTemplate[Month]
+		sortByColumn: 'Month Number'
+
+	column 'Month Number'
+		isHidden
+		lineageTag: 092c491f-df4e-4e7d-80fe-ab4aedf1bd33
+		dataCategory: MonthOfYear
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: DateAutoTemplate[Month Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week Number'
+		isHidden
+		lineageTag: 3af8a374-08db-464a-aa20-0f60296a4756
+		dataCategory: DayOfWeek
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: DateAutoTemplate[Day of Week Number]
+
+		annotation SQLBI_AttributeTypes = DayOfWeek
+
+		annotation SQLBI_FilterSafe = True
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week'
+		lineageTag: cedb1eba-25b1-455b-97b1-400d8fd3dcc8
+		dataCategory: DayOfWeek
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DateAutoTemplate[Day of Week]
+		sortByColumn: 'Day of Week Number'
+
+		annotation SQLBI_FilterSafe = True
+
+	column DateWithTransactions
+		isHidden
+		lineageTag: 8b2113b6-27bc-4e71-9e1b-66d421a6df10
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DateAutoTemplate[DateWithTransactions]
+
+		annotation SQLBI_AttributeTypes = DateDuration
+
+	hierarchy Calendar
+		lineageTag: 272f2ff5-0494-41a4-93c5-a74f6fd82fe4
+
+		level Year
+			lineageTag: f116f9a1-5158-4d73-aed6-5e6f771bac2f
+			column: Year
+
+		level Month
+			lineageTag: b944e7c5-9f47-4acc-a851-19e439de01f8
+			column: 'Year Month'
+
+		level Date
+			lineageTag: 45b9a91f-6480-4430-bd15-7a9652998762
+			column: Date
+
+	partition Date = calculated
+		mode: import
+		source = DateAutoTemplate
+
+	annotation SQLBI_Template = Dates
+
+	annotation SQLBI_TemplateTable = Date
+
+	annotation SQLBI_CalendarType = Calendar
+

@@ -1,0 +1,221 @@
+table MT_PARTS_PURCHASES
+	lineageTag: 3889b303-cafd-4979-a93f-19c8e2779db9
+
+	column PTPURITM_PurId
+		dataType: string
+		lineageTag: 2ea700f3-0918-4d30-9be1-1fab536e1275
+		summarizeBy: none
+		sourceColumn: PTPURITM_PurId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTPURITM_ItmTyp
+		dataType: int64
+		formatString: 0
+		lineageTag: 273417fd-6413-46fc-8e26-30a6f4b75a7d
+		summarizeBy: sum
+		sourceColumn: PTPURITM_ItmTyp
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTPURITM_PtItm
+		dataType: string
+		lineageTag: 895d1f35-b75c-40f7-a83f-a5de7f913936
+		summarizeBy: none
+		sourceColumn: PTPURITM_PtItm
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTPURITM_Des
+		dataType: string
+		lineageTag: 7224fa29-c874-42a5-8056-d173921dfdf6
+		summarizeBy: none
+		sourceColumn: PTPURITM_Des
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTPURITM_Reason
+		dataType: string
+		lineageTag: 85972d98-e271-4621-b31b-c4dcb86ec2df
+		summarizeBy: none
+		sourceColumn: PTPURITM_Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTPURITM_AmtCostOrder
+		dataType: double
+		lineageTag: 174b7e96-5e29-4bc1-9bb0-ed163c5c3da9
+		summarizeBy: sum
+		sourceColumn: PTPURITM_AmtCostOrder
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTPURITM_AmtCostReceive
+		dataType: double
+		lineageTag: c9d8cf86-c723-4a96-938d-055b5dba2b46
+		summarizeBy: sum
+		sourceColumn: PTPURITM_AmtCostReceive
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTPURITM_QtyOrder
+		dataType: double
+		lineageTag: 2ff189a3-07b7-4ffd-b7ea-b4d34b6a4631
+		summarizeBy: sum
+		sourceColumn: PTPURITM_QtyOrder
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTPURITM_QtyReceive
+		dataType: double
+		lineageTag: 66a4ec82-6beb-461b-8a70-1bf51430fe2c
+		summarizeBy: sum
+		sourceColumn: PTPURITM_QtyReceive
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTPURITM_AmtCostStock
+		dataType: double
+		lineageTag: b6a39f86-5155-4f2a-9157-c04b028f5fa0
+		summarizeBy: sum
+		sourceColumn: PTPURITM_AmtCostStock
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTPURITM_QtyStock
+		dataType: double
+		lineageTag: 2e4f4acb-f9a8-4cf2-877e-5f1556c62ba4
+		summarizeBy: sum
+		sourceColumn: PTPURITM_QtyStock
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTPURITM_EmpId
+		dataType: string
+		lineageTag: cf151679-e5ee-4f32-bc37-5ce28b9557d3
+		summarizeBy: none
+		sourceColumn: PTPURITM_EmpId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTPURITM_DateCreate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 2eb64f23-2e69-42ce-883e-502703a27bee
+		summarizeBy: none
+		sourceColumn: PTPURITM_DateCreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTPURITM_DateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b31630d5-fb28-4b18-aade-aee25694554a
+		summarizeBy: none
+		sourceColumn: PTPURITM_DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTPURITM_Status
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ca573b3-38f5-4707-9b57-87faa9cc3321
+		summarizeBy: sum
+		sourceColumn: PTPURITM_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTPUR_VenName
+		dataType: string
+		lineageTag: b8c062ca-16bd-4aab-a24a-8c65e637d5dd
+		summarizeBy: none
+		sourceColumn: PTPUR_VenName
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTPUR_DateOrder
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: fe72d9b8-ea77-4954-ba55-090a84923bde
+		summarizeBy: none
+		sourceColumn: PTPUR_DateOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column COLOOKUP_Des1
+		dataType: string
+		lineageTag: 520148e7-d984-4be3-ae53-d4ef5edbb0ce
+		summarizeBy: none
+		sourceColumn: COLOOKUP_Des1
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTPUR_DaysOpen
+		dataType: int64
+		formatString: 0
+		lineageTag: b39ff6df-5a17-492e-95ee-48aced7e0955
+		summarizeBy: sum
+		sourceColumn: PTPUR_DaysOpen
+
+		annotation SummarizationSetBy = Automatic
+
+	column COEMP_EmpName
+		dataType: string
+		lineageTag: 34fca6eb-fdd5-4a49-a076-b32ee3ecfb77
+		summarizeBy: none
+		sourceColumn: COEMP_EmpName
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTPUR_PurTypId
+		dataType: string
+		lineageTag: 30d8c324-fcd6-4c6d-a77e-fd8eb6a18aa2
+		summarizeBy: none
+		sourceColumn: PTPUR_PurTypId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTPUR_Location
+		dataType: string
+		lineageTag: 1be670ce-4138-47c8-ac52-652217601fa8
+		summarizeBy: none
+		sourceColumn: PTPUR_Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTPUR_DateReceive
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: cff5bf14-5fa8-46a6-a0d9-7d011b395724
+		summarizeBy: none
+		sourceColumn: PTPUR_DateReceive
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MT_PARTS_PURCHASES = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_MT_PARTS_PURCHASES = EXCEDE{[Schema="dbo",Item="MT_PARTS_PURCHASES"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(dbo_MT_PARTS_PURCHASES,{"PTPURITM_ItmId", "PTPURITM_DateExpect", "PTPURITM_Acknowledgement", "PTPURITM_StockOrderRatio"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

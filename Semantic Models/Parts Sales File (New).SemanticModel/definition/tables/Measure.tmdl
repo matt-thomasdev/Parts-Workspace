@@ -1,0 +1,2592 @@
+table Measure
+	lineageTag: 7aac1797-7722-4175-8135-f94a760492f8
+
+	measure 'Sales Budget' =
+			CALCULATE(
+			    [Budget (ABS)],
+			    FILTER(
+			        ALL(MT_ACMCA[MiniCategory]),
+			        MT_ACMCA[MiniCategory] = "01. Sales"
+			    ))
+		lineageTag: 360bdd6d-94ad-4d4e-9120-4400c3e7c524
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Margin Budget' = ```
+			
+			VAR Sales =CALCULATE(
+			    [Budget (ABS)],
+			    FILTER(
+			        ALL(MT_ACMCA[MiniCategory]),
+			        MT_ACMCA[MiniCategory] = "01. Sales"
+			    ))
+			VAR Cost = CALCULATE(
+			    [Budget (ABS)],
+			    FILTER(
+			        ALL(MT_ACMCA[MiniCategory]),
+			        MT_ACMCA[MiniCategory] = "02. Cost Of Sales"
+			    ))
+			VAR Result = Sales-Cost
+			RETURN
+			Result
+			
+			```
+		lineageTag: 88f46a72-24da-4641-b1ee-f1d37e610609
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Actual = ABS(SUMX(MT_ACJEITM,MT_ACJEITM[AmtDb]-MT_ACJEITM[AmtCr]))
+		displayFolder: 01. Accounting
+		lineageTag: 8574728b-6eab-49ce-9e86-cb65ef4e176c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sales (ACJEITM)' =
+			CALCULATE(
+			    [Actual],
+			    FILTER(
+			        ALL(MT_ACMCA[MiniCategory]),
+			        MT_ACMCA[MiniCategory] = "01. Sales"
+			    ))
+		lineageTag: 9d27f9d3-f296-4040-861d-4e0a9679a19f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Margin (ACJEITM)' = ```
+			
+			VAR Sales =CALCULATE(
+			    [Actual],
+			    FILTER(
+			        ALL(MT_ACMCA[MiniCategory]),
+			        MT_ACMCA[MiniCategory] = "01. Sales"
+			    ))
+			VAR Cost = CALCULATE(
+			    [Actual],
+			    FILTER(
+			        ALL(MT_ACMCA[MiniCategory]),
+			        MT_ACMCA[MiniCategory] = "02. Cost Of Sales"
+			    ))
+			VAR Result = Sales-Cost
+			RETURN
+			Result
+			
+			```
+		lineageTag: 969d88c5-0719-497e-a8e2-710168751d68
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Last Day with Sales' =
+			
+			CALCULATE ( MAX ( MT_ACJEITM[ACJE_DateUpdate  Date Only] ) )
+		formatString: Short Date
+		lineageTag: 1821ecd3-1fff-43c8-b769-26191704ef98
+
+	measure 'Avg Daily Sales (ACJEITM)' = [Total Sales (ACJEITM)]/[Actual MTD Working Days]
+		displayFolder: 01. Accounting
+		lineageTag: 1187579c-ff4f-497b-b6cb-d73eb6460d07
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Forecast Sales (ACJEITM)' = [Avg Daily Sales (ACJEITM)]*[Working Days for the Month]
+		displayFolder: 01. Accounting
+		lineageTag: dca68e61-6d9c-418b-9fcc-041a96c99974
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Daily Sales (Parts Table)' = [Total Sale (Parts Table)]/[Actual MTD Working Days]
+		formatString: #,0.00
+		displayFolder: 02. Parts Table Measures
+		lineageTag: bbca7616-036f-4f0b-8609-07ad5bf0f46a
+
+	measure 'Forecast Sales (Parts Table)' = [Avg Daily Sales (Parts Table)]*[Working Days for the Month]
+		displayFolder: 02. Parts Table Measures
+		lineageTag: 6e0b45f7-67e7-4dcb-8e3f-4a5b3fb9b333
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sale (Parts Table)' = SUMX('Parts_Service Sales','Parts_Service Sales'[AmtPrice]*'Parts_Service Sales'[QtyShip])
+		lineageTag: 58f51e4c-d54e-4546-a8bc-d0583ba71adb
+
+		formatStringDefinition = "#,##0;(#,##0)"
+
+	measure 'Actual MTD Working Days' =
+			
+			LOOKUPVALUE (
+			    'Working Days'[MTD Working Days],
+			    'Working Days'[Date], [Last Day with Sales]
+			)
+		displayFolder: 01. Accounting
+		lineageTag: 01b9d7b2-c26e-4cd2-8df2-19cc01a6250a
+
+	measure 'Working Days for the Month' =
+			
+			MAX ( 'Working Days'[Total Working Days for the Month] )
+		lineageTag: ea116bef-547f-404e-9e0c-b2ab6f59fe80
+
+	measure 'Margin Percent (ACJEITM)' = [Margin (ACJEITM)]/[Total Sales (ACJEITM)]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 01. Accounting
+		lineageTag: 85372faf-9161-4d6d-95d0-aeaad0793946
+
+	measure 'Avg Daily Margin (ACJEITM)' = [Margin (ACJEITM)]/[Actual MTD Working Days]
+		displayFolder: 01. Accounting
+		lineageTag: a203e21f-be4b-4cb5-b98a-48080b2b1b8e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Margin Forcast (ACJEITM)' = [Avg Daily Margin (ACJEITM)]*[Working Days for the Month]
+		displayFolder: 01. Accounting
+		lineageTag: d04033c1-6a29-4b16-abc1-1d311b804ebb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AmtDr-AmtCr =
+			
+			VAR AmtCr = SUMX(MT_ACJEITM,MT_ACJEITM[AmtCr])
+			VAR AmtDb = SUMX(MT_ACJEITM,MT_ACJEITM[AmtDb])
+			VAR Result = AmtDb-AmtCr
+			RETURN
+			Result
+		displayFolder: 01. Accounting
+		lineageTag: df93d808-1acf-4232-a969-52f4f9816732
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AmtCr-AmtDb =
+			
+			VAR AmtCr = SUMX(MT_ACJEITM,MT_ACJEITM[AmtCr])
+			VAR AmtDb = SUMX(MT_ACJEITM,MT_ACJEITM[AmtDb])
+			VAR Result = AmtCr-AmtDb
+			RETURN
+			Result
+		displayFolder: 01. Accounting
+		lineageTag: 273a2691-1719-478a-beed-a58cbafa6659
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CF Sales Budget' =
+			
+			IF([Forecast Sales (ACJEITM)]>[Sales Budget],1,2)
+		formatString: 0
+		lineageTag: a8588f5a-acb6-43ac-a6e1-34ff522ad862
+
+	measure 'CF Margin Budget' =
+			
+			IF([Margin Forcast (ACJEITM)]>[Margin Budget],1,2)
+		formatString: 0
+		displayFolder: 01. Accounting
+		lineageTag: 3bbdf898-e27d-466d-a3fa-e05900173b4c
+
+	measure 'GM% (Parts Sales Table)' = ```
+			
+			IF(
+			    [Total Sale (Parts Table)] <> 0,
+			    [Total Margin] / [Total Sale (Parts Table)],
+			    BLANK()
+			)
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 02. Parts Table Measures
+		lineageTag: ba6d356b-a854-47fc-81e3-542d9dbdbda5
+
+	measure 'Over 120 Days' = CALCULATE([Total Cost (Parts Table)],'Parts_Service Sales'[Days Open] > 120)
+		displayFolder: 02. Parts Table Measures
+		lineageTag: 1957d14a-0754-483b-b45d-c624ee3f27b6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Over 30 Days' =
+			
+			CALCULATE([Total Cost (Parts Table)],'Parts_Service Sales'[Days Open] > 30)
+		displayFolder: 02. Parts Table Measures
+		lineageTag: 6c59c1ec-e41a-4b19-a59b-8d8661b54755
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Over 60 Days' = CALCULATE([Total Cost (Parts Table)],'Parts_Service Sales'[Days Open] > 60)
+		displayFolder: 02. Parts Table Measures
+		lineageTag: 5b3517cb-61a2-4d60-a983-00968ebe7ff8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Over 90 Days' = CALCULATE([Total Cost (Parts Table)],'Parts_Service Sales'[Days Open] > 90)
+		displayFolder: 02. Parts Table Measures
+		lineageTag: ecdd0b5f-138d-43c6-be05-d8874527032c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Less Than 30 Days' =
+			
+			CALCULATE([Total Cost (Parts Table)],'Parts_Service Sales'[Days Open] < 30)
+		lineageTag: f131928e-2dd6-424c-8739-b21e97ce075e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Cost (Parts Table)' = SUMX('Parts_Service Sales','Parts_Service Sales'[QtyShip]*'Parts_Service Sales'[AmtCost])
+		formatString: #,0.00
+		displayFolder: 02. Parts Table Measures
+		lineageTag: e45d0769-4d07-4b96-97e3-3b8b4a3a60f4
+
+	measure 'Total Margin' = [Total Sale (Parts Table)]-[Total Cost (Parts Table)]
+		displayFolder: 02. Parts Table Measures
+		lineageTag: fe765160-c0d6-42da-9aef-a336ca4a1cf3
+
+		formatStringDefinition = "#,##0;(#,##0)"
+
+	measure 'TR Older than 48 Hours' =
+			
+			IF(SELECTEDVALUE(MT_TRANSFERS[PTTRF_DaysCreate])>2,1,2)
+		formatString: 0
+		lineageTag: 2c9fc9cb-ac8e-47b1-8d7e-4515e71b7854
+
+	measure 'TR Older than 7 Days' =
+			
+			IF(SELECTEDVALUE(MT_TRANSFERS[PTTRF_DaysSent])>7,1,2)
+		formatString: 0
+		lineageTag: 3a459a9d-0225-4004-a33b-d058153a52a7
+
+	measure 'Total Sale Prior Year (Parts Table)' =
+			
+			CALCULATE(
+			    [Total Sale (Parts Table)],
+			    SAMEPERIODLASTYEAR('Date'[Date]))
+		lineageTag: 8690dc68-74a4-46da-b7da-92633ba01bf9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YTD Total Sale (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Sale (Parts Table)],
+			        DATESYTD ( 'Date'[Date] )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date total\Total Sale (Parts Table)
+		lineageTag: 63b0469e-b756-474b-8fb1-4bb0b205729e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTD Total Sale (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Sale (Parts Table)],
+			        DATESQTD ( 'Date'[Date] )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date total\Total Sale (Parts Table)
+		lineageTag: 185d7438-44d8-4ce7-8091-239c793f86e1
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTD Total Sale (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Sale (Parts Table)],
+			        DATESMTD ( 'Date'[Date] )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date total\Total Sale (Parts Table)
+		lineageTag: 0a5cec62-2302-4131-8296-ece05d709432
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PY Total Sale (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Sale (Parts Table)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth\Total Sale (Parts Table)
+		lineageTag: 34fa46b7-febf-4b1a-af27-15dfd41b9957
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY Total Sale (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [Total Sale (Parts Table)]
+			VAR __ValuePreviousPeriod = [PY Total Sale (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth\Total Sale (Parts Table)
+		lineageTag: 32327550-141c-4bda-b408-f0e42c1a5cd8
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQ Total Sale (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Sale (Parts Table)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth\Total Sale (Parts Table)
+		lineageTag: 4ec4d767-7693-45a9-bdab-1b89f2737be1
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ Total Sale (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [Total Sale (Parts Table)]
+			VAR __ValuePreviousPeriod = [PQ Total Sale (Parts Table)]
+			VAR __Result =
+			    IF (
+			        ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        0 - __ValuePreviousPeriod,  // Lost customers (negative change)
+			        IF (
+			            NOT ISBLANK ( __ValueCurrentPeriod ) && ISBLANK ( __ValuePreviousPeriod ),
+			            __ValueCurrentPeriod,  // New customers (positive change)
+			            IF (
+			                NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			                __ValueCurrentPeriod - __ValuePreviousPeriod,  // Both periods (difference)
+			                BLANK()  // Both blank
+			            )
+			        )
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth\Total Sale (Parts Table)
+		lineageTag: 10decede-b755-45b6-b922-0b655b669fb3
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ % Total Sale (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [QOQ Total Sale (Parts Table)],
+			    [PQ Total Sale (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth\Total Sale (Parts Table)
+		lineageTag: f1fec4d6-b8d4-4f80-b9b5-9a8c1c102a1c
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PM Total Sale (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Sale (Parts Table)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\Growth\Total Sale (Parts Table)
+		lineageTag: 95deff9d-495a-47ba-ab90-de93b74a514a
+
+		formatStringDefinition = "#,##0;(#,##0)"
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM Total Sale (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [Total Sale (Parts Table)]
+			VAR __ValuePreviousPeriod = [PM Total Sale (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth\Total Sale (Parts Table)
+		lineageTag: eaeb8de5-aa51-4f39-8826-fa9cbb5dda1a
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM % Total Sale (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [MOM Total Sale (Parts Table)],
+			    [PM Total Sale (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth\Total Sale (Parts Table)
+		lineageTag: 2ab3b019-30ed-453b-a567-685eae4e9c12
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYTD Total Sale (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [YTD Total Sale (Parts Table)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date growth\Total Sale (Parts Table)
+		lineageTag: bdca17d5-4dbd-447b-b6b8-20c933b6a3d3
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD Total Sale (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [YTD Total Sale (Parts Table)]
+			VAR __ValuePreviousPeriod = [PYTD Total Sale (Parts Table)]
+			VAR __Result =
+			    IF (
+			        ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        0 - __ValuePreviousPeriod,  // Lost customers (negative change)
+			        IF (
+			            NOT ISBLANK ( __ValueCurrentPeriod ) && ISBLANK ( __ValuePreviousPeriod ),
+			            __ValueCurrentPeriod,  // New customers (positive change)
+			            IF (
+			                NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			                __ValueCurrentPeriod - __ValuePreviousPeriod,  // Both periods (difference)
+			                BLANK()  // Both blank
+			            )
+			        )
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date growth\Total Sale (Parts Table)
+		lineageTag: bfd02c19-224f-4962-816f-940e3a9e77a0
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD % Total Sale (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [YOYTD Total Sale (Parts Table)],
+			    [PYTD Total Sale (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\To-date growth\Total Sale (Parts Table)
+		lineageTag: f053180f-9e6f-4672-ac2e-0bee946d1064
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQTD Total Sale (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [QTD Total Sale (Parts Table)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date growth\Total Sale (Parts Table)
+		lineageTag: 2318a046-887b-4bc3-aee5-e36bb04e223b
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD Total Sale (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [QTD Total Sale (Parts Table)]
+			VAR __ValuePreviousPeriod = [PQTD Total Sale (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date growth\Total Sale (Parts Table)
+		lineageTag: 9804f10d-571e-428a-8271-9adf0559e26a
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD % Total Sale (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [QOQTD Total Sale (Parts Table)],
+			    [PQTD Total Sale (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\To-date growth\Total Sale (Parts Table)
+		lineageTag: 2f20e3c3-1d0c-4b30-80b5-e2ad78004c95
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMTD Total Sale (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MTD Total Sale (Parts Table)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date growth\Total Sale (Parts Table)
+		lineageTag: b76144ef-8319-4041-bdb8-15f3432a4933
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD Total Sale (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [MTD Total Sale (Parts Table)]
+			VAR __ValuePreviousPeriod = [PMTD Total Sale (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date growth\Total Sale (Parts Table)
+		lineageTag: 020898ce-3c94-42ae-bf1f-e3666219a4d5
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD % Total Sale (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [MOMTD Total Sale (Parts Table)],
+			    [PMTD Total Sale (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\To-date growth\Total Sale (Parts Table)
+		lineageTag: c58d2afc-1a6b-4734-ae27-31d6c646940f
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYC Total Sale (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Sale (Parts Table)],
+			        PARALLELPERIOD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth over full period\Total Sale (Parts Table)
+		lineageTag: f072c0e9-9f9b-4228-adef-be5021eb02c2
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTDOPY Total Sale (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [YTD Total Sale (Parts Table)]
+			VAR __ValuePreviousPeriod = [PYC Total Sale (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth over full period\Total Sale (Parts Table)
+		lineageTag: c11a4f2f-353b-4e23-a963-2f109a6e4d7a
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQC Total Sale (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Sale (Parts Table)],
+			        PARALLELPERIOD ( 'Date'[Date], -1, QUARTER )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth over full period\Total Sale (Parts Table)
+		lineageTag: a4c774e6-02ff-4ffa-8380-a392b77515c2
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTDOPQ Total Sale (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [QTD Total Sale (Parts Table)]
+			VAR __ValuePreviousPeriod = [PQC Total Sale (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth over full period\Total Sale (Parts Table)
+		lineageTag: 64c8de8f-280e-46de-8dd6-3e03a90e906c
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QDTOPQ % Total Sale (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [QTDOPQ Total Sale (Parts Table)],
+			    [PQC Total Sale (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth over full period\Total Sale (Parts Table)
+		lineageTag: dda05a42-d0e6-42b1-8c96-7b3723778758
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMC Total Sale (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Sale (Parts Table)],
+			        PARALLELPERIOD ( 'Date'[Date], -1, MONTH )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth over full period\Total Sale (Parts Table)
+		lineageTag: 95cd8e62-ad72-4527-8bea-3c1c8f8780a3
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM Total Sale (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [MTD Total Sale (Parts Table)]
+			VAR __ValuePreviousPeriod = [PMC Total Sale (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth over full period\Total Sale (Parts Table)
+		lineageTag: e999a1eb-1f8b-4a8f-b528-0a9104a4123a
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM % Total Sale (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [MTDOPM Total Sale (Parts Table)],
+			    [PMC Total Sale (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth over full period\Total Sale (Parts Table)
+		lineageTag: b6be0902-875b-4fbf-9b12-45c6f6def946
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MAT Total Sale (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Sale (Parts Table)],
+			        DATESINPERIOD (
+			            'Date'[Date],
+			            MAX ( 'Date'[Date] ),
+			            -1,
+			            YEAR
+			        )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\Moving annual growth\Total Sale (Parts Table)
+		lineageTag: 81b5e838-0f8e-4a4f-a524-70d584d0545d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYMAT Total Sale (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MAT Total Sale (Parts Table)],
+			        DATEADD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\Moving annual growth\Total Sale (Parts Table)
+		lineageTag: 6dd4dd20-37de-42b1-84ff-e3d833efc9f8
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG Total Sale (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [MAT Total Sale (Parts Table)]
+			VAR __ValuePreviousPeriod = [PYMAT Total Sale (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\Moving annual growth\Total Sale (Parts Table)
+		lineageTag: 74a3cd37-4024-4fea-bf62-b4d6eb9ff3e3
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG % Total Sale (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [MATG Total Sale (Parts Table)],
+			    [PYMAT Total Sale (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Moving annual growth\Total Sale (Parts Table)
+		lineageTag: ad39788d-a177-4ece-8d1a-f6cf1f5ee7d4
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTD Total Margin' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Margin],
+			        DATESYTD ( 'Date'[Date] )
+			    )
+			)
+		displayFolder: Time intelligence\To-date total\Total Margin
+		lineageTag: 737cf215-6736-4871-9e1e-1480120c6da5
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTD Total Margin' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Margin],
+			        DATESQTD ( 'Date'[Date] )
+			    )
+			)
+		displayFolder: Time intelligence\To-date total\Total Margin
+		lineageTag: 1629ba2c-5a06-4113-b202-e8d0135149e8
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTD Total Margin' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Margin],
+			        DATESMTD ( 'Date'[Date] )
+			    )
+			)
+		displayFolder: Time intelligence\To-date total\Total Margin
+		lineageTag: ebccdf63-15fb-48b6-bb17-dba7aed6d70b
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PY Total Margin' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Margin],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\Growth\Total Margin
+		lineageTag: 0509fd02-b0d3-44b7-aff1-33a19a03cde8
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY Total Margin' =
+			
+			VAR __ValueCurrentPeriod = [Total Margin]
+			VAR __ValuePreviousPeriod = [PY Total Margin]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth\Total Margin
+		lineageTag: d1511c0e-b1eb-456a-b043-e93bc70cf912
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY % Total Margin' = ```
+			
+			DIVIDE ( 
+			    [YOY Total Margin],
+			    [PY Total Margin]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth\Total Margin
+		lineageTag: 01d3e190-527f-4f04-a8c2-85cec7ab15e4
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQ Total Margin' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Margin],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\Growth\Total Margin
+		lineageTag: d52fc312-0a2a-414b-b799-7e6655fa7f93
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ Total Margin' =
+			
+			VAR __ValueCurrentPeriod = [Total Margin]
+			VAR __ValuePreviousPeriod = [PQ Total Margin]
+			VAR __Result =
+			    IF (
+			        ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        0 - __ValuePreviousPeriod,  // Lost customers (negative change)
+			        IF (
+			            NOT ISBLANK ( __ValueCurrentPeriod ) && ISBLANK ( __ValuePreviousPeriod ),
+			            __ValueCurrentPeriod,  // New customers (positive change)
+			            IF (
+			                NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			                __ValueCurrentPeriod - __ValuePreviousPeriod,  // Both periods (difference)
+			                BLANK()  // Both blank
+			            )
+			        )
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth\Total Margin
+		lineageTag: b041cb2e-7f55-4d2b-85ed-4ddfe8fef759
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'QOQ % Total Margin' = ```
+			
+			DIVIDE ( 
+			    [QOQ Total Margin],
+			    [PQ Total Margin]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth\Total Margin
+		lineageTag: fa9f575f-f6fb-40d7-bbb0-35eaf8a468e0
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PM Total Margin' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Margin],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\Growth\Total Margin
+		lineageTag: c5761325-7160-4933-ba2f-77f9b4fe934f
+
+		formatStringDefinition = "#,##0;(#,##0)"
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM Total Margin' =
+			
+			VAR __ValueCurrentPeriod = [Total Margin]
+			VAR __ValuePreviousPeriod = [PM Total Margin]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth\Total Margin
+		lineageTag: 5ec1be99-c5fa-4390-99f9-d326c0d8824c
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM % Total Margin' = ```
+			
+			DIVIDE ( 
+			    [MOM Total Margin],
+			    [PM Total Margin]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth\Total Margin
+		lineageTag: 2c3dbe0b-1846-4de7-b3c3-91b62e541672
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYTD Total Margin' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [YTD Total Margin],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\To-date growth\Total Margin
+		lineageTag: 5e9eb37f-423d-428f-84ef-7b63604a5dfa
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD Total Margin' =
+			
+			VAR __ValueCurrentPeriod = [YTD Total Margin]
+			VAR __ValuePreviousPeriod = [PYTD Total Margin]
+			VAR __Result =
+			    IF (
+			        ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        0 - __ValuePreviousPeriod,  // Lost customers (negative change)
+			        IF (
+			            NOT ISBLANK ( __ValueCurrentPeriod ) && ISBLANK ( __ValuePreviousPeriod ),
+			            __ValueCurrentPeriod,  // New customers (positive change)
+			            IF (
+			                NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			                __ValueCurrentPeriod - __ValuePreviousPeriod,  // Both periods (difference)
+			                BLANK()  // Both blank
+			            )
+			        )
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\To-date growth\Total Margin
+		lineageTag: 869cdad1-a912-4f35-9162-d240258161de
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YOYTD % Total Margin' = ```
+			
+			DIVIDE ( 
+			    [YOYTD Total Margin],
+			    [PYTD Total Margin]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\To-date growth\Total Margin
+		lineageTag: d632a02f-ed5c-43d0-b87d-9f50ff49e99a
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQTD Total Margin' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [QTD Total Margin],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\To-date growth\Total Margin
+		lineageTag: 754d28a5-ebd6-4263-ba0a-5d9e0e0635b0
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD Total Margin' =
+			
+			VAR __ValueCurrentPeriod = [QTD Total Margin]
+			VAR __ValuePreviousPeriod = [PQTD Total Margin]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\To-date growth\Total Margin
+		lineageTag: 5d27ad0c-ec00-4214-8cbd-be1e9647b160
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD % Total Margin' = ```
+			
+			DIVIDE ( 
+			    [QOQTD Total Margin],
+			    [PQTD Total Margin]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\To-date growth\Total Margin
+		lineageTag: 8c41b5fa-56de-4a20-8a93-3dc98b6315ae
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMTD Total Margin' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MTD Total Margin],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\To-date growth\Total Margin
+		lineageTag: 508188bd-f325-4bba-8edb-4a6675b3f0f6
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD Total Margin' =
+			
+			VAR __ValueCurrentPeriod = [MTD Total Margin]
+			VAR __ValuePreviousPeriod = [PMTD Total Margin]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\To-date growth\Total Margin
+		lineageTag: 3dde3453-759e-4da2-869e-8bdebf78c636
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD % Total Margin' = ```
+			
+			DIVIDE ( 
+			    [MOMTD Total Margin],
+			    [PMTD Total Margin]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\To-date growth\Total Margin
+		lineageTag: 6ee3fa37-2efb-434d-8f4f-4e77fae899e7
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYC Total Margin' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Margin],
+			        PARALLELPERIOD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		displayFolder: Time intelligence\Growth over full period\Total Margin
+		lineageTag: f648a820-6eba-497e-bf23-d02b26ca9ffd
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTDOPY Total Margin' =
+			
+			VAR __ValueCurrentPeriod = [YTD Total Margin]
+			VAR __ValuePreviousPeriod = [PYC Total Margin]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth over full period\Total Margin
+		lineageTag: 958d5d59-38ab-40db-b033-0f38961ab158
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YDTOPY % Total Margin' = ```
+			
+			DIVIDE ( 
+			    [YTDOPY Total Margin],
+			    [PYC Total Margin]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth over full period\Total Margin
+		lineageTag: 59d60ebd-c50a-4e95-901a-1f328bb4785d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQC Total Margin' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Margin],
+			        PARALLELPERIOD ( 'Date'[Date], -1, QUARTER )
+			    )
+			)
+		displayFolder: Time intelligence\Growth over full period\Total Margin
+		lineageTag: cb2d8673-27e7-4f1e-8c68-8ee8b94f54a7
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTDOPQ Total Margin' =
+			
+			VAR __ValueCurrentPeriod = [QTD Total Margin]
+			VAR __ValuePreviousPeriod = [PQC Total Margin]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth over full period\Total Margin
+		lineageTag: bfb00deb-b825-485d-9e9d-5d6cd03ef669
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QDTOPQ % Total Margin' = ```
+			
+			DIVIDE ( 
+			    [QTDOPQ Total Margin],
+			    [PQC Total Margin]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth over full period\Total Margin
+		lineageTag: c13cdf9f-9bf4-4376-8187-76ac8ffa81bb
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMC Total Margin' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Margin],
+			        PARALLELPERIOD ( 'Date'[Date], -1, MONTH )
+			    )
+			)
+		displayFolder: Time intelligence\Growth over full period\Total Margin
+		lineageTag: 708a32c1-0e49-4b71-a9de-fae86d75311d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM Total Margin' =
+			
+			VAR __ValueCurrentPeriod = [MTD Total Margin]
+			VAR __ValuePreviousPeriod = [PMC Total Margin]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Growth over full period\Total Margin
+		lineageTag: 68543b63-c7c8-423d-a19a-e95a19b9f1c3
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM % Total Margin' = ```
+			
+			DIVIDE ( 
+			    [MTDOPM Total Margin],
+			    [PMC Total Margin]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth over full period\Total Margin
+		lineageTag: 2b8c13b4-4dfc-4b95-ac17-4e28207b4ccd
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MAT Total Margin' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Margin],
+			        DATESINPERIOD (
+			            'Date'[Date],
+			            MAX ( 'Date'[Date] ),
+			            -1,
+			            YEAR
+			        )
+			    )
+			)
+		displayFolder: Time intelligence\Moving annual growth\Total Margin
+		lineageTag: 9ae91282-21c8-417c-b19c-1f6b9ad5c910
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYMAT Total Margin' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MAT Total Margin],
+			        DATEADD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		displayFolder: Time intelligence\Moving annual growth\Total Margin
+		lineageTag: e15f24e7-5016-4a5f-9f7f-3d116567ebdd
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG Total Margin' =
+			
+			VAR __ValueCurrentPeriod = [MAT Total Margin]
+			VAR __ValuePreviousPeriod = [PYMAT Total Margin]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		displayFolder: Time intelligence\Moving annual growth\Total Margin
+		lineageTag: 42832304-df61-4bb3-9e13-62b1ff292d3f
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG % Total Margin' = ```
+			
+			DIVIDE ( 
+			    [MATG Total Margin],
+			    [PYMAT Total Margin]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Moving annual growth\Total Margin
+		lineageTag: 6e8924ba-4f2e-433d-940a-eb54f3f8bf31
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTD Total Cost (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Parts Table)],
+			        DATESYTD ( 'Date'[Date] )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date total\Total Cost (Parts Table)
+		lineageTag: 421a983b-ec98-407d-870c-2fb62752f175
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTD Total Cost (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Parts Table)],
+			        DATESQTD ( 'Date'[Date] )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date total\Total Cost (Parts Table)
+		lineageTag: 0a7d08f7-7215-4f58-94f8-875df7e83a3c
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTD Total Cost (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Parts Table)],
+			        DATESMTD ( 'Date'[Date] )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date total\Total Cost (Parts Table)
+		lineageTag: 31454cd8-ad2c-40bc-963e-60b150dac6f7
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PY Total Cost (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Parts Table)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth\Total Cost (Parts Table)
+		lineageTag: 4845002c-bc14-47aa-8bf9-c1df2dba4421
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY Total Cost (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [Total Cost (Parts Table)]
+			VAR __ValuePreviousPeriod = [PY Total Cost (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth\Total Cost (Parts Table)
+		lineageTag: 3a7e7ca7-9f7d-47ec-a5c9-ac569972465a
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOY % Total Cost (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [YOY Total Cost (Parts Table)],
+			    [PY Total Cost (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth\Total Cost (Parts Table)
+		lineageTag: 5b884505-162b-4e8b-b56e-da1641aa10e1
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQ Total Cost (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Parts Table)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth\Total Cost (Parts Table)
+		lineageTag: 1e8e13ce-4d67-4ba9-953f-ab58d7690a0e
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ Total Cost (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [Total Cost (Parts Table)]
+			VAR __ValuePreviousPeriod = [PQ Total Cost (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth\Total Cost (Parts Table)
+		lineageTag: 68c77f0c-f05f-4294-94ad-14aef7d99846
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQ % Total Cost (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [QOQ Total Cost (Parts Table)],
+			    [PQ Total Cost (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth\Total Cost (Parts Table)
+		lineageTag: cd469ce2-940c-4c97-bffd-c25b743d1284
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PM Total Cost (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Parts Table)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth\Total Cost (Parts Table)
+		lineageTag: 1f50107f-79c1-476e-a4b4-f2d922ce6759
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM Total Cost (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [Total Cost (Parts Table)]
+			VAR __ValuePreviousPeriod = [PM Total Cost (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth\Total Cost (Parts Table)
+		lineageTag: 31b597fc-3345-4242-92ad-780d86f85b31
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOM % Total Cost (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [MOM Total Cost (Parts Table)],
+			    [PM Total Cost (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth\Total Cost (Parts Table)
+		lineageTag: 0b69e7e8-90a7-48f5-8921-b64bc4c01c27
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYTD Total Cost (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [YTD Total Cost (Parts Table)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date growth\Total Cost (Parts Table)
+		lineageTag: e025ffb2-c2cb-4eae-a589-a7d5045c2e6a
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD Total Cost (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [YTD Total Cost (Parts Table)]
+			VAR __ValuePreviousPeriod = [PYTD Total Cost (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date growth\Total Cost (Parts Table)
+		lineageTag: 7277b20f-c925-43d0-9958-eac1d9050ce5
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YOYTD % Total Cost (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [YOYTD Total Cost (Parts Table)],
+			    [PYTD Total Cost (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\To-date growth\Total Cost (Parts Table)
+		lineageTag: 2cbdd58c-bba4-4fbb-b81c-0264a62d2e45
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQTD Total Cost (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [QTD Total Cost (Parts Table)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, QUARTER ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date growth\Total Cost (Parts Table)
+		lineageTag: 1cffd8ad-f49b-42d0-a9c7-39b0843587cd
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD Total Cost (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [QTD Total Cost (Parts Table)]
+			VAR __ValuePreviousPeriod = [PQTD Total Cost (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date growth\Total Cost (Parts Table)
+		lineageTag: d2c49bc9-76cb-41bc-ab04-4b7b13109fc7
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QOQTD % Total Cost (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [QOQTD Total Cost (Parts Table)],
+			    [PQTD Total Cost (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\To-date growth\Total Cost (Parts Table)
+		lineageTag: f8b724cf-c6d2-4c98-9823-97a4008b71c1
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMTD Total Cost (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MTD Total Cost (Parts Table)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, MONTH ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date growth\Total Cost (Parts Table)
+		lineageTag: 3eacb18e-0210-45bb-91e7-538f6aaf0045
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD Total Cost (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [MTD Total Cost (Parts Table)]
+			VAR __ValuePreviousPeriod = [PMTD Total Cost (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\To-date growth\Total Cost (Parts Table)
+		lineageTag: c8f505a4-b331-47e0-a489-737d4f11b186
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MOMTD % Total Cost (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [MOMTD Total Cost (Parts Table)],
+			    [PMTD Total Cost (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\To-date growth\Total Cost (Parts Table)
+		lineageTag: c2416c09-813b-46bb-b963-8fee796d061c
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYC Total Cost (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Parts Table)],
+			        PARALLELPERIOD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth over full period\Total Cost (Parts Table)
+		lineageTag: 99e8eb8f-0247-4569-b5d5-1e973cdb5d54
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YTDOPY Total Cost (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [YTD Total Cost (Parts Table)]
+			VAR __ValuePreviousPeriod = [PYC Total Cost (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth over full period\Total Cost (Parts Table)
+		lineageTag: 3ae5776f-798d-45df-947b-e02cf1353723
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'YDTOPY % Total Cost (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [YTDOPY Total Cost (Parts Table)],
+			    [PYC Total Cost (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth over full period\Total Cost (Parts Table)
+		lineageTag: a11bd232-79a8-4943-a02e-93a4a812a94c
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PQC Total Cost (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Parts Table)],
+			        PARALLELPERIOD ( 'Date'[Date], -1, QUARTER )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth over full period\Total Cost (Parts Table)
+		lineageTag: c44c240c-930e-48d6-9bf3-24e1f7c5796d
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QTDOPQ Total Cost (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [QTD Total Cost (Parts Table)]
+			VAR __ValuePreviousPeriod = [PQC Total Cost (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth over full period\Total Cost (Parts Table)
+		lineageTag: 362ae504-0978-431c-8730-49be9b2f13fe
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'QDTOPQ % Total Cost (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [QTDOPQ Total Cost (Parts Table)],
+			    [PQC Total Cost (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth over full period\Total Cost (Parts Table)
+		lineageTag: a46b02ec-32bc-435a-a177-60c33999acb1
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PMC Total Cost (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Parts Table)],
+			        PARALLELPERIOD ( 'Date'[Date], -1, MONTH )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth over full period\Total Cost (Parts Table)
+		lineageTag: f9f4ff02-921e-4388-ba73-8555e001861f
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM Total Cost (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [MTD Total Cost (Parts Table)]
+			VAR __ValuePreviousPeriod = [PMC Total Cost (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\Growth over full period\Total Cost (Parts Table)
+		lineageTag: 2dd8b1b4-60b7-4b2e-ac17-f2828b203a28
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MTDOPM % Total Cost (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [MTDOPM Total Cost (Parts Table)],
+			    [PMC Total Cost (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Growth over full period\Total Cost (Parts Table)
+		lineageTag: ced41736-5963-4ee5-b4da-addac2ac9efa
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MAT Total Cost (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Cost (Parts Table)],
+			        DATESINPERIOD (
+			            'Date'[Date],
+			            MAX ( 'Date'[Date] ),
+			            -1,
+			            YEAR
+			        )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\Moving annual growth\Total Cost (Parts Table)
+		lineageTag: 5e2c0388-9df8-4a86-897e-de0aae692eb8
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'PYMAT Total Cost (Parts Table)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [MAT Total Cost (Parts Table)],
+			        DATEADD ( 'Date'[Date], -1, YEAR )
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: Time intelligence\Moving annual growth\Total Cost (Parts Table)
+		lineageTag: 5b509723-5780-47ec-86b0-eb6684f9a020
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG Total Cost (Parts Table)' =
+			
+			VAR __ValueCurrentPeriod = [MAT Total Cost (Parts Table)]
+			VAR __ValuePreviousPeriod = [PYMAT Total Cost (Parts Table)]
+			VAR __Result =
+			    IF (
+			        NOT ISBLANK ( __ValueCurrentPeriod ) && NOT ISBLANK ( __ValuePreviousPeriod ),
+			        __ValueCurrentPeriod - __ValuePreviousPeriod
+			    )
+			RETURN
+			    __Result
+		formatString: #,0.00
+		displayFolder: Time intelligence\Moving annual growth\Total Cost (Parts Table)
+		lineageTag: c4fa7b96-cda4-46b8-8ddc-2892a6339f11
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'MATG % Total Cost (Parts Table)' = ```
+			
+			DIVIDE ( 
+			    [MATG Total Cost (Parts Table)],
+			    [PYMAT Total Cost (Parts Table)]
+			)
+			```
+		formatString: 0.00%
+		displayFolder: Time intelligence\Moving annual growth\Total Cost (Parts Table)
+		lineageTag: 0b62c39e-a9a1-4099-8f6b-784083c66551
+
+		annotation SQLBI_Template = TimeIntelligence
+
+		annotation SQLBI_TimeIntelligence = Standard
+
+		annotation SQLBI_CalendarType = Calendar
+
+	measure 'Total Sales Variance' = [Total Sale (Parts Table)]-[PY Total Sale (Parts Table)]
+		lineageTag: 74b65c52-e28e-4796-b3b3-ab637f812c8e
+
+		formatStringDefinition = "#,##0;(#,##0)"
+
+	measure 'Total Margin Variance' = [Total Margin]-[PY Total Margin]
+		displayFolder: 02. Parts Table Measures
+		lineageTag: 096d31c2-ad5d-49be-b3b7-cc2a9b0000f9
+
+		formatStringDefinition = "#,##0;(#,##0)"
+
+	measure 'PM Sales Variance' = [Total Sale (Parts Table)]-[PM Total Sale (Parts Table)]
+		lineageTag: a60f5ef0-6d73-4fe3-9a1c-319d1ae1a0f5
+
+		formatStringDefinition = "#,##0;(#,##0)"
+
+	measure 'PM Margin Variance' = [Total Margin]-[PM Total Margin]
+		lineageTag: 860add22-3a48-42e2-aa89-98f00e12c15b
+
+		formatStringDefinition = "#,##0;(#,##0)"
+
+	measure 'Override Amt' = SUMX('Parts_Service Sales','Parts_Service Sales'[AmtPrice]-'Parts_Service Sales'[AmtPriceSuggest])
+		displayFolder: 02. Parts Table Measures
+		lineageTag: 47e3912b-5a11-47ad-a769-ef0c4e049468
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sale Suggested' =
+			
+			SUMX('Parts_Service Sales','Parts_Service Sales'[AmtPriceSuggest]*'Parts_Service Sales'[QtyShip])
+		lineageTag: 1a34684b-6ea5-4f4d-b2db-7e3a468d3c51
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Override Amt' = [Total Sale (Parts Table)]-[Total Sale Suggested]
+		displayFolder: 02. Parts Table Measures
+		lineageTag: 2cd8c8ee-5751-4996-bb5f-28c95ad6c41c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Gross Suggested' = [Total Sale Suggested] - [Total Cost (Parts Table)]
+		displayFolder: 02. Parts Table Measures
+		lineageTag: c5468ad7-7716-4b4b-927d-b1070f3a50f1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'GM% Suggested' = [Total Gross Suggested]/[Total Sale Suggested]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 02. Parts Table Measures
+		lineageTag: 647c1191-a8f0-4824-9061-0d0a412cb653
+
+	measure 'Count Of Part Number Pr SLS' =
+			
+			CALCULATE (
+			    COUNTROWS (
+			        FILTER (
+			            'Parts_Service Sales',
+			            LEFT ( 'Parts_Service Sales'[Reason], 4 ) IN { "RA10", "XA10", "XA20", "RA20" } &&
+			            'Parts_Service Sales'[ItmTyp] IN { 528, 591 }
+			        )
+			    )
+			)
+		formatString: 0
+		displayFolder: 02. Parts Table Measures
+		lineageTag: 30d4c1c6-7e45-4132-a63b-b20cacfa1260
+
+	measure 'Count Of Part Number Sold' =
+			
+			CALCULATE (
+			    COUNTROWS (
+			        FILTER (
+			            'Parts_Service Sales',
+			            'Parts_Service Sales'[ItmTyp] IN { 528, 591 }
+			        )
+			    )
+			)
+		formatString: 0
+		displayFolder: 02. Parts Table Measures
+		lineageTag: 07059721-39bf-408a-83f2-0bd36b6c039e
+
+	measure 'Total Shipped From Stock' =
+			
+			[Count Of Part Number Sold]-[Count Of Part Number Pr SLS]
+		formatString: 0
+		lineageTag: d2298fc8-4dbc-4433-b345-62292d600345
+
+	measure 'Fill Rate' =
+			
+			( [Total Shipped From Stock] / [Count Of Part Number Sold] )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 02. Parts Table Measures
+		lineageTag: ff632090-1452-45a0-8836-d85677c7ed60
+
+	measure 'MAT Total Sale (Parts Table) - Front' = ```
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Sale (Parts Table)],
+			        DATESINPERIOD (
+			            'Date'[Date],
+			            MAX ( 'Date'[Date] ),
+			            -1,
+			            YEAR
+			        ),
+			        'Parts_Service Sales'[Origin] = "Front"
+			    )
+			)
+			
+			```
+		displayFolder: Time intelligence\Moving annual growth\Total Sale (Parts Table)
+		lineageTag: 75340967-b8f4-4274-bf44-628793370bee
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sale (Front)' = ```
+			
+			CALCULATE(
+			    SUMX(
+			        'Parts_Service Sales',
+			        'Parts_Service Sales'[AmtPrice] * 'Parts_Service Sales'[QtyShip]
+			    ),
+			    'Parts_Service Sales'[Origin] = "Front"
+			)
+			
+			```
+		displayFolder: 02. Parts Table Measures
+		lineageTag: a348db9a-2447-4ae2-98e5-72bd5a6c2bb0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sale (Back)' = ```
+			
+			CALCULATE(
+			    SUMX(
+			        'Parts_Service Sales',
+			        'Parts_Service Sales'[AmtPrice] * 'Parts_Service Sales'[QtyShip]
+			    ),
+			    'Parts_Service Sales'[Origin] = "Back"
+			)
+			
+			```
+		displayFolder: 02. Parts Table Measures
+		lineageTag: d193ad9d-4fde-4a54-aa29-1084fd402141
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sale (Front) Rolling 12 Months' =
+			
+			CALCULATE(
+			    SUMX(
+			        'Parts_Service Sales',
+			        'Parts_Service Sales'[AmtPrice] * 'Parts_Service Sales'[QtyShip]
+			    ),
+			    'Parts_Service Sales'[Origin] = "Front",
+			    DATESINPERIOD(
+			        'Parts_Service Sales'[DateInvoice],
+			        MAX('Parts_Service Sales'[DateInvoice]),
+			        -12,
+			        MONTH
+			    )
+			)
+		displayFolder: 02. Parts Table Measures
+		lineageTag: 261988eb-ff17-46a8-af5b-9f3b8ee1b7a0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sold Sales Spark Line' = ```
+			
+			
+			// line and area colour - use %23 instead of # for Firefox compatibility (Measure Derived from Eldersveld Modified by Kolosko)
+			VAR CurrentYear = YEAR(TODAY())
+			
+			VAR Defs = "<defs>
+			    <linearGradient id='grad' x1='0' y1='25' x2='0' y2='50' gradientUnits='userSpaceOnUse'>
+			        <stop stop-color='white' offset='0' />
+			        <stop stop-color='transparent' offset='1' />
+			    </linearGradient>
+			</defs>"
+			
+			// Build a table of month start dates and total billed hours for each month in the current year
+			VAR FilteredMonths =
+			    ADDCOLUMNS(
+			        SUMMARIZE(
+			            FILTER(ALL('Date'), YEAR('Date'[Date]) = CurrentYear),
+			            'Date'[Year], 'Date'[Month], "MonthStart", MIN('Date'[Date])
+			        ),
+			        "TotalHours", CALCULATE([Total Sale (Parts Table)], DATESBETWEEN('Date'[Date], [MonthStart], EOMONTH([MonthStart], 0)))
+			    )
+			
+			// X axis: min and max of MonthStart
+			VAR XMinDate = MINX(FilteredMonths, [MonthStart])
+			VAR XMaxDate = MAXX(FilteredMonths, [MonthStart])
+			
+			// Y axis: min and max of monthly billed hours
+			VAR YMinValue = MINX(FilteredMonths, [TotalHours])
+			VAR YMaxValue = MAXX(FilteredMonths, [TotalHours])
+			
+			// Build table of X & Y coordinates and fit to 50 x 150 viewbox
+			VAR SparklineTable = ADDCOLUMNS(
+			    FilteredMonths,
+			        "X", INT(150 * DIVIDE([MonthStart] - XMinDate, XMaxDate - XMinDate)),
+			        "Y", INT(50 * DIVIDE([TotalHours] - YMinValue, YMaxValue - YMinValue))
+			)
+			
+			// Concatenate X & Y coordinates to build the sparkline
+			VAR Lines = CONCATENATEX(SparklineTable, [X] & "," & 50 - [Y], " ", [MonthStart])
+			
+			// Add to SVG, and verify Data Category is set to Image URL for this measure
+			VAR SVGImageURL = IF(HASONEVALUE('Parts_Service Sales'[Name]),
+			    "data:image/svg+xml;utf8," & 
+			    "<svg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 150 50'>" & Defs &
+			     "<polyline fill='url(#grad)' fill-opacity='0.3' stroke='white' 
+			      stroke-width='3' points=' 0 50 " & Lines & 
+			      " 150 150 Z '/></svg>",
+			     BLANK())
+			
+			RETURN SVGImageURL
+			
+			
+			```
+		lineageTag: 2b4b3445-52b4-4876-bb2a-06316134a358
+		dataCategory: ImageUrl
+
+	measure 'PY Total Sale (Accounting)' =
+			
+			IF (
+			    [_ShowValueForDates],
+			    CALCULATE (
+			        [Total Sales (ACJEITM)],
+			        CALCULATETABLE (
+			            DATEADD ( 'Date'[Date], -1, YEAR ),
+			            'Date'[DateWithTransactions] = TRUE
+			        )
+			    )
+			)
+		lineageTag: bd135566-b2c0-4b80-a2fd-1b3aab679564
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Procede CA' =
+			
+			SUMX('Parts_Service Sales','Parts_Service Sales'[QtyShip]*'Parts_Service Sales'[AmtCost])
+		displayFolder: 03. Fleetcharge Measures
+		lineageTag: fbe6a6df-3054-4de3-bae0-689c0de70d59
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Fleetcharge CA' =
+			
+			SUMX('Parts_Service Sales','Parts_Service Sales'[QtyShip]*'Parts_Service Sales'[Unit CA])
+		displayFolder: 03. Fleetcharge Measures
+		lineageTag: 746eb1ff-225b-49cb-94a8-7f76bf01bda1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total CA Difference' = ROUND([Total Procede CA]-[Total Fleetcharge CA],2)
+		displayFolder: 03. Fleetcharge Measures
+		lineageTag: e12d4009-6f76-4329-9aa9-2be21808bd68
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total SPL ADJ' =
+			
+			SUMX('Parts_Service Sales','Parts_Service Sales'[QtyShip]*'Parts_Service Sales'[Unit SPL])
+		displayFolder: 03. Fleetcharge Measures
+		lineageTag: 314f7cb7-6f94-49d9-a8a9-1f6b5271aade
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Margin W/ CA & SPL' =
+			
+			[Total Margin]+[Total Fleetcharge CA]+[Total SPL ADJ]
+		displayFolder: 03. Fleetcharge Measures
+		lineageTag: 9e2e9f80-19e1-4ae7-b6e5-3837ba70a059
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Return Cost Difference' =
+			
+			CALCULATE(
+			    SUMX(MT_PARTS_PURCHASES,
+			    (MT_PARTS_PURCHASES[PTPURITM_AmtCostReceive]-
+			    MT_PARTS_PURCHASES[PTPURITM_AmtCostStock]) *
+			    MT_PARTS_PURCHASES[PTPURITM_QtyOrder])
+			)
+		lineageTag: c93f1ece-451c-4161-aea3-0032ecb4b19a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Days Between Updates' =
+			
+			AVERAGEX(
+			    'Parts_Service Sales',
+			    DATEDIFF(
+			        'Parts_Service Sales'[EarliestDateUpdate],
+			        'Parts_Service Sales'[DateUpdate],
+			        DAY
+			    )
+			)
+		formatString: 0
+		displayFolder: 02. Parts Table Measures
+		lineageTag: e409e0dd-d941-407f-b601-62adc65d65bb
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Hours Between Updates' =
+			
+			AVERAGEX(
+			    'Parts_Service Sales',
+			    DATEDIFF(
+			        'Parts_Service Sales'[EarliestDateUpdate],
+			        'Parts_Service Sales'[DateUpdate],
+			        HOUR
+			    )
+			)
+		displayFolder: 02. Parts Table Measures
+		lineageTag: c5181f6e-4cb3-440b-b373-5da5ad81ea97
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'True Margin %' = DIVIDE([Total Margin W/ CA & SPL],[Total Sale (Parts Table)],0)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 03. Fleetcharge Measures
+		lineageTag: 38f85f42-f113-4d49-9991-2a58bde2ae6a
+
+	column Column
+		formatString: 0
+		lineageTag: 3297c6bb-610d-479f-8ee1-4f477e8325fa
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Measure = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 1606c1cbd8314da2b967d15a08a16df2
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

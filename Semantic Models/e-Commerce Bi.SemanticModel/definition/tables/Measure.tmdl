@@ -1,0 +1,352 @@
+table Measure
+	lineageTag: 4d6905d6-1424-471d-b388-ee4ad646fe3d
+
+	measure 'Total Sales (eBay)' = SUMX('eBay Sales','eBay Sales'[Quantity]*'eBay Sales'[Sold For])
+		displayFolder: eBay Measures
+		lineageTag: d2f6c91a-9c52-4eaa-82a8-d2e0607b9417
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '# Of Orders' = DISTINCTCOUNT('eBay Sales'[Order Number])
+		formatString: 0
+		displayFolder: eBay Measures
+		lineageTag: fa58b6dd-e6cb-471f-b361-fb17117ddc9e
+
+	measure Today = TODAY()
+		formatString: Short Date
+		displayFolder: eBay Measures
+		lineageTag: dc40a1f1-e83b-4c6b-bd86-86da82368b55
+
+	measure 'Total Sales 2024 (eBay)' = ```
+			CALCULATE(
+			    SUMX('eBay Sales', 'eBay Sales'[Quantity] * 'eBay Sales'[Sold For]),
+			    YEAR('eBay Sales'[Sale Date]) = 2024
+			)
+			
+			```
+		displayFolder: eBay Measures
+		lineageTag: 9b263dd8-ba8a-4aa8-9283-77a0b7948589
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sales 2023 (eBay)' = ```
+			CALCULATE(
+			    SUMX('eBay Sales', 'eBay Sales'[Quantity] * 'eBay Sales'[Sold For]),
+			    YEAR('eBay Sales'[Sale Date]) = 2023
+			)
+			
+			```
+		displayFolder: eBay Measures
+		lineageTag: eeb99bf2-7dc0-455a-bb2d-eb8f47028778
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Sales 2024' = ```
+			CALCULATE(
+			    SUMX('eBay Sales', 'eBay Sales'[Quantity] * 'eBay Sales'[Sold For]),
+			    DATESMTD('eBay Sales'[Sale Date]),
+			    YEAR('eBay Sales'[Sale Date]) = 2024
+			)
+			
+			```
+		displayFolder: eBay Measures
+		lineageTag: aafba222-26de-4203-8ce0-5d71504e34d8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sales 2023 (Next Part)' =
+			
+			CALCULATE(SUMX('Next Part Sales','Next Part Sales'[Total]),YEAR('Next Part Sales'[Date]) = 2023)
+		displayFolder: Next Part Measures
+		lineageTag: 67634fc5-8b04-4ee8-bc33-ac59de098b82
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sales 2024 (Next Part)' =
+			
+			CALCULATE(SUMX('Next Part Sales','Next Part Sales'[Total]),YEAR('Next Part Sales'[Date]) = 2024)
+		displayFolder: Next Part Measures
+		lineageTag: 21b3d9a3-a49a-4a0e-ac95-7b23e523a0f1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Sales 2024 (Next Part)' = ```
+			CALCULATE(
+			    SUMX('Next Part Sales', 'Next Part Sales'[Total]),
+			    DATESMTD('Next Part Sales'[Date]),
+			    YEAR('Next Part Sales'[Date]) = 2024
+			)
+			
+			```
+		displayFolder: Next Part Measures
+		lineageTag: 71d28dfa-0fc0-407c-b1c9-cf6286dc68f6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sales 2023 (Repairlink)' =
+			
+			CALCULATE(SUMX(Repairlink,Repairlink[Actual Sales]),YEAR(Repairlink[ordercompletedate]) = 2023)
+		displayFolder: Repairlink Sales
+		lineageTag: 6417b4e1-6ba2-4747-8477-a2396186f533
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sales 2024 (Repairlink)' =
+			
+			CALCULATE(SUMX(Repairlink,Repairlink[Actual Sales]),YEAR(Repairlink[ordercompletedate]) = 2024)
+		displayFolder: Repairlink Sales
+		lineageTag: 04c0fff0-9def-4155-8f08-e74ba6e0a29e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Sales 2024 (Repairlink)' = ```
+			CALCULATE(
+			    SUMX(Repairlink, Repairlink[Actual Sales]),
+			    DATESMTD(Repairlink[ordercompletedate]),
+			    YEAR(Repairlink[ordercompletedate]) = 2024
+			)
+			
+			```
+		displayFolder: Repairlink Sales
+		lineageTag: 22b0eae6-391b-44ce-86b6-0308be3ba353
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sales (Next Part)' =
+			
+			SUMX('Next Part Sales','Next Part Sales'[Total])
+		displayFolder: Next Part Measures
+		lineageTag: 135d7c09-0af8-4bf6-9b1b-9cd910f7c818
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sales (Repairlink)' =
+			
+			SUMX(Repairlink,Repairlink[Actual Sales])
+		displayFolder: Repairlink Sales
+		lineageTag: c62ac933-7308-4e8a-914f-9ca36ff4c4a9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Combined Sales' =
+			
+			[Total Sales (eBay)]+[Total Sales (Repairlink)]+[Total Sales (Next Part)]
+		lineageTag: 2c73ccff-ec8f-4785-a774-4178ca4e23c5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sales PY (eBay)' = ```
+			
+			CALCULATE(
+			    SUMX('eBay Sales', 'eBay Sales'[Quantity] * 'eBay Sales'[Sold For]),
+			    SAMEPERIODLASTYEAR('Date'[Date])
+			)
+			
+			```
+		displayFolder: eBay Measures
+		lineageTag: 95c5c3bf-170d-41e0-bc79-57e83d3b2b47
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CF Sales (eBay)' =
+			
+			IF([Total Sales (eBay)] < [Total Sales PY (eBay)],1,2)
+		formatString: 0
+		displayFolder: eBay Measures
+		lineageTag: a86dce20-e5f9-48c1-b1cc-ceee87b49723
+
+	measure 'Total Sales PY (NextPart)' =
+			
+			CALCULATE([Total Sales (Next Part)],
+			SAMEPERIODLASTYEAR('Date'[Date]))
+		displayFolder: Next Part Measures
+		lineageTag: 11b74368-6170-455a-8ebb-121ce4952050
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CF Sales (NextPart)' =
+			
+			IF([Total Sales (Next Part)]<[Total Sales PY (NextPart)],1,2)
+		formatString: 0
+		displayFolder: Next Part Measures
+		lineageTag: e9638fe6-85e3-47db-baa1-745ae39f9388
+
+	measure 'Total Sales PY (Repairlink)' =
+			
+			CALCULATE([Total Sales (Repairlink)],SAMEPERIODLASTYEAR('Date'[Date]))
+		displayFolder: Repairlink Sales
+		lineageTag: b195d718-34b8-42a3-91d5-d3249601cbb6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CF Sales (Repairlnk)' =
+			
+			IF([Total Sales (Repairlink)]<[Total Sales PY (Repairlink)],1,2)
+		formatString: 0
+		displayFolder: Repairlink Sales
+		lineageTag: 06fa5a3e-5c7b-40a6-ae49-75a648a8ed53
+
+	measure 'Combined Sales PY' =
+			
+			CALCULATE([Combined Sales],SAMEPERIODLASTYEAR('Date'[Date]))
+		lineageTag: 275f347b-4ab8-46ac-b981-406000849d64
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CF Sales (Combined)' =
+			
+			IF([Combined Sales]<[Combined Sales PY],1,2)
+		formatString: 0
+		lineageTag: f0388e6b-4f70-4110-a964-1011b3d3c330
+
+	measure 'Total Sales 2025 (Repairlink)' =
+			
+			CALCULATE(SUMX(Repairlink,Repairlink[Actual Sales]),YEAR(Repairlink[ordercompletedate]) = 2025)
+		displayFolder: Repairlink Sales
+		lineageTag: 32c7e0c6-0ecc-4197-a9f6-24fc8093923a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sales 2025 (Next Part)' =
+			
+			CALCULATE(SUMX('Next Part Sales','Next Part Sales'[Total]),YEAR('Next Part Sales'[Date]) = 2025)
+		displayFolder: Next Part Measures
+		lineageTag: bead9fff-1088-496e-a431-858a6db553e6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sales 2025 (eBay)' = ```
+			CALCULATE(
+			    SUMX('eBay Sales', 'eBay Sales'[Quantity] * 'eBay Sales'[Sold For]),
+			    YEAR('eBay Sales'[Sale Date]) = 2025
+			)
+			
+			```
+		displayFolder: eBay Measures
+		lineageTag: 331b2f72-ead5-4697-a6ea-8047f8071fbe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Sales 2025' = ```
+			CALCULATE(
+			    SUMX('eBay Sales', 'eBay Sales'[Quantity] * 'eBay Sales'[Sold For]),
+			    DATESMTD('eBay Sales'[Sale Date]),
+			    YEAR('eBay Sales'[Sale Date]) = 2025
+			)
+			
+			```
+		displayFolder: eBay Measures
+		lineageTag: 35f073cd-cf23-40c4-9e7c-d66a0f0d2891
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Sales 2025 (Next Part)' = ```
+			CALCULATE(
+			    SUMX('Next Part Sales', 'Next Part Sales'[Total]),
+			    DATESMTD('Next Part Sales'[Date]),
+			    YEAR('Next Part Sales'[Date]) = 2025
+			)
+			
+			```
+		displayFolder: Next Part Measures
+		lineageTag: c2b2e10e-e587-49c8-86ba-1d0080b3bfa4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Sales 2025 (Repairlink)' = ```
+			CALCULATE(
+			    SUMX(Repairlink, Repairlink[Actual Sales]),
+			    DATESMTD(Repairlink[ordercompleteddate]),
+			    YEAR(Repairlink[ordercompleteddate]) = 2025
+			)
+			
+			```
+		displayFolder: Repairlink Sales
+		lineageTag: 5973841d-3f2f-4521-8f99-a95175ec7541
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sales 2026 (eBay)' = ```
+			CALCULATE(
+			    SUMX('eBay Sales', 'eBay Sales'[Quantity] * 'eBay Sales'[Sold For]),
+			    YEAR('eBay Sales'[Sale Date]) = 2026
+			)
+			
+			```
+		displayFolder: eBay Measures
+		lineageTag: 3f6cef4d-ed0c-4b52-8431-a4bee0b1ee82
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Sales 2026' = ```
+			CALCULATE(
+			    SUMX('eBay Sales', 'eBay Sales'[Quantity] * 'eBay Sales'[Sold For]),
+			    DATESMTD('eBay Sales'[Sale Date]),
+			    YEAR('eBay Sales'[Sale Date]) = 2026
+			)
+			
+			```
+		displayFolder: eBay Measures
+		lineageTag: 843cf436-2b21-484e-9c62-f7b7fe5db928
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sales 2026 (Next Part)' =
+			
+			CALCULATE(SUMX('Next Part Sales','Next Part Sales'[Total]),YEAR('Next Part Sales'[Date]) = 2026)
+		displayFolder: Next Part Measures
+		lineageTag: 50aef46d-4fef-488f-80da-86289d5e24f5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Sales 2026 (Next Part)' = ```
+			CALCULATE(
+			    SUMX('Next Part Sales', 'Next Part Sales'[Total]),
+			    DATESMTD('Next Part Sales'[Date]),
+			    YEAR('Next Part Sales'[Date]) = 2026
+			)
+			
+			```
+		displayFolder: Next Part Measures
+		lineageTag: 6c687884-c5c1-4811-b029-145d3f5e0e21
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sales 2026 (Repairlink)' =
+			
+			CALCULATE(SUMX(Repairlink,Repairlink[Actual Sales]),YEAR(Repairlink[ordercompletedate]) = 2026)
+		displayFolder: Repairlink Sales
+		lineageTag: a6cdb2ec-fd7e-4e59-8ecd-5bae828c1e6c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Sales 2026 (Repairlink)' = ```
+			CALCULATE(
+			    SUMX(Repairlink, Repairlink[Actual Sales]),
+			    DATESMTD(Repairlink[ordercompletedate]),
+			    YEAR(Repairlink[ordercompletedate]) = 2026
+			)
+			
+			```
+		displayFolder: Repairlink Sales
+		lineageTag: d47bc573-1562-483c-94e4-7ed7f432315d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column
+		formatString: 0
+		lineageTag: 52b1b8c2-5e57-414e-9db7-2f2f85e2364b
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Measure = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = fb3d559386cb49cdb4b9201189b0f0d7
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

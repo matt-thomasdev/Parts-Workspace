@@ -1,0 +1,7 @@
+role 'CHA PM'
+	modelPermission: read
+
+	tablePermission 'Parts_Service Sales' = [BrnId] == "102" || [BrnId] == "502"
+
+	annotation PBI_Id = d9bfc344c540426a823a3aabd79ce50b
+

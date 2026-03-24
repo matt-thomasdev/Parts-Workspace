@@ -1,0 +1,48 @@
+table prm_SourceClass
+	lineageTag: 7598ca37-da49-4328-b5e3-8c9992318dcb
+
+	column prm_Parameter
+		lineageTag: 7ba61d7b-dc68-4a56-91a3-0ab82f302763
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: b1ae4300-8eba-47ab-b53d-e4017e39d8e6
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: eb915b7c-7d00-48e7-9aca-0a5d83ff20a1
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition prm_SourceClass = calculated
+		mode: import
+		source =
+				{
+				    ("Source", NAMEOF('fct_Inventory'[SrcId]), 0),
+				    ("Class Description", NAMEOF('fct_Inventory'[PTCLA_ClaIdDes]), 1)
+				}
+
+	annotation PBI_Id = 14aedaf245514bd9810f2d5200d8b53a
+

@@ -1,0 +1,56 @@
+table fct_PartsPurchases
+	lineageTag: 99ced592-dd91-4173-9f85-cd292ad18d49
+
+	column PTPURITM_PtItm
+		dataType: string
+		lineageTag: 157aef23-f0a3-4107-9bc5-d5fae6db6566
+		summarizeBy: none
+		sourceColumn: PTPURITM_PtItm
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTPURITM_AmtCostReceive
+		dataType: double
+		lineageTag: 4b6b15d8-351e-427a-b63a-ec579852979b
+		summarizeBy: sum
+		sourceColumn: PTPURITM_AmtCostReceive
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTPURITM_QtyReceive
+		dataType: double
+		lineageTag: ded7c0a0-e201-4be2-aa60-6f997df0a2ee
+		summarizeBy: sum
+		sourceColumn: PTPURITM_QtyReceive
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PTPUR_VenName
+		dataType: string
+		lineageTag: 86c2d451-18a7-4f0e-86cd-a0d139e6ac46
+		summarizeBy: none
+		sourceColumn: PTPUR_VenName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_PartsPurchases = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_fct_PartsPurchases = EXCEDE{[Schema="dbo",Item="MT_PARTS_PURCHASES"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_fct_PartsPurchases,{"PTPURITM_PtItm", "PTPURITM_AmtCostReceive", "PTPURITM_QtyReceive", "PTPURITM_TS", "PTPUR_VenName", "PTPUR_DateOrder", "PTPUR_PurTypId", "PTPUR_DateReceive", "COLOOKUP_Des1", "PTPUR_Location", "PTPUR_DaysOpen", "COEMP_EmpName"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Removed Other Columns",{"PTPURITM_TS"}),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Removed Columns",{"PTPURITM_PtItm", "PTPURITM_AmtCostReceive", "PTPURITM_QtyReceive", "PTPUR_VenName"})
+				in
+				    #"Removed Other Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

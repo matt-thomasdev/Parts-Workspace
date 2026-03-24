@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "International Core Statements"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "31db0c10-7f81-906d-4ceb-ca32cd4f810e"
+  }
+}

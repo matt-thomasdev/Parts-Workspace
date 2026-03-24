@@ -1,0 +1,42 @@
+{
+  "config": "{\"version\":\"5.69\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY25SU12\",\"version\":{\"visual\":\"2.5.0\",\"report\":\"3.1.0\",\"page\":\"2.3.0\"},\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY25SU12",
+            "path": "BaseThemes/CY25SU12.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "9ba0e601df8e6a68e579",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"df1627319b15c4a5512e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":7.231558620689655,\"y\":20.790731034482757,\"z\":0,\"width\":1272.7543172413793,\"height\":674.3428413793104,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"table.Call Start Time\"},{\"queryRef\":\"table.From Name\"},{\"queryRef\":\"table.To Name\"},{\"queryRef\":\"table.Result\"},{\"queryRef\":\"table.Call Direction\"},{\"queryRef\":\"table.To Number\"},{\"queryRef\":\"table.From Number\"},{\"queryRef\":\"table.Queue\"},{\"queryRef\":\"CountNonNull(table.Queue)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"table\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Call Start Time\"},\"Name\":\"table.Call Start Time\",\"NativeReferenceName\":\"Call Start Time\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"From Name\"},\"Name\":\"table.From Name\",\"NativeReferenceName\":\"From Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"To Name\"},\"Name\":\"table.To Name\",\"NativeReferenceName\":\"To Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Result\"},\"Name\":\"table.Result\",\"NativeReferenceName\":\"Result\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Call Direction\"},\"Name\":\"table.Call Direction\",\"NativeReferenceName\":\"Call Direction\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"To Number\"},\"Name\":\"table.To Number\",\"NativeReferenceName\":\"To Number\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"From Number\"},\"Name\":\"table.From Number\",\"NativeReferenceName\":\"From Number\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Queue\"},\"Name\":\"table.Queue\",\"NativeReferenceName\":\"Queue\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Queue\"}},\"Function\":5},\"Name\":\"CountNonNull(table.Queue)\",\"NativeReferenceName\":\"Count of Queue\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Call Start Time\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"302.00342562712905D\"}}}},\"selector\":{\"metadata\":\"table.To Name\"}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"211.8550806055195D\"}}}},\"selector\":{\"metadata\":\"table.Call Start Time\"}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"131.14819609113374D\"}}}},\"selector\":{\"metadata\":\"table.Queue\"}}]}}}",
+          "filters": "[{\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"table\"}},\"Property\":\"Call Start Time\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"table\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Call Start Time\"}},\"Right\":{\"Literal\":{\"Value\":\"'12/11/2025'\"}}}}}]},\"type\":\"Advanced\",\"howCreated\":0,\"isHiddenInViewMode\":false},{\"name\":\"5e9e462c6cd32c695901\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"table\"}},\"Property\":\"Queue\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"table\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Queue\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'RIV Parts'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{},\"isHiddenInViewMode\":false}]",
+          "height": 674.34,
+          "width": 1272.75,
+          "x": 7.23,
+          "y": 20.79,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

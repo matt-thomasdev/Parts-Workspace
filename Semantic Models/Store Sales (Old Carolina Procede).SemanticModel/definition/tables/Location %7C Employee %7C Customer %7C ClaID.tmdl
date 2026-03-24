@@ -1,0 +1,56 @@
+table 'Location | Employee | Customer | ClaID'
+	lineageTag: a16b5981-0250-44c4-b743-fb46719d03cc
+
+	column 'Location | Employee | Customer | ClaID'
+		lineageTag: 399d52bd-1eea-4a17-9a71-382e0bdb20db
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Location | Employee | Customer | ClaID Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Location | Employee | Customer | ClaID Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Location | Employee | Customer | ClaID Fields'
+		isHidden
+		lineageTag: ef68c71b-3f84-4ee6-9a87-a2072bee3c20
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Location | Employee | Customer | ClaID Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Location | Employee | Customer | ClaID Order'
+		isHidden
+		formatString: 0
+		lineageTag: 6e29d1bd-b388-4d5c-b550-c50ffc38178e
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Location | Employee | Customer | ClaID' = calculated
+		mode: import
+		source =
+				{
+				    ("Location", NAMEOF('Parts_Service Sales'[Location]), 0),
+				    ("Invoice",NAMEOF('Parts_Service Sales'[SlsId]),1),
+				    ("Part#",NAMEOF('Parts_Service Sales'[PtItm]),2),
+				    ("Employee", NAMEOF('Parts_Service Sales'[Name]), 3),
+				    ("Customer(CusId)", NAMEOF(dim_COCUS_CusId[Name]), 4),
+				    ("Customer(BillCusId)", NAMEOF(dim_COCUS_BillCusId[Name]), 5),
+				    ("SrcId",NAMEOF('Parts_Service Sales'[SrcId]),6),
+				    ("Class ID", NAMEOF('PTCLA'[Des]), 7),
+				    ("SlsTypId",NAMEOF('Parts_Service Sales'[SlsTypId]),8),
+				    ("Origin",NAMEOF('Parts_Service Sales'[Origin]),9)
+				}
+
+	annotation PBI_Id = 211058ea81e94fe39739c4ce57a35b6c
+

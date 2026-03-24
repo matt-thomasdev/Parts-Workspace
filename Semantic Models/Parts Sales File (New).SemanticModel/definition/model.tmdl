@@ -1,0 +1,111 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+extendedProperty SQLBI_BRAVO_ManageDatesConfiguration =
+		{
+		  "templateUri": "file:///C:/Users/matt.thomas/AppData/Local/Bravo/.temp/ManageDates/Templates/Config-01.template.json",
+		  "isCurrent": false,
+		  "isCustom": false,
+		  "name": "Config-01",
+		  "description": "Standard gregorian calendar",
+		  "autoScan": 1,
+		  "onlyTablesColumns": [
+		    "'Parts_Service Sales'[DateInvoice]"
+		  ],
+		  "exceptTablesColumns": [],
+		  "isoCountry": "US",
+		  "autoNaming": 1,
+		  "targetMeasures": [
+		    "Total Sale (Parts Table)",
+		    "Total Margin",
+		    "Total Cost (Parts Table)"
+		  ],
+		  "defaults": {
+		    "firstDayOfWeek": 1
+		  },
+		  "dateAvailable": true,
+		  "dateEnabled": true,
+		  "dateTableName": "Date",
+		  "dateTableValidation": 1,
+		  "dateReferenceTableName": "DateAutoTemplate",
+		  "dateReferenceTableValidation": 2,
+		  "holidaysAvailable": true,
+		  "holidaysEnabled": false,
+		  "holidaysTableName": "Holidays",
+		  "holidaysTableValidation": 0,
+		  "holidaysDefinitionTableName": "HolidaysDefinition",
+		  "holidaysDefinitionTableValidation": 0,
+		  "timeIntelligenceAvailable": true,
+		  "timeIntelligenceEnabled": true
+		}
+
+annotation PBI_QueryOrder = ["Parts_Service Sales","COEMP","PTCLA","Working Days","Data Refresh","MT_ACJEITM","MT_ACMCA","ACMCAPRD","MT_PARTS_PURCHASES","MT_TRANSFERS","MT_COCUSCRM","USER_ESTIMATES","dim_COCUS_CusId","dim_COCUS_BillCusId","MT_COCUSCRM_GROUPED","MT_CONOTITM","MT_FC_STATEMENT"]
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation __PBIService_Versioning_SaveVersion = 2024-11-19T17:23:18.0270204Z
+
+annotation PBI_ProTooling = ["WebModelingEdit"]
+
+ref table 'Parts_Service Sales'
+ref table COEMP
+ref table PTCLA
+ref table 'Location | Employee | Customer | ClaID'
+ref table 'Working Days'
+ref table 'Data Refresh'
+ref table DateAutoTemplate
+ref table MT_ACJEITM
+ref table MT_ACMCA
+ref table ACMCAPRD
+ref table Measure
+ref table MT_PARTS_PURCHASES
+ref table MT_TRANSFERS
+ref table MT_COCUSCRM
+ref table Date
+ref table OPS
+ref table USER_ESTIMATES
+ref table dim_COCUS_CusId
+ref table dim_COCUS_BillCusId
+ref table MT_COCUSCRM_GROUPED
+ref table MT_CONOTITM
+ref table MT_FC_STATEMENT
+
+ref role 'Miami PM'
+ref role 'Full Access'
+ref role 'FTL PM'
+ref role 'RB PM'
+ref role 'FTP PM'
+ref role 'FTM PM'
+ref role 'COL PM'
+ref role 'CHA PM'
+ref role 'FLO/CON PM'
+ref role 'GRE PM'
+ref role 'GVL PM'
+ref role 'REG DIR SC'
+ref role 'CON PM'
+ref role 'FLO PM'
+ref role 'COL 1122'
+ref role 'GVL 1418'
+ref role 'CON 366'
+ref role 'RB 1'
+ref role 'FTP 103'
+ref role 'Miami 397'
+ref role 'GVL 333'
+ref role 'FTM 387'
+ref role 'Miami 396'
+ref role 'FLO 1088'
+ref role 'FTM 14'
+ref role 'GRE 1226'
+ref role 'GRE 949'
+ref role 'RB 231'
+ref role 'FTL 202'
+ref role 'COL 414'
+ref role 'CHA 440'
+
+ref cultureInfo en-US
+

@@ -1,0 +1,54 @@
+table fct_Consignment
+	lineageTag: 7b773884-d79a-433e-938d-390db34bfde4
+
+	column PrtId
+		dataType: string
+		lineageTag: 4983fc02-439f-48d7-accf-b91297632959
+		summarizeBy: none
+		sourceColumn: PrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyOC
+		dataType: double
+		lineageTag: c7bd5c3a-41b2-4abd-8356-5086572bfe0a
+		summarizeBy: sum
+		sourceColumn: QtyOC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtCostAvg
+		dataType: double
+		lineageTag: d8d072cf-adc7-4041-a00e-d97352c12afb
+		summarizeBy: sum
+		sourceColumn: AmtCostAvg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Name
+		dataType: string
+		lineageTag: ae92ce02-52ca-465a-be20-3ed4e2b339b3
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_Consignment = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_fct_Consignment = EXCEDE{[Schema="dbo",Item="MT_CONSIGNMENT"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_fct_Consignment,{"PrtId", "QtyOC", "AmtCostAvg", "Name"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

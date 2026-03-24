@@ -1,0 +1,342 @@
+table PTSTK
+	lineageTag: fbb430e6-f178-4d4a-9d45-2b702ee09d0f
+
+	column ItmId
+		dataType: int64
+		formatString: 0
+		lineageTag: 8233afd7-8582-44f7-aa7d-a092f2403d80
+		summarizeBy: count
+		sourceColumn: ItmId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BrnId
+		dataType: string
+		lineageTag: e5e46322-b970-40a5-926d-b63e8f836c97
+		summarizeBy: none
+		sourceColumn: BrnId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SrcId
+		dataType: string
+		lineageTag: d5858dde-8bc4-471a-b483-997fc439e643
+		summarizeBy: none
+		sourceColumn: SrcId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClaId
+		dataType: string
+		lineageTag: 335cb090-078d-4f0b-b98a-e57cfb85f906
+		summarizeBy: none
+		sourceColumn: ClaId
+
+		annotation SummarizationSetBy = Automatic
+
+	column VenPrtId
+		dataType: string
+		lineageTag: a7b8beda-cf10-4ef7-b6e0-494db5725318
+		summarizeBy: none
+		sourceColumn: VenPrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column VenId
+		dataType: string
+		lineageTag: 664657ea-3da0-4038-9fec-7b97734ae61e
+		summarizeBy: none
+		sourceColumn: VenId
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysOrderCycle
+		dataType: int64
+		formatString: 0
+		lineageTag: 636ce5d0-e6c1-4658-b33e-34f75319b859
+		summarizeBy: sum
+		sourceColumn: DaysOrderCycle
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysOrderReserve
+		dataType: int64
+		formatString: 0
+		lineageTag: db84574b-3f0b-49c4-9c99-e34c9bf06526
+		summarizeBy: sum
+		sourceColumn: DaysOrderReserve
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysAgoSalesPeriod
+		dataType: int64
+		formatString: 0
+		lineageTag: 191e17da-6509-4218-b782-2e6ea6346486
+		summarizeBy: sum
+		sourceColumn: DaysAgoSalesPeriod
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysInSalesPeriod
+		dataType: int64
+		formatString: 0
+		lineageTag: 69a264f0-9eb2-4550-93be-e17d55975898
+		summarizeBy: sum
+		sourceColumn: DaysInSalesPeriod
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysToIgnore
+		dataType: int64
+		formatString: 0
+		lineageTag: a5e0f714-993f-422b-8543-633aff940eca
+		summarizeBy: sum
+		sourceColumn: DaysToIgnore
+
+		annotation SummarizationSetBy = Automatic
+
+	column IncLostSales
+		dataType: int64
+		formatString: 0
+		lineageTag: e89acdb7-5058-4c62-b321-e23d9995ca7c
+		summarizeBy: sum
+		sourceColumn: IncLostSales
+
+		annotation SummarizationSetBy = Automatic
+
+	column IncWarranty
+		dataType: int64
+		formatString: 0
+		lineageTag: 0386adab-2f10-47fd-a92a-04adfd80cbe3
+		summarizeBy: sum
+		sourceColumn: IncWarranty
+
+		annotation SummarizationSetBy = Automatic
+
+	column IncInternal
+		dataType: int64
+		formatString: 0
+		lineageTag: bf6868b1-a906-40d1-bb51-e29f8455f3fe
+		summarizeBy: sum
+		sourceColumn: IncInternal
+
+		annotation SummarizationSetBy = Automatic
+
+	column IncTransfers
+		dataType: int64
+		formatString: 0
+		lineageTag: 28458545-6aa2-48a6-a365-39aa3905cfa4
+		summarizeBy: sum
+		sourceColumn: IncTransfers
+
+		annotation SummarizationSetBy = Automatic
+
+	column MinSalesYear
+		dataType: double
+		lineageTag: 5c0794ff-ad16-4d05-9eb4-46f7110d3247
+		summarizeBy: sum
+		sourceColumn: MinSalesYear
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyMin
+		dataType: double
+		lineageTag: df2a1fd6-d2a6-4e24-b609-3e81ff614d15
+		summarizeBy: sum
+		sourceColumn: QtyMin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyMax
+		dataType: double
+		lineageTag: 029d9d70-7156-42dc-859f-962c773073d3
+		summarizeBy: sum
+		sourceColumn: QtyMax
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CountToWatched
+		dataType: int64
+		formatString: 0
+		lineageTag: e2417021-882d-4399-8106-ac2859cf7101
+		summarizeBy: sum
+		sourceColumn: CountToWatched
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountToStocked
+		dataType: int64
+		formatString: 0
+		lineageTag: 72508342-85b8-4d87-9cbf-fa4bfbe827ac
+		summarizeBy: sum
+		sourceColumn: CountToStocked
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountToObsolete
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a6f2348-594b-435a-9b74-8f3646e1078f
+		summarizeBy: sum
+		sourceColumn: CountToObsolete
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysToWatched
+		dataType: int64
+		formatString: 0
+		lineageTag: c3fd0a9a-5629-48bd-95e6-901d80f5afcf
+		summarizeBy: sum
+		sourceColumn: DaysToWatched
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysToStocked
+		dataType: int64
+		formatString: 0
+		lineageTag: d31cfb92-01dc-4ce0-ac99-2aef0dcfaf0c
+		summarizeBy: sum
+		sourceColumn: DaysToStocked
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysToObsolete
+		dataType: int64
+		formatString: 0
+		lineageTag: dc07dadc-d383-4615-8553-3030de408cf6
+		summarizeBy: sum
+		sourceColumn: DaysToObsolete
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysToDelete
+		dataType: int64
+		formatString: 0
+		lineageTag: b41104b5-f85f-494e-aeac-73507e5e0198
+		summarizeBy: sum
+		sourceColumn: DaysToDelete
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormulaAmtCost
+		dataType: string
+		lineageTag: ddcdeb5a-05f2-439f-b6a2-5f76863d615d
+		summarizeBy: none
+		sourceColumn: FormulaAmtCost
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormulaAmtCost2
+		dataType: string
+		lineageTag: 975a2461-b748-4994-bd48-7f0d8ca098c1
+		summarizeBy: none
+		sourceColumn: FormulaAmtCost2
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormulaAmtPrice1
+		dataType: string
+		lineageTag: 105adcd9-a966-44e5-b261-7e85927840d1
+		summarizeBy: none
+		sourceColumn: FormulaAmtPrice1
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormulaAmtPrice2
+		dataType: string
+		lineageTag: c740ea47-8ac0-43c5-9d8c-d7f0c81b06bd
+		summarizeBy: none
+		sourceColumn: FormulaAmtPrice2
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormulaAmtPrice3
+		dataType: string
+		lineageTag: e61d6387-1fd2-40e5-a76a-e58f6b705571
+		summarizeBy: none
+		sourceColumn: FormulaAmtPrice3
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormulaAmtPrice4
+		dataType: string
+		lineageTag: 4fb4dcd2-a6e3-41be-8dc3-83d5c3b9f4ab
+		summarizeBy: none
+		sourceColumn: FormulaAmtPrice4
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormulaAmtPrice5
+		dataType: string
+		lineageTag: 38703c3d-8625-4529-9e4a-7c3c6a8f0d96
+		summarizeBy: none
+		sourceColumn: FormulaAmtPrice5
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormulaAmtPrice6
+		dataType: string
+		lineageTag: c7d9bf11-35b7-4e3e-a339-bf826f914bd9
+		summarizeBy: none
+		sourceColumn: FormulaAmtPrice6
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormulaAmtPrice7
+		dataType: string
+		lineageTag: da91316c-f396-4137-85f4-93346bf53096
+		summarizeBy: none
+		sourceColumn: FormulaAmtPrice7
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormulaAmtPrice8
+		dataType: string
+		lineageTag: 2fc02978-dff9-4dbe-bde3-c79ccb243f8e
+		summarizeBy: none
+		sourceColumn: FormulaAmtPrice8
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormulaQty
+		dataType: string
+		lineageTag: da1c48a2-3f9f-44f0-a446-974b13db944f
+		summarizeBy: none
+		sourceColumn: FormulaQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9fbb19fd-3157-4006-b7b1-638d2222c522
+		summarizeBy: none
+		sourceColumn: DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryCode
+		dataType: int64
+		formatString: 0
+		lineageTag: 9aa30d5c-626c-48fc-9c49-7a74edcce40f
+		summarizeBy: count
+		sourceColumn: CountryCode
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PTSTK = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_PTSTK = EXCEDE{[Schema="dbo",Item="PTSTK"]}[Data]
+				in
+				    dbo_PTSTK
+

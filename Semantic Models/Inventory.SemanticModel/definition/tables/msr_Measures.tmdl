@@ -1,0 +1,224 @@
+table msr_Measures
+
+	measure '1 Month Supply' = SUMX(fct_Inventory,fct_Inventory[AvgSalesDay]*21)
+		displayFolder: Inventory\Supply
+		lineageTag: 7013eef5-3ea1-4c52-97c3-be9286863262
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '1 Month Supply Less QtyOH&OO' = [1 Month Supply]-[Total OH,OO & OT]
+		formatString: 0
+		displayFolder: Inventory\Supply
+		lineageTag: a7acf43c-d5d8-402b-b66d-b8f79b65da4d
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '2 Month Supply' = SUMX(fct_Inventory,fct_Inventory[AvgSalesDay]*42)
+		displayFolder: Inventory\Supply
+		lineageTag: 0fcc6d78-84ae-4b54-b1a4-2220be7cd93f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2 Month Supply Less QtyOH&OO' = [2 Month Supply]-[Total OH,OO & OT]
+		formatString: 0
+		displayFolder: Inventory\Supply
+		lineageTag: d7fd2c18-bdc4-4c8e-85ec-ae6abe8359d5
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '3 Month Supply' = SUMX(fct_Inventory,fct_Inventory[AvgSalesDay]*84)
+		displayFolder: Inventory\Supply
+		lineageTag: 09c7f558-2976-4604-8391-064c1cf28b5f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3 Month Supply Less QtyOH&OO' = [3 Month Supply]-[Total OH,OO & OT]
+		formatString: 0
+		displayFolder: Inventory\Supply
+		lineageTag: 0dee38bb-c747-4d62-9a24-f43071dff96c
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Month Supply' = ```
+			
+			VAR AvgDailySales = SUMX(fct_Inventory, fct_Inventory[AvgSalesDay])  // [Average Daily Sales]
+			VAR CurrentStock = [Total OH,OO & OT]  // [Current Stock]
+			RETURN
+			    IF(
+			        ISBLANK(AvgDailySales) || ISBLANK(CurrentStock) || AvgDailySales = 0,
+			        BLANK(),
+			        CurrentStock / (AvgDailySales * 21)  // Assuming 21 working days in a month
+			    )
+			
+			```
+		formatString: 0
+		displayFolder: Inventory\Supply
+		lineageTag: 1f0b1213-66fd-494f-b64c-7bd8a11fadd0
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Total OH,OO & OT' = SUMX(fct_Inventory,fct_Inventory[QtyOH]+fct_Inventory[QtyOO]+fct_Inventory[QtyOT])
+		displayFolder: Inventory\Inventory
+		lineageTag: 37682543-638d-4fd7-b274-8a28a5ed304e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Obsolete Managed Inventory' = ```
+			
+			CALCULATE(
+			    [Total Inventory Cost Less Core],
+			    FILTER(
+			        fct_Inventory, 
+			        NOT(CONTAINSSTRING(fct_Inventory[VenPrtId], "-CORE")) && 
+			        [Months No Sale] >= 13 && 
+			        [Months No Receipt] >= 13 || fct_Inventory[SrcId] = "Z/"
+			    )
+			)
+			```
+		formatString: #,0.00
+		displayFolder: Inventory\Obsolete
+		lineageTag: 19213ba2-b6f7-4fb6-aff1-03b9edee2af4
+
+	measure 'Total Avg Cost' = SUMX(fct_Inventory,fct_Inventory[AmtCostAvg]*fct_Inventory[QtyOH])
+		formatString: #,0.00
+		displayFolder: Inventory\Cost
+		lineageTag: 6b8957c8-e944-4e9e-9f2b-e6634a8a241d
+
+	measure 'Total Inventory Cost Less Core' = CALCULATE(SUMX(fct_Inventory,fct_Inventory[AmtCostAvg]*fct_Inventory[QtyOH]),NOT(CONTAINSSTRING(fct_Inventory[VenPrtId],"-CORE")))
+		displayFolder: Inventory\Cost
+		lineageTag: cf5017cb-3998-48ba-975c-c08ee798ed8d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Inventory' = [Total Inventory Managed Parts] + [Total Clean Core] + [Extended Consignment] + [Total In Transit] + [Total WIP]
+		displayFolder: Inventory\Inventory
+		lineageTag: 928237fd-d070-458f-8b10-72c69b62c068
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Inventory Managed Parts' = CALCULATE(SUMX(fct_Inventory,fct_Inventory[AmtCostAvg]*fct_Inventory[QtyOH]))
+		formatString: #,0.00
+		displayFolder: Inventory\Inventory
+		lineageTag: 9f3c60f8-e5a6-486c-bbe8-4ecdb117dbff
+
+	measure 'Total Obsolete' = [Obsolete Managed Inventory] + [Obsolete Clean Core]
+		displayFolder: Inventory\Obsolete
+		lineageTag: d510c4b6-9794-4539-aeef-9a0e5ea48727
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Obso' =
+			
+			[Obsolete Managed Inventory] + [Obsolete Clean Core]
+		displayFolder: Inventory\Obsolete
+		lineageTag: 23c7b71d-4107-46be-ab71-80698eae0f71
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Intransit' = SUMX(fct_Inventory,fct_Inventory[QtyOT]*fct_Inventory[AmtCostAvg])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		displayFolder: Inventory\Inventory
+		lineageTag: 84c2e1f8-7dae-48cd-afea-8f38b6d0af93
+
+	measure '% Of OBSO' = [Obsolete Managed Inventory]/[Total Avg Cost]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Inventory\Obsolete
+		lineageTag: ea54ae90-5244-4de0-8982-e1cbde0bc8fe
+
+	measure 'Obsolete %' =
+			
+			[Total Obso]/[Total Inventory]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Inventory\Obsolete
+		lineageTag: 6b06dc92-b7cf-45de-a7ac-ede4790a4286
+
+	measure 'Total Clean Core' = SUMX(fct_CleanCore,fct_CleanCore[AmtCostAvg]*fct_CleanCore[QtyOH])
+		displayFolder: Clean Core
+		lineageTag: 0d729e3f-e79d-41ea-85c3-3b6ec22dcc4c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Obsolete Clean Core' = ```
+			
+			CALCULATE(
+			    SUMX(
+			        fct_CleanCore, 
+			        fct_CleanCore[AmtCostAvg] * fct_CleanCore[QtyOH]
+			    ),
+			    FILTER(
+			        fct_CleanCore,
+			        ([MNR] >= 13 && [MNS] >= 13) || CONTAINSSTRING(fct_CleanCore[PrtId], "Z/")
+			    )
+			)
+			
+			
+			```
+		displayFolder: Clean Core
+		lineageTag: 1cc54554-ec81-4821-b474-e52cda58976a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Extended Consignment' = SUMX(fct_Consignment,fct_Consignment[QtyOC]*fct_Consignment[AmtCostAvg])
+		displayFolder: Consignment
+		lineageTag: d7e93fb8-82af-4512-add6-4813d8fc077a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Rec Amt' =
+			
+			SUMX(fct_PartsPurchases,fct_PartsPurchases[PTPURITM_QtyReceive]*fct_PartsPurchases[PTPURITM_AmtCostReceive])
+		displayFolder: Parts Purchases
+		lineageTag: ce2be9cf-5a1d-4d6f-9af6-217633c51552
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Parts Lost To Price' =
+			
+			CALCULATE(COUNTROWS(fct_PtLost), fct_PtLost[Status] = 717)
+		formatString: 0
+		displayFolder: Parts Lost
+		lineageTag: fcc595ed-2b29-4ee0-a348-eb64a7635a85
+
+	measure 'Parts Lost To Avail' =
+			
+			CALCULATE(COUNTROWS(fct_PtLost), fct_PtLost[Status] = 718)
+		formatString: 0
+		displayFolder: Parts Lost
+		lineageTag: 9b2bd15f-04f2-4b95-a9d2-1d931b1229ac
+
+	measure 'Parts Lost To Avail (NPDC)' =
+			
+			CALCULATE(COUNTROWS(fct_PtLost), fct_PtLost[Status] = 718,fct_Inventory[PrtMisc5] = "NPDC")
+		formatString: 0
+		displayFolder: Parts Lost
+		lineageTag: 008b3f99-acfc-4cfc-8f44-a1996c444b4f
+
+	measure 'Parts Lost To Price (NPDC)' =
+			
+			CALCULATE(COUNTROWS(fct_PtLost), fct_PtLost[Status] = 717,fct_Inventory[PrtMisc5] = "NPDC")
+		formatString: 0
+		displayFolder: Parts Lost
+		lineageTag: 64d0b0ec-481f-4647-b9f2-c4d96e1c8853
+
+	measure 'Total WIP' = SUMX(fct_PartSales,fct_PartSales[AmtCost]*fct_PartSales[QtyShip])
+		displayFolder: Part Sales
+		lineageTag: 968290b5-f49b-404a-a75c-15e35cfbfc73
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total In Transit' = CALCULATE(SUMX(fct_Transfers,fct_Transfers[PTTRFITM_AmtCost]*fct_Transfers[PTTRFITM_QtySent]),fct_Transfers[PTTRFITM_StatusDes] = "Sent")
+		displayFolder: Transfers
+		lineageTag: 7f46a7ad-262d-4400-9e9d-510351d51a14
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Value
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: [Value]
+
+	partition msr_Measures = calculated
+		mode: import
+		source = { 0 }
+

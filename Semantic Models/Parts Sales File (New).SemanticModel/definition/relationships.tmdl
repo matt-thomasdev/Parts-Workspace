@@ -1,0 +1,72 @@
+relationship 912da5d0-7111-4458-9fef-699e259a3c43
+	fromColumn: 'Parts_Service Sales'.EmpId
+	toColumn: COEMP.EmpId
+
+relationship 77538246-5347-4e12-be1d-24c4bc6e10d6
+	fromColumn: 'Parts_Service Sales'.ClaId
+	toColumn: PTCLA.ClaId
+
+relationship cc7720bf-078f-0222-a787-8c892a2ea967
+	fromColumn: MT_ACJEITM.McaId
+	toColumn: MT_ACMCA.McaId
+
+relationship a2463c87-a516-9503-d7e5-b509920686b4
+	fromColumn: ACMCAPRD.McaId
+	toColumn: MT_ACMCA.McaId
+
+relationship 615c9de3-1fd0-c83e-568c-6a3c5babc59a
+	fromColumn: 'Parts_Service Sales'.DateInvoice
+	toColumn: Date.Date
+
+relationship 392ea076-523a-9e38-8acd-2311a7d3713b
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Date.Date
+	toColumn: 'Working Days'.Date
+
+relationship 44ddc079-06a4-1c44-07da-0b59b0aec0d0
+	fromColumn: ACMCAPRD.DateEnd
+	toColumn: Date.Date
+
+relationship 55b80ddd-e5a1-ec8a-a379-71a1a2287cd2
+	fromColumn: MT_ACJEITM.ACJE_DatePost
+	toColumn: Date.Date
+
+relationship 54084d6e-53c4-6c6f-799f-92c32218d527
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: MT_COCUSCRM.CusId
+	toColumn: 'Parts_Service Sales'.BillCusId
+
+relationship cf1a425f-83ab-130f-532c-63259dba32b0
+	fromColumn: MT_TRANSFERS.PTTRF_DateCreate
+	toColumn: Date.Date
+
+relationship AutoDetected_e0afe64f-51b9-48ce-a7f8-e4837a81f545
+	fromColumn: 'Parts_Service Sales'.CusId
+	toColumn: dim_COCUS_CusId.CusId
+
+relationship 5b3303fd-e54c-4e37-a856-b9276ae073a3
+	fromColumn: 'Parts_Service Sales'.BillCusId
+	toColumn: MT_COCUSCRM_GROUPED.CusId
+
+relationship 4f2e09c6-1fe9-2ba0-79eb-532b5102168c
+	fromColumn: 'Parts_Service Sales'.BillCusId
+	toColumn: dim_COCUS_BillCusId.CusId
+
+relationship ffbc8ef4-7e1d-517a-4ed1-bf607046e608
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: MT_CONOTITM.Subject
+	toColumn: 'Parts_Service Sales'.'Note Relationship'
+
+relationship 8efd7cef-00e9-a239-bd51-057fd3030d10
+	fromColumn: 'Parts_Service Sales'.'FC Relationship'
+	toColumn: MT_FC_STATEMENT.Relationship
+
+relationship 38146986-e833-9b21-4d1d-ae13b482cf14
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: MT_PARTS_PURCHASES.PTPURITM_PtItm
+	toColumn: 'Parts_Service Sales'.PtItm
+

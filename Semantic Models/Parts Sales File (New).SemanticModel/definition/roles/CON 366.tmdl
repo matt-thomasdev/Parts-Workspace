@@ -1,0 +1,13 @@
+role 'CON 366'
+	modelPermission: read
+
+	tablePermission MT_ACMCA = [BrnId] == "104"
+
+	tablePermission MT_COCUSCRM = [EmpId] == "366"
+
+	tablePermission MT_PARTS_PURCHASES = [PTPUR_Location] == "Conway"
+
+	tablePermission 'Parts_Service Sales' = [BrnId] == "104"
+
+	annotation PBI_Id = 335fd5d11a374e5a826e3412cbdf5030
+

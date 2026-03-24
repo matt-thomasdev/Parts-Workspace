@@ -1,0 +1,53 @@
+table MT_CONOTITM
+	lineageTag: 6cfcce5b-5faf-4794-8a52-3192ce99f18a
+
+	column DateCreate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fa870f23-b107-47f5-9097-f5ad4beced2a
+		summarizeBy: none
+		sourceColumn: DateCreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7f0f7cc9-cbc9-48a3-87b0-502600d80b0a
+		summarizeBy: none
+		sourceColumn: DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subject
+		dataType: string
+		lineageTag: 9bfc6725-ef09-483e-8450-19d7d92064ec
+		summarizeBy: none
+		sourceColumn: Subject
+
+		annotation SummarizationSetBy = Automatic
+
+	column Des
+		dataType: string
+		lineageTag: 6bb59731-9430-47f9-8959-11ab063d4526
+		summarizeBy: none
+		sourceColumn: Des
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MT_CONOTITM = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Databases("10.250.50.4"),
+				  #"Navigation 1" = Source{[Name = "EXCEDE"]}[Data],
+				  #"Navigation 2" = #"Navigation 1"{[Schema = "dbo", Item = "MT_CONOTITM"]}[Data],
+				  #"Filtered rows" = Table.SelectRows(#"Navigation 2", each Text.StartsWith([Subject], "RA") or Text.StartsWith([Subject], "XA")),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Filtered rows",{"DateCreate", "DateUpdate", "Subject", "Des"})
+				in
+				  #"Removed Other Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

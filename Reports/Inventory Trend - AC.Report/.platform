@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Inventory Trend - AC"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5a0dcc49-9910-bbc2-476c-25d6b3e1e760"
+  }
+}

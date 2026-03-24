@@ -1,0 +1,126 @@
+table fct_PtLost
+	lineageTag: d342726e-e915-4992-b055-57bf35d5aa9e
+
+	column PtItm
+		dataType: string
+		lineageTag: 1868a7dd-addd-4047-a8e7-e115c1dcd86c
+		summarizeBy: none
+		sourceColumn: PtItm
+
+		annotation SummarizationSetBy = Automatic
+
+	column Des
+		dataType: string
+		lineageTag: cf2b79d0-86d7-4af6-b3f6-4630de7877b3
+		summarizeBy: none
+		sourceColumn: Des
+
+		annotation SummarizationSetBy = Automatic
+
+	column BrnId
+		dataType: string
+		lineageTag: b4d4098d-68cb-4d3a-8f81-49f63b03ffa4
+		summarizeBy: none
+		sourceColumn: BrnId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClaId
+		dataType: string
+		lineageTag: 49b6f50b-34df-44e6-aef3-7a6f6f38953f
+		summarizeBy: none
+		sourceColumn: ClaId
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmpId
+		dataType: string
+		lineageTag: 51a8b052-59e9-4e79-b457-c1526b5934eb
+		summarizeBy: none
+		sourceColumn: EmpId
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmpName
+		dataType: string
+		lineageTag: 248036f4-1fe9-4a43-b537-cea885872a4e
+		summarizeBy: none
+		sourceColumn: EmpName
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyShip
+		dataType: double
+		lineageTag: 6adc0e01-0b6b-4ac5-be2b-0b4436a9f962
+		summarizeBy: sum
+		sourceColumn: QtyShip
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DateCreate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 593bc12e-1ac4-44c6-8440-bf21990dae1e
+		summarizeBy: none
+		sourceColumn: DateCreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reason
+		dataType: string
+		lineageTag: 63a4517c-0a92-4598-8571-61d904cbf2da
+		summarizeBy: none
+		sourceColumn: Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: int64
+		formatString: 0
+		lineageTag: 03f5a1d2-609a-420b-b5ee-2d380b4e6fde
+		summarizeBy: sum
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusDes
+		dataType: string
+		lineageTag: 16771766-0c9b-4832-a497-83a304447981
+		summarizeBy: none
+		sourceColumn: StatusDes
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Location PTLOST' = LOOKUPVALUE(dim_Location[Locaiton],dim_Location[BrnId],fct_PtLost[BrnId])
+		lineageTag: 804119f8-2462-4f29-8bf3-86a453112dd7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column VenPrtId
+		dataType: string
+		lineageTag: 8126d1c1-b841-4170-b79a-fc45f705c6ae
+		summarizeBy: none
+		sourceColumn: VenPrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_PtLost = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_fct_PtLost = EXCEDE{[Schema="dbo",Item="EDI_P2_RPT_PTLOST"]}[Data],
+				    #"Capitalized Each Word" = Table.TransformColumns(dbo_fct_PtLost,{{"Reason", Text.Proper, type text}}),
+				    #"Inserted Text After Delimiter" = Table.AddColumn(#"Capitalized Each Word", "Text After Delimiter", each Text.AfterDelimiter([PtItm], "/"), type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Text After Delimiter",{{"Text After Delimiter", "VenPrtId"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,13 @@
+role 'COL 414'
+	modelPermission: read
+
+	tablePermission MT_ACMCA = [BrnId] == "101"
+
+	tablePermission MT_COCUSCRM = [EmpId] == "414"
+
+	tablePermission MT_PARTS_PURCHASES = [PTPUR_Location] == "Columbia"
+
+	tablePermission 'Parts_Service Sales' = [BrnId] == "101"
+
+	annotation PBI_Id = 9d6f15931bc3464d9d94b1e5566fe6e2
+

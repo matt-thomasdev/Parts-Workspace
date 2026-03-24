@@ -1,0 +1,133 @@
+table 'dbo.Customer'
+	lineageTag: 2917a923-2d13-4156-a326-000dd2ba8f46
+	sourceLineageTag: [dbo].[dbo.Customer]
+
+	column Customer
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1462161d-935c-422e-975d-72696f580804
+		sourceLineageTag: Customer
+		summarizeBy: none
+		sourceColumn: Customer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bill_To_Customer
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ab230a53-ed39-47de-bfb1-eb107a940568
+		sourceLineageTag: Bill_To_Customer
+		summarizeBy: none
+		sourceColumn: Bill_To_Customer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 202afe73-1623-4de5-bbe5-deb6cc1218f4
+		sourceLineageTag: Category
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Buying_Group
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: edd93671-8210-4143-9d80-b73065e7b630
+		sourceLineageTag: Buying_Group
+		summarizeBy: none
+		sourceColumn: Buying_Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Primary_Contact
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 96100807-b42f-4299-bf11-f210d5e065a9
+		sourceLineageTag: Primary_Contact
+		summarizeBy: none
+		sourceColumn: Primary_Contact
+
+		annotation SummarizationSetBy = Automatic
+
+	column Postal_Code
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 81bbd0bd-8443-45d7-bd6a-1240106541ea
+		sourceLineageTag: Postal_Code
+		summarizeBy: none
+		sourceColumn: Postal_Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7f23120b-b126-4409-ab45-c2c407f17558
+		sourceLineageTag: Country
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Continent
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 321c4d8d-70a8-448f-9a75-b9693e47b2bb
+		sourceLineageTag: Continent
+		summarizeBy: none
+		sourceColumn: Continent
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales_Territory
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9981dd41-671b-4f0b-aee3-a63b883c9a99
+		sourceLineageTag: Sales_Territory
+		summarizeBy: none
+		sourceColumn: Sales_Territory
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2be3cceb-7280-4ea8-a7ed-d7a87a799ab7
+		sourceLineageTag: Region
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subregion
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d8880bcd-da1a-4a29-9091-8e9648f86e1b
+		sourceLineageTag: Subregion
+		summarizeBy: none
+		sourceColumn: Subregion
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customer_Key
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f94b3bb6-b1b8-4a9f-b21f-9f487605b4a9
+		sourceLineageTag: Customer_Key
+		summarizeBy: none
+		sourceColumn: Customer_Key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'dbo.Customer' = entity
+		mode: directLake
+		source
+			entityName: dbo.Customer
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

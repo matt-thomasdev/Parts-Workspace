@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Auth Approvals"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "46ee17e4-c99e-9387-4ce3-b37b23b424e5"
+  }
+}

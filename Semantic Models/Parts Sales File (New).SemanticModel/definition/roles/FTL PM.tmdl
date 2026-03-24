@@ -1,0 +1,13 @@
+role 'FTL PM'
+	modelPermission: read
+
+	tablePermission MT_ACMCA = [BrnId] == "202"
+
+	tablePermission MT_COCUSCRM = [EmpId] == "30"
+
+	tablePermission MT_PARTS_PURCHASES = [PTPUR_Location] == "Fort Lauderdale"
+
+	tablePermission 'Parts_Service Sales' = [BrnId] == "202"
+
+	annotation PBI_Id = 10395c4456af439db212b10519fd12d4
+

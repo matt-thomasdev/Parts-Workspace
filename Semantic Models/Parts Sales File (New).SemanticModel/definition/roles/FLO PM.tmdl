@@ -1,0 +1,13 @@
+role 'FLO PM'
+	modelPermission: read
+
+	tablePermission MT_ACMCA = [BrnId] == "103"
+
+	tablePermission MT_COCUSCRM = [EmpId] == "1088"
+
+	tablePermission MT_PARTS_PURCHASES = [PTPUR_Location] == "Florence"
+
+	tablePermission 'Parts_Service Sales' = [BrnId] == "103"
+
+	annotation PBI_Id = a82bd5bf2ce94fcd888bfbb8b9e0f5b5
+

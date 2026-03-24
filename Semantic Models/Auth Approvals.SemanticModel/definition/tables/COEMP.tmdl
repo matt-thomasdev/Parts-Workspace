@@ -1,0 +1,34 @@
+table COEMP
+	lineageTag: 1ee21c22-971a-4729-9e21-d534382012f5
+
+	column EmpId
+		dataType: string
+		lineageTag: fcc5d899-e97a-4b5e-8afe-811e3cbd999e
+		summarizeBy: none
+		sourceColumn: EmpId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 89e4be4c-9d2c-43ac-a8da-1cf36477f60b
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition COEMP = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_COEMP = EXCEDE{[Schema="dbo",Item="COEMP"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_COEMP,{"EmpId", "Name"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

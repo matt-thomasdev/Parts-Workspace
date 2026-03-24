@@ -1,0 +1,7 @@
+role 'COL PM'
+	modelPermission: read
+
+	tablePermission 'Parts_Service Sales' = [BrnId] == "101" || [BrnId] == "501"
+
+	annotation PBI_Id = 500966fc004d487abfd16b53e682e35a
+

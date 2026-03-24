@@ -1,0 +1,463 @@
+table fct_Inventory
+	lineageTag: fd61842a-39c9-4897-bd13-2d55477bff74
+
+	column PrtId
+		dataType: string
+		lineageTag: 51336f45-ca07-4a33-b402-759cc1bd650f
+		summarizeBy: none
+		sourceColumn: PrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BrnId
+		dataType: string
+		lineageTag: f473ac7d-3008-414c-80bf-bb05bc3d1b4c
+		summarizeBy: none
+		sourceColumn: BrnId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SrcId
+		dataType: string
+		lineageTag: 2141264f-77e5-45b3-a840-4adb02ea94d1
+		summarizeBy: none
+		sourceColumn: SrcId
+
+		annotation SummarizationSetBy = Automatic
+
+	column VenPrtId
+		dataType: string
+		lineageTag: edf8b1da-3bd2-4993-b75f-e1189948a10e
+		summarizeBy: none
+		sourceColumn: VenPrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Typ
+		dataType: int64
+		formatString: 0
+		lineageTag: 2728fd8e-2877-4cb0-9bab-e8245429efbf
+		summarizeBy: sum
+		sourceColumn: Typ
+
+		annotation SummarizationSetBy = Automatic
+
+	column Des
+		dataType: string
+		lineageTag: 96830022-07c7-4f81-b64d-ef0bebd7c700
+		summarizeBy: none
+		sourceColumn: Des
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClaId
+		dataType: string
+		lineageTag: 3abc8e98-16b4-4130-901d-043ebfea34e5
+		summarizeBy: none
+		sourceColumn: ClaId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BinId1
+		dataType: string
+		lineageTag: 18c97819-19f1-4cc8-9837-c8db05c4bdb5
+		summarizeBy: none
+		sourceColumn: BinId1
+
+		annotation SummarizationSetBy = Automatic
+
+	column BinId2
+		dataType: string
+		lineageTag: 591fb0cf-5fe4-4751-898a-98b8ffa7140e
+		summarizeBy: none
+		sourceColumn: BinId2
+
+		annotation SummarizationSetBy = Automatic
+
+	column BinId3
+		dataType: string
+		lineageTag: f7a3cf3e-fd8c-4f4a-8ec6-02afd46efb43
+		summarizeBy: none
+		sourceColumn: BinId3
+
+		annotation SummarizationSetBy = Automatic
+
+	column BinId4
+		dataType: string
+		lineageTag: 28e05950-d655-464e-907d-668ba0671230
+		summarizeBy: none
+		sourceColumn: BinId4
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtCostAvg
+		dataType: double
+		lineageTag: 330dab07-9c9b-4ecc-a679-161c6f764ec7
+		summarizeBy: sum
+		sourceColumn: AmtCostAvg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtCostSrc
+		dataType: double
+		lineageTag: 4f4dd2f9-ae53-4386-be82-1597d7ba1ff7
+		summarizeBy: sum
+		sourceColumn: AmtCostSrc
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice1
+		dataType: double
+		lineageTag: d06c8408-674e-408c-9eb5-8953f90ac4ed
+		summarizeBy: sum
+		sourceColumn: AmtPrice1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice2
+		dataType: double
+		lineageTag: 64fb1b6b-b372-4bee-a66e-7241059fc8ef
+		summarizeBy: sum
+		sourceColumn: AmtPrice2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice3
+		dataType: double
+		lineageTag: 59a13d61-2bce-4f78-85d9-20be77876af8
+		summarizeBy: sum
+		sourceColumn: AmtPrice3
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice4
+		dataType: double
+		lineageTag: 0d3ad3b3-e422-4673-95b7-a6bd03024f68
+		summarizeBy: sum
+		sourceColumn: AmtPrice4
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyOH
+		dataType: double
+		lineageTag: 78100e74-d7b3-4553-9efe-e90ab4e2dc21
+		summarizeBy: sum
+		sourceColumn: QtyOH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyOO
+		dataType: double
+		lineageTag: 37246ebe-2c80-41cb-aff5-2e310a97c9de
+		summarizeBy: sum
+		sourceColumn: QtyOO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyOT
+		dataType: double
+		lineageTag: cd997fa4-17d6-442e-942e-623a860403ed
+		summarizeBy: sum
+		sourceColumn: QtyOT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VenId
+		dataType: string
+		lineageTag: 8a02637e-076a-48a3-b240-ba0892bb65a3
+		summarizeBy: none
+		sourceColumn: VenId
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderPkgMul
+		dataType: int64
+		formatString: 0
+		lineageTag: 408b187f-d1e0-498d-b0c6-4d4609b1feb5
+		summarizeBy: sum
+		sourceColumn: OrderPkgMul
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderPkgMin
+		dataType: int64
+		formatString: 0
+		lineageTag: bba68bdd-ce18-44e1-bca9-a644cc9b8116
+		summarizeBy: sum
+		sourceColumn: OrderPkgMin
+
+		annotation SummarizationSetBy = Automatic
+
+	column AvgSalesDay
+		dataType: double
+		lineageTag: 33137288-20a9-443a-9bfe-a607ecc23be4
+		summarizeBy: sum
+		sourceColumn: AvgSalesDay
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DateSale
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f0d09399-9b9d-462a-8989-4a47f6240d57
+		summarizeBy: none
+		sourceColumn: DateSale
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateOrder
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9d1f7670-63c0-4aa4-ab9b-eb96b5ed82d3
+		summarizeBy: none
+		sourceColumn: DateOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column MdiOrdOpt
+		dataType: string
+		lineageTag: 174ad6a5-9145-4bb4-9a91-86d4a274752a
+		summarizeBy: none
+		sourceColumn: MdiOrdOpt
+
+		annotation SummarizationSetBy = Automatic
+
+	column JobQty
+		dataType: int64
+		formatString: 0
+		lineageTag: fc7a3063-6a63-4bf1-8424-3a2ffc2a2f14
+		summarizeBy: sum
+		sourceColumn: JobQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc5
+		dataType: string
+		lineageTag: 99e19422-6737-4447-8e74-02fdaeb4b929
+		summarizeBy: none
+		sourceColumn: PrtMisc5
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTCLA_ClaIdDes
+		dataType: string
+		lineageTag: 0325ce51-52c0-4ed6-b43e-7797018c6ff9
+		summarizeBy: none
+		sourceColumn: PTCLA_ClaIdDes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jan_Sales_Current_YR
+		dataType: double
+		formatString: 0
+		lineageTag: 84e7d7d1-e4aa-48b7-9c95-2f46e4277b40
+		summarizeBy: sum
+		sourceColumn: Jan_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Feb_Sales_Current_YR
+		dataType: double
+		formatString: 0
+		lineageTag: 828efb98-77cc-453b-8d57-45ffaa4f6edd
+		summarizeBy: sum
+		sourceColumn: Feb_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Mar_Sales_Current_YR
+		dataType: double
+		formatString: 0
+		lineageTag: e9eabe2d-6fbc-4201-989c-2aa6c67893eb
+		summarizeBy: sum
+		sourceColumn: Mar_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Apr_Sales_Current_YR
+		dataType: double
+		formatString: 0
+		lineageTag: 88f93911-7754-4f9a-a756-84aab6e57a50
+		summarizeBy: sum
+		sourceColumn: Apr_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column May_Sales_Current_YR
+		dataType: double
+		formatString: 0
+		lineageTag: 7b4f8206-2b38-4473-a181-1496c77a8da0
+		summarizeBy: sum
+		sourceColumn: May_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Jun_Sales_Current_YR
+		dataType: double
+		formatString: 0
+		lineageTag: 00522eae-92bd-483b-9d0a-00d3a06d61cf
+		summarizeBy: sum
+		sourceColumn: Jun_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Jul_Sales_Current_YR
+		dataType: double
+		formatString: 0
+		lineageTag: 484cfa32-6b0d-41e8-a9b6-5ea55f0625f3
+		summarizeBy: sum
+		sourceColumn: Jul_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Aug_Sales_Current_YR
+		dataType: double
+		formatString: 0
+		lineageTag: 8194ce14-48ff-4579-a701-338be423bfd4
+		summarizeBy: sum
+		sourceColumn: Aug_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Sep_Sales_Current_YR
+		dataType: double
+		formatString: 0
+		lineageTag: 0446e522-f9cb-44b5-8b8e-157c61f3a112
+		summarizeBy: sum
+		sourceColumn: Sep_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Oct_Sales_Current_YR
+		dataType: double
+		formatString: 0
+		lineageTag: de08d0d0-fd83-49c1-ba0c-3b4f929cf145
+		summarizeBy: sum
+		sourceColumn: Oct_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Nov_Sales_Current_YR
+		dataType: double
+		formatString: 0
+		lineageTag: 0a5b881a-7252-4c1b-adbc-c65e07c29779
+		summarizeBy: sum
+		sourceColumn: Nov_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Dec_Sales_Current_YR
+		dataType: double
+		formatString: 0
+		lineageTag: 9e053d29-6411-4e5d-a1c6-62b6c0c048a7
+		summarizeBy: sum
+		sourceColumn: Dec_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column YTD_Sales_Current_YR
+		dataType: double
+		formatString: 0
+		lineageTag: 4d627300-e22f-4777-ad93-ce2592fc6738
+		summarizeBy: sum
+		sourceColumn: YTD_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column LTM_Sales
+		dataType: double
+		formatString: 0
+		lineageTag: a9918612-f287-4c42-92dc-cdcfbdabd321
+		summarizeBy: sum
+		sourceColumn: LTM_Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'Months No Receipt'
+		dataType: int64
+		formatString: 0
+		lineageTag: f292e6e5-bf78-43ae-8170-30dabe63d048
+		summarizeBy: sum
+		sourceColumn: Months No Receipt
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Months No Sale'
+		dataType: int64
+		formatString: 0
+		lineageTag: fa5e34b1-6f85-4260-a694-04baed2ac69c
+		summarizeBy: sum
+		sourceColumn: Months No Sale
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Obso Filter' = IF(AND(fct_Inventory[Months No Receipt] > 12, fct_Inventory[Months No Sale] >12) || fct_Inventory[SrcId] = "Z/",1,0)
+		formatString: 0
+		lineageTag: 0728f3dd-8a0e-4f55-a08d-553545ae7a6b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_Inventory = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_fct_Inventory = EXCEDE{[Schema="dbo",Item="MT_INVENTORY"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_fct_Inventory,{"PrtId", "BrnId", "SrcId", "VenPrtId", "Typ", "Des", "ClaId", "BinId1", "BinId2", "BinId3", "BinId4", "AmtCostAvg", "AmtCostSrc", "AmtPrice1", "AmtPrice2", "AmtPrice3", "AmtPrice4", "QtyOH", "QtyOO", "QtyOT", "VenId", "OrderPkgMul", "OrderPkgMin", "AvgSalesDay", "DateSale", "DateOrder", "MdiOrdOpt", "JobQty", "PrtMisc5", "TS", "Months No Receipt", "Months No Sale", "PTCLA_ClaIdDes", "Jan_Sales_Current_YR", "Feb_Sales_Current_YR", "Mar_Sales_Current_YR", "Apr_Sales_Current_YR", "May_Sales_Current_YR", "Jun_Sales_Current_YR", "Jul_Sales_Current_YR", "Aug_Sales_Current_YR", "Sep_Sales_Current_YR", "Oct_Sales_Current_YR", "Nov_Sales_Current_YR", "Dec_Sales_Current_YR", "YTD_Sales_Current_YR", "LTM_Sales"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

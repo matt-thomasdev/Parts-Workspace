@@ -1,0 +1,16 @@
+relationship 227154c7-9bd2-4892-9490-ccce34b67a6b
+	fromColumn: COCUSAPV.CusId
+	toColumn: COCUS.CusId
+
+	annotation PBI_IsFromSource = FS
+
+relationship bc5da0f5-f791-4e88-949f-57926be1993b
+	fromColumn: COCUSAPV.EmpId
+	toColumn: COEMP.EmpId
+
+	annotation PBI_IsFromSource = FS
+
+relationship 93b86e01-a32c-2310-ca26-cfdaab681c63
+	fromColumn: COCUSAPV.Date
+	toColumn: Date.Date
+

@@ -1,0 +1,36 @@
+table dim_COCUS_BillCusId
+	lineageTag: c43729af-12e9-42f9-abd6-63027f6db6a6
+
+	column Name
+		dataType: string
+		lineageTag: f2229914-a889-4567-9e46-790d9c929dc8
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column BillCusId
+		dataType: string
+		lineageTag: a2f68906-33e7-4365-acf3-3c78b90616ad
+		summarizeBy: none
+		sourceColumn: BillCusId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_COCUS_BillCusId = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="CAROLINA_SOURCE"]}[Data],
+				    dbo_COCUS = EXCEDE{[Schema="dbo",Item="COCUS"]}[Data],
+				    #"Capitalized Each Word" = Table.TransformColumns(dbo_COCUS,{{"Name", Text.Proper, type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Capitalized Each Word",{"Name", "BillCusId"}),
+				    #"Removed Duplicates1" = Table.Distinct(#"Removed Other Columns", {"BillCusId"})
+				in
+				    #"Removed Duplicates1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,52 @@
+table MT_COCUSCRM_GROUPED
+	lineageTag: a2fbc4a5-d65d-48fd-89e7-13e83570967c
+
+	column CusId
+		dataType: string
+		lineageTag: 612ef041-f1e5-4859-9aec-98f350c2dadb
+		summarizeBy: none
+		sourceColumn: CusId
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmpId
+		dataType: string
+		lineageTag: abeaf1a2-7aa8-4431-b479-7d067fff1572
+		summarizeBy: none
+		sourceColumn: EmpId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 99ae468d-3b12-4a7a-86fe-088eaa9191d6
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Name' = LOOKUPVALUE(dim_COCUS_BillCusId[Name],dim_COCUS_BillCusId[CusId],MT_COCUSCRM_GROUPED[CusId])
+		lineageTag: 30e204da-31f6-4d84-b36c-19db0a8be09b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MT_COCUSCRM_GROUPED = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_MT_COCUSCRM = EXCEDE{[Schema="dbo",Item="MT_COCUSCRM"]}[Data],
+				    #"Grouped Rows" = Table.Group(dbo_MT_COCUSCRM, {"CusId"}, {{"AllData", each _, type table [EmpId=text, CusId=text, COEMP_Name=text]}}),
+				    #"Added Custom" = Table.AddColumn(#"Grouped Rows", "EmpId", each Text.Combine(List.Transform([AllData][EmpId], each Text.From(_)), ",")),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Added Custom",{"CusId", "EmpId", "AllData"}),
+				    #"Added Custom1" = Table.AddColumn(#"Reordered Columns", "Name", each Text.Combine([AllData][COEMP_Name], ", ")),
+				    #"Reordered Columns1" = Table.ReorderColumns(#"Added Custom1",{"CusId", "EmpId", "Name", "AllData"})
+				in
+				    #"Reordered Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

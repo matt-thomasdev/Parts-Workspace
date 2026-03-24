@@ -1,0 +1,77 @@
+table 'Working Days'
+	lineageTag: 4afc5bb8-2806-45cf-a835-60ca39846dc0
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: eef3c6d0-7be4-473e-8e8e-4fc6a35856bf
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'MTD Working Days'
+		dataType: string
+		lineageTag: 80fc7381-21b6-424c-8545-b96ce7052735
+		summarizeBy: none
+		sourceColumn: MTD Working Days
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'YTD Working Days'
+		dataType: string
+		lineageTag: 401e23be-4ecb-438e-ac4c-3061598cf941
+		summarizeBy: none
+		sourceColumn: YTD Working Days
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: string
+		lineageTag: 2b03fbd5-82e3-4b26-95d7-70e40ea70ab9
+		summarizeBy: none
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Working Day'
+		dataType: string
+		lineageTag: 1bdbae1e-8a39-43b5-ac1f-380f648e5fa7
+		summarizeBy: none
+		sourceColumn: Working Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Working Days for the Month'
+		dataType: string
+		lineageTag: 26b9d72f-709f-481a-8341-961e7bbaad6b
+		summarizeBy: none
+		sourceColumn: Total Working Days for the Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Working Days for the Year'
+		dataType: string
+		lineageTag: 27e01abb-c2c7-459a-af1b-f07cf787523b
+		summarizeBy: none
+		sourceColumn: Total Working Days for the Year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Working Days' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(Web.Contents("https://bepensa.sharepoint.com/sites/BM-UR-ANALYTICS/Documentos%20compartidos/Finance%20BI/Working%20Days.xlsx"), null, true),
+				    #"Working Days_Sheet" = Source{[Item="Working Days",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Working Days_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"MTD Working Days", type any}, {"YTD Working Days", type any}, {"Day", type any}, {"Working Day", type any}, {"Total Working Days for the Month", type any}, {"Total Working Days for the Year", type any}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Fleetcharge"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5e08e9d1-a114-9c2a-4d88-b9423dc3afa8"
+  }
+}

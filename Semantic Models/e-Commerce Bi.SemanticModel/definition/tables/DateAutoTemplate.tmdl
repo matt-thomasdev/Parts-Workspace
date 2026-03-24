@@ -1,0 +1,187 @@
+table DateAutoTemplate
+	isHidden
+	lineageTag: c7650409-241e-444b-8fbd-59704ea6cca3
+	dataCategory: Time
+
+	column Date
+		isHidden
+		isKey
+		formatString: m/d/yyyy
+		lineageTag: 5ec74858-9261-47fd-927c-2022e3baf05b
+		dataCategory: PaddedDateTableDates
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SQLBI_AttributeTypes = Date
+
+	column Year
+		isHidden
+		lineageTag: 2842d402-8efe-4fbb-804d-82a71898cc48
+		dataCategory: Years
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year]
+
+	column 'Year Quarter Number'
+		isHidden
+		lineageTag: c7d955c7-625d-485d-bda8-82ee03062185
+		dataCategory: Quarters
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year Quarter Number]
+
+	column 'Year Quarter'
+		isHidden
+		lineageTag: 8c7853ed-3476-457b-9b78-50cf0c91a66e
+		dataCategory: Quarters
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year Quarter]
+		sortByColumn: 'Year Quarter Number'
+
+	column Quarter
+		isHidden
+		lineageTag: 3d7479a5-780c-4a6c-8f59-2546816e1517
+		dataCategory: QuarterOfYear
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+	column 'Year Month'
+		isHidden
+		lineageTag: d4218b35-dee9-49d7-8f13-47630664765d
+		dataCategory: Months
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year Month]
+		sortByColumn: 'Year Month Number'
+
+	column 'Year Month Number'
+		isHidden
+		lineageTag: 51d18e7a-c527-42ae-994e-a7f122ca6a56
+		dataCategory: Months
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year Month Number]
+
+	column Month
+		isHidden
+		lineageTag: 678ac8bd-12b3-4c09-9030-f920d886e378
+		dataCategory: MonthOfYear
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+		sortByColumn: 'Month Number'
+
+	column 'Month Number'
+		isHidden
+		lineageTag: 080fc552-d900-4cc6-8eb1-316b5e992233
+		dataCategory: MonthOfYear
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Number]
+
+	column 'Day of Week Number'
+		isHidden
+		lineageTag: 67eae9cd-f9d5-447f-9b72-ae1f07d5356f
+		dataCategory: DayOfWeek
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day of Week Number]
+
+		annotation SQLBI_AttributeTypes = DayOfWeek
+
+		annotation SQLBI_FilterSafe = True
+
+	column 'Day of Week'
+		isHidden
+		lineageTag: 6260bd7c-cd6b-4e09-b656-2c773418cf6a
+		dataCategory: DayOfWeek
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day of Week]
+		sortByColumn: 'Day of Week Number'
+
+		annotation SQLBI_FilterSafe = True
+
+	column DateWithTransactions
+		isHidden
+		lineageTag: f20ba37b-50cb-4a9f-abfd-f00b736f15ef
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DateWithTransactions]
+
+		annotation SQLBI_AttributeTypes = DateDuration
+
+	hierarchy Calendar
+		isHidden
+		lineageTag: 39b088e1-9e07-4710-957d-ff8f12252257
+
+		level Year
+			lineageTag: c7d6c29e-fa07-4dbd-8738-6a6437a8b473
+			column: Year
+
+		level Month
+			lineageTag: c9840198-4834-4072-b4df-af5244ceac9b
+			column: 'Year Month'
+
+		level Date
+			lineageTag: c8cb9469-5749-4398-8925-c9c560723ac0
+			column: Date
+
+	partition DateAutoTemplate = calculated
+		mode: import
+		source = ```
+				
+				--  
+				--     Configuration
+				--  
+				VAR __FirstDayOfWeek = 1
+				----------------------------------------
+				VAR __WeekDayCalculationType = IF ( __FirstDayOfWeek = 0, 7, __FirstDayOfWeek ) + 10
+				VAR __Calendar = 
+				    VAR __FirstYear = YEAR ( MINX ( { MIN ( 'eBay Sales'[Sales Record Number] ), MIN ( 'eBay Sales'[Sale Date] ), MIN ( 'eBay Sales'[Paid On Date] ), MIN ( 'eBay Sales'[Ship By Date] ), MIN ( 'eBay Sales'[Minimum Estimated Delivery Date] ), MIN ( 'eBay Sales'[Maximum Estimated Delivery Date] ), MIN ( 'eBay Sales'[Shipped On Date] ), MIN ( 'Next Part Sales'[Date] ) }, ''[Value] ) )
+				    VAR __LastYear =  YEAR ( MAXX ( { MAX ( 'eBay Sales'[Sales Record Number] ), MAX ( 'eBay Sales'[Sale Date] ), MAX ( 'eBay Sales'[Paid On Date] ), MAX ( 'eBay Sales'[Ship By Date] ), MAX ( 'eBay Sales'[Minimum Estimated Delivery Date] ), MAX ( 'eBay Sales'[Maximum Estimated Delivery Date] ), MAX ( 'eBay Sales'[Shipped On Date] ), MAX ( 'Next Part Sales'[Date] ) }, ''[Value] ) )
+				    RETURN CALENDAR (
+				        DATE ( __FirstYear, 1, 1 ),
+				        DATE ( __LastYear, 12, 31 )
+				    )
+				VAR __Step3 = 
+				    GENERATE (
+				        __Calendar,
+				        VAR __IsStandardLocale = IF ( FORMAT( DATE( 2000, 1, 1 ), "oooo" ) = "oooo", TRUE, FALSE )
+				        VAR __MonthFormatString = IF( __IsStandardLocale, "mmm", "ooo" )
+				        VAR __DayFormatString = IF( __IsStandardLocale, "ddd", "aaa" )
+				        VAR __LastTransactionDate = MAXX ( { MAX ( 'eBay Sales'[Sales Record Number] ), MAX ( 'eBay Sales'[Sale Date] ), MAX ( 'eBay Sales'[Paid On Date] ), MAX ( 'eBay Sales'[Ship By Date] ), MAX ( 'eBay Sales'[Minimum Estimated Delivery Date] ), MAX ( 'eBay Sales'[Maximum Estimated Delivery Date] ), MAX ( 'eBay Sales'[Shipped On Date] ), MAX ( 'Next Part Sales'[Date] ) }, ''[Value] )
+				        VAR __Date = [Date]
+				        VAR __YearNumber = YEAR ( __Date )
+				        VAR __QuarterNumber = QUARTER ( __Date )
+				        VAR __YearQuarterNumber = CONVERT ( __YearNumber * 4 + __QuarterNumber - 1, INTEGER )
+				        VAR __MonthNumber = MONTH ( __Date )
+				        VAR __WeekDayNumber = WEEKDAY ( __Date, __WeekDayCalculationType )
+				        VAR __WeekDay = FORMAT ( __Date, __DayFormatString )
+				        RETURN ROW ( 
+				            "Year", __YearNumber,
+				            "Year Quarter Number", __YearQuarterNumber,
+				            "Year Quarter", FORMAT ( __QuarterNumber, "\Q0" ) & "-" & FORMAT ( __YearNumber, "0000" ),
+				            "Quarter", FORMAT( __QuarterNumber, "\Q0" ),
+				            "Year Month", FORMAT ( __Date, __MonthFormatString & " yyyy" ),
+				            "Year Month Number", __YearNumber * 12 + __MonthNumber - 1,
+				            "Month", FORMAT ( __Date, __MonthFormatString ),
+				            "Month Number", __MonthNumber,
+				            "Day of Week Number", __WeekDayNumber,
+				            "Day of Week", __WeekDay,
+				            "DateWithTransactions", __Date <= __LastTransactionDate 
+				        )
+				    )
+				RETURN
+				    __Step3
+				```
+
+	annotation SQLBI_Template = Dates
+
+	annotation SQLBI_TemplateTable = DateAutoTemplate
+
+	annotation SQLBI_CalendarType = Calendar
+

@@ -1,0 +1,61 @@
+table 'Data Refresh'
+	lineageTag: ca4f972b-cbb5-46fc-b0f9-9ee9ab976596
+
+	column DateTime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 52f6b133-579d-497e-b4c5-fcb0f736b98c
+		summarizeBy: none
+		sourceColumn: DateTime
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f4b0d7e8-4a82-48f1-a5fa-6f5c78e725fd
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 2546cc02-62ca-4266-bc93-b07cef81269e
+		summarizeBy: none
+		sourceColumn: Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'DataRefresh AdjustedDateTime' = "Last Refresh - " & FORMAT('Data Refresh'[DateTime] - TIME(4, 0, 0), "General Date")
+		lineageTag: eb6625f4-e55b-4867-b2d2-3b7b43f6cc92
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Data Refresh' = m
+		mode: import
+		source =
+				let
+				    Source = DateTime.LocalNow(),
+				    #"Converted to Table" = #table(1, {{Source}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "DateTime"}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Renamed Columns", "DateTime", "DateTime - Copy"),
+				    #"Extracted Date" = Table.TransformColumns(#"Duplicated Column",{{"DateTime - Copy", DateTime.Date, type date}}),
+				    #"Duplicated Column1" = Table.DuplicateColumn(#"Extracted Date", "DateTime", "DateTime - Copy.1"),
+				    #"Extracted Time" = Table.TransformColumns(#"Duplicated Column1",{{"DateTime - Copy.1", DateTime.Time, type time}}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Extracted Time",{{"DateTime - Copy.1", "Time"}, {"DateTime - Copy", "Date"}})
+				in
+				    #"Renamed Columns1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,8 @@
+relationship 64fc379d-6178-cce6-438c-c01c378dd623
+	fromColumn: 'dbo.Sales'.Customer_Key
+	toColumn: 'dbo.Customer'.Customer_Key
+
+relationship 86e2320d-b344-b6aa-5d06-579a9762b35c
+	fromColumn: 'dbo.Sales'.Stock_Item_Key
+	toColumn: 'dbo.Product'.Stock_Item_Key
+

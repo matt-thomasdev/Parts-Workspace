@@ -1,0 +1,938 @@
+table 'Elite Extra'
+	lineageTag: cd2fe30d-aa6a-429c-8cfa-2dd5ce3a583d
+
+	column 'Conf #'
+		dataType: string
+		lineageTag: 0bd86504-d556-4efe-8c5f-2f33fb18dc3e
+		summarizeBy: none
+		sourceColumn: Conf #
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order ID'
+		dataType: string
+		lineageTag: 4f43c76f-a954-4649-9fea-17d759c7cd8a
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: f6e1722e-327e-429d-8ea6-22d30bba55cd
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column PO
+		dataType: string
+		lineageTag: 2160838f-633b-48f0-bd80-2297bfd2fff4
+		summarizeBy: none
+		sourceColumn: PO
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice
+		dataType: string
+		lineageTag: 8b25022f-8c57-4c8c-a921-2ed39d809ccc
+		summarizeBy: none
+		sourceColumn: Invoice
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ref #'
+		dataType: string
+		lineageTag: a96b1281-d6da-4974-b38f-e2fc78653d35
+		summarizeBy: none
+		sourceColumn: Ref #
+
+		annotation SummarizationSetBy = Automatic
+
+	column Source
+		dataType: string
+		lineageTag: 9e8d0f65-a651-4d25-98f7-f5c0321039c6
+		summarizeBy: none
+		sourceColumn: Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Src. address'
+		dataType: string
+		lineageTag: a848e516-1e7d-422b-91f6-e44021f6b4cf
+		summarizeBy: none
+		sourceColumn: Src. address
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Src. address 1'
+		dataType: string
+		lineageTag: d6402d2c-70cb-4ff3-b25e-f5452bf24256
+		summarizeBy: none
+		sourceColumn: Src. address 1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Src. address 2'
+		dataType: string
+		lineageTag: ac5e9475-6d94-49b9-8781-8747ffb64293
+		summarizeBy: none
+		sourceColumn: Src. address 2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Src. City'
+		dataType: string
+		lineageTag: b74aa403-9d2c-429c-8302-47ba70e307a5
+		summarizeBy: none
+		sourceColumn: Src. City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Src. State'
+		dataType: string
+		lineageTag: 051e6363-b50e-44d8-908e-4282ba2f5f6e
+		summarizeBy: none
+		sourceColumn: Src. State
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Src. Zip'
+		dataType: string
+		lineageTag: fb2d4ba6-d5ff-4302-a917-b49c20a538c5
+		summarizeBy: none
+		sourceColumn: Src. Zip
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source UDID'
+		dataType: string
+		lineageTag: ac3dabcd-81e5-4571-b857-4575d7039aa3
+		summarizeBy: none
+		sourceColumn: Source UDID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Destination
+		dataType: string
+		lineageTag: 0bf81751-7fbc-46c6-998c-cd31ae9b4e3c
+		summarizeBy: none
+		sourceColumn: Destination
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dest. address 2'
+		dataType: string
+		lineageTag: 9fba7a58-4a3a-44a3-b7dd-b0e655610155
+		summarizeBy: none
+		sourceColumn: Dest. address 2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Destination UDID'
+		dataType: string
+		lineageTag: 171840c2-ef9d-4a39-b77b-5fcdfa7c90ba
+		summarizeBy: none
+		sourceColumn: Destination UDID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Phone
+		dataType: string
+		lineageTag: 0701aef3-3444-4781-a6c1-51310ebd3671
+		summarizeBy: none
+		sourceColumn: Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mileage
+		dataType: string
+		lineageTag: 6b13d897-3e6a-4876-b77c-d8110a675785
+		summarizeBy: none
+		sourceColumn: Mileage
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reference Info'
+		dataType: string
+		lineageTag: 316558d4-2e8b-4bfb-be0b-4aa388caa569
+		summarizeBy: none
+		sourceColumn: Reference Info
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ordered By'
+		dataType: string
+		lineageTag: cba2a330-a838-4501-a06e-adb6f2446546
+		summarizeBy: none
+		sourceColumn: Ordered By
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		lineageTag: 777ccf4d-1f7a-45ff-bfda-defae62c337d
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Pickup Notes'
+		dataType: string
+		lineageTag: 9e788d67-7fb0-4547-a063-a4a1d7fd05e6
+		summarizeBy: none
+		sourceColumn: Pickup Notes
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parts Paid'
+		dataType: string
+		lineageTag: 1cfa67cf-64ab-44cd-8d04-383a4099bcf6
+		summarizeBy: none
+		sourceColumn: Parts Paid
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qty
+		dataType: string
+		lineageTag: 2af7790e-cfc6-4325-9cff-a4cbbd7c9227
+		summarizeBy: none
+		sourceColumn: Qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Box Count'
+		dataType: string
+		lineageTag: 0ac3c803-ec3f-4f87-821d-647ae22dbcb5
+		summarizeBy: none
+		sourceColumn: Box Count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Check Memo'
+		dataType: string
+		lineageTag: dd833b8c-b982-4b15-9fb3-de27fa819f70
+		summarizeBy: none
+		sourceColumn: Check Memo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cash Memo'
+		dataType: string
+		lineageTag: 2e5a1015-8b4b-421d-bb0e-8597e6629096
+		summarizeBy: none
+		sourceColumn: Cash Memo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Charge Memo'
+		dataType: string
+		lineageTag: e9c04bfe-e841-4282-b7c9-99fef976356a
+		summarizeBy: none
+		sourceColumn: Charge Memo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Change Notes'
+		dataType: string
+		lineageTag: 89a6c835-924c-4fb1-a7a4-0ed520f688c4
+		summarizeBy: none
+		sourceColumn: Change Notes
+
+		annotation SummarizationSetBy = Automatic
+
+	column '$ Received'
+		dataType: string
+		lineageTag: 71d92708-be2b-419a-b997-5f68ebab9b6b
+		summarizeBy: none
+		sourceColumn: $ Received
+
+		annotation SummarizationSetBy = Automatic
+
+	column '$ Cash Amount'
+		dataType: string
+		lineageTag: f294d74b-f57d-4172-8666-c2ff2ca4ea97
+		summarizeBy: none
+		sourceColumn: $ Cash Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column '$ Charge Amount'
+		dataType: string
+		lineageTag: d06b325a-0a30-4ebd-8e59-774aeb3ed033
+		summarizeBy: none
+		sourceColumn: $ Charge Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column '$ Check Amount'
+		dataType: string
+		lineageTag: fa59a014-1dab-4439-b1a4-1c872c27d69f
+		summarizeBy: none
+		sourceColumn: $ Check Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column '$ Credit Amount'
+		dataType: string
+		lineageTag: 9d9ff596-0149-4e3b-b724-07340d1d0308
+		summarizeBy: none
+		sourceColumn: $ Credit Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salesperson
+		dataType: string
+		lineageTag: 3001c108-1a10-4181-9315-4a255edc265a
+		summarizeBy: none
+		sourceColumn: Salesperson
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Phone Number'
+		dataType: string
+		lineageTag: bfbf81f4-bf17-40ca-9bf1-e393fff07070
+		summarizeBy: none
+		sourceColumn: Phone Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: ff083d68-3308-44d5-bb21-d1fdf68eed99
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Call Received'
+		dataType: string
+		lineageTag: 813a21bb-97ad-4c2b-ab7f-e03b4963c93f
+		summarizeBy: none
+		sourceColumn: Call Received
+
+		annotation SummarizationSetBy = Automatic
+
+	column COD
+		dataType: string
+		lineageTag: 2bf64432-fd91-4dac-bbd6-b70e473f6690
+		summarizeBy: none
+		sourceColumn: COD
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Avoid Scheduled'
+		dataType: string
+		lineageTag: f905c16a-cfd5-4083-8a48-8ed3c43d90ee
+		summarizeBy: none
+		sourceColumn: Avoid Scheduled
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHG
+		dataType: string
+		lineageTag: 1cbec9d8-afb5-4452-b2e9-e48375d0fa16
+		summarizeBy: none
+		sourceColumn: CHG
+
+		annotation SummarizationSetBy = Automatic
+
+	column Held
+		dataType: string
+		lineageTag: 99941d30-d00a-4ef9-afc9-1c7426e99a40
+		summarizeBy: none
+		sourceColumn: Held
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First Name'
+		dataType: string
+		lineageTag: 589dae2e-a809-4e70-9a4b-c28d7e9f254f
+		summarizeBy: none
+		sourceColumn: First Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Name'
+		dataType: string
+		lineageTag: b6eee92c-6e77-4d5a-9dae-c1d0dbd38f9d
+		summarizeBy: none
+		sourceColumn: Last Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Carrier
+		dataType: string
+		lineageTag: 38f55910-5f06-4e08-9732-8572d5adb6e7
+		summarizeBy: none
+		sourceColumn: Carrier
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'External Tracking Number'
+		dataType: string
+		lineageTag: 22ff20fc-7024-4309-9897-a25055669416
+		summarizeBy: none
+		sourceColumn: External Tracking Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Validation Reason'
+		dataType: string
+		lineageTag: 8111159f-c73c-44e0-836b-b23e79f9276f
+		summarizeBy: none
+		sourceColumn: Payment Validation Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time Since Held'
+		dataType: string
+		lineageTag: 8397d926-7338-4ef1-a420-48aabeae3c27
+		summarizeBy: none
+		sourceColumn: Time Since Held
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Traffic ETA'
+		dataType: string
+		lineageTag: ad10559f-7008-477f-998c-42b65d986c6b
+		summarizeBy: none
+		sourceColumn: Traffic ETA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time Void'
+		dataType: string
+		lineageTag: cdb5ed39-ff96-4b0a-aaa0-572b9b9d8b23
+		summarizeBy: none
+		sourceColumn: Time Void
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pickup Time'
+		dataType: string
+		lineageTag: e52d8073-e095-4e70-adad-a1b41e28f0c7
+		summarizeBy: none
+		sourceColumn: Pickup Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pickup Arrival'
+		dataType: string
+		lineageTag: 4cd27e07-22da-4db1-9647-c00250cd8ae9
+		summarizeBy: none
+		sourceColumn: Pickup Arrival
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pickup Departure'
+		dataType: string
+		lineageTag: c13f0a4c-805f-4d3d-ac5a-7c4bed83c17a
+		summarizeBy: none
+		sourceColumn: Pickup Departure
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Driver Name'
+		dataType: string
+		lineageTag: 1dd83ecb-51f7-4d28-a8e3-9385b5eb0013
+		summarizeBy: none
+		sourceColumn: Driver Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Driver Cell'
+		dataType: string
+		lineageTag: d174bfd8-bb59-4405-94cb-326080b383d1
+		summarizeBy: none
+		sourceColumn: Driver Cell
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created By'
+		dataType: string
+		lineageTag: d62ba5b1-b697-437a-8f40-beb8248cad45
+		summarizeBy: none
+		sourceColumn: Created By
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Recommended Vehicle'
+		dataType: string
+		lineageTag: 99992210-cb0c-4618-ac36-4680f7b86ce5
+		summarizeBy: none
+		sourceColumn: Recommended Vehicle
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vehicle
+		dataType: string
+		lineageTag: 62ba5848-2a0e-4c88-aab6-4240fc8abe19
+		summarizeBy: none
+		sourceColumn: Vehicle
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Manifest #'
+		dataType: string
+		lineageTag: 6d0816bf-81a3-47da-b22e-826ac9f196d3
+		summarizeBy: none
+		sourceColumn: Manifest #
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Route Number'
+		dataType: string
+		lineageTag: 98729e05-22e3-434e-95d3-da6640e0a918
+		summarizeBy: none
+		sourceColumn: Route Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Manifest Name'
+		dataType: string
+		lineageTag: 68c38c0e-e991-4c07-8d0d-25ac8be568be
+		summarizeBy: none
+		sourceColumn: Manifest Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Stop Number'
+		dataType: string
+		lineageTag: c4298841-56f5-4955-b8d5-f9fe44b5c83c
+		summarizeBy: none
+		sourceColumn: Stop Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ship via'
+		dataType: string
+		lineageTag: 83c3407e-6cb7-47e5-9678-ffe120406423
+		summarizeBy: none
+		sourceColumn: Ship via
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Sale Type'
+		dataType: string
+		lineageTag: 9a4c1d32-aa8e-4b43-ba04-e8e7743e53c7
+		summarizeBy: none
+		sourceColumn: Invoice Sale Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Receive Scan Time'
+		dataType: string
+		lineageTag: f9b7e03c-bf16-4332-a194-407dde3023f5
+		summarizeBy: none
+		sourceColumn: Receive Scan Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pickup Scan Time'
+		dataType: string
+		lineageTag: aa5ad6b4-12c7-4ead-9fff-34125c6292e9
+		summarizeBy: none
+		sourceColumn: Pickup Scan Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Delivery Scan Time'
+		dataType: string
+		lineageTag: 82f1bea6-8c07-48a6-8863-efd4e022e48d
+		summarizeBy: none
+		sourceColumn: Delivery Scan Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Id Required'
+		dataType: string
+		lineageTag: 1eff56a7-f475-471e-9b7c-8abc250d5ed3
+		summarizeBy: none
+		sourceColumn: Id Required
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 39e826ac-6d93-4e17-9be6-9a10e7300f9f
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Template'
+		dataType: string
+		lineageTag: 484ea59e-2393-46c6-a272-f305b1113853
+		summarizeBy: none
+		sourceColumn: Order Template
+
+		annotation SummarizationSetBy = Automatic
+
+	column Special
+		dataType: string
+		lineageTag: bd73c506-a6fc-460e-998b-cc24600d5dd3
+		summarizeBy: none
+		sourceColumn: Special
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Notifications Enabled'
+		dataType: string
+		lineageTag: 5917e635-dbf8-4779-a132-886d579df1c5
+		summarizeBy: none
+		sourceColumn: Notifications Enabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Priority Code'
+		dataType: string
+		lineageTag: e6b125f5-e1e8-4599-8b58-a69c4704c493
+		summarizeBy: none
+		sourceColumn: Priority Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Skip Reason'
+		dataType: string
+		lineageTag: 8e0c71fb-cfad-4cd6-94b9-69616698be71
+		summarizeBy: none
+		sourceColumn: Skip Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Skip Time'
+		dataType: string
+		lineageTag: 6af3a14e-1973-4033-9c86-e5ff2b4383e9
+		summarizeBy: none
+		sourceColumn: Skip Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column Signer
+		dataType: string
+		lineageTag: 9c75557c-be37-456a-8270-742308164c7f
+		summarizeBy: none
+		sourceColumn: Signer
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pickup Signer'
+		dataType: string
+		lineageTag: 31463777-f897-4050-afc7-f4a8ccf132eb
+		summarizeBy: none
+		sourceColumn: Pickup Signer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reason
+		dataType: string
+		lineageTag: 2e43ec0e-fcd4-4a98-9f24-283397cd9071
+		summarizeBy: none
+		sourceColumn: Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column Zone
+		dataType: string
+		lineageTag: bfbca772-fcc2-4d2f-9901-7b40daf3e43c
+		summarizeBy: none
+		sourceColumn: Zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Src. Zone'
+		dataType: string
+		lineageTag: 7a37f764-27e2-4f91-adbe-0c9e67d04902
+		summarizeBy: none
+		sourceColumn: Src. Zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Delivery Zone'
+		dataType: string
+		lineageTag: b0a0bd63-04fc-4534-864a-8a131241e7b0
+		summarizeBy: none
+		sourceColumn: Delivery Zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Original Source'
+		dataType: string
+		lineageTag: c1ac5f1e-858c-4b26-acd7-29e1a13240a5
+		summarizeBy: none
+		sourceColumn: Original Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Route ID'
+		dataType: string
+		lineageTag: 522bc3f4-8c27-46d5-99a2-931b52e22ea4
+		summarizeBy: none
+		sourceColumn: Route ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pickup ETA'
+		dataType: string
+		lineageTag: e976b63e-fbb5-410c-aff0-c2a32b8654ba
+		summarizeBy: none
+		sourceColumn: Pickup ETA
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weight
+		dataType: string
+		lineageTag: 7f33589b-9a28-4204-8e37-57ba36d6b511
+		summarizeBy: none
+		sourceColumn: Weight
+
+		annotation SummarizationSetBy = Automatic
+
+	column Volume
+		dataType: string
+		lineageTag: 88529b34-619f-4e8f-8db3-484647e897ac
+		summarizeBy: none
+		sourceColumn: Volume
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cubes
+		dataType: string
+		lineageTag: 71719c98-43cb-4c0f-bf34-3ba45ee04a02
+		summarizeBy: none
+		sourceColumn: Cubes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Backorder
+		dataType: string
+		lineageTag: ae5a7dfe-f56f-4724-bbf8-f1fd31d5ab46
+		summarizeBy: none
+		sourceColumn: Backorder
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requested Start Time'
+		dataType: string
+		lineageTag: 408bb986-b798-4c88-bd6e-ba268df89003
+		summarizeBy: none
+		sourceColumn: Requested Start Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Requested End Time'
+		dataType: string
+		lineageTag: 9e3be4dd-8ef8-4ee1-90b3-282ebbad256d
+		summarizeBy: none
+		sourceColumn: Requested End Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pickup Requested Start Time'
+		dataType: string
+		lineageTag: 9b9af4b9-c2f1-4b22-be6a-c64a1a78d4d1
+		summarizeBy: none
+		sourceColumn: Pickup Requested Start Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pickup Requested End Time'
+		dataType: string
+		lineageTag: 271fcba9-ed78-492e-a177-762425604294
+		summarizeBy: none
+		sourceColumn: Pickup Requested End Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fail Reason'
+		dataType: string
+		lineageTag: fb1bf95e-19fa-4d7f-8722-2242f3b61c66
+		summarizeBy: none
+		sourceColumn: Fail Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time Between Delivery' = ```
+			
+			    VAR CurrentManifest = 'Elite Extra'[Manifest #]
+			    VAR CurrentRowTime = 'Elite Extra'[Delivery Time]
+			    VAR PreviousRowTime =
+			        CALCULATE(
+			            LASTNONBLANK('Elite Extra'[Delivery Time], 1),
+			            FILTER(
+			                ALL('Elite Extra'),
+			                'Elite Extra'[Manifest #] = CurrentManifest &&
+			                'Elite Extra'[Delivery Time] < CurrentRowTime
+			            )
+			        )
+			    RETURN
+			        IF(
+			            ISBLANK(PreviousRowTime),
+			            BLANK(),
+			            DATEDIFF(PreviousRowTime, CurrentRowTime, MINUTE)
+			        )
+			
+			```
+		formatString: 0
+		lineageTag: b41ac6c3-2e06-4ff6-ad0c-ea7d19c70c4a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dest. address 1'
+		dataType: string
+		lineageTag: e82ba702-4426-494d-81ef-265b2dc965ac
+		summarizeBy: none
+		sourceColumn: Dest. address 1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ordered At (Elapsed Time)'
+		dataType: string
+		lineageTag: fc89d2dd-8188-468b-b8f3-c72e9b4fd079
+		summarizeBy: none
+		sourceColumn: Ordered At (Elapsed Time)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time
+		dataType: string
+		lineageTag: 04a5ff8a-fa7f-446c-953f-249d4f70af57
+		summarizeBy: none
+		sourceColumn: Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dest. address'
+		dataType: string
+		lineageTag: 5e4a2056-21b5-4048-b86d-bb1b0beecad7
+		summarizeBy: none
+		sourceColumn: Dest. address
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dest. City'
+		dataType: string
+		lineageTag: 14969495-fb0e-475b-bd32-b8787f01a9c2
+		summarizeBy: none
+		sourceColumn: Dest. City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dest. State'
+		dataType: string
+		lineageTag: ce6d5d75-47ae-4aab-a5cd-ac6eebb1a2f8
+		summarizeBy: none
+		sourceColumn: Dest. State
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dest. Zip'
+		dataType: string
+		lineageTag: 009f7fa4-194d-4488-9a26-ded0670df614
+		summarizeBy: none
+		sourceColumn: Dest. Zip
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Acct. Credit Memo'
+		dataType: string
+		lineageTag: 8f6a037c-c765-4e0e-9d35-40886bb158cb
+		summarizeBy: none
+		sourceColumn: Acct. Credit Memo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Call Name'
+		dataType: string
+		lineageTag: adf40dfb-fa66-47e5-bdeb-37718137379e
+		summarizeBy: none
+		sourceColumn: Call Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Call Phone'
+		dataType: string
+		lineageTag: e2cc6d7d-c8db-4b87-8dcd-9ba5a3b10e4c
+		summarizeBy: none
+		sourceColumn: Call Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Will Call'
+		dataType: string
+		lineageTag: f12d17b3-aad5-4ea3-bd03-3ec505009655
+		summarizeBy: none
+		sourceColumn: Will Call
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time Delivered'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 980baf6e-23ee-4871-a806-7cff69c16b4c
+		summarizeBy: none
+		sourceColumn: Time Delivered
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time Departed'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7ceee844-b871-4693-8729-7188f32d26b6
+		summarizeBy: none
+		sourceColumn: Time Departed
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Delivery Time'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: f1bfa7e3-e64a-45b3-b9dd-e7fe0b6ad6d3
+		summarizeBy: none
+		sourceColumn: Delivery Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'Delivery Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 93233498-4871-4c34-8c5c-a69304d78ab4
+		summarizeBy: none
+		sourceColumn: Delivery Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'Elite Extra' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(Web.Contents("https://bepensa.sharepoint.com/sites/BM-UR-ANALYTICS/Documentos%20compartidos/Parts%20BI/Elite%20Extra%20Data.xlsx"), null, true),
+				    Custom1 = Source{[Item="EliteExtra",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Custom1, [PromoteAllScalars=true]),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Promoted Headers",{{"Destination", Text.Proper, type text}, {"Dest. address", Text.Proper, type text}, {"Dest. address 1", Text.Proper, type text}, {"Dest. City", Text.Proper, type text}}),
+				    #"Uppercased Text" = Table.TransformColumns(#"Capitalized Each Word",{{"Dest. State", Text.Upper, type text}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Uppercased Text",{{"Time Delivered", type datetime}, {"Time Departed", type datetime}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Changed Type", "Time Delivered", "Time Delivered - Copy"),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Duplicated Column",{{"Time Delivered - Copy", type time}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"Time Delivered - Copy", "Delivery Time"}}),
+				    #"Duplicated Column1" = Table.DuplicateColumn(#"Renamed Columns", "Time Delivered", "Time Delivered - Copy"),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Duplicated Column1",{{"Time Delivered - Copy", "Delivery Date"}}),
+				    #"Extracted Date" = Table.TransformColumns(#"Renamed Columns1",{{"Delivery Date", DateTime.Date, type date}}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Extracted Date",{{"Amount", type number}}),
+				    #"Capitalized Each Word1" = Table.TransformColumns(#"Changed Type2",{{"Driver Name", Text.Proper, type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Capitalized Each Word1", each true)
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

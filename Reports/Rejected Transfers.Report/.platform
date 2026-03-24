@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Rejected Transfers"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ed72a498-e03e-8ae8-4ba6-882bf57d1be9"
+  }
+}

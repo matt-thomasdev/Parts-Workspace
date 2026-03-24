@@ -1,0 +1,28 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["dim_Location","fct_PtLost","fct_Inventory","fct_CleanCore","fct_Consignment","fct_PartsPurchases","fct_Transfers","RangeStart","RangeEnd","fct_PartSales","msr_Measures"]
+
+annotation PBI_ProTooling = ["WebModelingEdit","DaxQueryView_Desktop","DevMode","TMDL-Extension"]
+
+ref table dim_Location
+ref table fct_PtLost
+ref table fct_Inventory
+ref table fct_CleanCore
+ref table fct_Consignment
+ref table prm_Parameter
+ref table fct_PartsPurchases
+ref table prm_SourceClass
+ref table fct_Transfers
+ref table fct_PartSales
+ref table msr_Measures
+
+ref cultureInfo en-US
+

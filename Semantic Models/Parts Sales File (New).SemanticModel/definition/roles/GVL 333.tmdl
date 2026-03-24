@@ -1,0 +1,13 @@
+role 'GVL 333'
+	modelPermission: read
+
+	tablePermission MT_ACMCA = [BrnId] == "106"
+
+	tablePermission MT_COCUSCRM = [EmpId] == "333"
+
+	tablePermission MT_PARTS_PURCHASES = [PTPUR_Location] == "Greenville"
+
+	tablePermission 'Parts_Service Sales' = [BrnId] == "106"
+
+	annotation PBI_Id = 29f34168b40149739caad1fac7007830
+

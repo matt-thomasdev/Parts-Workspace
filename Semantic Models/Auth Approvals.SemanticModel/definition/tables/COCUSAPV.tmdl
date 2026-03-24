@@ -1,0 +1,116 @@
+table COCUSAPV
+	lineageTag: 2b1a9249-118c-4d6a-a492-f64aeedb65bc
+
+	column ItmId
+		dataType: int64
+		formatString: 0
+		lineageTag: a4cdf565-8f90-43ba-96e6-7402f4c72779
+		summarizeBy: count
+		sourceColumn: ItmId
+
+		annotation SummarizationSetBy = Automatic
+
+	column CusId
+		dataType: string
+		lineageTag: 19ceb53b-16a8-48fc-b137-5a18b33a916c
+		summarizeBy: none
+		sourceColumn: CusId
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrmId
+		dataType: string
+		lineageTag: 7b224295-3d70-486c-ab0b-21359e64eb80
+		summarizeBy: none
+		sourceColumn: TrmId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SlsId
+		dataType: string
+		lineageTag: 5cd818d7-84dd-43a2-a78d-e7af04ea9543
+		summarizeBy: none
+		sourceColumn: SlsId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Origin
+		dataType: int64
+		formatString: 0
+		lineageTag: ff0f08c0-fc0e-4453-9879-e83192d2851c
+		summarizeBy: sum
+		sourceColumn: Origin
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmpId
+		dataType: string
+		lineageTag: ceafccc2-f461-43e5-a2bb-519505e1b64a
+		summarizeBy: none
+		sourceColumn: EmpId
+
+		annotation SummarizationSetBy = Automatic
+
+	column CardNbr
+		dataType: string
+		lineageTag: 8dbdf786-3d84-406f-8d7b-eb9f72f2e4c7
+		summarizeBy: none
+		sourceColumn: CardNbr
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateAuth
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7a6db3a2-25fd-4e97-8bf5-22efdbe2271d
+		summarizeBy: none
+		sourceColumn: DateAuth
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtAuth
+		dataType: double
+		lineageTag: 54fc4d8e-4f04-4c60-af8f-6090ae9d71c2
+		summarizeBy: sum
+		sourceColumn: AmtAuth
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AuthNbr
+		dataType: string
+		lineageTag: 767e749e-50af-441e-9a4c-43ce059e188a
+		summarizeBy: none
+		sourceColumn: AuthNbr
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 95109539-694a-4eaa-a6ff-bec8a47f3217
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition COCUSAPV = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_COCUSAPV = EXCEDE{[Schema="dbo",Item="COCUSAPV"]}[Data],
+				    #"Duplicated Column" = Table.DuplicateColumn(dbo_COCUSAPV, "DateAuth", "DateAuth - Copy"),
+				    #"Extracted Date" = Table.TransformColumns(#"Duplicated Column",{{"DateAuth - Copy", DateTime.Date, type date}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Extracted Date",{{"DateAuth - Copy", "Date"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

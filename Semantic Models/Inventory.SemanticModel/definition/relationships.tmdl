@@ -1,0 +1,27 @@
+relationship 10328695-87ba-2b71-c92d-803b427113d3
+	fromColumn: fct_Inventory.BrnId
+	toColumn: dim_Location.BrnId
+
+relationship AutoDetected_b51cefb1-5dd0-430d-92aa-3a177fdf0c55
+	crossFilteringBehavior: bothDirections
+	fromColumn: fct_Consignment.PrtId
+	toColumn: fct_Inventory.PrtId
+
+relationship c6b54271-6dfe-820e-1096-c8f80c81ea56
+	crossFilteringBehavior: bothDirections
+	fromColumn: fct_PtLost.PtItm
+	toColumn: fct_Inventory.PrtId
+
+relationship 7cf42273-a4d4-7ecb-4a6a-b5b43d50dfcb
+	crossFilteringBehavior: bothDirections
+	fromColumn: fct_PartsPurchases.PTPURITM_PtItm
+	toColumn: fct_Inventory.PrtId
+
+relationship 69e52eed-1485-f555-631f-246bc1592950
+	fromColumn: fct_CleanCore.PTCOR_PrtId
+	toColumn: fct_Inventory.PrtId
+
+relationship AutoDetected_7b88c1bb-b2dd-4177-b6ff-cfa65637d941
+	fromColumn: fct_PartSales.BrnId
+	toColumn: dim_Location.BrnId
+

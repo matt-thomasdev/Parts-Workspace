@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Price Tape"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "476a71c8-d815-92eb-4836-89162d5f22be"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Fleet Charge CA Check"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c3a20a36-0aa5-87ea-483d-7b0f3752de6b"
+  }
+}

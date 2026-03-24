@@ -1,0 +1,355 @@
+table USER_PARTSWIPSNAPSHOT
+	lineageTag: 7d4d62bb-3f28-4263-b259-30a2eb670ae1
+
+	column DateInvoice
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c5c299ac-d765-441f-9f11-897642c662ea
+		summarizeBy: none
+		sourceColumn: DateInvoice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DateCreate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e1d4a59b-cfcc-43ed-b1fb-481bb8a2f70a
+		summarizeBy: none
+		sourceColumn: DateCreate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DateUpdate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: be854d58-b79d-422b-9d69-d03ca9c7026d
+		summarizeBy: none
+		sourceColumn: DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EmpId
+		dataType: string
+		lineageTag: 2b5921d0-4544-4f2f-9e86-385ff1e01e38
+		summarizeBy: none
+		sourceColumn: EmpId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 7565cfe1-f9df-4712-9c5f-644201cae9ca
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column SlsId
+		dataType: string
+		lineageTag: 7ca63b13-0582-484f-a106-38de87019bd2
+		summarizeBy: none
+		sourceColumn: SlsId
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstimateSlsId
+		dataType: string
+		lineageTag: 38709bb0-d910-4694-a5f4-c29a963a8a36
+		summarizeBy: none
+		sourceColumn: EstimateSlsId
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvoiceSlsId
+		dataType: string
+		lineageTag: 5e4fd1f9-0d1a-4548-b144-817e9fca801c
+		summarizeBy: none
+		sourceColumn: InvoiceSlsId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Origin
+		dataType: string
+		lineageTag: 6c6dffe6-6502-405b-899a-2207f82601f8
+		summarizeBy: none
+		sourceColumn: Origin
+
+		annotation SummarizationSetBy = Automatic
+
+	column PtItm
+		dataType: string
+		lineageTag: ae5c5d4b-e867-4102-adad-2a0458b54d59
+		summarizeBy: none
+		sourceColumn: PtItm
+
+		annotation SummarizationSetBy = Automatic
+
+	column Des
+		dataType: string
+		lineageTag: f5f602e5-6d62-4470-8a8f-c4eb6d36383f
+		summarizeBy: none
+		sourceColumn: Des
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClaId
+		dataType: string
+		lineageTag: ff6e6e52-1ba4-4776-9a8f-41f90d6b2297
+		summarizeBy: none
+		sourceColumn: ClaId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SrcId
+		dataType: string
+		lineageTag: 86fb3344-d81f-4601-a7d6-d9a242898cd7
+		summarizeBy: none
+		sourceColumn: SrcId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItmTyp
+		dataType: string
+		lineageTag: f2096974-bb6d-468d-927c-e52347d50d69
+		summarizeBy: none
+		sourceColumn: ItmTyp
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItmDes
+		dataType: string
+		lineageTag: 3080f671-23c9-436e-878f-0567a98fadae
+		summarizeBy: none
+		sourceColumn: ItmDes
+
+		annotation SummarizationSetBy = Automatic
+
+	column BrnId
+		dataType: string
+		lineageTag: 11b8765d-2457-443e-b5d2-a6429c223b52
+		summarizeBy: none
+		sourceColumn: BrnId
+
+		annotation SummarizationSetBy = Automatic
+
+	column CusId
+		dataType: string
+		lineageTag: 785c2989-b72a-4d76-998d-2969a0aa5a95
+		summarizeBy: none
+		sourceColumn: CusId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BillCusId
+		dataType: string
+		lineageTag: b8a26ed1-1b5f-4c94-af55-4db879e271d3
+		summarizeBy: none
+		sourceColumn: BillCusId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SlsTypId
+		dataType: string
+		lineageTag: 061a84bc-9d29-4a3b-99c6-29cfaf48459c
+		summarizeBy: none
+		sourceColumn: SlsTypId
+
+		annotation SummarizationSetBy = Automatic
+
+	column CusName
+		dataType: string
+		lineageTag: 8cc16468-68d1-4bf9-82ab-6fa2240ff382
+		summarizeBy: none
+		sourceColumn: CusName
+
+		annotation SummarizationSetBy = Automatic
+
+	column BillCusName
+		dataType: string
+		lineageTag: 831b838e-ede2-4f89-a021-9e2f151005fd
+		summarizeBy: none
+		sourceColumn: BillCusName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtCost
+		dataType: double
+		lineageTag: 3d962935-e81c-40cc-8f08-880f9bd15740
+		summarizeBy: sum
+		sourceColumn: AmtCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice
+		dataType: double
+		lineageTag: d027cfca-183e-4a0c-be95-e2b9fd07e5a3
+		summarizeBy: sum
+		sourceColumn: AmtPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPriceSuggest
+		dataType: double
+		lineageTag: 6d4ec34d-54cc-4594-a2cd-9a87e4a64e83
+		summarizeBy: sum
+		sourceColumn: AmtPriceSuggest
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtRebate
+		dataType: double
+		lineageTag: 87e5fac3-56d7-4ec9-bcc0-4f3756430809
+		summarizeBy: sum
+		sourceColumn: AmtRebate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyShip
+		dataType: double
+		lineageTag: 66ddb9b9-9e70-4568-b91a-131f1e4bf9f6
+		summarizeBy: sum
+		sourceColumn: QtyShip
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Status
+		dataType: string
+		lineageTag: 5a8f8a39-4c74-46e9-9788-7811218770b9
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExtendedSales
+		dataType: double
+		lineageTag: 5029ef81-946d-42eb-8701-d24e921429e3
+		summarizeBy: sum
+		sourceColumn: ExtendedSales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ExtendedCost
+		dataType: double
+		lineageTag: 1d9faf94-8f99-4b7a-9162-7aa94b24d726
+		summarizeBy: sum
+		sourceColumn: ExtendedCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Reason
+		dataType: string
+		lineageTag: 9a0e6e35-aa34-4c47-a730-edcde54f8cea
+		summarizeBy: none
+		sourceColumn: Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc5
+		dataType: string
+		lineageTag: 09c2c27a-7af0-4fbe-a318-b0fc5a7fb133
+		summarizeBy: none
+		sourceColumn: PrtMisc5
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyOH
+		dataType: double
+		lineageTag: 6a686d0f-9ff7-41f1-80c7-613f04355fd6
+		summarizeBy: sum
+		sourceColumn: QtyOH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyOO
+		dataType: double
+		lineageTag: 754f1383-cac5-4159-95bd-1b5d2966a1c0
+		summarizeBy: sum
+		sourceColumn: QtyOO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Core
+		dataType: string
+		lineageTag: 868dbf9c-4efc-44fa-ae5b-3b285b5670d0
+		summarizeBy: none
+		sourceColumn: Core
+
+		annotation SummarizationSetBy = Automatic
+
+	column VenPrtId
+		dataType: string
+		lineageTag: 28080ca3-a07e-4cc3-af35-16bcd7a424e2
+		summarizeBy: none
+		sourceColumn: VenPrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: c4be2e73-fcb6-4b89-a793-37da3056b806
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column Division
+		dataType: string
+		lineageTag: 0913be24-b5fb-4173-9640-423581266def
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 27a382ef-c3bf-4a2d-a13d-f8197f663df3
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition USER_PARTSWIPSNAPSHOT = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_USER_PARTSWIPSNAPSHOT = EXCEDE{[Schema="dbo",Item="USER_PARTSWIPSNAPSHOT"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(dbo_USER_PARTSWIPSNAPSHOT, each Text.StartsWith([BrnId], "1") or Text.StartsWith([BrnId], "2")),
+				    #"Sorted Rows" = Table.Sort(#"Filtered Rows",{{"Date", Order.Descending}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Sorted Rows",{{"Date", type date}}),
+				    #"Extracted Date" = Table.TransformColumns(#"Changed Type",{})
+				in
+				    #"Extracted Date"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

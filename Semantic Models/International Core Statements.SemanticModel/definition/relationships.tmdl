@@ -1,0 +1,12 @@
+relationship dca98e69-7ab1-c847-cd67-00b51c3bfae8
+	fromColumn: MT_COREBANKED.StatementDate
+	toColumn: Date.Date
+
+relationship 1ad6b2fc-a03b-31af-fb74-6495363a9597
+	fromColumn: MT_COREELIGIBLE.StatementDate
+	toColumn: Date.Date
+
+relationship ea886bcb-7568-a45d-32a0-1e7bb69224a8
+	fromColumn: MT_COREFINACTIVITY.StatementDate
+	toColumn: Date.Date
+

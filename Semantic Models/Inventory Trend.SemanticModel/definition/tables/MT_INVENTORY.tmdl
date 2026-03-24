@@ -1,0 +1,800 @@
+table MT_INVENTORY
+	lineageTag: 10f8078f-bd4e-4db3-931d-4c54351f1267
+
+	column PrtId
+		dataType: string
+		lineageTag: dd8b0383-8341-4bc9-9382-7081b1a61a20
+		summarizeBy: none
+		sourceColumn: PrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BrnId
+		dataType: string
+		lineageTag: 9947780e-8dda-47dd-a988-a4903adc7ff5
+		summarizeBy: none
+		sourceColumn: BrnId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SrcId
+		dataType: string
+		lineageTag: c4933a18-4412-41b9-b747-53cf0190d7da
+		summarizeBy: none
+		sourceColumn: SrcId
+
+		annotation SummarizationSetBy = Automatic
+
+	column VenPrtId
+		dataType: string
+		lineageTag: 9961a89e-2156-46ec-87e9-4e0bc72285cb
+		summarizeBy: none
+		sourceColumn: VenPrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Typ
+		dataType: int64
+		formatString: 0
+		lineageTag: 00150183-970c-4f4f-b0f0-f0dd3601c11d
+		summarizeBy: none
+		sourceColumn: Typ
+
+		annotation SummarizationSetBy = Automatic
+
+	column StockCtl
+		dataType: int64
+		formatString: 0
+		lineageTag: e0361953-d88c-4466-9f25-92ef06528127
+		summarizeBy: none
+		sourceColumn: StockCtl
+
+		annotation SummarizationSetBy = Automatic
+
+	column Des
+		dataType: string
+		lineageTag: c44ead11-7eed-4e26-86a8-373bf2eb95dd
+		summarizeBy: none
+		sourceColumn: Des
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClaId
+		dataType: string
+		lineageTag: 9d90b17a-2f4d-4cb4-901e-52011e6f5ed3
+		summarizeBy: none
+		sourceColumn: ClaId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BinId1
+		dataType: string
+		lineageTag: 8784b602-9a5c-4f01-8d44-9a263c29f8f2
+		summarizeBy: none
+		sourceColumn: BinId1
+
+		annotation SummarizationSetBy = Automatic
+
+	column BinId2
+		dataType: string
+		lineageTag: 8e9a7416-a9b4-408a-895c-e17e88974b5b
+		summarizeBy: none
+		sourceColumn: BinId2
+
+		annotation SummarizationSetBy = Automatic
+
+	column BinId3
+		dataType: string
+		lineageTag: 0ff633ac-80d0-458c-833b-0d79589b91c7
+		summarizeBy: none
+		sourceColumn: BinId3
+
+		annotation SummarizationSetBy = Automatic
+
+	column BinId4
+		dataType: string
+		lineageTag: 656b5c13-b11f-4684-9090-14e2ea61558d
+		summarizeBy: none
+		sourceColumn: BinId4
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtCostAvg
+		dataType: double
+		lineageTag: 20bed2c6-61a3-4a16-8381-abf7e6e9eff3
+		summarizeBy: none
+		sourceColumn: AmtCostAvg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtCostSrc
+		dataType: double
+		lineageTag: fdb47385-592a-4bea-92f8-f7604ed3010d
+		summarizeBy: none
+		sourceColumn: AmtCostSrc
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtCostSrc2
+		dataType: double
+		lineageTag: 5f47445a-74a8-4f98-ba73-f68c2b4546fe
+		summarizeBy: none
+		sourceColumn: AmtCostSrc2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice1
+		dataType: double
+		lineageTag: 5f0293fa-005e-45c9-8b81-ca6f5cd6bb6b
+		summarizeBy: none
+		sourceColumn: AmtPrice1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice2
+		dataType: double
+		lineageTag: d705c2f8-35c2-4714-8d5a-deb85dc3fcf9
+		summarizeBy: none
+		sourceColumn: AmtPrice2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice3
+		dataType: double
+		lineageTag: 43fe87ba-a320-46f0-8f09-0f6e548c2965
+		summarizeBy: none
+		sourceColumn: AmtPrice3
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice4
+		dataType: double
+		lineageTag: 912c29f4-511f-4d0c-a727-0819d884f147
+		summarizeBy: none
+		sourceColumn: AmtPrice4
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice5
+		dataType: double
+		lineageTag: b567d623-cadf-490b-8bbf-0f7e1ff19066
+		summarizeBy: none
+		sourceColumn: AmtPrice5
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice6
+		dataType: double
+		lineageTag: f7d705a0-5535-49c4-bee3-3454726a328d
+		summarizeBy: none
+		sourceColumn: AmtPrice6
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice7
+		dataType: double
+		lineageTag: 357f4bd5-e9b0-48f9-ac8d-399e60204678
+		summarizeBy: none
+		sourceColumn: AmtPrice7
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice8
+		dataType: double
+		lineageTag: 73a2f8fa-6e08-42e4-b896-760e7d2d17ac
+		summarizeBy: none
+		sourceColumn: AmtPrice8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AutoMinMax
+		dataType: int64
+		formatString: 0
+		lineageTag: e7723e60-b834-4db3-83f1-fecea2095390
+		summarizeBy: none
+		sourceColumn: AutoMinMax
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyMax
+		dataType: double
+		lineageTag: 8fe88fcf-fcdb-44e1-9622-4db49b0832ee
+		summarizeBy: none
+		sourceColumn: QtyMax
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyMin
+		dataType: double
+		lineageTag: 7ace870a-ff1d-4c6f-9a18-03920f6c2f92
+		summarizeBy: none
+		sourceColumn: QtyMin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyOH
+		dataType: double
+		lineageTag: bfaee016-992f-4aba-bd55-c8873e643ded
+		summarizeBy: none
+		sourceColumn: QtyOH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyOO
+		dataType: double
+		lineageTag: 1b0d238b-996b-4c2b-9ccb-d10e22c4eba4
+		summarizeBy: none
+		sourceColumn: QtyOO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyOT
+		dataType: double
+		lineageTag: bbaa6fae-6ba0-42cf-8689-0be9e60baabc
+		summarizeBy: none
+		sourceColumn: QtyOT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VenId
+		dataType: string
+		lineageTag: 6dcf3559-dbe2-4685-b6fa-6342a71c82d8
+		summarizeBy: none
+		sourceColumn: VenId
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderPkgMul
+		dataType: int64
+		formatString: 0
+		lineageTag: 9d1a09ea-07f7-44a0-8296-3268e1ea6cc4
+		summarizeBy: none
+		sourceColumn: OrderPkgMul
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderPkgMin
+		dataType: int64
+		formatString: 0
+		lineageTag: e8aa8e9a-74f4-4948-88a5-1c7a8be45a19
+		summarizeBy: none
+		sourceColumn: OrderPkgMin
+
+		annotation SummarizationSetBy = Automatic
+
+	column StockOrderRatio
+		dataType: double
+		lineageTag: 088eae30-13c2-4141-a4d1-c8488ff5d863
+		summarizeBy: none
+		sourceColumn: StockOrderRatio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtySupply
+		dataType: double
+		lineageTag: 12ccf1b9-7eef-476b-be2e-5f4602979eff
+		summarizeBy: none
+		sourceColumn: QtySupply
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyReserve
+		dataType: double
+		lineageTag: bc39b81e-bc6c-4414-8e0c-915b8c2ca143
+		summarizeBy: none
+		sourceColumn: QtyReserve
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AvgSalesDay
+		dataType: double
+		lineageTag: 6423a13c-a596-4540-b9a1-75677c231e8e
+		summarizeBy: none
+		sourceColumn: AvgSalesDay
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SalePkgMul
+		dataType: int64
+		formatString: 0
+		lineageTag: 5992c4ce-0162-4798-8048-e4b5a4da0745
+		summarizeBy: none
+		sourceColumn: SalePkgMul
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountFreqDays
+		dataType: int64
+		formatString: 0
+		lineageTag: d2fdc3e8-99fb-4791-82d1-d0e21e5a69bd
+		summarizeBy: none
+		sourceColumn: CountFreqDays
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateSale
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 495c493d-0313-441f-8d86-1afe42da9b80
+		summarizeBy: none
+		sourceColumn: DateSale
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateOrder
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 34b67d94-8b14-4a91-b8eb-327fe5d36bb6
+		summarizeBy: none
+		sourceColumn: DateOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateCount
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b25531a2-5911-493e-a06d-03edcf0f8b44
+		summarizeBy: none
+		sourceColumn: DateCount
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateLevel
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 29964b12-3ccf-45ea-b4bb-57b115e1f2ca
+		summarizeBy: none
+		sourceColumn: DateLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateTape
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 33d2d9b0-8c51-4163-ad78-f414e3675396
+		summarizeBy: none
+		sourceColumn: DateTape
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateCreate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4adef264-28b1-44ed-9aeb-0579d63e9c70
+		summarizeBy: none
+		sourceColumn: DateCreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0c4cf746-f7a3-4054-abf8-e81a649dc8b1
+		summarizeBy: none
+		sourceColumn: DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column NotId
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c70e0a2-6cb5-4fb2-87f4-6c7407bf0248
+		summarizeBy: none
+		sourceColumn: NotId
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxId
+		dataType: string
+		lineageTag: 5288385b-caf2-479b-ad04-a0d7e08e9c9d
+		summarizeBy: none
+		sourceColumn: TaxId
+
+		annotation SummarizationSetBy = Automatic
+
+	column MdiOrdOpt
+		dataType: string
+		lineageTag: ce38a761-13f9-4a2c-8d01-34549c83fbbb
+		summarizeBy: none
+		sourceColumn: MdiOrdOpt
+
+		annotation SummarizationSetBy = Automatic
+
+	column FullBin
+		dataType: int64
+		formatString: 0
+		lineageTag: 4fc8046a-0f9b-4274-81b4-f43759a86c6b
+		summarizeBy: none
+		sourceColumn: FullBin
+
+		annotation SummarizationSetBy = Automatic
+
+	column JobQty
+		dataType: int64
+		formatString: 0
+		lineageTag: c8120e6e-919d-4fe6-bdf4-18fcc0182eca
+		summarizeBy: none
+		sourceColumn: JobQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc1
+		dataType: string
+		lineageTag: 41c11adb-8603-465e-8bd2-afc4946d02db
+		summarizeBy: none
+		sourceColumn: PrtMisc1
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc2
+		dataType: string
+		lineageTag: 5ec90a9f-d28d-438b-8850-d4b33b6197ef
+		summarizeBy: none
+		sourceColumn: PrtMisc2
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc3
+		dataType: string
+		lineageTag: baa42a68-a2e6-412f-859c-f33bcf2d1100
+		summarizeBy: none
+		sourceColumn: PrtMisc3
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc4
+		dataType: string
+		lineageTag: bfa870e0-53d6-4239-a81d-8a57fb9aa58e
+		summarizeBy: none
+		sourceColumn: PrtMisc4
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc5
+		dataType: string
+		lineageTag: 53eec789-39d6-4d71-a175-94ffd561934f
+		summarizeBy: none
+		sourceColumn: PrtMisc5
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc6
+		dataType: string
+		lineageTag: 22a4cdab-7cd2-4467-a14f-0cb5f8f6ba25
+		summarizeBy: none
+		sourceColumn: PrtMisc6
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc7
+		dataType: string
+		lineageTag: b4b4807c-ea67-460a-b835-558d3145ab73
+		summarizeBy: none
+		sourceColumn: PrtMisc7
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc8
+		dataType: string
+		lineageTag: f7e59ec0-d511-41f4-b20b-22b57044c162
+		summarizeBy: none
+		sourceColumn: PrtMisc8
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc9
+		dataType: string
+		lineageTag: 52e4b3fe-ddac-4ba5-8221-d8d71728e552
+		summarizeBy: none
+		sourceColumn: PrtMisc9
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc10
+		dataType: string
+		lineageTag: 6b1db965-129c-4727-ae4a-30a3d6dd44fe
+		summarizeBy: none
+		sourceColumn: PrtMisc10
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc11
+		dataType: string
+		lineageTag: 5a29d79e-638b-4ad0-81a2-3558a98221a6
+		summarizeBy: none
+		sourceColumn: PrtMisc11
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc12
+		dataType: string
+		lineageTag: 4dcae7a1-0777-4e19-9d94-c9d3de104697
+		summarizeBy: none
+		sourceColumn: PrtMisc12
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc13
+		dataType: string
+		lineageTag: 7b768ea0-3c59-4deb-a543-60eb83403ff9
+		summarizeBy: none
+		sourceColumn: PrtMisc13
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc14
+		dataType: string
+		lineageTag: 577b4c02-d263-4f87-be89-64e439dc5be1
+		summarizeBy: none
+		sourceColumn: PrtMisc14
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc15
+		dataType: string
+		lineageTag: 7de1aaf2-a8e2-408a-b9c0-f8b83a4b19ca
+		summarizeBy: none
+		sourceColumn: PrtMisc15
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc16
+		dataType: string
+		lineageTag: 5f17734f-112c-4c1c-beee-39a50bf5214b
+		summarizeBy: none
+		sourceColumn: PrtMisc16
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc17
+		dataType: string
+		lineageTag: 89690a8e-f05f-4ae7-991e-8bb77d8c8209
+		summarizeBy: none
+		sourceColumn: PrtMisc17
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc18
+		dataType: string
+		lineageTag: 4bc847e6-d2b2-44a7-9d60-44b78c0d80cf
+		summarizeBy: none
+		sourceColumn: PrtMisc18
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc19
+		dataType: string
+		lineageTag: e72a7f01-c190-4f9d-8df2-cade233a9038
+		summarizeBy: none
+		sourceColumn: PrtMisc19
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc20
+		dataType: string
+		lineageTag: 37905e51-19ab-4ca9-9091-c9f6992c02dd
+		summarizeBy: none
+		sourceColumn: PrtMisc20
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Months No Receipt'
+		dataType: int64
+		formatString: 0
+		lineageTag: c6e2326b-011b-4981-8116-1fb6415a636c
+		summarizeBy: none
+		sourceColumn: Months No Receipt
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Months No Sale'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c28ef44-fa23-4094-a267-203a14e7b6dc
+		summarizeBy: none
+		sourceColumn: Months No Sale
+
+		annotation SummarizationSetBy = Automatic
+
+	column PTCLA_ClaIdDes
+		dataType: string
+		lineageTag: f80b3ef8-ee0c-4e6d-a8c2-b33975894e76
+		summarizeBy: none
+		sourceColumn: PTCLA_ClaIdDes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jan_Sales_Current_YR
+		dataType: double
+		lineageTag: 72526af1-4191-4d1e-8096-28b1e2771f8b
+		summarizeBy: none
+		sourceColumn: Jan_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Feb_Sales_Current_YR
+		dataType: double
+		lineageTag: 3fcf465e-f4fc-4fe3-ae74-12cfae9cabec
+		summarizeBy: none
+		sourceColumn: Feb_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Mar_Sales_Current_YR
+		dataType: double
+		lineageTag: 22d3995d-97d5-46e8-952e-e4396376c7ba
+		summarizeBy: none
+		sourceColumn: Mar_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Apr_Sales_Current_YR
+		dataType: double
+		lineageTag: bee01676-43dd-4985-bc69-63f90811353b
+		summarizeBy: none
+		sourceColumn: Apr_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column May_Sales_Current_YR
+		dataType: double
+		lineageTag: 97aee981-4812-475b-b176-b22183a2cce7
+		summarizeBy: none
+		sourceColumn: May_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Jun_Sales_Current_YR
+		dataType: double
+		lineageTag: 523531bd-94e5-4374-b805-700801a47576
+		summarizeBy: none
+		sourceColumn: Jun_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Jul_Sales_Current_YR
+		dataType: double
+		lineageTag: 683d07d5-0494-4c17-80a3-66e7c75e0651
+		summarizeBy: none
+		sourceColumn: Jul_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Aug_Sales_Current_YR
+		dataType: double
+		lineageTag: e8312e66-9382-475e-893c-31237cb8ef97
+		summarizeBy: none
+		sourceColumn: Aug_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Sep_Sales_Current_YR
+		dataType: double
+		lineageTag: 0ee51752-8d72-412e-b9fb-835c9ba3b056
+		summarizeBy: none
+		sourceColumn: Sep_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Oct_Sales_Current_YR
+		dataType: double
+		lineageTag: c1b64892-3770-49fa-9629-c2478d574e6d
+		summarizeBy: none
+		sourceColumn: Oct_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Nov_Sales_Current_YR
+		dataType: double
+		lineageTag: e0d63a8a-8191-43ef-b828-b164e3dabd92
+		summarizeBy: none
+		sourceColumn: Nov_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Dec_Sales_Current_YR
+		dataType: double
+		lineageTag: e9b6a702-d5ce-4c5c-bf93-bec886968283
+		summarizeBy: none
+		sourceColumn: Dec_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column YTD_Sales_Current_YR
+		dataType: double
+		lineageTag: 6ab2f0f0-9b81-42e5-b1c0-dd395791b47b
+		summarizeBy: none
+		sourceColumn: YTD_Sales_Current_YR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LTM_Sales
+		dataType: double
+		lineageTag: 16375c69-7702-48ba-a6cc-8530612e5890
+		summarizeBy: none
+		sourceColumn: LTM_Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition MT_INVENTORY = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_MT_INVENTORY = EXCEDE{[Schema="dbo",Item="MT_INVENTORY"]}[Data]
+				in
+				    dbo_MT_INVENTORY
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

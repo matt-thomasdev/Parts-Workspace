@@ -1,0 +1,13 @@
+role 'REG DIR SC'
+	modelPermission: read
+
+	tablePermission MT_ACMCA = [Division] == "South Carolina"
+
+	tablePermission MT_COCUSCRM = [EmpId] == "1122" || [EmpId] == "1242" || [EmpId] == "1207" || [EmpId] == "1418" || [EmpId] == "333" || [EmpId] == "949" || [EmpId] == "1088" || [EmpId] == "1226" || [EmpId] == "366" || [EmpId] == "414" || [EmpId] == "440"
+
+	tablePermission MT_PARTS_PURCHASES = [PTPUR_Location] == "Columbia" || [PTPUR_Location] == "Charleston" || [PTPUR_Location] == "Conway" || [PTPUR_Location] == "Florence" || [PTPUR_Location] == "Lease - Charleston" || [PTPUR_Location] == "Lease - Columbia" || [PTPUR_Location] == "Lease - Greenville" || [PTPUR_Location] == "Greer" || [PTPUR_Location] == "Greenville"
+
+	tablePermission 'Parts_Service Sales' = [Division] == "South Carolina"
+
+	annotation PBI_Id = 9bf912f312174e1b978deeb63046239c
+

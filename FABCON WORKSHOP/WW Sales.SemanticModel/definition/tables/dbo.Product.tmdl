@@ -1,0 +1,113 @@
+table 'dbo.Product'
+	lineageTag: 8954274e-2167-4500-a57d-86ee36939f79
+	sourceLineageTag: [dbo].[dbo.Product]
+
+	column Stock_Item_Key
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 17ad6cf4-305e-4c70-af38-8b51dc25bdf8
+		sourceLineageTag: Stock_Item_Key
+		summarizeBy: none
+		sourceColumn: Stock_Item_Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Stock_Item
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fba87cf1-52e5-4ff7-baf6-a11b4e09b628
+		sourceLineageTag: Stock_Item
+		summarizeBy: none
+		sourceColumn: Stock_Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 9dd1c79f-92ef-4c8d-b94d-c316d9318625
+		sourceLineageTag: Color
+		summarizeBy: none
+		sourceColumn: Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column Selling_Package
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e8f2c255-e3d2-4bdd-af31-0751bc7ea70b
+		sourceLineageTag: Selling_Package
+		summarizeBy: none
+		sourceColumn: Selling_Package
+
+		annotation SummarizationSetBy = Automatic
+
+	column Buying_Package
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3b634247-b3cb-479c-816f-8928b96eb319
+		sourceLineageTag: Buying_Package
+		summarizeBy: none
+		sourceColumn: Buying_Package
+
+		annotation SummarizationSetBy = Automatic
+
+	column Brand
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f067d3f8-7076-43c6-ae78-1213c4a470e8
+		sourceLineageTag: Brand
+		summarizeBy: none
+		sourceColumn: Brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column Size
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2f688737-fe58-4af5-af12-54dc171f94d3
+		sourceLineageTag: Size
+		summarizeBy: none
+		sourceColumn: Size
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Chiller_Stock
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b9c9401d-3246-4798-9260-94313481388d
+		sourceLineageTag: Is_Chiller_Stock
+		summarizeBy: none
+		sourceColumn: Is_Chiller_Stock
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit_Price
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 11ff1792-96a9-4eed-a636-baced0e8a706
+		sourceLineageTag: Unit_Price
+		summarizeBy: none
+		sourceColumn: Unit_Price
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit_Cost
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1ced0d7a-058a-44e6-bed1-c1c7c4ccee62
+		sourceLineageTag: Unit_Cost
+		summarizeBy: none
+		sourceColumn: Unit_Cost
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'dbo.Product' = entity
+		mode: directLake
+		source
+			entityName: dbo.Product
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,7 @@
+role 'RB PM'
+	modelPermission: read
+
+	tablePermission 'Parts_Service Sales' = [BrnId] == "203"
+
+	annotation PBI_Id = fcbf20aa32ce4cceb5487e850a5a4cf1
+

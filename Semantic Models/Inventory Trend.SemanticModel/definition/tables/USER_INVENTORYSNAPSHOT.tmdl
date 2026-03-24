@@ -1,0 +1,370 @@
+table USER_INVENTORYSNAPSHOT
+	lineageTag: 00ae1e84-a256-4277-85de-cdb475d37c9f
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: b4a35c27-3962-4072-98c0-403b4e383d70
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PrtId
+		dataType: string
+		lineageTag: e13bd78f-21a3-46c9-bb6d-37314f18faf8
+		summarizeBy: none
+		sourceColumn: PrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BrnId
+		dataType: string
+		lineageTag: 70e5d9f4-8839-4a07-a7e2-6448787f29a0
+		summarizeBy: none
+		sourceColumn: BrnId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SrcId
+		dataType: string
+		lineageTag: cc7fbecc-ffa9-436b-8299-b557d4048b11
+		summarizeBy: none
+		sourceColumn: SrcId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Typ
+		dataType: int64
+		formatString: 0
+		lineageTag: ea3565de-41ae-4b10-a0e1-9b9095263ae5
+		summarizeBy: sum
+		sourceColumn: Typ
+
+		annotation SummarizationSetBy = Automatic
+
+	column StockCtl
+		dataType: int64
+		formatString: 0
+		lineageTag: 3dade289-74f3-4541-b8fa-753ae0bc9e45
+		summarizeBy: sum
+		sourceColumn: StockCtl
+
+		annotation SummarizationSetBy = Automatic
+
+	column Des
+		dataType: string
+		lineageTag: b9db0d3b-98b2-4b27-af77-df65bc16d6a7
+		summarizeBy: none
+		sourceColumn: Des
+
+		annotation SummarizationSetBy = Automatic
+
+	column Claid
+		dataType: string
+		lineageTag: a1dacb03-dfa5-47d0-9d87-b9ff995559c6
+		summarizeBy: none
+		sourceColumn: Claid
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtCostAvg
+		dataType: double
+		lineageTag: 8dfda08f-174b-461c-b052-b89ecd62834e
+		summarizeBy: sum
+		sourceColumn: AmtCostAvg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtCostSrc
+		dataType: double
+		lineageTag: 911778c3-e347-4e54-aca4-13c96797973d
+		summarizeBy: sum
+		sourceColumn: AmtCostSrc
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtCostSrc2
+		dataType: double
+		lineageTag: 51858186-546d-44ab-82fb-9d52ae670344
+		summarizeBy: sum
+		sourceColumn: AmtCostSrc2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyOH
+		dataType: double
+		lineageTag: 82f2cfce-3a82-41ff-95eb-6e23639d56e2
+		summarizeBy: sum
+		sourceColumn: QtyOH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyOO
+		dataType: double
+		lineageTag: c4f9c025-9514-4f26-b55d-48fdaaff0ad1
+		summarizeBy: sum
+		sourceColumn: QtyOO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyOt
+		dataType: double
+		lineageTag: 1d612e33-f771-4bac-8516-c69b6a07e8bd
+		summarizeBy: sum
+		sourceColumn: QtyOt
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DateSale
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 39ac6220-955e-4226-b2ac-9ba3fa36ae45
+		summarizeBy: none
+		sourceColumn: DateSale
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateOrder
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2dfaab16-4688-464b-8378-53e93b6e7d7a
+		summarizeBy: none
+		sourceColumn: DateOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column Months_No_Sale
+		dataType: int64
+		formatString: 0
+		lineageTag: af264f1e-5130-488f-bc9e-b17ea452f756
+		summarizeBy: sum
+		sourceColumn: Months_No_Sale
+
+		annotation SummarizationSetBy = Automatic
+
+	column Months_No_Receipt
+		dataType: int64
+		formatString: 0
+		lineageTag: 2361310d-c9c2-4088-bebd-d716df41690a
+		summarizeBy: sum
+		sourceColumn: Months_No_Receipt
+
+		annotation SummarizationSetBy = Automatic
+
+	column CleanCoreCost
+		dataType: double
+		lineageTag: ede6c51b-57a9-448b-9b01-8225ba0d36a9
+		summarizeBy: sum
+		sourceColumn: CleanCoreCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CleanCoreQty
+		dataType: double
+		lineageTag: d21a3f17-17c6-44af-930c-f3a46ab122ff
+		summarizeBy: sum
+		sourceColumn: CleanCoreQty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VenPrtId
+		dataType: string
+		lineageTag: b56da997-64f7-4294-925e-255a2ba8f9cc
+		summarizeBy: none
+		sourceColumn: VenPrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Division
+		dataType: string
+		lineageTag: f7f890ac-211e-4a89-a76c-9c49961a9a37
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: d40342fd-cbfe-4c31-88d4-517b7b6b61a6
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column BinId1
+		dataType: string
+		lineageTag: 12333494-1650-4795-9433-1f9cc15325c9
+		summarizeBy: none
+		sourceColumn: BinId1
+
+		annotation SummarizationSetBy = Automatic
+
+	column BinId2
+		dataType: string
+		lineageTag: 08b8ba05-6b21-401a-a51e-51a38b16e0be
+		summarizeBy: none
+		sourceColumn: BinId2
+
+		annotation SummarizationSetBy = Automatic
+
+	column BinId3
+		dataType: string
+		lineageTag: 76ad32c4-045a-4849-ba04-609e7778e718
+		summarizeBy: none
+		sourceColumn: BinId3
+
+		annotation SummarizationSetBy = Automatic
+
+	column BinId4
+		dataType: string
+		lineageTag: ac5aef9f-857b-4a12-a3dc-36b90727d058
+		summarizeBy: none
+		sourceColumn: BinId4
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtPrice1
+		dataType: double
+		lineageTag: b136f947-9908-4f0c-9462-b68383f70055
+		summarizeBy: sum
+		sourceColumn: AmtPrice1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice2
+		dataType: double
+		lineageTag: 732d945b-754f-4320-9f03-399501ec8eef
+		summarizeBy: sum
+		sourceColumn: AmtPrice2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice3
+		dataType: double
+		lineageTag: 9f5317a7-88b0-4abf-8a08-ee1b06d87e5e
+		summarizeBy: sum
+		sourceColumn: AmtPrice3
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice4
+		dataType: double
+		lineageTag: 9620d49f-7211-43e1-aa65-01dc596bc071
+		summarizeBy: sum
+		sourceColumn: AmtPrice4
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice5
+		dataType: double
+		lineageTag: f6092220-3454-474e-aa3b-5ad358b0018e
+		summarizeBy: sum
+		sourceColumn: AmtPrice5
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice6
+		dataType: double
+		lineageTag: 57e0b40b-3e5b-4bd7-89b1-039473c0bd71
+		summarizeBy: sum
+		sourceColumn: AmtPrice6
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice7
+		dataType: double
+		lineageTag: 4026196f-1a96-4b82-9cbe-83d38a63c438
+		summarizeBy: sum
+		sourceColumn: AmtPrice7
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPrice8
+		dataType: double
+		lineageTag: c2c5ddde-f962-42a0-a201-4d786d3a562d
+		summarizeBy: sum
+		sourceColumn: AmtPrice8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AVGSalesDay
+		dataType: double
+		lineageTag: f2c76805-e6c1-43a3-9c1a-bfb246becbaa
+		summarizeBy: sum
+		sourceColumn: AVGSalesDay
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MdiOrdOpt
+		dataType: string
+		lineageTag: 5b37a940-68f7-4f76-ae0a-e64897831412
+		summarizeBy: none
+		sourceColumn: MdiOrdOpt
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Typ Des' =
+			
+			SWITCH(USER_INVENTORYSNAPSHOT[Typ],
+			466,"Part",
+			467,"Part",
+			468,"Core",
+			472,"Part")
+		lineageTag: b8a069dd-7f55-47aa-bd64-48830cde8057
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition USER_INVENTORYSNAPSHOT = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_USER_INVENTORYSNAPSHOT = EXCEDE{[Schema="dbo",Item="USER_INVENTORYSNAPSHOT"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(dbo_USER_INVENTORYSNAPSHOT,{{"Date", type date}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each Text.StartsWith([BrnId], "1") or Text.StartsWith([BrnId], "2"))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

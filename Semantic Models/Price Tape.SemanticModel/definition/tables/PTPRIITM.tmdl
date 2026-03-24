@@ -1,0 +1,131 @@
+table PTPRIITM
+	lineageTag: d35f02f4-0ded-4632-9ada-51709258c96f
+
+	column ItmId
+		dataType: int64
+		formatString: 0
+		lineageTag: 1ba3475e-c96e-498a-a674-ca6af8afd614
+		summarizeBy: count
+		sourceColumn: ItmId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PriId
+		dataType: string
+		lineageTag: 404a8682-a684-49cb-b110-3c48cd780e97
+		summarizeBy: none
+		sourceColumn: PriId
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmpId
+		dataType: string
+		lineageTag: 9104040b-7c21-4cd2-845b-395032822e23
+		summarizeBy: none
+		sourceColumn: EmpId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BrnId
+		dataType: string
+		lineageTag: 45a5fc7a-0300-4b76-940d-2341adb50db2
+		summarizeBy: none
+		sourceColumn: BrnId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SrcId
+		dataType: string
+		lineageTag: 9c50825a-8ac3-4267-964a-24fccc319ac1
+		summarizeBy: none
+		sourceColumn: SrcId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClaId
+		dataType: string
+		lineageTag: b8e94771-bff9-4c36-a697-dbeac3523d6d
+		summarizeBy: none
+		sourceColumn: ClaId
+
+		annotation SummarizationSetBy = Automatic
+
+	column VenPrtId
+		dataType: string
+		lineageTag: f4c16eae-374e-48c7-a179-392c301dd247
+		summarizeBy: none
+		sourceColumn: VenPrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormulaPt
+		dataType: string
+		lineageTag: 4c776536-a02a-40a7-ad11-8b7e4ca0d33d
+		summarizeBy: none
+		sourceColumn: FormulaPt
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormulaSv
+		dataType: string
+		lineageTag: f6f350c9-96fe-412b-b9bb-e3333a39d241
+		summarizeBy: none
+		sourceColumn: FormulaSv
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateStart
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1ad1ea02-25de-4f4d-92eb-fe0533c789dd
+		summarizeBy: none
+		sourceColumn: DateStart
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateEnd
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7aedf191-5fd9-4238-9fda-ce3b53065978
+		summarizeBy: none
+		sourceColumn: DateEnd
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateCreate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e667198e-e74d-4a02-95c9-431e8196b255
+		summarizeBy: none
+		sourceColumn: DateCreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 53814796-f039-4e00-a923-b9fbad7863e6
+		summarizeBy: none
+		sourceColumn: DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurExch
+		dataType: int64
+		formatString: 0
+		lineageTag: 4fe5d98f-bb0c-460a-80d5-a0d431987fed
+		summarizeBy: sum
+		sourceColumn: CurExch
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PTPRIITM = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_PTPRIITM = EXCEDE{[Schema="dbo",Item="PTPRIITM"]}[Data]
+				in
+				    dbo_PTPRIITM
+

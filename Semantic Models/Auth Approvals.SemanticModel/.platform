@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Auth Approvals"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6df0ae4a-6ab5-b787-434b-03b682788086"
+  }
+}

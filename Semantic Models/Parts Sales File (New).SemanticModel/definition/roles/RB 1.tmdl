@@ -1,0 +1,13 @@
+role 'RB 1'
+	modelPermission: read
+
+	tablePermission MT_ACMCA = [BrnId] == "203"
+
+	tablePermission MT_COCUSCRM = [EmpId] == "1"
+
+	tablePermission MT_PARTS_PURCHASES = [PTPUR_Location] == "West Palm"
+
+	tablePermission 'Parts_Service Sales' = [BrnId] == "203"
+
+	annotation PBI_Id = c27a5984bf2e440497768990f15ab235
+

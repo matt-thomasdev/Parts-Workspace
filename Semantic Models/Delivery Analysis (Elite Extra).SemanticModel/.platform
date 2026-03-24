@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Delivery Analysis (Elite Extra)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4c5b97c7-9e43-8eea-408c-2391d1f62006"
+  }
+}

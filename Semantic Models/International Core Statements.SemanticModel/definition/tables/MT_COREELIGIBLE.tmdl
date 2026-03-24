@@ -1,0 +1,150 @@
+table MT_COREELIGIBLE
+	lineageTag: a09f05d5-a0fd-46e6-9abd-63b73447748b
+
+	column StatementDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 5f674a1b-0b12-4aef-a14f-a64a131b04e5
+		summarizeBy: none
+		sourceColumn: StatementDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column InvoiceDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 519c30e4-cf36-49e3-95d8-8337e09ce37d
+		summarizeBy: none
+		sourceColumn: InvoiceDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CoreId
+		dataType: string
+		lineageTag: c09cf2ec-f041-4d1b-89a7-76fbcedaae78
+		summarizeBy: none
+		sourceColumn: CoreId
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvoiceNumber
+		dataType: string
+		lineageTag: 2d9fe76c-5f1e-4231-be8a-01bd2cf4460f
+		summarizeBy: none
+		sourceColumn: InvoiceNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartNumber
+		dataType: string
+		lineageTag: efbe18f6-ded7-4a39-b858-9213a43441ea
+		summarizeBy: none
+		sourceColumn: PartNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartDescription
+		dataType: string
+		lineageTag: d567c598-8def-4df1-b5fb-b420be53e28c
+		summarizeBy: none
+		sourceColumn: PartDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column DealerOrdNo
+		dataType: string
+		lineageTag: ecb328e9-0e59-472b-b9dc-6c41a354853f
+		summarizeBy: none
+		sourceColumn: DealerOrdNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvQty
+		dataType: int64
+		formatString: 0
+		lineageTag: a76b6191-922e-40f6-b6cb-0ee7a8bf7cc3
+		summarizeBy: sum
+		sourceColumn: InvQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column RetQty
+		dataType: int64
+		formatString: 0
+		lineageTag: c2ccf055-6390-4044-b1b2-9999ef422045
+		summarizeBy: sum
+		sourceColumn: RetQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyExp
+		dataType: int64
+		formatString: 0
+		lineageTag: 643034cf-ad13-4b1d-adbe-0176bf081639
+		summarizeBy: sum
+		sourceColumn: QtyExp
+
+		annotation SummarizationSetBy = Automatic
+
+	column OpenQty
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ac5f4ae-01ae-4584-a67e-bbe238b06bc5
+		summarizeBy: sum
+		sourceColumn: OpenQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysElig
+		dataType: int64
+		formatString: 0
+		lineageTag: eb7bf346-21ad-4a0e-9a93-3a74c3340897
+		summarizeBy: sum
+		sourceColumn: DaysElig
+
+		annotation SummarizationSetBy = Automatic
+
+	column DealerNetCoreValue
+		dataType: double
+		lineageTag: 40bfff4c-f5d9-41ce-b5d8-ac8711eefa45
+		summarizeBy: sum
+		sourceColumn: DealerNetCoreValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ExtendedAmount
+		dataType: double
+		lineageTag: ae180b18-9dab-4546-995c-77bc31fb6b31
+		summarizeBy: sum
+		sourceColumn: ExtendedAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Division
+		dataType: string
+		lineageTag: 15ea4486-7e13-4d57-9419-cc4b41a34079
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MT_COREELIGIBLE = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_MT_COREELIGIBLE = EXCEDE{[Schema="dbo",Item="MT_COREELIGIBLE"]}[Data]
+				in
+				    dbo_MT_COREELIGIBLE
+
+	annotation PBI_ResultType = Table
+

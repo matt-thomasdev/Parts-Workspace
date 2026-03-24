@@ -1,0 +1,75 @@
+table dim_COCUS_CusId
+	lineageTag: 1dc99384-c069-4afd-a9b1-5ae9d8c3e924
+
+	column CusId
+		dataType: string
+		lineageTag: f2f1ff33-f397-4161-bc81-abdea2b17d68
+		summarizeBy: none
+		sourceColumn: CusId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 8309dc0d-6a08-43a5-a02d-f158f1d960b1
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column LrTrmId
+		dataType: string
+		lineageTag: 3193b60c-64b7-4f3a-a6ef-dfc32c36c631
+		summarizeBy: none
+		sourceColumn: LrTrmId
+
+		annotation SummarizationSetBy = Automatic
+
+	column LrTaxId
+		dataType: string
+		lineageTag: 8bd68ac1-9753-4c39-b579-433696fa7527
+		summarizeBy: none
+		sourceColumn: LrTaxId
+
+		annotation SummarizationSetBy = Automatic
+
+	column LrConTypId
+		dataType: string
+		lineageTag: 8fbee3c7-47ab-4b34-8aa5-e745b79949a6
+		summarizeBy: none
+		sourceColumn: LrConTypId
+
+		annotation SummarizationSetBy = Automatic
+
+	column LrCombinedBills
+		dataType: string
+		lineageTag: c975fb69-33b0-4c30-8973-515376b79de1
+		summarizeBy: none
+		sourceColumn: LrCombinedBills
+
+		annotation SummarizationSetBy = Automatic
+
+	column USDOTNbr
+		dataType: string
+		lineageTag: 7f10564b-cca2-40b3-9128-8b92519f613e
+		summarizeBy: none
+		sourceColumn: USDOTNbr
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_COCUS_CusId = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("10.250.50.4"),
+				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
+				    dbo_COCUS = EXCEDE{[Schema="dbo",Item="COCUS"]}[Data],
+				    #"Capitalized Each Word" = Table.TransformColumns(dbo_COCUS,{{"Name", Text.Proper, type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Capitalized Each Word",{"NameFirst", "NameMiddle", "NameLast", "NameNick", "NameSpouse", "Addr2", "Addr1", "City", "County", "State", "Post", "Country", "BillCusId", "BillAddr1", "BillAddr2", "BillCity", "BillCounty", "BillState", "BillPost", "BillCountry", "PhoneHome", "PhoneWork", "PhoneOther", "PhoneFax", "Contact", "DoNotCallPhoneHome", "DoNotCallPhoneWork", "DoNotCallPhoneOther", "DateDoNotCall", "EmailHome", "EmailWork", "EmailOther", "Epassword", "Typ", "TrmId", "CardNbr", "ShpId", "PtTaxId", "SvTaxId", "VhTaxId", "EmpIdSpn", "Ssn", "SsnSpouse", "DateBirth", "DateBirthSpouse", "DsbTypId", "MemTypId", "RecTypId", "PtSlsTypId", "SvSlsTypId", "VhSlsTypId", "FlSlsTypId", "PriIdOride", "PriIdBase", "AllowSpecialPri", "PurReqd", "PurNbr", "CoreInvoiceReqd", "Inactive", "EmpId", "DateCreate", "DateUpdate", "DateInvoice", "AmtInvoice", "DatePayment", "AmtPayment", "DaysPaymentAvg", "CutoffByCrLimit", "CutoffByAged", "CutoffAgedPeriod", "AmtCrLimit", "AmtCrLimitInvoice", "StatementReqd", "DateStatement", "AllowFinanceChg", "AmtAged0", "AmtAged1to30", "AmtAged31to60", "AmtAged61to90", "AmtAgedOver90", "AmtBalOpen", "AmtBalAccount", "NotId", "Company", "CusMisc1", "CusMisc2", "CusMisc3", "CusMisc4", "CusMisc5", "CusMisc6", "CusMisc7", "CusMisc8", "CusMisc9", "CusMisc10", "CusMisc11", "CusMisc12", "CusMisc13", "CusMisc14", "CusMisc15", "CusMisc16", "CusMisc17", "CusMisc18", "CusMisc19", "CusMisc20", "TS", "ACDSBTYP", "ACMEMTYP", "ACRECTYP", "COAPT", "COAST", "COCUS(BillCusId)", "COCUS(CusId)", "COCUSAPV", "COCUSCON", "COCUSCRED", "COCUSCRM", "COCUSDRV", "COCUSINS", "COCUSSLS", "COEMP(EmpId)", "COEMP(EmpIdSpn)", "CONOT", "COSHP", "COSMDR", "COTAX(PtTaxId)", "COTAX(SvTaxId)", "COTAX(VhTaxId)", "FLSLS(CusId)", "FLSLS(CusId) 2", "FLSLSTYP", "LRBIL", "LRCON(CusId)", "LRCON(CusId) 2", "PTCORCUS", "PTPRI(PriIdBase)", "PTPRI(PriIdOride)", "PTSLS(CusId)", "PTSLS(CusId) 2", "PTSLSTYP", "SVCTL", "SVSLS(CusId)", "SVSLS(CusId) 2", "SVSLSFLW", "SVSLSTYP", "VHLEN", "VHMLS(CusId)", "VHMLS(CusId) 2", "VHMLSVIN", "VHSLS", "VHSLSFLW", "VHSLSTYP", "VHVIN", "VHVINAC"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

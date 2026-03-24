@@ -1,0 +1,12 @@
+relationship ae4ce02c-cefa-3424-b88e-c0a632a08cc0
+	fromColumn: 'eBay Sales'.'Sale Date'
+	toColumn: Date.Date
+
+relationship 83471417-522b-730e-ba0e-30661c2018fd
+	fromColumn: 'Next Part Sales'.Date
+	toColumn: Date.Date
+
+relationship 4b5076e6-215e-24d8-db8f-75cab27d99c1
+	fromColumn: Repairlink.ordercompletedate
+	toColumn: Date.Date
+

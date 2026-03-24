@@ -1,0 +1,4 @@
+relationship 86373fba-23cd-1207-0956-517d0cb18ebb
+	fromColumn: 'Elite Extra'.'Delivery Date'
+	toColumn: Date.Date
+
