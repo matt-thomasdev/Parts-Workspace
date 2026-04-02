@@ -1,13 +1,13 @@
-role 'FTM PM'
+role 'FTM 479'
 	modelPermission: read
 
 	tablePermission MT_ACMCA = [BrnId] == "205"
 
-	tablePermission MT_COCUSCRM = [EmpId] == "14" || [EmpId] == "387" || [EmpId] == "479"
+	tablePermission MT_COCUSCRM = [EmpId] == "479"
 
 	tablePermission MT_PARTS_PURCHASES = [PTPUR_Location] == "Fort Myers"
 
 	tablePermission 'Parts_Service Sales' = [BrnId] == "205"
 
-	annotation PBI_Id = af5f89ab68c94779a0e5fee840a13d9d
+	annotation PBI_Id = ac6783b892074bdfa2395c0372313d64
 
