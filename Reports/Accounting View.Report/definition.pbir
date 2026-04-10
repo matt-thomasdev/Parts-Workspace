@@ -1,0 +1,9 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definitionProperties/2.0.0/schema.json",
+  "version": "4.0",
+  "datasetReference": {
+    "byConnection": {
+      "connectionString": "Data Source=\"powerbi://api.powerbi.com/v1.0/myorg/BM_USA_Accounting WorkSpace\";initial catalog=\"Accounting File\";integrated security=ClaimsToken;semanticmodelid=7a7719eb-6392-43ac-ad5c-70c7e4096523"
+    }
+  }
+}
