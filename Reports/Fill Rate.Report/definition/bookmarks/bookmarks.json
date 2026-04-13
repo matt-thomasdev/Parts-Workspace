@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "2d298274790ca16de706",
+      "displayName": "Inventory",
+      "children": [
+        "0670d84dfbf717468e7e",
+        "065ba6e4901d807340ae"
+      ]
+    },
+    {
+      "name": "29c5d923d6737d869a54",
+      "displayName": "OPS Page",
+      "children": [
+        "c4c9cd3a64cee26152c5",
+        "5524c1017ac819d2195a"
+      ]
+    },
+    {
+      "name": "4697d3551e9450386b29",
+      "displayName": "Fill Rate",
+      "children": [
+        "631a7302834dda500939",
+        "96168bce924e7ee709ec"
+      ]
+    }
+  ]
+}
