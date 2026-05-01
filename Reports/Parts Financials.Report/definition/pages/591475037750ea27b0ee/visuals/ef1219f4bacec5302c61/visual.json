@@ -1,0 +1,1611 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "ef1219f4bacec5302c61",
+  "position": {
+    "x": 7.4826789838337184,
+    "y": 173.34872979214782,
+    "z": 5007,
+    "height": 906.65127020785224,
+    "width": 1913.0715935334874,
+    "tabOrder": 5007
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MT_ACJEITM"
+                    }
+                  },
+                  "Property": "JeId"
+                }
+              },
+              "queryRef": "MT_ACJEITM.JeId",
+              "nativeQueryRef": "Journal Id",
+              "displayName": "Journal Id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ACMCA"
+                    }
+                  },
+                  "Property": "McaId"
+                }
+              },
+              "queryRef": "ACMCA.McaId",
+              "nativeQueryRef": "Account #",
+              "displayName": "Account #"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MT_ACJEITM"
+                    }
+                  },
+                  "Property": "ACJE_Ref"
+                }
+              },
+              "queryRef": "MT_ACJEITM.ACJE_Ref",
+              "nativeQueryRef": "Reference #",
+              "displayName": "Reference #"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MT_ACJEITM"
+                    }
+                  },
+                  "Property": "ACMEM_Ref"
+                }
+              },
+              "queryRef": "MT_ACJEITM.ACMEM_Ref",
+              "nativeQueryRef": "Reference # -Memos",
+              "displayName": "Reference # -Memos"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MT_ACJEITM"
+                    }
+                  },
+                  "Property": "Xref"
+                }
+              },
+              "queryRef": "MT_ACJEITM.Xref",
+              "nativeQueryRef": "Xref"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ACMCA"
+                    }
+                  },
+                  "Property": "Des"
+                }
+              },
+              "queryRef": "ACMCA.Des",
+              "nativeQueryRef": "Account Description",
+              "displayName": "Account Description"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MT_ACJEITM"
+                    }
+                  },
+                  "Property": "ACJE_OriginDes"
+                }
+              },
+              "queryRef": "MT_ACJEITM.ACJE_OriginDes",
+              "nativeQueryRef": "Origin",
+              "displayName": "Origin"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MT_ACJEITM"
+                    }
+                  },
+                  "Property": "AmtCr"
+                }
+              },
+              "queryRef": "Sum(MT_ACJEITM.AmtCr)",
+              "nativeQueryRef": "Amount Credit",
+              "displayName": "Amount Credit"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MT_ACJEITM"
+                    }
+                  },
+                  "Property": "AmtDb"
+                }
+              },
+              "queryRef": "Sum(MT_ACJEITM.AmtDb)",
+              "nativeQueryRef": "Amount Debit",
+              "displayName": "Amount Debit"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MT_ACJEITM"
+                    }
+                  },
+                  "Property": "Ctrl"
+                }
+              },
+              "queryRef": "MT_ACJEITM.Ctrl",
+              "nativeQueryRef": "Control #",
+              "displayName": "Control #"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MT_ACJEITM"
+                    }
+                  },
+                  "Property": "Des"
+                }
+              },
+              "queryRef": "MT_ACJEITM.Des",
+              "nativeQueryRef": "Description - Notes",
+              "displayName": "Description - Notes"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MT_ACJEITM"
+                    }
+                  },
+                  "Property": "ACJE_EmpId"
+                }
+              },
+              "queryRef": "MT_ACJEITM.ACJE_EmpId",
+              "nativeQueryRef": "Employee Id",
+              "displayName": "Employee Id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MT_ACJEITM"
+                    }
+                  },
+                  "Property": "ACJE_DatePost  (DateOnly)"
+                }
+              },
+              "queryRef": "MT_ACJEITM.ACJE_DatePost  (DateOnly)",
+              "nativeQueryRef": "Date Post",
+              "displayName": "Date Post"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "116.5294545322139D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Actual New ACMCA"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "112.15543010959729D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.AmtBud New"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "106.85150042258786D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.YTD Actual ACMCA"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "107.06033065785378D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.YTD Budget"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "99.9607756726949D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.PY Actual"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "91.30393459577282D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.YTD PY Actual"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "100.99999520487103D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "total": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MT_ACJEITM"
+                        }
+                      },
+                      "Property": "Age Bucket Warranty"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "102.81817658713203D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Warranty"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'1-29 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "99.0909090909091D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Warranty"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'30-60 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "99.54545454545455D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Warranty"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'61-90 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "100.27271803511024D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Warranty"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'91-120 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "123.18181818181819D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Warranty"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Over 120 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "100D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Xref"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'1-29 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "139D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Xref"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'30-60 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "118D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Xref"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'61-90 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "128D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Xref"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'91-120 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "122D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "MT_ACJEITM"
+                          }
+                        },
+                        "Property": "Age Bucket Xref"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Over 120 days'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "148D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "total": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MT_ACJEITM"
+                        }
+                      },
+                      "Property": "Age Bucket Xref"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "121.45948690886597D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MT_ACJEITM.Ctrl"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "294.61279112991787D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MT_ACJEITM.Des"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "235.77383117135676D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ACMCA.Des"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "133.81444096221333D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MT_ACJEITM.Xref"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "122.63708313939222D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MT_ACJEITM.ACJE_Ref"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "134.31522979080324D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ACMCA.McaId"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "85.49638254686089D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MT_ACJEITM.JeId"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "104.19867165144825D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(MT_ACJEITM.AmtCr)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "102.67814772538836D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(MT_ACJEITM.AmtDb)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "99.03443800868206D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MT_ACJEITM.ACJE_DatePost  (DateOnly)"
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#666666'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E66C37'"
+                    }
+                  }
+                }
+              }
+            },
+            "gridHorizontal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MT_ACJEITM.JeId"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ACMCA.McaId"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MT_ACJEITM.ACJE_Ref"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MT_ACJEITM.Xref"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ACMCA.Des"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MT_ACJEITM.ACJE_OriginDes"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(MT_ACJEITM.AmtCr)"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(MT_ACJEITM.AmtDb)"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MT_ACJEITM.Ctrl"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MT_ACJEITM.Des"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MT_ACJEITM.ACJE_EmpId"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MT_ACJEITM.ACJE_DatePost  (DateOnly)"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Sparse'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "section": {
+              "expr": {
+                "Literal": {
+                  "Value": "'43b836019090e5c734c3'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "62f49083a747e8407b2d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MT_ACJEITM"
+              }
+            },
+            "Property": "JeId"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b537e82a2a7a59cb9688",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ACMCA"
+              }
+            },
+            "Property": "McaId"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "7ec4c7b12556c0956a2a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MT_ACJEITM"
+              }
+            },
+            "Property": "ACJE_Ref"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3d247b46c57149d32c30",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MT_ACJEITM"
+              }
+            },
+            "Property": "Xref"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "7001456ea7ba93775018",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ACMCA"
+              }
+            },
+            "Property": "Des"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d2640f550cba086ed5ca",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MT_ACJEITM"
+              }
+            },
+            "Property": "ACJE_OriginDes"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c57f92675387700609a4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MT_ACJEITM"
+              }
+            },
+            "Property": "AmtCr"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "289eeb8ebb4a7531cea4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MT_ACJEITM"
+              }
+            },
+            "Property": "Ctrl"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "541572f0a49486704cc0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MT_ACJEITM"
+              }
+            },
+            "Property": "Des"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "4dbe0bf0778ae389715c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MT_ACJEITM"
+              }
+            },
+            "Property": "ACJE_EmpId"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "81e70770096a10730267",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MT_ACJEITM"
+              }
+            },
+            "Property": "ACJE_DatePost  (DateOnly)"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "53b99433934d22674020",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MT_ACJEITM"
+              }
+            },
+            "Property": "AmtDb"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "419faf5198c5c0e57a5d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MT_ACJEITM"
+              }
+            },
+            "Property": "ACMEM_Ref"
+          }
+        },
+        "type": "Categorical"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}

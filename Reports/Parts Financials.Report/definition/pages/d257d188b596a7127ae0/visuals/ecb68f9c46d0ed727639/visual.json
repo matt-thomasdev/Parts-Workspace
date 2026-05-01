@@ -1,0 +1,632 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "ecb68f9c46d0ed727639",
+  "position": {
+    "x": 20,
+    "y": 208,
+    "z": 11000,
+    "height": 823,
+    "width": 1632,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "acterysReporting",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ACMCA"
+                    }
+                  },
+                  "Property": "MiniCategory"
+                }
+              },
+              "queryRef": "ACMCA.MiniCategory",
+              "nativeQueryRef": "MiniCategory",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ACMCA"
+                    }
+                  },
+                  "Property": "Des"
+                }
+              },
+              "queryRef": "ACMCA.Des",
+              "nativeQueryRef": "Des1",
+              "active": false
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ACMCA"
+                    }
+                  },
+                  "Property": "McaId"
+                }
+              },
+              "queryRef": "ACMCA.McaId",
+              "nativeQueryRef": "McaId1",
+              "active": false
+            }
+          ]
+        },
+        "Order": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ACMCA"
+                        }
+                      },
+                      "Property": "McaMisc2"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Sum(ACMCA.McaMisc2)",
+              "nativeQueryRef": "Min of McaMisc2"
+            }
+          ]
+        },
+        "Measure": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measure"
+                    }
+                  },
+                  "Property": "AmtBud P&L"
+                }
+              },
+              "queryRef": "Measure.AmtBud P&L",
+              "nativeQueryRef": "Budget",
+              "displayName": "Budget"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measure"
+                    }
+                  },
+                  "Property": "PY Combined P&L"
+                }
+              },
+              "queryRef": "Measure.PY Combined P&L",
+              "nativeQueryRef": "Actual CY",
+              "displayName": "Actual CY",
+              "format": "#,0;(#,0)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measure"
+                    }
+                  },
+                  "Property": "Actual P&L 2Y Ago"
+                }
+              },
+              "queryRef": "Measure.Actual P&L 2Y Ago",
+              "nativeQueryRef": "Actual PY",
+              "displayName": "Actual PY",
+              "format": "#,0;(#,0)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "ACMCA"
+                      }
+                    },
+                    "Property": "McaMisc2"
+                  }
+                },
+                "Function": 3
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "saveGroup": [
+        {
+          "properties": {
+            "rowCalc": {
+              "expr": {
+                "Literal": {
+                  "Value": "'[{\"headerValue\":\"Total Sales\",\"uid\":\"Used Truck Idealease Sales\",\"secondUid\":\"\",\"formula\":\"[Daily Rental Sales]+[Dedicated Maintenance Sales]+[Equity Lease Sales]+[Full Service Lease Sales]+[Idealease Shop Retail Sales]+[Used Truck Idealease Sales] +[Body Shop Sales]+[New Department Sales]+[Parts Sales]+[Service Sales]+[Used Department Sales]+[Ottawa Daily Rental Sales]+[Ottawa Export Truck Sales]+[Ottawa New Truck Sales]+[Ottawa Used Truck Sales]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":3,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":1,\"optionalCalcId\":\"\"},{\"headerValue\":\"Operating Profit\",\"uid\":\"Branch Allocation\",\"secondUid\":\"\",\"formula\":\"[Total Margin + Other Income]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":17,\"isRow\":true,\"isCell\":false,\"isAfter\":false,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":8,\"optionalCalcId\":\"\"},{\"headerValue\":\"Operating Profit%\",\"uid\":\"Operating Profit\",\"secondUid\":\"\",\"formula\":\"[Operating Profit]/[Total Sales]\",\"style\":\"Style 3\",\"format\":\"0.00 %\",\"stepIndex\":18,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":9,\"optionalCalcId\":\"\"},{\"headerValue\":\"Operating Profit%\",\"uid\":\"Operating Profit\",\"secondUid\":\"\",\"formula\":\"[Operating Profit]/[Total Sales]\",\"style\":\"Style 3\",\"format\":\"0.00 %\",\"stepIndex\":31,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":9,\"optionalCalcId\":\"\"},{\"headerValue\":\"Body Shop Margin\",\"uid\":\"Used Truck Idealease Cost\",\"secondUid\":\"\",\"formula\":\"[Body Shop Sales]-[Body Shop Cost]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":17,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":2,\"optionalCalcId\":\"\"},{\"headerValue\":\"Margin%\",\"uid\":\"Body Shop Margin\",\"secondUid\":\"\",\"formula\":\"[Body Shop Margin]/[Body Shop Sales]\",\"style\":\"Style 3\",\"format\":\"0.00 %\",\"stepIndex\":18,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":2,\"optionalCalcId\":\"\"},{\"headerValue\":\"Lease Margin\",\"uid\":\"Margin%\",\"secondUid\":\"\",\"formula\":\"[Daily Rental Sales]+[Dedicated Maintenance Sales] + [Equity Lease Sales] + [Full Service Lease Sales] + [Idealease Shop Retail Sales] + [Used Truck Idealease Sales]-[Daily Rental Cost]-[Dedicated Maintenance Cost]-[Equity Lease Cost]-[Full Service Lease Cost]-[Idealease Shop Retail Cost]-[Used Truck Idealease Cost]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":19,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":2,\"optionalCalcId\":\"\"},{\"headerValue\":\"Margin%\",\"uid\":\"Lease Margin\",\"secondUid\":\"\",\"formula\":\"[Lease Margin]/([Daily Rental Sales] + [Daily Rental Sales] + [Dedicated Maintenance Sales] + [Equity Lease Sales] + [Full Service Lease Sales]+[Idealease Shop Retail Sales]+[Used Truck Idealease Sales])\",\"style\":\"Style 3\",\"format\":\"0.00 %\",\"stepIndex\":20,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":2,\"optionalCalcId\":\"\"},{\"headerValue\":\"New Department Margin\",\"uid\":\"Margin%\",\"secondUid\":\"\",\"formula\":\"[New Department Sales]-[New Department Cost]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":21,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":2,\"optionalCalcId\":\"\"},{\"headerValue\":\"Margin%\",\"uid\":\"New Department Margin\",\"secondUid\":\"\",\"formula\":\"[New Department Margin]/[New Department Sales]\",\"style\":\"Style 3\",\"format\":\"0.00 %\",\"stepIndex\":22,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":2,\"optionalCalcId\":\"\"},{\"headerValue\":\"Parts Margin\",\"uid\":\"Margin%\",\"secondUid\":\"\",\"formula\":\"[Parts Sales]-[Parts Cost]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":23,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":2,\"optionalCalcId\":\"\"},{\"headerValue\":\"Margin%\",\"uid\":\"Parts Margin\",\"secondUid\":\"\",\"formula\":\"[Parts Margin]/[Parts Sales]\",\"style\":\"Style 3\",\"format\":\"0.00 %\",\"stepIndex\":24,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":2,\"optionalCalcId\":\"\"},{\"headerValue\":\"Service Margin\",\"uid\":\"Margin%\",\"secondUid\":\"\",\"formula\":\"[Service Sales]-[Service Cost]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":25,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":2,\"optionalCalcId\":\"\"},{\"headerValue\":\"Margin%\",\"uid\":\"Service Margin\",\"secondUid\":\"\",\"formula\":\"[Service Margin]/[Service Sales]\",\"style\":\"Style 3\",\"format\":\"0.00 %\",\"stepIndex\":26,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":2,\"optionalCalcId\":\"\"},{\"headerValue\":\"Used Department Margin\",\"uid\":\"Margin%\",\"secondUid\":\"\",\"formula\":\"[Used Department Sales]-[Used Department Cost]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":27,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":2,\"optionalCalcId\":\"\"},{\"headerValue\":\"Margin%\",\"uid\":\"Used Department Margin\",\"secondUid\":\"\",\"formula\":\"[Used Department Margin]/[Used Department Sales]\",\"style\":\"Style 3\",\"format\":\"0.00 %\",\"stepIndex\":28,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":2,\"optionalCalcId\":\"\"},{\"headerValue\":\"Ottawa Margin\",\"uid\":\"Margin%\",\"secondUid\":\"\",\"formula\":\"[Ottawa Daily Rental Sales]+[Ottawa Export Truck Sales]+[Ottawa New Truck Sales]+[Ottawa Used Truck Sales]-[Ottawa Daily Rental Cost]-[Ottawa New Truck Cost]-[Ottawa New Truck Export Cost]-[Ottawa Used Truck Cost]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":32,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":2,\"optionalCalcId\":\"\"},{\"headerValue\":\"Margin%\",\"uid\":\"Ottawa Margin\",\"secondUid\":\"\",\"formula\":\"[Ottawa Margin]/([Ottawa Daily Rental Sales]+[Ottawa Export Truck Sales]+[Ottawa New Truck Sales]+[Ottawa Used Truck Sales])\",\"style\":\"Style 3\",\"format\":\"0.00 %\",\"stepIndex\":33,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":2,\"optionalCalcId\":\"\"},{\"headerValue\":\"Total Margin\",\"uid\":\"Margin%\",\"secondUid\":\"\",\"formula\":\"[Body Shop Margin]+[Lease Margin]+[New Department Margin] + [Parts Margin] + [Service Margin] + [Used Department Margin]+[Ottawa Margin]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":29,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":2,\"optionalCalcId\":\"\"},{\"headerValue\":\"Total Margin%\",\"uid\":\"Total Margin\",\"secondUid\":\"\",\"formula\":\"[Total Margin]/[Total Sales]\",\"style\":\"Style 3\",\"format\":\"0.00 %\",\"stepIndex\":30,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":2,\"optionalCalcId\":\"\"},{\"headerValue\":\"Total Other Income\",\"uid\":\"Other Income - Write Down Used\",\"secondUid\":\"\",\"formula\":\"[Other Income]+[Other Income - A] + [Other Income - B] + [Other Income - Body Shop] + [Other Income - Credit Card/Cash] + [Other Income - Finance] + [Other Income - IDL] + [Other Income - New] + [Other Income - Parts] + [Other Income - Service] + [Other Income - Used] + [Other Income - Write Down Used]+[Other Income - Ottawa]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":30,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":3,\"optionalCalcId\":\"\"},{\"headerValue\":\"Total Margin + Other Income\",\"uid\":\"Other Income - Write Down Used\",\"secondUid\":\"\",\"formula\":\"[Total Other Income]+[Total Margin]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":16,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":3,\"optionalCalcId\":\"\"},{\"headerValue\":\"GM + OI%\",\"uid\":\"Total Margin + Other Income\",\"secondUid\":\"\",\"formula\":\"[Total Margin + Other Income] /[Total Sales]\",\"style\":\"Style 3\",\"format\":\"0.00 %\",\"stepIndex\":29,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":3,\"optionalCalcId\":\"\"},{\"headerValue\":\"Total Direct Expenses\",\"uid\":\"Branch Allocation - FL\",\"secondUid\":\"\",\"formula\":\"[Variable Expenses] + [Personnel Expenses] + [Semi-Fixed Expenses] + [Expense] + [Fixed Expenses] + [Division Management Expense] + [Branch Expense]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":25,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":10,\"optionalCalcId\":\"\"},{\"headerValue\":\"Expenses%\",\"uid\":\"Total Direct Expenses\",\"secondUid\":\"\",\"formula\":\"[Total Direct Expenses]/[Total Sales]\",\"style\":\"Style 3\",\"format\":\"0.00 %\",\"stepIndex\":26,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":10,\"optionalCalcId\":\"\"},{\"headerValue\":\"Operating Profit\",\"uid\":\"Expenses%\",\"secondUid\":\"\",\"formula\":\"[Total Margin + Other Income]-[Total Direct Expenses]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":27,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":10,\"optionalCalcId\":\"\"},{\"headerValue\":\"EBIT\",\"uid\":\"Bepensa Allocation\",\"secondUid\":\"\",\"formula\":\"[Operating Profit]-[Branch Allocation]-[Corporate Allocation]-[Bepensa Allocation]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":28,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":14,\"optionalCalcId\":\"\"},{\"headerValue\":\"EBIT%\",\"uid\":\"EBIT\",\"secondUid\":\"\",\"formula\":\"[EBIT]/[Total Sales]\",\"style\":\"Style 3\",\"format\":\"0.00 %\",\"stepIndex\":29,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":14,\"optionalCalcId\":\"\"},{\"headerValue\":\"PBT\",\"uid\":\"Interest Expense\",\"secondUid\":\"\",\"formula\":\"[EBIT]-[Interest Expense]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":30,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":15,\"optionalCalcId\":\"\"},{\"headerValue\":\"PBT%\",\"uid\":\"PBT\",\"secondUid\":\"\",\"formula\":\"[PBT]/[Total Sales]\",\"style\":\"Style 3\",\"format\":\"0.00 %\",\"stepIndex\":31,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":15,\"optionalCalcId\":\"\"},{\"headerValue\":\"Net Profit\",\"uid\":\"Taxes\",\"secondUid\":\"\",\"formula\":\"[PBT]-[Taxes]\",\"style\":\"Style 2\",\"format\":\"Measure\",\"stepIndex\":32,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":16,\"optionalCalcId\":\"\"},{\"headerValue\":\"EBT%\",\"uid\":\"Net Profit\",\"secondUid\":\"\",\"formula\":\"[Net Profit]/[Total Sales]\",\"style\":\"Style 3\",\"format\":\"0.00 %\",\"stepIndex\":33,\"isRow\":true,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":16,\"optionalCalcId\":\"\"},{\"headerValue\":\"Variance\",\"uid\":\"Actual CY\",\"secondUid\":\"\",\"formula\":\"[Budget]-[Actual CY]\",\"style\":\"Style 1\",\"format\":\"Measure\",\"stepIndex\":32,\"isRow\":false,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":-9999,\"optionalCalcId\":\"\"},{\"headerValue\":\"Variance PY\",\"uid\":\"Actual PY\",\"secondUid\":\"\",\"formula\":\"[Budget]-[Actual PY]\",\"style\":\"Style 1\",\"format\":\"Measure\",\"stepIndex\":33,\"isRow\":false,\"isCell\":false,\"isAfter\":true,\"level\":0,\"columOverride\":false,\"isBold\":false,\"referenceOrder\":-9999,\"optionalCalcId\":\"\"}]'"
+                }
+              }
+            },
+            "customIndentation": {
+              "expr": {
+                "Literal": {
+                  "Value": "'[{\"uid\":\"Gross Margin\",\"spaces\":1,\"isRow\":true}]'"
+                }
+              }
+            },
+            "customSpace": {
+              "expr": {
+                "Literal": {
+                  "Value": "'[{\"uid\":\"Month Var\",\"spaces\":20,\"isRow\":false},{\"uid\":\"YTD Var\",\"spaces\":20,\"isRow\":false},{\"uid\":\"Gross Margin + Other Income\",\"spaces\":0,\"isRow\":true}]'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "headerLine": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valsHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0.4
+                    }
+                  }
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "navSetting": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowStyle2": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            },
+            "headerBackColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowStyle3": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "headerColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowStyle1": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "colStyle1": [
+        {
+          "properties": {
+            "headerColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "vals": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowsHeader": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "rowsCellWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "250D"
+                }
+              }
+            },
+            "flatten": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "autoWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "levelFormat": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "export": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "button": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'xlsx'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "colsHeader": [
+        {
+          "properties": {
+            "columnsCellHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowTotal": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "colTotal": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "variance": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Actual Vs Budget'"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "border": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "foreground": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

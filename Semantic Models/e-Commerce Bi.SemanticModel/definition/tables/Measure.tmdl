@@ -334,6 +334,7 @@ table Measure
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column Column
+		isHidden
 		formatString: 0
 		lineageTag: 52b1b8c2-5e57-414e-9db7-2f2f85e2364b
 		summarizeBy: sum
