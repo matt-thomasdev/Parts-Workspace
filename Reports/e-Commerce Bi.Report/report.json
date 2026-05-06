@@ -285,7 +285,7 @@
     },
     {
       "config": "{\"visibility\":1}",
-      "displayName": "Fleetrite Potentail",
+      "displayName": "Fleetrite Potential",
       "displayOption": 1,
       "filters": "[]",
       "height": 720.00,
@@ -302,22 +302,22 @@
           "z": 0.00
         },
         {
-          "config": "{\"name\":\"644bbf0f2b18e2d7c0ae\",\"layouts\":[{\"id\":0,\"position\":{\"x\":844.9489556273425,\"y\":388.7079303304224,\"z\":2,\"width\":435.0387745516243,\"height\":296.83151043414074,\"tabOrder\":2}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Repairlink.dealername\"},{\"queryRef\":\"Repairlink.transactionid\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"Repairlink\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"transactionid\"}},\"Function\":2},\"Name\":\"Repairlink.transactionid\",\"NativeReferenceName\":\"Count of transactionid\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"dealername\"},\"Name\":\"Repairlink.dealername\",\"NativeReferenceName\":\"dealername\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"transactionid\"}},\"Function\":2}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{}}}",
+          "config": "{\"name\":\"644bbf0f2b18e2d7c0ae\",\"layouts\":[{\"id\":0,\"position\":{\"x\":844.9489556273425,\"y\":388.7079303304224,\"z\":2000,\"width\":435.0387745516243,\"height\":296.83151043414074,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Repairlink.dealername\"},{\"queryRef\":\"Repairlink.transactionid\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"Repairlink\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"transactionid\"}},\"Function\":2},\"Name\":\"Repairlink.transactionid\",\"NativeReferenceName\":\"Count of transactionid\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"dealername\"},\"Name\":\"Repairlink.dealername\",\"NativeReferenceName\":\"dealername\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"transactionid\"}},\"Function\":2}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{}}}",
           "filters": "[{\"name\":\"616e3c51b80b6a94c795\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Date\"}},\"Property\":\"Date\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"}},\"Right\":{\"DateSpan\":{\"Expression\":{\"Now\":{}},\"TimeUnit\":3}}}}}]},\"type\":\"RelativeDate\",\"howCreated\":1}]",
           "height": 296.83,
           "width": 435.04,
           "x": 844.95,
           "y": 388.71,
-          "z": 2.00
+          "z": 2000.00
         },
         {
-          "config": "{\"name\":\"8a3a4b4943649a26664b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":844.9489556273425,\"y\":0,\"z\":1,\"width\":435.0387745516243,\"height\":296.0462418880187,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Date.Year Month\"},{\"queryRef\":\"Measure.Total Sales (Repairlink)\"},{\"queryRef\":\"Repairlink.transactionid\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Measure\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0},{\"Name\":\"r\",\"Entity\":\"Repairlink\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Total Sales (Repairlink)\"},\"Name\":\"Measure.Total Sales (Repairlink)\",\"NativeReferenceName\":\"Total Sales (Repairlink)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year Month\"},\"Name\":\"Date.Year Month\",\"NativeReferenceName\":\"Year Month\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"transactionid\"}},\"Function\":2},\"Name\":\"Repairlink.transactionid\",\"NativeReferenceName\":\"Count of transactionid\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year Month\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{}}}",
+          "config": "{\"name\":\"8a3a4b4943649a26664b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":844.9489556273425,\"y\":0,\"z\":1000,\"width\":435.0387745516243,\"height\":296.0462418880187,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Date.Year Month\"},{\"queryRef\":\"Measure.Total Sales (Repairlink)\"},{\"queryRef\":\"Repairlink.transactionid\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Measure\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0},{\"Name\":\"r\",\"Entity\":\"Repairlink\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Total Sales (Repairlink)\"},\"Name\":\"Measure.Total Sales (Repairlink)\",\"NativeReferenceName\":\"Total Sales (Repairlink)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year Month\"},\"Name\":\"Date.Year Month\",\"NativeReferenceName\":\"Year Month\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"transactionid\"}},\"Function\":2},\"Name\":\"Repairlink.transactionid\",\"NativeReferenceName\":\"Count of transactionid\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year Month\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{}}}",
           "filters": "[{\"name\":\"616e3c51b80b6a94c795\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Date\"}},\"Property\":\"Date\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"}},\"Right\":{\"DateSpan\":{\"Expression\":{\"Now\":{}},\"TimeUnit\":3}}}}}]},\"type\":\"RelativeDate\",\"howCreated\":1}]",
           "height": 296.05,
           "width": 435.04,
           "x": 844.95,
           "y": 0.00,
-          "z": 1.00
+          "z": 1000.00
         }
       ],
       "width": 1280.00

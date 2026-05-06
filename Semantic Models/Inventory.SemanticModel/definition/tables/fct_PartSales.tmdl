@@ -29,6 +29,317 @@ table fct_PartSales
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column DateInvoice
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b939b98b-9a53-4dc9-b28c-604f6ea99970
+		summarizeBy: none
+		sourceColumn: DateInvoice
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateCreate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7e1f0290-2c4d-4804-aec1-b0fb0e70a9ed
+		summarizeBy: none
+		sourceColumn: DateCreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4afd2818-041a-4f1a-af48-6a0518345324
+		summarizeBy: none
+		sourceColumn: DateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmpId
+		dataType: string
+		lineageTag: 3a002971-6960-48b6-8d59-443e4061a50d
+		summarizeBy: none
+		sourceColumn: EmpId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: f0ee541b-342f-48df-8ae9-6843f791844e
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column SlsId
+		dataType: string
+		lineageTag: 7b606c5b-9e8f-4943-bc25-f9a1118800f9
+		summarizeBy: none
+		sourceColumn: SlsId
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstimateSlsId
+		dataType: string
+		lineageTag: 7f1fad4a-f75e-4b6b-a2fc-f9d09784cb25
+		summarizeBy: none
+		sourceColumn: EstimateSlsId
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvoiceSlsId
+		dataType: string
+		lineageTag: d846a0e3-18b3-42e4-9962-06b87f34610f
+		summarizeBy: none
+		sourceColumn: InvoiceSlsId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Origin
+		dataType: string
+		lineageTag: 93926d9c-bfd7-4049-a196-7f66f563b659
+		summarizeBy: none
+		sourceColumn: Origin
+
+		annotation SummarizationSetBy = Automatic
+
+	column PtItm
+		dataType: string
+		lineageTag: 02976f19-f240-4bdc-8d66-7b31487b710f
+		summarizeBy: none
+		sourceColumn: PtItm
+
+		annotation SummarizationSetBy = Automatic
+
+	column Des
+		dataType: string
+		lineageTag: afba4e9a-fd3a-4eef-af0c-e9f3fb719323
+		summarizeBy: none
+		sourceColumn: Des
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClaId
+		dataType: string
+		lineageTag: 98e10561-9b12-4bab-90d4-ebbeefd6221f
+		summarizeBy: none
+		sourceColumn: ClaId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SrcId
+		dataType: string
+		lineageTag: f794880b-56e1-48cb-a7d1-604138dc10a9
+		summarizeBy: none
+		sourceColumn: SrcId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItmTyp
+		dataType: int64
+		formatString: 0
+		lineageTag: d2edf40f-6e26-4509-82da-b095885602de
+		summarizeBy: sum
+		sourceColumn: ItmTyp
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItmDes
+		dataType: string
+		lineageTag: a60668a3-f408-4e86-af60-48344135bbc0
+		summarizeBy: none
+		sourceColumn: ItmDes
+
+		annotation SummarizationSetBy = Automatic
+
+	column CusId
+		dataType: string
+		lineageTag: c1085023-2932-4fde-8bc4-1835a8702906
+		summarizeBy: none
+		sourceColumn: CusId
+
+		annotation SummarizationSetBy = Automatic
+
+	column BillCusId
+		dataType: string
+		lineageTag: 0738ab90-e6ca-41e5-a473-dc9e8d40f0d1
+		summarizeBy: none
+		sourceColumn: BillCusId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SlsTypId
+		dataType: string
+		lineageTag: e51fe061-80c5-48b7-a320-393f3c0d0414
+		summarizeBy: none
+		sourceColumn: SlsTypId
+
+		annotation SummarizationSetBy = Automatic
+
+	column CusName
+		dataType: string
+		lineageTag: c806695c-f2c6-4545-a121-7b9c9f581cce
+		summarizeBy: none
+		sourceColumn: CusName
+
+		annotation SummarizationSetBy = Automatic
+
+	column BillCusName
+		dataType: string
+		lineageTag: 544ed880-8c9b-4275-97d8-3c59f6011add
+		summarizeBy: none
+		sourceColumn: BillCusName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AmtPrice
+		dataType: double
+		lineageTag: 390d5fa4-20d0-41d5-9f3c-b5d7c1e369d0
+		summarizeBy: sum
+		sourceColumn: AmtPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtPriceSuggest
+		dataType: double
+		lineageTag: 8dfbf17d-f7a9-432c-b9fa-967a30445b06
+		summarizeBy: sum
+		sourceColumn: AmtPriceSuggest
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmtRebate
+		dataType: double
+		lineageTag: b294293c-7f47-40b7-8bcc-0237744db04a
+		summarizeBy: sum
+		sourceColumn: AmtRebate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Status
+		dataType: int64
+		formatString: 0
+		lineageTag: 6c1b7f47-4c59-4a48-9cdf-136f86238800
+		summarizeBy: sum
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Extended Sales'
+		dataType: double
+		lineageTag: c1089240-426d-44e6-ad43-92dcf12ef183
+		summarizeBy: sum
+		sourceColumn: Extended Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Extended Cost'
+		dataType: double
+		lineageTag: 3515dc39-2e3d-4100-aa00-76d61f6c7617
+		summarizeBy: sum
+		sourceColumn: Extended Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Reason
+		dataType: string
+		lineageTag: f5ff6904-f24f-424f-a0b4-cd1bfe9bb68c
+		summarizeBy: none
+		sourceColumn: Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrtMisc5
+		dataType: string
+		lineageTag: 0c3a8add-8198-4ec1-a09a-35f33500561d
+		summarizeBy: none
+		sourceColumn: PrtMisc5
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyOH
+		dataType: double
+		lineageTag: d11cec4f-93c4-4856-8ddd-14f1b57072ca
+		summarizeBy: sum
+		sourceColumn: QtyOH
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyOO
+		dataType: double
+		lineageTag: a5637cce-2f07-46a2-a159-74e4e47b4d21
+		summarizeBy: sum
+		sourceColumn: QtyOO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Core
+		dataType: string
+		lineageTag: 8b2909f2-6212-4815-87b5-894bc594f29c
+		summarizeBy: none
+		sourceColumn: Core
+
+		annotation SummarizationSetBy = Automatic
+
+	column VenPrtId
+		dataType: string
+		lineageTag: c892a0d9-3f3a-4384-8571-086ec3645c24
+		summarizeBy: none
+		sourceColumn: VenPrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Posted
+		dataType: int64
+		formatString: 0
+		lineageTag: f9907f78-ee6e-4287-9917-87508fe699a5
+		summarizeBy: sum
+		sourceColumn: Posted
+
+		annotation SummarizationSetBy = Automatic
+
+	column CaPrtId
+		dataType: string
+		lineageTag: fb08b53c-e082-4377-ab02-9060527866b7
+		summarizeBy: none
+		sourceColumn: CaPrtId
+
+		annotation SummarizationSetBy = Automatic
+
+	column EarliestDateUpdate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9b189171-bcae-47f0-8d18-916574d11a75
+		summarizeBy: none
+		sourceColumn: EarliestDateUpdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyBackOrder
+		dataType: double
+		lineageTag: e1734aa4-5c5e-4e37-b13f-6870e7a9e773
+		summarizeBy: sum
+		sourceColumn: QtyBackOrder
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	partition fct_PartSales = m
 		mode: import
 		source =
@@ -38,10 +349,9 @@ table fct_PartSales
 				    dbo_fct_PartSales = EXCEDE{[Schema="dbo",Item="USER_PARTS_SERVICE_SALES_VIEW"]}[Data],
 				    #"Filtered Rows" = Table.SelectRows(dbo_fct_PartSales, each [Posted] = 0),
 				    #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each not Text.StartsWith([SlsId], "E")),
-				    #"Filtered Rows2" = Table.SelectRows(#"Filtered Rows1", each [ItmTyp] <> 531 and [ItmTyp] <> 598),
-				    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows2",{"BrnId", "AmtCost", "QtyShip"})
+				    #"Filtered Rows2" = Table.SelectRows(#"Filtered Rows1", each [ItmTyp] <> 531 and [ItmTyp] <> 598)
 				in
-				    #"Removed Other Columns"
+				    #"Filtered Rows2"
 
 	annotation PBI_NavigationStepName = Navigation
 

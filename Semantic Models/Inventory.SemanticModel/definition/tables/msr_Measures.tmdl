@@ -1,4 +1,5 @@
 table msr_Measures
+	lineageTag: b4ac6167-cabc-450f-b1b0-2cd3f72e181e
 
 	measure '1 Month Supply' = SUMX(fct_Inventory,fct_Inventory[AvgSalesDay]*21)
 		displayFolder: Inventory\Supply
@@ -212,9 +213,33 @@ table msr_Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Total OH,OO & OT-Cusback' = SUMX(fct_Inventory,fct_Inventory[QtyOH]+fct_Inventory[QtyOO]+fct_Inventory[QtyOT]-fct_Inventory[CusBackOrders])
+		displayFolder: Inventory\Inventory
+		lineageTag: 5a983b51-bc8e-47ec-9bb8-cfc11d1d626a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Month Supply-Cus' = ```
+			
+			VAR AvgDailySales = SUMX(fct_Inventory, fct_Inventory[AvgSalesDay])  // [Average Daily Sales]
+			VAR CurrentStock = [Total OH,OO & OT-Cusback]  // [Current Stock]
+			RETURN
+			    IF(
+			        ISBLANK(AvgDailySales) || ISBLANK(CurrentStock) || AvgDailySales = 0,
+			        BLANK(),
+			        CurrentStock / (AvgDailySales * 21)  // Assuming 21 working days in a month
+			    )
+			
+			```
+		displayFolder: Inventory\Supply
+		lineageTag: 39452dea-58bd-45d3-8af3-2a6a41013da1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Value
 		dataType: int64
 		isHidden
+		lineageTag: 0522f5f1-60f6-4c4d-9d0c-c6e0fceb7322
 		summarizeBy: none
 		sourceColumn: [Value]
 

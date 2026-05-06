@@ -446,6 +446,16 @@ table fct_Inventory
 
 		annotation SummarizationSetBy = Automatic
 
+	column CusBackOrders
+		dataType: double
+		lineageTag: 2286fcfa-441f-4853-99f7-75eb0b9819ed
+		summarizeBy: sum
+		sourceColumn: CusBackOrders
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	partition fct_Inventory = m
 		mode: import
 		source =
@@ -453,7 +463,7 @@ table fct_Inventory
 				    Source = Sql.Databases("10.250.50.4"),
 				    EXCEDE = Source{[Name="EXCEDE"]}[Data],
 				    dbo_fct_Inventory = EXCEDE{[Schema="dbo",Item="MT_INVENTORY"]}[Data],
-				    #"Removed Other Columns" = Table.SelectColumns(dbo_fct_Inventory,{"PrtId", "BrnId", "SrcId", "VenPrtId", "Typ", "Des", "ClaId", "BinId1", "BinId2", "BinId3", "BinId4", "AmtCostAvg", "AmtCostSrc", "AmtPrice1", "AmtPrice2", "AmtPrice3", "AmtPrice4", "QtyOH", "QtyOO", "QtyOT", "VenId", "OrderPkgMul", "OrderPkgMin", "AvgSalesDay", "DateSale", "DateOrder", "MdiOrdOpt", "JobQty", "PrtMisc5", "TS", "Months No Receipt", "Months No Sale", "PTCLA_ClaIdDes", "Jan_Sales_Current_YR", "Feb_Sales_Current_YR", "Mar_Sales_Current_YR", "Apr_Sales_Current_YR", "May_Sales_Current_YR", "Jun_Sales_Current_YR", "Jul_Sales_Current_YR", "Aug_Sales_Current_YR", "Sep_Sales_Current_YR", "Oct_Sales_Current_YR", "Nov_Sales_Current_YR", "Dec_Sales_Current_YR", "YTD_Sales_Current_YR", "LTM_Sales"})
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_fct_Inventory,{"PrtId", "BrnId", "SrcId", "VenPrtId", "Typ", "Des", "ClaId", "BinId1", "BinId2", "BinId3", "BinId4", "AmtCostAvg", "AmtCostSrc", "AmtPrice1", "AmtPrice2", "AmtPrice3", "AmtPrice4", "QtyOH", "QtyOO", "QtyOT", "VenId", "OrderPkgMul", "OrderPkgMin", "AvgSalesDay", "DateSale", "DateOrder", "MdiOrdOpt", "JobQty", "PrtMisc5", "TS", "Months No Receipt", "Months No Sale", "PTCLA_ClaIdDes", "Jan_Sales_Current_YR", "Feb_Sales_Current_YR", "Mar_Sales_Current_YR", "Apr_Sales_Current_YR", "May_Sales_Current_YR", "Jun_Sales_Current_YR", "Jul_Sales_Current_YR", "Aug_Sales_Current_YR", "Sep_Sales_Current_YR", "Oct_Sales_Current_YR", "Nov_Sales_Current_YR", "Dec_Sales_Current_YR", "YTD_Sales_Current_YR", "LTM_Sales", "CusBackOrders"})
 				in
 				    #"Removed Other Columns"
 

@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "53823533e885774c6827",
   "position": {
     "x": 0,
-    "y": 227.43160511254661,
+    "y": 227.50197484353163,
     "z": 0,
-    "height": 773.03177696285275,
-    "width": 2376.8370337409665,
+    "height": 773.50671446800754,
+    "width": 2399.8541654007413,
     "tabOrder": 3000
   },
   "visual": {
@@ -225,6 +225,26 @@
                           "Entity": "fct_Inventory"
                         }
                       },
+                      "Property": "CusBackOrders"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.CusBackOrders)",
+              "nativeQueryRef": "CusBackOrders",
+              "displayName": "CusBackOrders"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
                       "Property": "AmtPrice4"
                     }
                   },
@@ -312,6 +332,21 @@
               },
               "queryRef": "msr_Measures.Month Supply",
               "nativeQueryRef": "Month Supply"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "msr_Measures"
+                    }
+                  },
+                  "Property": "Month Supply-Cus"
+                }
+              },
+              "queryRef": "msr_Measures.Month Supply-Cus",
+              "nativeQueryRef": "Month Supply-Cus",
+              "format": "0"
             },
             {
               "field": {
@@ -1267,7 +1302,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
