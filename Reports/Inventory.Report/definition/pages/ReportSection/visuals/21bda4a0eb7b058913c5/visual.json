@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "21bda4a0eb7b058913c5",
   "position": {
-    "x": 12.615545434182035,
-    "y": 215.61114014783843,
+    "x": 0,
+    "y": 215.72834372834373,
     "z": 0,
-    "height": 784.45755245277383,
-    "width": 2387.7786903606361,
+    "height": 784.85377685377682,
+    "width": 2387.2044352044354,
     "tabOrder": 5000
   },
   "visual": {
@@ -140,6 +140,26 @@
             },
             {
               "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_Inventory"
+                        }
+                      },
+                      "Property": "CusBackOrders"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_Inventory.CusBackOrders)",
+              "nativeQueryRef": "QtyCusBO",
+              "displayName": "QtyCusBO"
+            },
+            {
+              "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
@@ -244,7 +264,8 @@
                 }
               },
               "queryRef": "Sum(fct_Inventory.Months No Sale)",
-              "nativeQueryRef": "Months No Sale"
+              "nativeQueryRef": "MNS",
+              "displayName": "MNS"
             },
             {
               "field": {
@@ -360,6 +381,22 @@
                       "Entity": "msr_Measures"
                     }
                   },
+                  "Property": "3 Month Supply Less QtyOH&OOCus"
+                }
+              },
+              "queryRef": "msr_Measures.3 Month Supply Less QtyOH&OOCus",
+              "nativeQueryRef": "3MS_Cus",
+              "displayName": "3MS_Cus",
+              "format": "0"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "msr_Measures"
+                    }
+                  },
                   "Property": "2 Month Supply Less QtyOH&OO"
                 }
               },
@@ -375,12 +412,112 @@
                       "Entity": "msr_Measures"
                     }
                   },
+                  "Property": "2 Month Supply Less QtyOH&OOCus"
+                }
+              },
+              "queryRef": "msr_Measures.2 Month Supply Less QtyOH&OOCus",
+              "nativeQueryRef": "2MS_Cus",
+              "displayName": "2MS_Cus",
+              "format": "0"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "msr_Measures"
+                    }
+                  },
                   "Property": "1 Month Supply Less QtyOH&OO"
                 }
               },
               "queryRef": "msr_Measures.1 Month Supply Less QtyOH&OO",
               "nativeQueryRef": "1MS",
               "displayName": "1MS"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "msr_Measures"
+                    }
+                  },
+                  "Property": "1 Month Supply Less QtyOH&OOCus"
+                }
+              },
+              "queryRef": "msr_Measures.1 Month Supply Less QtyOH&OOCus",
+              "nativeQueryRef": "1MS_Cus",
+              "displayName": "1MS_Cus",
+              "format": "0"
+            },
+            {
+              "field": {
+                "NativeVisualCalculation": {
+                  "Language": "dax",
+                  "Expression": "IF(ISATLEVEL([Part Number]), [MS_Base], BLANK())",
+                  "Name": "MS"
+                },
+                "Annotations": {
+                  "customTotalMetadata": {
+                    "baseQueryName": "msr_Measures.Month Supply"
+                  }
+                }
+              },
+              "queryRef": "select1",
+              "nativeQueryRef": "MS",
+              "format": "0"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "msr_Measures"
+                    }
+                  },
+                  "Property": "Month Supply"
+                }
+              },
+              "queryRef": "msr_Measures.Month Supply",
+              "nativeQueryRef": "MS_Base",
+              "hidden": true,
+              "displayName": "MS_Base",
+              "format": "0"
+            },
+            {
+              "field": {
+                "NativeVisualCalculation": {
+                  "Language": "dax",
+                  "Expression": "IF(ISATLEVEL([Part Number]), [MS_Cus_Base], BLANK())",
+                  "Name": "MS_Cus"
+                },
+                "Annotations": {
+                  "customTotalMetadata": {
+                    "baseQueryName": "msr_Measures.Month Supply-Cus"
+                  }
+                }
+              },
+              "queryRef": "select",
+              "nativeQueryRef": "MS_Cus",
+              "format": "0"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "msr_Measures"
+                    }
+                  },
+                  "Property": "Month Supply-Cus"
+                }
+              },
+              "queryRef": "msr_Measures.Month Supply-Cus",
+              "nativeQueryRef": "MS_Cus_Base",
+              "hidden": true,
+              "displayName": "MS_Cus_Base",
+              "format": "0"
             },
             {
               "field": {
@@ -1416,5 +1553,698 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "4a049805789704a50214",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_Inventory"
+              }
+            },
+            "Property": "PrtId"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d9dbac9c70e0358459c0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_Inventory"
+              }
+            },
+            "Property": "VenPrtId"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "50e6d598d3d1818d0c99",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_Inventory"
+              }
+            },
+            "Property": "Des"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3387ca170746bddd8e60",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "QtyOH"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "130b38e050c99044addd",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "QtyOO"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9fd5e10710410ab0c22b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "QtyOT"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "aa4e7da1601733015806",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Consignment"
+                  }
+                },
+                "Property": "QtyOC"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8670258d0987c034428a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_Inventory"
+              }
+            },
+            "Property": "SrcId"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "4620d6b9de8099857c0d",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "AmtCostAvg"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b88ac060b900de30aceb",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "AmtCostSrc"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7bb87259486200554945",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "AmtPrice4"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6424d8267a0859380835",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "Months No Receipt"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3bef721c51dd08034009",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_Inventory"
+              }
+            },
+            "Property": "Months No Sale"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d0ed1c70e6da55d0440c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "msr_Measures"
+              }
+            },
+            "Property": "Total Avg Cost"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bf342c9ced4da26cc633",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_Location"
+              }
+            },
+            "Property": "Locaiton"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9abe9771a838aaec7d84",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_Inventory"
+              }
+            },
+            "Property": "BinId1"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "94c455a0c5a0c1002647",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_Inventory"
+              }
+            },
+            "Property": "ClaId"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e47dabf7171c992015d1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_Inventory"
+              }
+            },
+            "Property": "PTCLA_ClaIdDes"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "10a9e807d2815300b6dc",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "AvgSalesDay"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5ae5d7e99d478e6cd535",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "msr_Measures"
+              }
+            },
+            "Property": "3 Month Supply Less QtyOH&OO"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c320355c3c397009d474",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "msr_Measures"
+              }
+            },
+            "Property": "2 Month Supply Less QtyOH&OO"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c8d73ae99b8a09d12578",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "msr_Measures"
+              }
+            },
+            "Property": "1 Month Supply Less QtyOH&OO"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "16923de6607e4596405d",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "Jan_Sales_Current_YR"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4a11321195b902a6a481",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "Feb_Sales_Current_YR"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "416a8310064a74c2932c",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "Mar_Sales_Current_YR"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fd1f53b09c1cdd9b1383",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "Apr_Sales_Current_YR"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c472c65da5979c2a18ee",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "May_Sales_Current_YR"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "363ff9c6e1201db892b0",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "Jun_Sales_Current_YR"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4c0bf1973cbd0386b82c",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "Jul_Sales_Current_YR"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "afecf1003cd670d5a56a",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "Aug_Sales_Current_YR"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "65a15f8dda126000ee9b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "Sep_Sales_Current_YR"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f093c706ccad52894005",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "Oct_Sales_Current_YR"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ff4f46b79ccc9e43c7e0",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "Nov_Sales_Current_YR"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c3dc324e74e232340856",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "Dec_Sales_Current_YR"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c45a40706340ea97002a",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_PtLost"
+                  }
+                },
+                "Property": "QtyShip"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a9337a5ebb351ad931a3",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "msr_Measures"
+              }
+            },
+            "Property": "1 Month Supply Less QtyOH&OOCus"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a7d76ef5ac3cdbc17984",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "msr_Measures"
+              }
+            },
+            "Property": "2 Month Supply Less QtyOH&OOCus"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f3792b56927440e77313",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "msr_Measures"
+              }
+            },
+            "Property": "3 Month Supply Less QtyOH&OOCus"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4c120a425cc1490d0489",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "msr_Measures"
+              }
+            },
+            "Property": "Month Supply"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "038e88198300843d0342",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "msr_Measures"
+              }
+            },
+            "Property": "Month Supply-Cus"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7e003063320290877559",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_Inventory"
+                  }
+                },
+                "Property": "CusBackOrders"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

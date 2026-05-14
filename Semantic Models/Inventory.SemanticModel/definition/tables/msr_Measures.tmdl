@@ -236,6 +236,24 @@ table msr_Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure '1 Month Supply Less QtyOH&OOCus' = [1 Month Supply]-[Total OH,OO & OT-Cusback]
+		displayFolder: Inventory\Supply
+		lineageTag: cce696f5-036e-4bb3-8c2f-3e0462b64812
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2 Month Supply Less QtyOH&OOCus' = [2 Month Supply]-[Total OH,OO & OT-Cusback]
+		displayFolder: Inventory\Supply
+		lineageTag: 7c52cab9-4474-498b-ae53-2e809a9edeae
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3 Month Supply Less QtyOH&OOCus' = [3 Month Supply]-[Total OH,OO & OT-Cusback]
+		displayFolder: Inventory\Supply
+		lineageTag: 3050a301-bfac-4d74-a7c8-fec796c7f397
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Value
 		dataType: int64
 		isHidden
