@@ -1,0 +1,5 @@
+role Bepensa
+	modelPermission: read
+
+	annotation PBI_Id = 757a0e345d644cae9922f60f77a03f35
+

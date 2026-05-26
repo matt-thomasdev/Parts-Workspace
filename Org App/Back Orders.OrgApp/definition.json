@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/orgapp/definition/orgAppDefinition/1.0.0/schema.json",
+  "settings": {},
+  "elements": [
+    {
+      "elementType": "item",
+      "elementId": "3e578786-b49a-4ebd-b078-64a5e5070aee",
+      "itemType": "Report",
+      "itemLogicalId": "ab244c85-e6d1-8d20-4725-a86ad40c82ea",
+      "displayName": "Work In Process"
+    },
+    {
+      "elementType": "item",
+      "elementId": "ccc2c51b-b778-4821-976e-b4a8dcc66c99",
+      "itemType": "SemanticModel",
+      "itemLogicalId": "32dbe9f4-5f39-9679-41fd-5f122a7b8952",
+      "displayName": "3e578786-b49a-4ebd-b078-64a5e5070aee"
+    }
+  ]
+}
