@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "d25c707b7f6057e43bbe",
+  "position": {
+    "x": 38.016035662322388,
+    "y": 0,
+    "z": 4000,
+    "height": 54.70600253846392,
+    "width": 378.30591585920814,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "OPS Estimates Not Rolled",
+                    "textStyle": {
+                      "fontSize": "24pt",
+                      "color": "#e66c37"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

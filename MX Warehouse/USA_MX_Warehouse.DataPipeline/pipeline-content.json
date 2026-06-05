@@ -2,40 +2,24 @@
   "properties": {
     "activities": [
       {
-        "name": "extract Customers_COCUS",
         "type": "Copy",
-        "dependsOn": [
-          {
-            "activity": "extract GL Detail",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          }
-        ],
-        "policy": {
-          "timeout": "0.12:00:00",
-          "retry": 0,
-          "retryIntervalInSeconds": 30,
-          "secureOutput": false,
-          "secureInput": false
-        },
         "typeProperties": {
           "source": {
             "type": "SqlServerSource",
-            "queryTimeout": "02:00:00",
             "partitionOption": "None",
+            "queryTimeout": "02:00:00",
             "datasetSettings": {
-              "annotations": [],
               "type": "SqlServerTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "COCUS",
                 "database": "EXCEDE"
               },
+              "schema": [],
               "externalReferences": {
                 "connection": "f3ddd95d-3ab8-4c3e-be39-40ffe9664536"
-              }
+              },
+              "annotations": []
             }
           },
           "sink": {
@@ -45,28 +29,27 @@
             "copyCommandSettings": {},
             "disableMetricsCollection": false,
             "datasetSettings": {
-              "annotations": [],
-              "linkedService": {
-                "name": "BM_USA_MX_Warehouse",
-                "properties": {
-                  "annotations": [],
-                  "type": "DataWarehouse",
-                  "typeProperties": {
-                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
-                    "artifactId": "d5066f6c-1905-4fae-a2eb-3ae70aa8148e",
-                    "workspaceId": "7985a237-e120-49b0-af7d-e2bf580ec433"
-                  }
-                }
-              },
               "type": "DataWarehouseTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "Customers"
-              }
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BM_USA_MX_Warehouse",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "0aa8148e-3ae7-a2eb-4fae-1905d5066f6c",
+                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
             }
           },
-          "enableStaging": true,
           "translator": {
             "type": "TabularTranslator",
             "mappings": [
@@ -1394,44 +1377,45 @@
               "allowDataTruncation": true,
               "treatBooleanAsNumber": false
             }
-          }
-        }
-      },
-      {
-        "name": "Extrac Parts Inventory_MT_INVENTORY",
-        "type": "Copy",
-        "dependsOn": [
-          {
-            "activity": "extract Customers_COCUS",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          }
-        ],
+          },
+          "enableStaging": true
+        },
         "policy": {
           "timeout": "0.12:00:00",
           "retry": 0,
           "retryIntervalInSeconds": 30,
-          "secureOutput": false,
-          "secureInput": false
+          "secureInput": false,
+          "secureOutput": false
         },
+        "name": "extract Customers_COCUS",
+        "dependsOn": [
+          {
+            "activity": "extract GL Detail",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
         "typeProperties": {
           "source": {
             "type": "SqlServerSource",
-            "queryTimeout": "02:00:00",
             "partitionOption": "None",
+            "queryTimeout": "02:00:00",
             "datasetSettings": {
-              "annotations": [],
               "type": "SqlServerTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "MT_INVENTORY",
                 "database": "EXCEDE"
               },
+              "schema": [],
               "externalReferences": {
                 "connection": "f3ddd95d-3ab8-4c3e-be39-40ffe9664536"
-              }
+              },
+              "annotations": []
             }
           },
           "sink": {
@@ -1441,28 +1425,27 @@
             "copyCommandSettings": {},
             "disableMetricsCollection": false,
             "datasetSettings": {
-              "annotations": [],
-              "linkedService": {
-                "name": "BM_USA_MX_Warehouse",
-                "properties": {
-                  "annotations": [],
-                  "type": "DataWarehouse",
-                  "typeProperties": {
-                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
-                    "artifactId": "d5066f6c-1905-4fae-a2eb-3ae70aa8148e",
-                    "workspaceId": "7985a237-e120-49b0-af7d-e2bf580ec433"
-                  }
-                }
-              },
               "type": "DataWarehouseTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "Parts_Inventory"
-              }
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BM_USA_MX_Warehouse",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "0aa8148e-3ae7-a2eb-4fae-1905d5066f6c",
+                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
             }
           },
-          "enableStaging": true,
           "translator": {
             "type": "TabularTranslator",
             "mappings": [
@@ -2504,44 +2487,45 @@
               "allowDataTruncation": true,
               "treatBooleanAsNumber": false
             }
-          }
-        }
-      },
-      {
-        "name": "extract Parts Sales",
-        "type": "Copy",
-        "dependsOn": [
-          {
-            "activity": "Extrac Parts Inventory_MT_INVENTORY",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          }
-        ],
+          },
+          "enableStaging": true
+        },
         "policy": {
           "timeout": "0.12:00:00",
           "retry": 0,
           "retryIntervalInSeconds": 30,
-          "secureOutput": false,
-          "secureInput": false
+          "secureInput": false,
+          "secureOutput": false
         },
+        "name": "Extrac Parts Inventory_MT_INVENTORY",
+        "dependsOn": [
+          {
+            "activity": "extract Customers_COCUS",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
         "typeProperties": {
           "source": {
             "type": "SqlServerSource",
-            "queryTimeout": "02:00:00",
             "partitionOption": "None",
+            "queryTimeout": "02:00:00",
             "datasetSettings": {
-              "annotations": [],
               "type": "SqlServerTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "USER_PARTS_SERVICE_SALES_VIEW",
                 "database": "EXCEDE"
               },
+              "schema": [],
               "externalReferences": {
                 "connection": "f3ddd95d-3ab8-4c3e-be39-40ffe9664536"
-              }
+              },
+              "annotations": []
             }
           },
           "sink": {
@@ -2551,28 +2535,27 @@
             "copyCommandSettings": {},
             "disableMetricsCollection": false,
             "datasetSettings": {
-              "annotations": [],
-              "linkedService": {
-                "name": "BM_USA_MX_Warehouse",
-                "properties": {
-                  "annotations": [],
-                  "type": "DataWarehouse",
-                  "typeProperties": {
-                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
-                    "artifactId": "d5066f6c-1905-4fae-a2eb-3ae70aa8148e",
-                    "workspaceId": "7985a237-e120-49b0-af7d-e2bf580ec433"
-                  }
-                }
-              },
               "type": "DataWarehouseTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "Parts_Sales"
-              }
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BM_USA_MX_Warehouse",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "0aa8148e-3ae7-a2eb-4fae-1905d5066f6c",
+                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
             }
           },
-          "enableStaging": true,
           "translator": {
             "type": "TabularTranslator",
             "mappings": [
@@ -3036,44 +3019,45 @@
               "allowDataTruncation": true,
               "treatBooleanAsNumber": false
             }
-          }
-        }
-      },
-      {
-        "name": "extract Vehicles",
-        "type": "Copy",
-        "dependsOn": [
-          {
-            "activity": "extract Parts Sales",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          }
-        ],
+          },
+          "enableStaging": true
+        },
         "policy": {
           "timeout": "0.12:00:00",
           "retry": 0,
           "retryIntervalInSeconds": 30,
-          "secureOutput": false,
-          "secureInput": false
+          "secureInput": false,
+          "secureOutput": false
         },
+        "name": "extract Parts Sales",
+        "dependsOn": [
+          {
+            "activity": "Extrac Parts Inventory_MT_INVENTORY",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
         "typeProperties": {
           "source": {
             "type": "SqlServerSource",
-            "queryTimeout": "02:00:00",
             "partitionOption": "None",
+            "queryTimeout": "02:00:00",
             "datasetSettings": {
-              "annotations": [],
               "type": "SqlServerTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "VHVIN",
                 "database": "EXCEDE"
               },
+              "schema": [],
               "externalReferences": {
                 "connection": "f3ddd95d-3ab8-4c3e-be39-40ffe9664536"
-              }
+              },
+              "annotations": []
             }
           },
           "sink": {
@@ -3083,28 +3067,27 @@
             "copyCommandSettings": {},
             "disableMetricsCollection": false,
             "datasetSettings": {
-              "annotations": [],
-              "linkedService": {
-                "name": "BM_USA_MX_Warehouse",
-                "properties": {
-                  "annotations": [],
-                  "type": "DataWarehouse",
-                  "typeProperties": {
-                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
-                    "artifactId": "d5066f6c-1905-4fae-a2eb-3ae70aa8148e",
-                    "workspaceId": "7985a237-e120-49b0-af7d-e2bf580ec433"
-                  }
-                }
-              },
               "type": "DataWarehouseTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "Vehicles"
-              }
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BM_USA_MX_Warehouse",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "0aa8148e-3ae7-a2eb-4fae-1905d5066f6c",
+                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
             }
           },
-          "enableStaging": true,
           "translator": {
             "type": "TabularTranslator",
             "mappings": [
@@ -4844,44 +4827,45 @@
               "allowDataTruncation": true,
               "treatBooleanAsNumber": false
             }
-          }
-        }
-      },
-      {
-        "name": "Extract Price Tape",
-        "type": "Copy",
-        "dependsOn": [
-          {
-            "activity": "extract Vehicles",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          }
-        ],
+          },
+          "enableStaging": true
+        },
         "policy": {
           "timeout": "0.12:00:00",
           "retry": 0,
           "retryIntervalInSeconds": 30,
-          "secureOutput": false,
-          "secureInput": false
+          "secureInput": false,
+          "secureOutput": false
         },
+        "name": "extract Vehicles",
+        "dependsOn": [
+          {
+            "activity": "extract Parts Sales",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
         "typeProperties": {
           "source": {
             "type": "SqlServerSource",
-            "queryTimeout": "02:00:00",
             "partitionOption": "None",
+            "queryTimeout": "02:00:00",
             "datasetSettings": {
-              "annotations": [],
               "type": "SqlServerTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "PTTAP",
                 "database": "EXCEDE"
               },
+              "schema": [],
               "externalReferences": {
                 "connection": "f3ddd95d-3ab8-4c3e-be39-40ffe9664536"
-              }
+              },
+              "annotations": []
             }
           },
           "sink": {
@@ -4891,28 +4875,27 @@
             "copyCommandSettings": {},
             "disableMetricsCollection": false,
             "datasetSettings": {
-              "annotations": [],
-              "linkedService": {
-                "name": "BM_USA_MX_Warehouse",
-                "properties": {
-                  "annotations": [],
-                  "type": "DataWarehouse",
-                  "typeProperties": {
-                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
-                    "artifactId": "d5066f6c-1905-4fae-a2eb-3ae70aa8148e",
-                    "workspaceId": "7985a237-e120-49b0-af7d-e2bf580ec433"
-                  }
-                }
-              },
               "type": "DataWarehouseTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "Parts_Tape"
-              }
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BM_USA_MX_Warehouse",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "0aa8148e-3ae7-a2eb-4fae-1905d5066f6c",
+                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
             }
           },
-          "enableStaging": true,
           "translator": {
             "type": "TabularTranslator",
             "mappings": [
@@ -5295,44 +5278,45 @@
               "allowDataTruncation": true,
               "treatBooleanAsNumber": false
             }
-          }
-        }
-      },
-      {
-        "name": "extract Parts_Class",
-        "type": "Copy",
-        "dependsOn": [
-          {
-            "activity": "Extract Price Tape",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          }
-        ],
+          },
+          "enableStaging": true
+        },
         "policy": {
           "timeout": "0.12:00:00",
           "retry": 0,
           "retryIntervalInSeconds": 30,
-          "secureOutput": false,
-          "secureInput": false
+          "secureInput": false,
+          "secureOutput": false
         },
+        "name": "Extract Price Tape",
+        "dependsOn": [
+          {
+            "activity": "extract Vehicles",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
         "typeProperties": {
           "source": {
             "type": "SqlServerSource",
-            "queryTimeout": "02:00:00",
             "partitionOption": "None",
+            "queryTimeout": "02:00:00",
             "datasetSettings": {
-              "annotations": [],
               "type": "SqlServerTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "PTCLA",
                 "database": "EXCEDE"
               },
+              "schema": [],
               "externalReferences": {
                 "connection": "f3ddd95d-3ab8-4c3e-be39-40ffe9664536"
-              }
+              },
+              "annotations": []
             }
           },
           "sink": {
@@ -5342,28 +5326,27 @@
             "copyCommandSettings": {},
             "disableMetricsCollection": false,
             "datasetSettings": {
-              "annotations": [],
-              "linkedService": {
-                "name": "BM_USA_MX_Warehouse",
-                "properties": {
-                  "annotations": [],
-                  "type": "DataWarehouse",
-                  "typeProperties": {
-                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
-                    "artifactId": "d5066f6c-1905-4fae-a2eb-3ae70aa8148e",
-                    "workspaceId": "7985a237-e120-49b0-af7d-e2bf580ec433"
-                  }
-                }
-              },
               "type": "DataWarehouseTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "Parts_Class"
-              }
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BM_USA_MX_Warehouse",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "0aa8148e-3ae7-a2eb-4fae-1905d5066f6c",
+                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
             }
           },
-          "enableStaging": true,
           "translator": {
             "type": "TabularTranslator",
             "mappings": [
@@ -5423,76 +5406,76 @@
               "allowDataTruncation": true,
               "treatBooleanAsNumber": false
             }
-          }
-        }
-      },
-      {
-        "name": "extract Parts Purchases",
-        "type": "Copy",
-        "dependsOn": [
-          {
-            "activity": "extract Parts_Class",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          }
-        ],
+          },
+          "enableStaging": true
+        },
         "policy": {
           "timeout": "0.12:00:00",
           "retry": 0,
           "retryIntervalInSeconds": 30,
-          "secureOutput": false,
-          "secureInput": false
+          "secureInput": false,
+          "secureOutput": false
         },
+        "name": "extract Parts_Class",
+        "dependsOn": [
+          {
+            "activity": "Extract Price Tape",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
         "typeProperties": {
           "source": {
             "type": "SqlServerSource",
-            "queryTimeout": "02:00:00",
             "partitionOption": "None",
+            "queryTimeout": "02:00:00",
             "datasetSettings": {
-              "annotations": [],
               "type": "SqlServerTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "MT_PARTS_PURCHASES",
                 "database": "EXCEDE"
               },
+              "schema": [],
               "externalReferences": {
                 "connection": "f3ddd95d-3ab8-4c3e-be39-40ffe9664536"
-              }
+              },
+              "annotations": []
             }
           },
           "sink": {
             "type": "DataWarehouseSink",
+            "tableOption": "autoCreate",
             "preCopyScript": "TRUNCATE TABLE dbo.Parts_Purchases",
             "allowCopyCommand": true,
             "copyCommandSettings": {},
-            "tableOption": "autoCreate",
             "disableMetricsCollection": false,
             "datasetSettings": {
-              "annotations": [],
-              "linkedService": {
-                "name": "BM_USA_MX_Warehouse",
-                "properties": {
-                  "annotations": [],
-                  "type": "DataWarehouse",
-                  "typeProperties": {
-                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
-                    "artifactId": "d5066f6c-1905-4fae-a2eb-3ae70aa8148e",
-                    "workspaceId": "7985a237-e120-49b0-af7d-e2bf580ec433"
-                  }
-                }
-              },
               "type": "DataWarehouseTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "Parts_Purchases"
-              }
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BM_USA_MX_Warehouse",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "0aa8148e-3ae7-a2eb-4fae-1905d5066f6c",
+                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
             }
           },
-          "enableStaging": true,
           "translator": {
             "type": "TabularTranslator",
             "mappings": [
@@ -5822,76 +5805,76 @@
               "allowDataTruncation": true,
               "treatBooleanAsNumber": false
             }
-          }
-        }
-      },
-      {
-        "name": "extract_COLOOKUP",
-        "type": "Copy",
-        "dependsOn": [
-          {
-            "activity": "extract Parts Purchases",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          }
-        ],
+          },
+          "enableStaging": true
+        },
         "policy": {
           "timeout": "0.12:00:00",
           "retry": 0,
           "retryIntervalInSeconds": 30,
-          "secureOutput": false,
-          "secureInput": false
+          "secureInput": false,
+          "secureOutput": false
         },
+        "name": "extract Parts Purchases",
+        "dependsOn": [
+          {
+            "activity": "extract Parts_Class",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
         "typeProperties": {
           "source": {
             "type": "SqlServerSource",
-            "queryTimeout": "02:00:00",
             "partitionOption": "None",
+            "queryTimeout": "02:00:00",
             "datasetSettings": {
-              "annotations": [],
               "type": "SqlServerTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "COLOOKUP",
                 "database": "EXCEDE"
               },
+              "schema": [],
               "externalReferences": {
                 "connection": "f3ddd95d-3ab8-4c3e-be39-40ffe9664536"
-              }
+              },
+              "annotations": []
             }
           },
           "sink": {
             "type": "DataWarehouseSink",
+            "tableOption": "autoCreate",
             "preCopyScript": "TRUNCATE TABLE dbo.Code_Lookup",
             "allowCopyCommand": true,
             "copyCommandSettings": {},
-            "tableOption": "autoCreate",
             "disableMetricsCollection": false,
             "datasetSettings": {
-              "annotations": [],
-              "linkedService": {
-                "name": "BM_USA_MX_Warehouse",
-                "properties": {
-                  "annotations": [],
-                  "type": "DataWarehouse",
-                  "typeProperties": {
-                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
-                    "artifactId": "d5066f6c-1905-4fae-a2eb-3ae70aa8148e",
-                    "workspaceId": "7985a237-e120-49b0-af7d-e2bf580ec433"
-                  }
-                }
-              },
               "type": "DataWarehouseTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "Code_Lookup"
-              }
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BM_USA_MX_Warehouse",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "0aa8148e-3ae7-a2eb-4fae-1905d5066f6c",
+                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
             }
           },
-          "enableStaging": true,
           "translator": {
             "type": "TabularTranslator",
             "typeConversion": true,
@@ -5899,44 +5882,45 @@
               "allowDataTruncation": true,
               "treatBooleanAsNumber": false
             }
-          }
-        }
-      },
-      {
-        "name": "extract_GL_Budget",
-        "type": "Copy",
-        "dependsOn": [
-          {
-            "activity": "extract_COLOOKUP",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          }
-        ],
+          },
+          "enableStaging": true
+        },
         "policy": {
           "timeout": "0.12:00:00",
           "retry": 0,
           "retryIntervalInSeconds": 30,
-          "secureOutput": false,
-          "secureInput": false
+          "secureInput": false,
+          "secureOutput": false
         },
+        "name": "extract_COLOOKUP",
+        "dependsOn": [
+          {
+            "activity": "extract Parts Purchases",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
         "typeProperties": {
           "source": {
             "type": "SqlServerSource",
-            "queryTimeout": "02:00:00",
             "partitionOption": "None",
+            "queryTimeout": "02:00:00",
             "datasetSettings": {
-              "annotations": [],
               "type": "SqlServerTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "ACMCAPRD",
                 "database": "EXCEDE"
               },
+              "schema": [],
               "externalReferences": {
                 "connection": "f3ddd95d-3ab8-4c3e-be39-40ffe9664536"
-              }
+              },
+              "annotations": []
             }
           },
           "sink": {
@@ -5946,28 +5930,27 @@
             "copyCommandSettings": {},
             "disableMetricsCollection": false,
             "datasetSettings": {
-              "annotations": [],
-              "linkedService": {
-                "name": "BM_USA_MX_Warehouse",
-                "properties": {
-                  "annotations": [],
-                  "type": "DataWarehouse",
-                  "typeProperties": {
-                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
-                    "artifactId": "d5066f6c-1905-4fae-a2eb-3ae70aa8148e",
-                    "workspaceId": "7985a237-e120-49b0-af7d-e2bf580ec433"
-                  }
-                }
-              },
               "type": "DataWarehouseTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "GL_Budget"
-              }
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BM_USA_MX_Warehouse",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "0aa8148e-3ae7-a2eb-4fae-1905d5066f6c",
+                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
             }
           },
-          "enableStaging": true,
           "translator": {
             "type": "TabularTranslator",
             "mappings": [
@@ -6112,37 +6095,45 @@
               "allowDataTruncation": true,
               "treatBooleanAsNumber": false
             }
-          }
-        }
-      },
-      {
-        "name": "extract GL Detail",
-        "type": "Copy",
-        "dependsOn": [],
+          },
+          "enableStaging": true
+        },
         "policy": {
           "timeout": "0.12:00:00",
           "retry": 0,
           "retryIntervalInSeconds": 30,
-          "secureOutput": false,
-          "secureInput": false
+          "secureInput": false,
+          "secureOutput": false
         },
+        "name": "extract_GL_Budget",
+        "dependsOn": [
+          {
+            "activity": "extract_COLOOKUP",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
         "typeProperties": {
           "source": {
             "type": "SqlServerSource",
-            "queryTimeout": "02:00:00",
             "partitionOption": "None",
+            "queryTimeout": "02:00:00",
             "datasetSettings": {
-              "annotations": [],
               "type": "SqlServerTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "MT_ACJEITM_TEMP",
                 "database": "EXCEDE"
               },
+              "schema": [],
               "externalReferences": {
                 "connection": "f3ddd95d-3ab8-4c3e-be39-40ffe9664536"
-              }
+              },
+              "annotations": []
             }
           },
           "sink": {
@@ -6152,28 +6143,27 @@
             "copyCommandSettings": {},
             "disableMetricsCollection": false,
             "datasetSettings": {
-              "annotations": [],
-              "linkedService": {
-                "name": "BM_USA_MX_Warehouse",
-                "properties": {
-                  "annotations": [],
-                  "type": "DataWarehouse",
-                  "typeProperties": {
-                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
-                    "artifactId": "d5066f6c-1905-4fae-a2eb-3ae70aa8148e",
-                    "workspaceId": "7985a237-e120-49b0-af7d-e2bf580ec433"
-                  }
-                }
-              },
               "type": "DataWarehouseTable",
-              "schema": [],
               "typeProperties": {
                 "schema": "dbo",
                 "table": "GL_ Detail"
-              }
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BM_USA_MX_Warehouse",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "0aa8148e-3ae7-a2eb-4fae-1905d5066f6c",
+                    "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
             }
           },
-          "enableStaging": true,
           "translator": {
             "type": "TabularTranslator",
             "mappings": [
@@ -6378,8 +6368,18 @@
               "allowDataTruncation": true,
               "treatBooleanAsNumber": false
             }
-          }
-        }
+          },
+          "enableStaging": true
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "extract GL Detail",
+        "dependsOn": []
       }
     ]
   }

@@ -40,10 +40,10 @@
           },
           "sink": {
             "type": "DataWarehouseSink",
-            "tableOption": "autoCreate",
-            "preCopyScript": "TRUNCATE TABLE dbo.GL_Mapping",
+            "preCopyScript": "TRUNCATE TABLE [GL_Mapping]",
             "allowCopyCommand": true,
             "copyCommandSettings": {},
+            "writeBehavior": "Insert",
             "disableMetricsCollection": false,
             "datasetSettings": {
               "type": "DataWarehouseTable",
@@ -57,9 +57,9 @@
                 "properties": {
                   "type": "DataWarehouse",
                   "typeProperties": {
-                    "artifactId": "d5066f6c-1905-4fae-a2eb-3ae70aa8148e",
+                    "artifactId": "0aa8148e-3ae7-a2eb-4fae-1905d5066f6c",
                     "endpoint": "spsdumzysv5upa7g6grcgnbpom-g6rik6ja4gyetl354k7vqdwegm.datawarehouse.fabric.microsoft.com",
-                    "workspaceId": "7985a237-e120-49b0-af7d-e2bf580ec433"
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
                   },
                   "annotations": []
                 }

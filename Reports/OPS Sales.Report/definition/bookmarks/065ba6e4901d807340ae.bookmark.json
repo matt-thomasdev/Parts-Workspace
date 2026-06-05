@@ -1,0 +1,121 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "Show Bar Chart",
+  "name": "065ba6e4901d807340ae",
+  "options": {
+    "targetVisualNames": [
+      "de8a99ec22619edd2e0c"
+    ],
+    "suppressActiveSection": true,
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "ReportSectiona3c68c96c8ec6b5e03a9",
+    "sections": {
+      "ReportSectiona3c68c96c8ec6b5e03a9": {
+        "filters": {
+          "byExpr": [
+            {
+              "name": "61b1725582c200eb0967",
+              "type": "Advanced",
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "p",
+                    "Entity": "Parts_Service Sales",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "And": {
+                        "Left": {
+                          "Not": {
+                            "Expression": {
+                              "Contains": {
+                                "Left": {
+                                  "Column": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Source": "p"
+                                      }
+                                    },
+                                    "Property": "SlsId"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "':'"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Right": {
+                          "Not": {
+                            "Expression": {
+                              "StartsWith": {
+                                "Left": {
+                                  "Column": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Source": "p"
+                                      }
+                                    },
+                                    "Property": "SlsId"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "'E'"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Parts_Service Sales"
+                    }
+                  },
+                  "Property": "SlsId"
+                }
+              },
+              "howCreated": 1
+            }
+          ]
+        },
+        "visualContainers": {}
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
